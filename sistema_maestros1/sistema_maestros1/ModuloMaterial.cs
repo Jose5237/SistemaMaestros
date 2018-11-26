@@ -460,7 +460,7 @@ namespace sistema_maestros1
                 }
 
                 //NUEVO AGREGADO
-                String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdTaller.Text,txtIdEscuela.Text);
+                String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdEscuela.Text, txtIdTaller.Text);
                 var respDin = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDin);
                 cbDinamicaMaterial.Items.Clear();
                 foreach (var nomDin in respDin)

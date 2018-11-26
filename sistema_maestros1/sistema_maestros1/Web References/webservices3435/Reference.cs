@@ -1608,26 +1608,26 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/buscarDinamicaXTallerYEscuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string buscarDinamicaXTallerYEscuela(string busqueda, string id_esc) {
+        public string buscarDinamicaXTallerYEscuela(string id_esc, string id_tall) {
             object[] results = this.Invoke("buscarDinamicaXTallerYEscuela", new object[] {
-                        busqueda,
-                        id_esc});
+                        id_esc,
+                        id_tall});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void buscarDinamicaXTallerYEscuelaAsync(string busqueda, string id_esc) {
-            this.buscarDinamicaXTallerYEscuelaAsync(busqueda, id_esc, null);
+        public void buscarDinamicaXTallerYEscuelaAsync(string id_esc, string id_tall) {
+            this.buscarDinamicaXTallerYEscuelaAsync(id_esc, id_tall, null);
         }
         
         /// <remarks/>
-        public void buscarDinamicaXTallerYEscuelaAsync(string busqueda, string id_esc, object userState) {
+        public void buscarDinamicaXTallerYEscuelaAsync(string id_esc, string id_tall, object userState) {
             if ((this.buscarDinamicaXTallerYEscuelaOperationCompleted == null)) {
                 this.buscarDinamicaXTallerYEscuelaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnbuscarDinamicaXTallerYEscuelaOperationCompleted);
             }
             this.InvokeAsync("buscarDinamicaXTallerYEscuela", new object[] {
-                        busqueda,
-                        id_esc}, this.buscarDinamicaXTallerYEscuelaOperationCompleted, userState);
+                        id_esc,
+                        id_tall}, this.buscarDinamicaXTallerYEscuelaOperationCompleted, userState);
         }
         
         private void OnbuscarDinamicaXTallerYEscuelaOperationCompleted(object arg) {

@@ -317,8 +317,8 @@
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="buscarDinamicaXTallerYEscuelaRequest">
-    <wsdl:part name="busqueda" type="xsd:string" />
     <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="buscarDinamicaXTallerYEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
