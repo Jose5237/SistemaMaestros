@@ -322,6 +322,7 @@
             this.dtFechaFinTaller.Name = "dtFechaFinTaller";
             this.dtFechaFinTaller.Size = new System.Drawing.Size(211, 20);
             this.dtFechaFinTaller.TabIndex = 7;
+            this.dtFechaFinTaller.ValueChanged += new System.EventHandler(this.dtFechaFinTaller_ValueChanged);
             // 
             // label7
             // 

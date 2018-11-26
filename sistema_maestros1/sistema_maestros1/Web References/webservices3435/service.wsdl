@@ -235,6 +235,7 @@
   </wsdl:message>
   <wsdl:message name="eliminarTallerRequest">
     <wsdl:part name="id_taller" type="xsd:string" />
+    <wsdl:part name="id_escuela" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="eliminarTallerResponse">
     <wsdl:part name="return" type="xsd:string" />

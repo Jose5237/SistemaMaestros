@@ -1240,24 +1240,26 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/eliminarTaller", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string eliminarTaller(string id_taller) {
+        public string eliminarTaller(string id_taller, string id_escuela) {
             object[] results = this.Invoke("eliminarTaller", new object[] {
-                        id_taller});
+                        id_taller,
+                        id_escuela});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void eliminarTallerAsync(string id_taller) {
-            this.eliminarTallerAsync(id_taller, null);
+        public void eliminarTallerAsync(string id_taller, string id_escuela) {
+            this.eliminarTallerAsync(id_taller, id_escuela, null);
         }
         
         /// <remarks/>
-        public void eliminarTallerAsync(string id_taller, object userState) {
+        public void eliminarTallerAsync(string id_taller, string id_escuela, object userState) {
             if ((this.eliminarTallerOperationCompleted == null)) {
                 this.eliminarTallerOperationCompleted = new System.Threading.SendOrPostCallback(this.OneliminarTallerOperationCompleted);
             }
             this.InvokeAsync("eliminarTaller", new object[] {
-                        id_taller}, this.eliminarTallerOperationCompleted, userState);
+                        id_taller,
+                        id_escuela}, this.eliminarTallerOperationCompleted, userState);
         }
         
         private void OneliminarTallerOperationCompleted(object arg) {

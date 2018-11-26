@@ -262,117 +262,105 @@ namespace sistema_maestros1
         {
             if ((txtIdEscuela.Text != "") && (txtNombreEscuela.Text != "") && (txtDireccionEscuela.Text != "") && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != ""))
             {
-                if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-
                     if (opcionBotones == 0)
                     {
-
-                        ClassEscuela es = new ClassEscuela();
-                        es.es_id_escuela = txtIdEscuela.Text;
-                        es.es_nombre_escuela = txtNombreEscuela.Text;
-                        es.es_direccion_escuela = txtDireccionEscuela.Text;
-                        es.es_telefono1_escuela = txtTel1Escuela.Text;
-                        es.es_telefono2_escuela = txtTel2Escuela.Text;
-                        es.es_telefono3_escuela = txtTel3Escuela.Text;
-                        es.es_correo_escuela = txtCorreoEscuela.Text;
-                        es.es_contacto_escuela = txtContactoEscuela.Text;
-                        es.es_responsable_pago_escuela = txtResponsablePagoEscuela.Text;
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de agregar estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            try
-                            {
-                                string mensaje = wsPHP.agregarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela ,es.es_responsable_pago_escuela);
-                                MessageBox.Show(mensaje, "¡Escuela Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClassEscuela es = new ClassEscuela();
+                            es.es_id_escuela = txtIdEscuela.Text;
+                            es.es_nombre_escuela = txtNombreEscuela.Text;
+                            es.es_direccion_escuela = txtDireccionEscuela.Text;
+                            es.es_telefono1_escuela = txtTel1Escuela.Text;
+                            es.es_telefono2_escuela = txtTel2Escuela.Text;
+                            es.es_telefono3_escuela = txtTel3Escuela.Text;
+                            es.es_correo_escuela = txtCorreoEscuela.Text;
+                            es.es_contacto_escuela = txtContactoEscuela.Text;
+                            es.es_responsable_pago_escuela = txtResponsablePagoEscuela.Text;
 
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            {
+                                try
+                                {
+                                    string mensaje = wsPHP.agregarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela, es.es_responsable_pago_escuela);
+                                    MessageBox.Show(mensaje, "¡Escuela Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cargarDatosTabla();
+                                inicializacionCampos();
 
                             }
-                            catch
-                            {
-                                MessageBox.Show("Ha ocurrido un error, no se ha podido agregar la escuela", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido agregar la escuela", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
+
+                    
+
+                            
 
                     }
                     else if (opcionBotones == 1)
                     {
+                        if(MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de realizar estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes){
+                            ClassEscuela es = new ClassEscuela();
+                            es.es_id_escuela = txtIdEscuela.Text;
+                            es.es_nombre_escuela = txtNombreEscuela.Text;
+                            es.es_direccion_escuela = txtDireccionEscuela.Text;
+                            es.es_telefono1_escuela = txtTel1Escuela.Text;
+                            es.es_telefono2_escuela = txtTel2Escuela.Text;
+                            es.es_telefono3_escuela = txtTel3Escuela.Text;
+                            es.es_correo_escuela = txtCorreoEscuela.Text;
+                            es.es_contacto_escuela = txtContactoEscuela.Text;
+                            es.es_responsable_pago_escuela = txtResponsablePagoEscuela.Text;
 
-                        ClassEscuela es = new ClassEscuela();
-                        es.es_id_escuela = txtIdEscuela.Text;
-                        es.es_nombre_escuela = txtNombreEscuela.Text;
-                        es.es_direccion_escuela = txtDireccionEscuela.Text;
-                        es.es_telefono1_escuela = txtTel1Escuela.Text;
-                        es.es_telefono2_escuela = txtTel2Escuela.Text;
-                        es.es_telefono3_escuela = txtTel3Escuela.Text;
-                        es.es_correo_escuela = txtCorreoEscuela.Text;
-                        es.es_contacto_escuela = txtContactoEscuela.Text;
-                        es.es_responsable_pago_escuela = txtResponsablePagoEscuela.Text;
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        {
-
-                            try
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                string mensaje = wsPHP.modificarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela ,es.es_responsable_pago_escuela);
-                                MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                try
+                                {
+                                    string mensaje = wsPHP.modificarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela, es.es_responsable_pago_escuela);
+                                    MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cargarDatosTabla();
+                                inicializacionCampos();
                             }
-                            catch
-                            {
-                                MessageBox.Show("Ha ocurrido un error, no se ha podido modificar la escuela", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido modificar la escuela", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
+
+                    
+                        
 
 
                     }
                     else if (opcionBotones == 2)
                     {
-                        ClassEscuela es = new ClassEscuela();
-                        es.es_id_escuela = txtIdEscuela.Text;
-
-
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        if (MessageBox.Show("¿Estas seguro de realizar esta accion? Recuerda que al eliminar una escuela tambien se eliminan todas sus relaciones (Alumnos, Talleres, Dinamicas, Materiales, Incidencias)", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            try
+                            ClassEscuela es = new ClassEscuela();
+                            es.es_id_escuela = txtIdEscuela.Text;
+
+
+
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                string mensaje = wsPHP.eliminarEscuela(es.es_id_escuela);
-                                MessageBox.Show(mensaje, "¡Escuela Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                try
+                                {
+                                    string mensaje = wsPHP.eliminarEscuela(es.es_id_escuela);
+                                    MessageBox.Show(mensaje, "¡Escuela Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cargarDatosTabla();
+                                inicializacionCampos();
                             }
-                            catch
-                            {
-                                MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar esta escuela", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar esta escuela", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
+                            
                     }
-                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                    {
-                        try
-                        {
-                            DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosEscuela(), typeof(DataTable));
-                            dgvEscuela.DataSource = dt;
-
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-                    txtIdEscuela.Enabled = false; txtIdEscuela.Text = "";
-                    txtNombreEscuela.Enabled = false; txtNombreEscuela.Text = "";
-                    txtDireccionEscuela.Enabled = false; txtDireccionEscuela.Text = "";
-                    txtTel1Escuela.Enabled = false; txtTel1Escuela.Text = "";
-                    txtTel2Escuela.Enabled = false; txtTel2Escuela.Text = "";
-                    txtTel3Escuela.Enabled = false; txtTel3Escuela.Text = "";
-                    txtCorreoEscuela.Enabled = false; txtCorreoEscuela.Text = "";
-                    txtContactoEscuela.Enabled = false; txtContactoEscuela.Text = "";
-                    txtResponsablePagoEscuela.Enabled = false; txtResponsablePagoEscuela.Text = "";
-
-                    btnAceptar.Enabled = false;
-
-                }
 
             }
             else
@@ -425,6 +413,38 @@ namespace sistema_maestros1
             txtCorreoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[6].Value.ToString());
             txtContactoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[7].Value.ToString());
             txtResponsablePagoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[8].Value.ToString());
+        }
+
+        public void inicializacionCampos()
+        {
+            txtIdEscuela.Enabled = false; txtIdEscuela.Text = "";
+            txtNombreEscuela.Enabled = false; txtNombreEscuela.Text = "";
+            txtDireccionEscuela.Enabled = false; txtDireccionEscuela.Text = "";
+            txtTel1Escuela.Enabled = false; txtTel1Escuela.Text = "";
+            txtTel2Escuela.Enabled = false; txtTel2Escuela.Text = "";
+            txtTel3Escuela.Enabled = false; txtTel3Escuela.Text = "";
+            txtCorreoEscuela.Enabled = false; txtCorreoEscuela.Text = "";
+            txtContactoEscuela.Enabled = false; txtContactoEscuela.Text = "";
+            txtResponsablePagoEscuela.Enabled = false; txtResponsablePagoEscuela.Text = "";
+
+            btnAceptar.Enabled = false;
+        }
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosEscuela(), typeof(DataTable));
+                    dgvEscuela.DataSource = dt;
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void txtBuscadorEscuela_TextChanged(object sender, EventArgs e)

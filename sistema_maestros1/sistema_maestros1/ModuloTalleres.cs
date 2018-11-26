@@ -195,8 +195,11 @@ namespace sistema_maestros1
             txtNombreTaller.Enabled = true; txtNombreTaller.Text = "";
             txtDescripcionTaller.Enabled = true; txtDescripcionTaller.Text = "";
             txtCostoTaller.Enabled = true; txtCostoTaller.Text = "";
+
             dtFechaIniTaller.Enabled = true; dtFechaIniTaller.Text = "";
             dtFechaFinTaller.Enabled = true; dtFechaFinTaller.Text = "";
+            dtFechaFinTaller.Value = dtFechaIniTaller.Value.AddDays(1);
+
             cbNivelTaller.Enabled = true; cbNivelTaller.Text = "Seleccionar Nivel Educativo";
             cbGradoTaller.Enabled = true; cbGradoTaller.Text = "Seleccionar Grado";
             
@@ -342,8 +345,9 @@ namespace sistema_maestros1
         
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-                            string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller);
+                            string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);
                             MessageBox.Show(mensaje, "¡Taller Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                           
         
                         }
                     }
@@ -457,6 +461,7 @@ namespace sistema_maestros1
             //txtProfeTaller.AutoCompleteSource = AutoCompleteSource.CustomSource;
             //AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
 
+            dtFechaFinTaller.Value = dtFechaIniTaller.Value.AddDays(1);
 
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
@@ -680,5 +685,16 @@ namespace sistema_maestros1
             }
         }
 
+        private void dtFechaFinTaller_ValueChanged(object sender, EventArgs e)
+        {
+            if (((dtFechaFinTaller.Value.Month == dtFechaIniTaller.Value.Month) && (dtFechaFinTaller.Value.Day >= dtFechaIniTaller.Value.Day)))
+            {
+
+            } else if((dtFechaFinTaller.Value.Year < dtFechaIniTaller.Value.Year) || (dtFechaFinTaller.Value.Month < dtFechaIniTaller.Value.Month) || ((dtFechaFinTaller.Value.Month == dtFechaIniTaller.Value.Month) && (dtFechaFinTaller.Value.Day < dtFechaIniTaller.Value.Day)))
+            {
+                MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino menor a la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtFechaFinTaller.Value = dtFechaIniTaller.Value.AddDays(1);
+            }
+        }
     }
 }
