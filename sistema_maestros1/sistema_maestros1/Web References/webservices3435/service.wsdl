@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:https://webservicechatbot.s3435.com/service.php" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:https://webservicechatbot.s3435.com/service.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:https://webservicechatbot.s3435.com/service.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="contrasena" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosProfesorRequest" />
+  <wsdl:message name="cargarDatosProfesorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarDatosProfesorRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarDatosProfesorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregardatosprofesorRequest">
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="apellidopat" type="xsd:string" />
+    <wsdl:part name="apellidomat" type="xsd:string" />
+    <wsdl:part name="contrasena" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregardatosprofesorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificardatosprofesorRequest">
+    <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="apellidopat" type="xsd:string" />
+    <wsdl:part name="apellidomat" type="xsd:string" />
+    <wsdl:part name="contrasena" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificardatosprofesorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminardatosprofesorRequest">
+    <wsdl:part name="id" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminardatosprofesorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarNombreProfesorRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarNombreProfesorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosEscuelaRequest" />
+  <wsdl:message name="cargarDatosEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarEscuelaRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarEscuelaRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="nombre_esc" type="xsd:string" />
+    <wsdl:part name="direccion_esc" type="xsd:string" />
+    <wsdl:part name="tel1_Esc" type="xsd:string" />
+    <wsdl:part name="tel2_esc" type="xsd:string" />
+    <wsdl:part name="tel3_esc" type="xsd:string" />
+    <wsdl:part name="correo_esc" type="xsd:string" />
+    <wsdl:part name="contacto_esc" type="xsd:string" />
+    <wsdl:part name="responsable_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarEscuelaRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="nombre_esc" type="xsd:string" />
+    <wsdl:part name="direccion_esc" type="xsd:string" />
+    <wsdl:part name="tel1_Esc" type="xsd:string" />
+    <wsdl:part name="tel2_esc" type="xsd:string" />
+    <wsdl:part name="tel3_esc" type="xsd:string" />
+    <wsdl:part name="correo_esc" type="xsd:string" />
+    <wsdl:part name="contacto_esc" type="xsd:string" />
+    <wsdl:part name="responsable_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarEscuelaRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarNombresEscuelaRequest">
+    <wsdl:part name="nombre_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarNombresEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosTutorRequest" />
+  <wsdl:message name="cargarDatosTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarTutorRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarTutorRequest">
+    <wsdl:part name="id_tut" type="xsd:string" />
+    <wsdl:part name="nombre_tut" type="xsd:string" />
+    <wsdl:part name="apellidoPat_tut" type="xsd:string" />
+    <wsdl:part name="apellidoMat_tut" type="xsd:string" />
+    <wsdl:part name="telefono_tut" type="xsd:string" />
+    <wsdl:part name="parentesco_tut" type="xsd:string" />
+    <wsdl:part name="correo_tut" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarTutorRequest">
+    <wsdl:part name="id_tut" type="xsd:string" />
+    <wsdl:part name="nombre_tut" type="xsd:string" />
+    <wsdl:part name="apellidoPat_tut" type="xsd:string" />
+    <wsdl:part name="apellidoMat_tut" type="xsd:string" />
+    <wsdl:part name="telefono_tut" type="xsd:string" />
+    <wsdl:part name="parentesco_tut" type="xsd:string" />
+    <wsdl:part name="correo_tut" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarTutorRequest">
+    <wsdl:part name="id_tut" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosAlumnoRequest" />
+  <wsdl:message name="cargarDatosAlumnoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarAlumnoRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarAlumnoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarAlumnoRequest">
+    <wsdl:part name="id_escuela" type="xsd:string" />
+    <wsdl:part name="id_alm" type="xsd:string" />
+    <wsdl:part name="nombre_alm" type="xsd:string" />
+    <wsdl:part name="apellidoPat_alm" type="xsd:string" />
+    <wsdl:part name="apellidoMat_alm" type="xsd:string" />
+    <wsdl:part name="grado_alm" type="xsd:string" />
+    <wsdl:part name="nivel_alm" type="xsd:string" />
+    <wsdl:part name="status_alm" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarAlumnoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarAlumnoRequest">
+    <wsdl:part name="id_escuela" type="xsd:string" />
+    <wsdl:part name="id_alm" type="xsd:string" />
+    <wsdl:part name="nombre_alm" type="xsd:string" />
+    <wsdl:part name="apellidoPat_alm" type="xsd:string" />
+    <wsdl:part name="apellidoMat_alm" type="xsd:string" />
+    <wsdl:part name="grado_alm" type="xsd:string" />
+    <wsdl:part name="nivel_alm" type="xsd:string" />
+    <wsdl:part name="status_alm" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarAlumnoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarAlumnoRequest">
+    <wsdl:part name="id_alm" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarAlumnoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosDeTallerRequest" />
+  <wsdl:message name="cargarDatosDeTallerResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarTallerRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarTallerResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarTallerRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_taller" type="xsd:string" />
+    <wsdl:part name="nombre_ta" type="xsd:string" />
+    <wsdl:part name="costo_ta" type="xsd:double" />
+    <wsdl:part name="desc_ta" type="xsd:string" />
+    <wsdl:part name="fechaIni_ta" type="xsd:string" />
+    <wsdl:part name="fechaFin_ta" type="xsd:string" />
+    <wsdl:part name="nivelEdu_ta" type="xsd:string" />
+    <wsdl:part name="grados_ta" type="xsd:string" />
+    <wsdl:part name="id_profesor" type="xsd:string" />
+    <wsdl:part name="habilidades_ta" type="xsd:string" />
+    <wsdl:part name="justcosto_ta" type="xsd:string" />
+    <wsdl:part name="herramientas_ta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarTallerResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarTallerRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_taller" type="xsd:string" />
+    <wsdl:part name="nombre_ta" type="xsd:string" />
+    <wsdl:part name="costo_ta" type="xsd:double" />
+    <wsdl:part name="desc_ta" type="xsd:string" />
+    <wsdl:part name="fechaIni_ta" type="xsd:string" />
+    <wsdl:part name="fechaFin_ta" type="xsd:string" />
+    <wsdl:part name="nivelEdu_ta" type="xsd:string" />
+    <wsdl:part name="grados_ta" type="xsd:string" />
+    <wsdl:part name="id_profesor" type="xsd:string" />
+    <wsdl:part name="habilidades_ta" type="xsd:string" />
+    <wsdl:part name="justcosto_ta" type="xsd:string" />
+    <wsdl:part name="herramientas_ta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarTallerResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarTallerRequest">
+    <wsdl:part name="id_taller" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarTallerResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarNombreTallerRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarNombreTallerResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosAhasTRequest" />
+  <wsdl:message name="cargarDatosAhasTResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarAlumnoTutorRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarAlumnoTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarAlumnoTutorRequest">
+    <wsdl:part name="id_alm" type="xsd:string" />
+    <wsdl:part name="id_escuela" type="xsd:string" />
+    <wsdl:part name="id_tutor" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarAlumnoTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarAlumnoTutorRequest">
+    <wsdl:part name="id_alm" type="xsd:string" />
+    <wsdl:part name="id_tutor" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarAlumnoTutorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosDinamicaRequest" />
+  <wsdl:message name="cargarDatosDinamicaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarDinamicaRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarDinamicaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarDinamicaRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="nombre_din" type="xsd:string" />
+    <wsdl:part name="desc_din" type="xsd:string" />
+    <wsdl:part name="fechaIni_din" type="xsd:string" />
+    <wsdl:part name="fechaFIn_din" type="xsd:string" />
+    <wsdl:part name="habilidades_din" type="xsd:string" />
+    <wsdl:part name="justif_din" type="xsd:string" />
+    <wsdl:part name="herr_din" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarDinamicaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarDinamicaRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="nombre_din" type="xsd:string" />
+    <wsdl:part name="desc_din" type="xsd:string" />
+    <wsdl:part name="fechaIni_din" type="xsd:string" />
+    <wsdl:part name="fechaFIn_din" type="xsd:string" />
+    <wsdl:part name="habilidades_din" type="xsd:string" />
+    <wsdl:part name="justif_din" type="xsd:string" />
+    <wsdl:part name="herr_din" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarDinamicaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarDinamicaRequest">
+    <wsdl:part name="id_din" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarDinamicaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarDinamicaXTallerYEscuelaRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarDinamicaXTallerYEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarDatosMaterialRequest" />
+  <wsdl:message name="cargarDatosMaterialResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMaterialRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMaterialResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarMaterialRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="id_mat" type="xsd:string" />
+    <wsdl:part name="nombre_mat" type="xsd:string" />
+    <wsdl:part name="costo_mat" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="agregarMaterialResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarMaterialRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="id_mat" type="xsd:string" />
+    <wsdl:part name="nombre_mat" type="xsd:string" />
+    <wsdl:part name="costo_mat" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="modificarMaterialResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarMaterialRequest">
+    <wsdl:part name="id_mat" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarMaterialResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="WSPHPPortType">
+    <wsdl:operation name="login">
+      <documentation>login </documentation>
+      <wsdl:input message="tns:loginRequest" />
+      <wsdl:output message="tns:loginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosProfesor">
+      <documentation>cargar datos profesor</documentation>
+      <wsdl:input message="tns:cargarDatosProfesorRequest" />
+      <wsdl:output message="tns:cargarDatosProfesorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarDatosProfesor">
+      <documentation>buscar datos de profesor</documentation>
+      <wsdl:input message="tns:buscarDatosProfesorRequest" />
+      <wsdl:output message="tns:buscarDatosProfesorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregardatosprofesor">
+      <documentation>agregar datos de profesor</documentation>
+      <wsdl:input message="tns:agregardatosprofesorRequest" />
+      <wsdl:output message="tns:agregardatosprofesorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificardatosprofesor">
+      <documentation>modificar datos de profesor</documentation>
+      <wsdl:input message="tns:modificardatosprofesorRequest" />
+      <wsdl:output message="tns:modificardatosprofesorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminardatosprofesor">
+      <documentation>Cargar datos de profesor</documentation>
+      <wsdl:input message="tns:eliminardatosprofesorRequest" />
+      <wsdl:output message="tns:eliminardatosprofesorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarNombreProfesor">
+      <documentation>Cargar Nombres Profesor</documentation>
+      <wsdl:input message="tns:cargarNombreProfesorRequest" />
+      <wsdl:output message="tns:cargarNombreProfesorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosEscuela">
+      <documentation>cargar datos escuela</documentation>
+      <wsdl:input message="tns:cargarDatosEscuelaRequest" />
+      <wsdl:output message="tns:cargarDatosEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarEscuela">
+      <documentation>buscar datos de escuela</documentation>
+      <wsdl:input message="tns:buscarEscuelaRequest" />
+      <wsdl:output message="tns:buscarEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarEscuela">
+      <documentation>Agregar datos de escuela</documentation>
+      <wsdl:input message="tns:agregarEscuelaRequest" />
+      <wsdl:output message="tns:agregarEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarEscuela">
+      <documentation>modificar datos escuela</documentation>
+      <wsdl:input message="tns:modificarEscuelaRequest" />
+      <wsdl:output message="tns:modificarEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarEscuela">
+      <documentation>eliminar datos de escuela</documentation>
+      <wsdl:input message="tns:eliminarEscuelaRequest" />
+      <wsdl:output message="tns:eliminarEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarNombresEscuela">
+      <documentation>Cargar Nombres Escuela</documentation>
+      <wsdl:input message="tns:cargarNombresEscuelaRequest" />
+      <wsdl:output message="tns:cargarNombresEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosTutor">
+      <documentation> Cargar datos tutor</documentation>
+      <wsdl:input message="tns:cargarDatosTutorRequest" />
+      <wsdl:output message="tns:cargarDatosTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarTutor">
+      <documentation> buscardatos tutor</documentation>
+      <wsdl:input message="tns:buscarTutorRequest" />
+      <wsdl:output message="tns:buscarTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarTutor">
+      <documentation> Agregar datos tutor</documentation>
+      <wsdl:input message="tns:agregarTutorRequest" />
+      <wsdl:output message="tns:agregarTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarTutor">
+      <documentation>Modificar datos tutor</documentation>
+      <wsdl:input message="tns:modificarTutorRequest" />
+      <wsdl:output message="tns:modificarTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarTutor">
+      <documentation>Eliminar datos tutor</documentation>
+      <wsdl:input message="tns:eliminarTutorRequest" />
+      <wsdl:output message="tns:eliminarTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosAlumno">
+      <documentation> Cargar datos alumno</documentation>
+      <wsdl:input message="tns:cargarDatosAlumnoRequest" />
+      <wsdl:output message="tns:cargarDatosAlumnoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarAlumno">
+      <documentation>buscar datos alumno</documentation>
+      <wsdl:input message="tns:buscarAlumnoRequest" />
+      <wsdl:output message="tns:buscarAlumnoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarAlumno">
+      <documentation>Agregar datos alumno</documentation>
+      <wsdl:input message="tns:agregarAlumnoRequest" />
+      <wsdl:output message="tns:agregarAlumnoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarAlumno">
+      <documentation>Agregar datos alumno</documentation>
+      <wsdl:input message="tns:modificarAlumnoRequest" />
+      <wsdl:output message="tns:modificarAlumnoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarAlumno">
+      <documentation>Eliminar datos alumno</documentation>
+      <wsdl:input message="tns:eliminarAlumnoRequest" />
+      <wsdl:output message="tns:eliminarAlumnoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosDeTaller">
+      <documentation>Cargar datos taller</documentation>
+      <wsdl:input message="tns:cargarDatosDeTallerRequest" />
+      <wsdl:output message="tns:cargarDatosDeTallerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarTaller">
+      <documentation>buscar datos taller</documentation>
+      <wsdl:input message="tns:buscarTallerRequest" />
+      <wsdl:output message="tns:buscarTallerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarTaller">
+      <documentation>agregar datos taller</documentation>
+      <wsdl:input message="tns:agregarTallerRequest" />
+      <wsdl:output message="tns:agregarTallerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarTaller">
+      <documentation>buscar datos taller</documentation>
+      <wsdl:input message="tns:modificarTallerRequest" />
+      <wsdl:output message="tns:modificarTallerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarTaller">
+      <documentation>buscar datos taller</documentation>
+      <wsdl:input message="tns:eliminarTallerRequest" />
+      <wsdl:output message="tns:eliminarTallerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarNombreTaller">
+      <documentation>cargar nombres taller</documentation>
+      <wsdl:input message="tns:cargarNombreTallerRequest" />
+      <wsdl:output message="tns:cargarNombreTallerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosAhasT">
+      <documentation>Cargar datos AT</documentation>
+      <wsdl:input message="tns:cargarDatosAhasTRequest" />
+      <wsdl:output message="tns:cargarDatosAhasTResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarAlumnoTutor">
+      <documentation>buscar datos alumno Tutor</documentation>
+      <wsdl:input message="tns:buscarAlumnoTutorRequest" />
+      <wsdl:output message="tns:buscarAlumnoTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarAlumnoTutor">
+      <documentation>Agregar datos alumno tutor</documentation>
+      <wsdl:input message="tns:agregarAlumnoTutorRequest" />
+      <wsdl:output message="tns:agregarAlumnoTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarAlumnoTutor">
+      <documentation>eliminar datos alumno tutor</documentation>
+      <wsdl:input message="tns:eliminarAlumnoTutorRequest" />
+      <wsdl:output message="tns:eliminarAlumnoTutorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosDinamica">
+      <documentation>Cargar datos dinamica</documentation>
+      <wsdl:input message="tns:cargarDatosDinamicaRequest" />
+      <wsdl:output message="tns:cargarDatosDinamicaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarDinamica">
+      <documentation>buscar datos dinamica</documentation>
+      <wsdl:input message="tns:buscarDinamicaRequest" />
+      <wsdl:output message="tns:buscarDinamicaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarDinamica">
+      <documentation>Agregar datos dinamica</documentation>
+      <wsdl:input message="tns:agregarDinamicaRequest" />
+      <wsdl:output message="tns:agregarDinamicaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarDinamica">
+      <documentation>Modificar datos dinamica</documentation>
+      <wsdl:input message="tns:modificarDinamicaRequest" />
+      <wsdl:output message="tns:modificarDinamicaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarDinamica">
+      <documentation>eliminar datos dinamica</documentation>
+      <wsdl:input message="tns:eliminarDinamicaRequest" />
+      <wsdl:output message="tns:eliminarDinamicaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarDinamicaXTallerYEscuela">
+      <documentation>buscar datos dinamica</documentation>
+      <wsdl:input message="tns:buscarDinamicaXTallerYEscuelaRequest" />
+      <wsdl:output message="tns:buscarDinamicaXTallerYEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosMaterial">
+      <documentation>Cargar datos material</documentation>
+      <wsdl:input message="tns:cargarDatosMaterialRequest" />
+      <wsdl:output message="tns:cargarDatosMaterialResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarMaterial">
+      <documentation>buscar datos material</documentation>
+      <wsdl:input message="tns:buscarMaterialRequest" />
+      <wsdl:output message="tns:buscarMaterialResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarMaterial">
+      <documentation>Agregar datos material</documentation>
+      <wsdl:input message="tns:agregarMaterialRequest" />
+      <wsdl:output message="tns:agregarMaterialResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarMaterial">
+      <documentation>Modificar datos material</documentation>
+      <wsdl:input message="tns:modificarMaterialRequest" />
+      <wsdl:output message="tns:modificarMaterialResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarMaterial">
+      <documentation>eliminar datos material</documentation>
+      <wsdl:input message="tns:eliminarMaterialRequest" />
+      <wsdl:output message="tns:eliminarMaterialResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSPHPBinding" type="tns:WSPHPPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="login">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/login" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosProfesor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosProfesor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDatosProfesor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarDatosProfesor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregardatosprofesor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregardatosprofesor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificardatosprofesor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificardatosprofesor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/servie.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/servie.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminardatosprofesor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminardatosprofesor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarNombreProfesor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarNombreProfesor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarNombresEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarNombresEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosAlumno">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosAlumno" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarAlumno">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarAlumno" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarAlumno">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarAlumno" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarAlumno">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarAlumno" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarAlumno">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarAlumno" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosDeTaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosDeTaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarTaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarTaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarTaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarTaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarTaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarTaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarTaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarTaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarNombreTaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarNombreTaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosAhasT">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosAhasT" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarAlumnoTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarAlumnoTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarAlumnoTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarAlumnoTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarAlumnoTutor">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarAlumnoTutor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosDinamica">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosDinamica" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDinamica">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarDinamica" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarDinamica">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarDinamica" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarDinamica">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarDinamica" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarDinamica">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarDinamica" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDinamicaXTallerYEscuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarDinamicaXTallerYEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarDatosMaterial">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosMaterial" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarMaterial">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMaterial" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarMaterial">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarMaterial" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarMaterial">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarMaterial" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarMaterial">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarMaterial" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSPHP">
+    <wsdl:port name="WSPHPPort" binding="tns:WSPHPBinding">
+      <soap:address location="https://webservicechatbot.s3435.com:443/service.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
