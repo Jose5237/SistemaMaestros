@@ -1,0 +1,3 @@
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Release\sistema_maestros1.exe.config
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Release\Interop.WMPNSSCI.dll
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Release\sistema_maestros1.csproj.ResolveComReference.cache
