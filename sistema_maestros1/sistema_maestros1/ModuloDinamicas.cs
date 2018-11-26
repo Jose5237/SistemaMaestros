@@ -166,7 +166,7 @@ namespace sistema_maestros1
         private void btnAgregarDinamicas_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
-
+            btnAceptar.BackColor = Color.YellowGreen;
             cbEscuelaDinamicas.Enabled = true; cbEscuelaDinamicas.Text = "Seleccionar Escuela";
             txtIdEscuela.Enabled = true; txtIdEscuela.Text = "";
 
@@ -191,7 +191,7 @@ namespace sistema_maestros1
         private void btnModificarDinamicas_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-
+            btnAceptar.BackColor = Color.SkyBlue;
             //cbEscuelaDinamicas.Enabled = true;
             //txtIdEscuela.Enabled = true;
 
@@ -199,7 +199,8 @@ namespace sistema_maestros1
             //txtIdTaller.Enabled = true;
 
             //txtIdDinamicas.Enabled = true; 
-            //txtNombreDinamicas.Enabled = true; 
+            //txtNombreDinamicas.Enabled = true;
+            txtNombreDinamicas.Enabled = true; 
             txtDescripcionDinamicas.Enabled = true; 
             dtFechaIniDinamicas.Enabled = true;
             dtFechaFinDinamicas.Enabled = true;
@@ -215,7 +216,7 @@ namespace sistema_maestros1
         private void btnEliminarDinamicas_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-
+            btnAceptar.BackColor = Color.IndianRed;
             cbEscuelaDinamicas.Enabled = false;
             txtIdEscuela.Enabled = false;
 

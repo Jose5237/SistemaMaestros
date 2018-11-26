@@ -183,7 +183,7 @@ namespace sistema_maestros1
         private void btnAgregarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
-
+            btnAceptar.BackColor = Color.YellowGreen;
             cbEscuelaMaterial.Enabled = true; cbEscuelaMaterial.Text = "Seleccionar Escuela";
             txtIdEscuela.Text = "";
 
@@ -204,6 +204,7 @@ namespace sistema_maestros1
         private void btnModificarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
+            btnAceptar.BackColor = Color.SkyBlue;
             cbEscuelaMaterial.Enabled = true;
             cbTallerMaterial.Enabled = true; 
             cbDinamicaMaterial.Enabled = true; 
@@ -219,8 +220,8 @@ namespace sistema_maestros1
         private void btnEliminarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-
-            opcionBotones = 1;
+            btnAceptar.BackColor = Color.IndianRed;
+            //opcionBotones = 1;
             cbEscuelaMaterial.Enabled = false;
             cbTallerMaterial.Enabled = false;
             cbDinamicaMaterial.Enabled = false;
@@ -260,6 +261,9 @@ namespace sistema_maestros1
                     }
                     else if (opcionBotones == 1)
                     {
+                        cbEscuelaMaterial.Enabled = false;
+                        cbTallerMaterial.Enabled = false;
+                        cbDinamicaMaterial.Enabled = false; 
                         ClassMaterial ma = new ClassMaterial();
                         ma.ma_id_escuela = txtIdEscuela.Text;
                         ma.ma_id_taller = txtIdTaller.Text;

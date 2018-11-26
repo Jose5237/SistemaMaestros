@@ -118,6 +118,7 @@
             this.txtLogin_Password.Tag = "Contraseña";
             this.txtLogin_Password.Text = "Contraseña";
             this.txtLogin_Password.Enter += new System.EventHandler(this.txtLogin_Password_Enter);
+            this.txtLogin_Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLogin_Password_KeyDown);
             this.txtLogin_Password.Leave += new System.EventHandler(this.txtLogin_Password_Leave);
             // 
             // pictureBox1
@@ -138,7 +139,7 @@
             this.btnLogin_Acceder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin_Acceder.FlatAppearance.BorderSize = 0;
             this.btnLogin_Acceder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin_Acceder.Font = new System.Drawing.Font("ABeeZee", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin_Acceder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin_Acceder.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnLogin_Acceder.Location = new System.Drawing.Point(356, 240);
             this.btnLogin_Acceder.Name = "btnLogin_Acceder";
@@ -167,12 +168,12 @@
             this.exit.BackColor = System.Drawing.Color.Transparent;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exit.Location = new System.Drawing.Point(716, -3);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(33, 40);
+            this.exit.Size = new System.Drawing.Size(36, 39);
             this.exit.TabIndex = 7;
             this.exit.Text = "x";
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -183,12 +184,12 @@
             this.esconder_pantalla.BackColor = System.Drawing.Color.Transparent;
             this.esconder_pantalla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.esconder_pantalla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.esconder_pantalla.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esconder_pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.esconder_pantalla.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.esconder_pantalla.Location = new System.Drawing.Point(681, -8);
             this.esconder_pantalla.Margin = new System.Windows.Forms.Padding(0);
             this.esconder_pantalla.Name = "esconder_pantalla";
-            this.esconder_pantalla.Size = new System.Drawing.Size(33, 40);
+            this.esconder_pantalla.Size = new System.Drawing.Size(37, 39);
             this.esconder_pantalla.TabIndex = 1;
             this.esconder_pantalla.Text = "_";
             this.esconder_pantalla.Click += new System.EventHandler(this.esconder_pantalla_Click);

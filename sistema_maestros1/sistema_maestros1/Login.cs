@@ -61,8 +61,8 @@ namespace sistema_maestros1
                     }
                     else
                     {
-                        MessageBox.Show("Este usuario no se encuentra registrado", "¡Usuario inexistente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        MessageBox.Show("Usuario o contraseña incorrectos, Vuelva a introducir sus datos", "¡Datos incorrectos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtLogin_Password.Text = "";
                     }
                 }
             }
@@ -125,6 +125,14 @@ namespace sistema_maestros1
             else
             {
                 txtLogin_Password.PasswordChar = Convert.ToChar("•");
+            }
+        }
+
+        private void txtLogin_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Acceder_Click(sender, e);
             }
         }
     }

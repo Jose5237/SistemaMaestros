@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloDinamicas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtFechaFinDinamicas = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dtFechaIniDinamicas = new System.Windows.Forms.DateTimePicker();
@@ -276,12 +276,12 @@
             this.esconder_pantalla.BackColor = System.Drawing.Color.Transparent;
             this.esconder_pantalla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.esconder_pantalla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.esconder_pantalla.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esconder_pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.esconder_pantalla.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.esconder_pantalla.Location = new System.Drawing.Point(1077, -7);
             this.esconder_pantalla.Margin = new System.Windows.Forms.Padding(0);
             this.esconder_pantalla.Name = "esconder_pantalla";
-            this.esconder_pantalla.Size = new System.Drawing.Size(33, 40);
+            this.esconder_pantalla.Size = new System.Drawing.Size(37, 39);
             this.esconder_pantalla.TabIndex = 82;
             this.esconder_pantalla.Text = "_";
             this.esconder_pantalla.Click += new System.EventHandler(this.esconder_pantalla_Click);
@@ -292,12 +292,12 @@
             this.exit.BackColor = System.Drawing.Color.Transparent;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exit.Location = new System.Drawing.Point(1114, -2);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(33, 40);
+            this.exit.Size = new System.Drawing.Size(36, 39);
             this.exit.TabIndex = 81;
             this.exit.Text = "x";
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -591,23 +591,23 @@
             this.dgvDinamica.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDinamica.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDinamica.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.NavajoWhite;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDinamica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDinamica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDinamica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDinamica.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDinamica.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDinamica.EnableHeadersVisualStyles = false;
             this.dgvDinamica.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvDinamica.Location = new System.Drawing.Point(423, 105);
@@ -615,15 +615,16 @@
             this.dgvDinamica.Name = "dgvDinamica";
             this.dgvDinamica.ReadOnly = true;
             this.dgvDinamica.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvDinamica.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvDinamica.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDinamica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDinamica.Size = new System.Drawing.Size(690, 513);
+            this.dgvDinamica.Size = new System.Drawing.Size(704, 513);
             this.dgvDinamica.TabIndex = 138;
             this.dgvDinamica.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDinamica_CellContentClick);
             // 
             // txtFechaInicio
             // 
+            this.txtFechaInicio.Enabled = false;
             this.txtFechaInicio.Location = new System.Drawing.Point(257, 367);
             this.txtFechaInicio.Name = "txtFechaInicio";
             this.txtFechaInicio.Size = new System.Drawing.Size(100, 20);
@@ -632,6 +633,7 @@
             // 
             // txtFechaFin
             // 
+            this.txtFechaFin.Enabled = false;
             this.txtFechaFin.Location = new System.Drawing.Point(270, 413);
             this.txtFechaFin.Name = "txtFechaFin";
             this.txtFechaFin.Size = new System.Drawing.Size(100, 20);
@@ -640,6 +642,7 @@
             // 
             // txtIdEscuela
             // 
+            this.txtIdEscuela.Enabled = false;
             this.txtIdEscuela.Location = new System.Drawing.Point(216, 97);
             this.txtIdEscuela.Name = "txtIdEscuela";
             this.txtIdEscuela.Size = new System.Drawing.Size(100, 20);
@@ -647,6 +650,7 @@
             // 
             // txtIdTaller
             // 
+            this.txtIdTaller.Enabled = false;
             this.txtIdTaller.Location = new System.Drawing.Point(204, 145);
             this.txtIdTaller.Name = "txtIdTaller";
             this.txtIdTaller.Size = new System.Drawing.Size(100, 20);

@@ -215,6 +215,7 @@ namespace sistema_maestros1
             //BOTON AGREGAR ALUMNO
             private void btnAgregarAlumno_Click(object sender, EventArgs e)
             {
+                btnAceptar.BackColor = Color.YellowGreen;
                 opcionBotones = 0;
         
                 cbEscuelaAlumno.Enabled = true; cbEscuelaAlumno.Text = "Seleccionar Escuela";
@@ -237,7 +238,8 @@ namespace sistema_maestros1
             //BOTON MODIFICAR ALUMNO
             private void btnModificarAlumno_Click(object sender, EventArgs e)
             {
-                opcionBotones = 1;
+            btnAceptar.BackColor = Color.SkyBlue;
+            opcionBotones = 1;
         
                 //cbEscuelaAlumno.Enabled = true;
                 //txtIdEscuelaAlumno.Enabled = true;
@@ -259,8 +261,8 @@ namespace sistema_maestros1
         //BOTON ELIMINAR ALUMNO
         private void btnEliminarAlumno_Click(object sender, EventArgs e)
             {
+                btnAceptar.BackColor = Color.IndianRed;
                 opcionBotones = 2;
-        
                 cbEscuelaAlumno.Enabled = false;
                 txtIdEscuelaAlumno.Enabled = false;
                 txtIdAlumno.Enabled = false;
@@ -327,9 +329,10 @@ namespace sistema_maestros1
                                 {
                                     string mensaje = wsPHP.agregarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
                                     MessageBox.Show(mensaje, "¡Alumno Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                this.WindowState = FormWindowState.Minimized;
                                 tutor_has_alumno tha = new tutor_has_alumno();
                                 tha.Show();
+                                tha.WindowState = FormWindowState.Normal;
         
                                 }
                                 catch
@@ -426,6 +429,7 @@ namespace sistema_maestros1
                 {
                     MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
                 }
+            btnAceptar.BackColor = Color.Silver;
             }
         
             public void cargarDatosTabla()

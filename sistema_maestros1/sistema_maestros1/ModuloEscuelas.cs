@@ -206,6 +206,7 @@ namespace sistema_maestros1
         //BOTON AGREGAR ESCUELA
         private void btnAgregarEscuela_Click(object sender, EventArgs e)
         {
+            btnAceptar.BackColor = Color.YellowGreen;
             opcionBotones = 0;
 
             txtIdEscuela.Enabled = true; txtIdEscuela.Text = "";
@@ -225,7 +226,7 @@ namespace sistema_maestros1
         private void btnModificarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-
+            btnAceptar.BackColor = Color.SkyBlue;
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = true;
             txtDireccionEscuela.Enabled = true; 
@@ -235,7 +236,6 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = true;
             txtContactoEscuela.Enabled = true;
             txtResponsablePagoEscuela.Enabled = true;
-
             btnAceptar.Enabled = true;
         }
 
@@ -243,7 +243,7 @@ namespace sistema_maestros1
         private void btnEliminarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-
+            btnAceptar.BackColor = Color.IndianRed;
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = false;
             txtDireccionEscuela.Enabled = false;
@@ -311,12 +311,11 @@ namespace sistema_maestros1
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
+
                             try
                             {
                                 string mensaje = wsPHP.modificarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela ,es.es_responsable_pago_escuela);
                                 MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                             }
                             catch
                             {
@@ -380,6 +379,7 @@ namespace sistema_maestros1
             {
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
             }
+            btnAceptar.BackColor = Color.Silver;
         }
 
         private void ModuloEscuelas_Load(object sender, EventArgs e)
@@ -458,6 +458,7 @@ namespace sistema_maestros1
 
                 }
             }
+
         }
     }
 }

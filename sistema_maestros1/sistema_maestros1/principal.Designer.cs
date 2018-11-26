@@ -331,12 +331,12 @@
             this.esconder_pantalla.BackColor = System.Drawing.Color.Transparent;
             this.esconder_pantalla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.esconder_pantalla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.esconder_pantalla.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esconder_pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.esconder_pantalla.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.esconder_pantalla.Location = new System.Drawing.Point(1031, -6);
             this.esconder_pantalla.Margin = new System.Windows.Forms.Padding(0);
             this.esconder_pantalla.Name = "esconder_pantalla";
-            this.esconder_pantalla.Size = new System.Drawing.Size(33, 40);
+            this.esconder_pantalla.Size = new System.Drawing.Size(37, 39);
             this.esconder_pantalla.TabIndex = 20;
             this.esconder_pantalla.Text = "_";
             this.esconder_pantalla.Click += new System.EventHandler(this.esconder_pantalla_Click);
@@ -347,12 +347,12 @@
             this.exit.BackColor = System.Drawing.Color.Transparent;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exit.Location = new System.Drawing.Point(1066, -1);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(33, 40);
+            this.exit.Size = new System.Drawing.Size(36, 39);
             this.exit.TabIndex = 19;
             this.exit.Text = "x";
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -399,6 +399,7 @@
             // 
             // btnPagos1
             // 
+            this.btnPagos1.Enabled = false;
             this.btnPagos1.Image = ((System.Drawing.Image)(resources.GetObject("btnPagos1.Image")));
             this.btnPagos1.Location = new System.Drawing.Point(20, 351);
             this.btnPagos1.Name = "btnPagos1";
@@ -426,6 +427,7 @@
             // 
             // btnIncidencias1
             // 
+            this.btnIncidencias1.Enabled = false;
             this.btnIncidencias1.Image = ((System.Drawing.Image)(resources.GetObject("btnIncidencias1.Image")));
             this.btnIncidencias1.Location = new System.Drawing.Point(254, 351);
             this.btnIncidencias1.Name = "btnIncidencias1";
@@ -456,6 +458,7 @@
             // 
             // btnRecomendaciones1
             // 
+            this.btnRecomendaciones1.Enabled = false;
             this.btnRecomendaciones1.Image = ((System.Drawing.Image)(resources.GetObject("btnRecomendaciones1.Image")));
             this.btnRecomendaciones1.Location = new System.Drawing.Point(729, 186);
             this.btnRecomendaciones1.Name = "btnRecomendaciones1";

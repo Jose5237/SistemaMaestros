@@ -189,7 +189,7 @@ namespace sistema_maestros1
         private void btnAgregarTaller_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
-
+            btnAceptar.BackColor = Color.YellowGreen;
             cbEscuelaTaller.Enabled = true; cbEscuelaTaller.Text = "Seleccionar Escuela";
             txtIdTaller.Enabled = true; txtIdTaller.Text = "";
             txtNombreTaller.Enabled = true; txtNombreTaller.Text = "";
@@ -215,7 +215,7 @@ namespace sistema_maestros1
         private void btnModificarTaller_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-
+            btnAceptar.BackColor = Color.SkyBlue;
             cbEscuelaTaller.Enabled = true; 
             txtIdTaller.Enabled = true; 
             txtNombreTaller.Enabled = true; 
@@ -237,7 +237,7 @@ namespace sistema_maestros1
         private void btnEliminarTaller_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-
+            btnAceptar.BackColor = Color.IndianRed;
             cbEscuelaTaller.Enabled = false;
             txtIdTaller.Enabled = false;
             txtNombreTaller.Enabled = false;
@@ -389,6 +389,7 @@ namespace sistema_maestros1
             {
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
             }
+            btnAceptar.BackColor = Color.Silver;
         }
 
         private void dgvTaller_CellContentClick(object sender, DataGridViewCellEventArgs e)

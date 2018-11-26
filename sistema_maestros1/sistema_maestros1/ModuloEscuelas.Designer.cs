@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEscuelas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorEscuela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -83,7 +83,7 @@
             this.txtBuscadorEscuela.Multiline = true;
             this.txtBuscadorEscuela.Name = "txtBuscadorEscuela";
             this.txtBuscadorEscuela.Size = new System.Drawing.Size(283, 30);
-            this.txtBuscadorEscuela.TabIndex = 56;
+            this.txtBuscadorEscuela.TabIndex = 11;
             this.txtBuscadorEscuela.TextChanged += new System.EventHandler(this.txtBuscadorEscuela_TextChanged);
             // 
             // label6
@@ -114,7 +114,7 @@
             this.txtCorreoEscuela.Location = new System.Drawing.Point(167, 399);
             this.txtCorreoEscuela.Name = "txtCorreoEscuela";
             this.txtCorreoEscuela.Size = new System.Drawing.Size(211, 20);
-            this.txtCorreoEscuela.TabIndex = 53;
+            this.txtCorreoEscuela.TabIndex = 7;
             // 
             // txtTel3Escuela
             // 
@@ -123,7 +123,7 @@
             this.txtTel3Escuela.MaxLength = 10;
             this.txtTel3Escuela.Name = "txtTel3Escuela";
             this.txtTel3Escuela.Size = new System.Drawing.Size(211, 20);
-            this.txtTel3Escuela.TabIndex = 52;
+            this.txtTel3Escuela.TabIndex = 6;
             this.txtTel3Escuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel3Escuela_KeyPress);
             // 
             // txtTel2Escuela
@@ -133,7 +133,7 @@
             this.txtTel2Escuela.MaxLength = 10;
             this.txtTel2Escuela.Name = "txtTel2Escuela";
             this.txtTel2Escuela.Size = new System.Drawing.Size(211, 20);
-            this.txtTel2Escuela.TabIndex = 51;
+            this.txtTel2Escuela.TabIndex = 5;
             this.txtTel2Escuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel2Escuela_KeyPress);
             // 
             // label9
@@ -179,7 +179,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(167, 553);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
-            this.btnAceptar.TabIndex = 47;
+            this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -191,7 +191,7 @@
             this.txtTel1Escuela.MaxLength = 10;
             this.txtTel1Escuela.Name = "txtTel1Escuela";
             this.txtTel1Escuela.Size = new System.Drawing.Size(211, 20);
-            this.txtTel1Escuela.TabIndex = 46;
+            this.txtTel1Escuela.TabIndex = 4;
             this.txtTel1Escuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel1Escuela_KeyPress);
             // 
             // txtDireccionEscuela
@@ -200,7 +200,7 @@
             this.txtDireccionEscuela.Location = new System.Drawing.Point(167, 214);
             this.txtDireccionEscuela.Name = "txtDireccionEscuela";
             this.txtDireccionEscuela.Size = new System.Drawing.Size(211, 20);
-            this.txtDireccionEscuela.TabIndex = 45;
+            this.txtDireccionEscuela.TabIndex = 3;
             // 
             // txtNombreEscuela
             // 
@@ -208,7 +208,7 @@
             this.txtNombreEscuela.Location = new System.Drawing.Point(167, 167);
             this.txtNombreEscuela.Name = "txtNombreEscuela";
             this.txtNombreEscuela.Size = new System.Drawing.Size(211, 20);
-            this.txtNombreEscuela.TabIndex = 44;
+            this.txtNombreEscuela.TabIndex = 2;
             // 
             // txtIdEscuela
             // 
@@ -216,7 +216,7 @@
             this.txtIdEscuela.Location = new System.Drawing.Point(167, 120);
             this.txtIdEscuela.Name = "txtIdEscuela";
             this.txtIdEscuela.Size = new System.Drawing.Size(211, 20);
-            this.txtIdEscuela.TabIndex = 43;
+            this.txtIdEscuela.TabIndex = 1;
             // 
             // label4
             // 
@@ -318,23 +318,23 @@
             this.dgvEscuela.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvEscuela.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEscuela.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEscuela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEscuela.EnableHeadersVisualStyles = false;
             this.dgvEscuela.GridColor = System.Drawing.Color.Thistle;
             this.dgvEscuela.Location = new System.Drawing.Point(423, 105);
@@ -342,10 +342,10 @@
             this.dgvEscuela.Name = "dgvEscuela";
             this.dgvEscuela.ReadOnly = true;
             this.dgvEscuela.RowHeadersVisible = false;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEscuela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEscuela.Size = new System.Drawing.Size(690, 513);
+            this.dgvEscuela.Size = new System.Drawing.Size(704, 513);
             this.dgvEscuela.TabIndex = 35;
             this.dgvEscuela.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEscuela_CellContentClick);
             // 
@@ -355,7 +355,7 @@
             this.txtContactoEscuela.Location = new System.Drawing.Point(167, 446);
             this.txtContactoEscuela.Name = "txtContactoEscuela";
             this.txtContactoEscuela.Size = new System.Drawing.Size(211, 20);
-            this.txtContactoEscuela.TabIndex = 58;
+            this.txtContactoEscuela.TabIndex = 8;
             this.txtContactoEscuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContactoEscuela_KeyPress);
             // 
             // label5
@@ -387,12 +387,12 @@
             this.esconder_pantalla.BackColor = System.Drawing.Color.Transparent;
             this.esconder_pantalla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.esconder_pantalla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.esconder_pantalla.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esconder_pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.esconder_pantalla.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.esconder_pantalla.Location = new System.Drawing.Point(1077, -7);
             this.esconder_pantalla.Margin = new System.Windows.Forms.Padding(0);
             this.esconder_pantalla.Name = "esconder_pantalla";
-            this.esconder_pantalla.Size = new System.Drawing.Size(33, 40);
+            this.esconder_pantalla.Size = new System.Drawing.Size(37, 39);
             this.esconder_pantalla.TabIndex = 82;
             this.esconder_pantalla.Text = "_";
             this.esconder_pantalla.Click += new System.EventHandler(this.esconder_pantalla_Click);
@@ -403,12 +403,12 @@
             this.exit.BackColor = System.Drawing.Color.Transparent;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exit.Location = new System.Drawing.Point(1114, -2);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(33, 40);
+            this.exit.Size = new System.Drawing.Size(36, 39);
             this.exit.TabIndex = 81;
             this.exit.Text = "x";
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -552,7 +552,7 @@
             this.txtResponsablePagoEscuela.Location = new System.Drawing.Point(167, 494);
             this.txtResponsablePagoEscuela.Name = "txtResponsablePagoEscuela";
             this.txtResponsablePagoEscuela.Size = new System.Drawing.Size(211, 20);
-            this.txtResponsablePagoEscuela.TabIndex = 108;
+            this.txtResponsablePagoEscuela.TabIndex = 9;
             // 
             // label7
             // 
