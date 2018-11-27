@@ -177,7 +177,7 @@ namespace sistema_maestros1
         {
             opcionBotones = 0;
 
-            txtIdProfe.Enabled = true; txtIdProfe.Text = "";
+            txtIdProfe.Text = "";
             txtNombreProfe.Enabled = true; txtNombreProfe.Text = "";
             txtApellidoPatProfe.Enabled = true; txtApellidoPatProfe.Text = "";
             txtApellidoMatProfe.Enabled = true; txtApellidoMatProfe.Text = "";
@@ -232,14 +232,14 @@ namespace sistema_maestros1
             //Generar los 0 necesarios para el ID
             sub2 = new string('0', (4 - Convert.ToString(n).Length));
             //Concatenar el ID
-            newID = sub1 + "a" + sub2 + Convert.ToString(n);
+            newID = sub1 + sub2 + Convert.ToString(n);
             label7.Text = newID;
         }
 
         //BOTON DE ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtIdProfe.Text != "" && txtNombreProfe.Text != "" && txtApellidoPatProfe.Text != "" && txtApellidoMatProfe.Text != "" && txtPasswordProfe.Text != "")
+            if ( txtNombreProfe.Text != "" && txtApellidoPatProfe.Text != "" && txtApellidoMatProfe.Text != "" && txtPasswordProfe.Text != "")
             {
 
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)

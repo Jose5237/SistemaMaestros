@@ -220,7 +220,7 @@ namespace sistema_maestros1
         
                 cbEscuelaAlumno.Enabled = true; cbEscuelaAlumno.Text = "Seleccionar Escuela";
                 txtIdEscuelaAlumno.Text = "";
-                txtIdAlumno.Enabled = true; txtIdAlumno.Text = "";
+                txtIdAlumno.Text = "";
                 txtNombreAlumno.Enabled = true; txtNombreAlumno.Text = "";
                 txtApellidoPatAlumno.Enabled = true; txtApellidoPatAlumno.Text = "";
                 txtApellidoMatAlumno.Enabled = true; txtApellidoMatAlumno.Text = "";
@@ -292,7 +292,7 @@ namespace sistema_maestros1
             private void btnAceptar_Click(object sender, EventArgs e)
             {
             generarID();
-                if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtIdAlumno.Text != "") && (txtNombreAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
+                if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtNombreAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
                 {
                     if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
