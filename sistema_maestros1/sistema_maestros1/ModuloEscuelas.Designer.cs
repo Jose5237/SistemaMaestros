@@ -72,6 +72,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
             this.btnIncidencias2 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).BeginInit();
             this.SuspendLayout();
@@ -596,12 +597,22 @@
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(43, 553);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 133;
+            this.label8.Text = "label8";
+            // 
             // ModuloEscuelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
             this.Controls.Add(this.txtResponsablePagoEscuela);
@@ -697,5 +708,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnRecomendaciones2;
         private System.Windows.Forms.Button btnIncidencias2;
+        private System.Windows.Forms.Label label8;
     }
 }

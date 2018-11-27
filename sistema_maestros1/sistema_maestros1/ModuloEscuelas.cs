@@ -209,7 +209,7 @@ namespace sistema_maestros1
             btnAceptar.BackColor = Color.YellowGreen;
             opcionBotones = 0;
 
-            txtIdEscuela.Enabled = true; txtIdEscuela.Text = "";
+            txtIdEscuela.Text = "";
             txtNombreEscuela.Enabled = true; txtNombreEscuela.Text = "";
             txtDireccionEscuela.Enabled = true; txtDireccionEscuela.Text = "";
             txtTel1Escuela.Enabled = true; txtTel1Escuela.Text = "";
@@ -257,6 +257,28 @@ namespace sistema_maestros1
             btnAceptar.Enabled = true;
         }
 
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXIDE();
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(3, 4));
+            //guardar hgo
+            sub1 = ultimoID.Substring(0, 3);
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label8.Text = newID;
+        }
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -264,10 +286,11 @@ namespace sistema_maestros1
             {
                     if (opcionBotones == 0)
                     {
-                        if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de agregar estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    generarID();
+                    if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de agregar estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             ClassEscuela es = new ClassEscuela();
-                            es.es_id_escuela = txtIdEscuela.Text;
+                            es.es_id_escuela = label8.Text;
                             es.es_nombre_escuela = txtNombreEscuela.Text;
                             es.es_direccion_escuela = txtDireccionEscuela.Text;
                             es.es_telefono1_escuela = txtTel1Escuela.Text;

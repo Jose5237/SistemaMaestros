@@ -213,6 +213,28 @@ namespace sistema_maestros1
 
             btnAceptar.Enabled = true;
         }
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = "p";
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXIDP();
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(1, 4));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + "a" + sub2 + Convert.ToString(n);
+            label7.Text = newID;
+        }
 
         //BOTON DE ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -224,8 +246,9 @@ namespace sistema_maestros1
                 {
                     if (opcionBotones == 0)
                     {
+                        generarID();
                         ClassProfesor pr = new ClassProfesor();
-                        pr.pr_id_profesor = txtIdProfe.Text;
+                        pr.pr_id_profesor = label7.Text;
                         pr.pr_nombre_profesor = txtNombreProfe.Text;
                         pr.pr_apellidoPat_profesor = txtApellidoPatProfe.Text;
                         pr.pr_apellidoMat_profesor = txtApellidoMatProfe.Text;

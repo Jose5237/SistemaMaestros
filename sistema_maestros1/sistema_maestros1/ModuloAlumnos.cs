@@ -219,7 +219,7 @@ namespace sistema_maestros1
                 opcionBotones = 0;
         
                 cbEscuelaAlumno.Enabled = true; cbEscuelaAlumno.Text = "Seleccionar Escuela";
-                txtIdEscuelaAlumno.Enabled = true;  txtIdEscuelaAlumno.Text = "";
+                txtIdEscuelaAlumno.Text = "";
                 txtIdAlumno.Enabled = true; txtIdAlumno.Text = "";
                 txtNombreAlumno.Enabled = true; txtNombreAlumno.Text = "";
                 txtApellidoPatAlumno.Enabled = true; txtApellidoPatAlumno.Text = "";
@@ -240,15 +240,10 @@ namespace sistema_maestros1
             {
             btnAceptar.BackColor = Color.SkyBlue;
             opcionBotones = 1;
-        
-                //cbEscuelaAlumno.Enabled = true;
-                //txtIdEscuelaAlumno.Enabled = true;
                 txtNombreAlumno.Enabled = true;
                 txtApellidoPatAlumno.Enabled = true; 
                 txtApellidoMatAlumno.Enabled = true;
             cbStatusAlumno.Enabled = true;
-                //cbGradoAlumno.Enabled = true; 
-                //cbNivelAlumno.Enabled = true;
                 btnAceptar.Enabled = true;
                 btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true;
 
@@ -296,6 +291,7 @@ namespace sistema_maestros1
             //BOTON ACEPTAR (CRUD)
             private void btnAceptar_Click(object sender, EventArgs e)
             {
+            generarID();
                 if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtIdAlumno.Text != "") && (txtNombreAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
                 {
                     if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -311,7 +307,7 @@ namespace sistema_maestros1
                             al.al_id_escuela = txtIdEscuelaAlumno.Text;
         
                             //al.al_id_escuela = cbEscuelaAlumno.Text;
-                            al.al_id_alumno = txtIdAlumno.Text;
+                            al.al_id_alumno = label10.Text;
                             al.al_nombre_alumno = txtNombreAlumno.Text;
                             al.al_apellidoPat_alumno = txtApellidoPatAlumno.Text;
                             al.al_apellidoMat_alumno = txtApellidoMatAlumno.Text;
@@ -498,8 +494,29 @@ namespace sistema_maestros1
                     }
                 }
             }
-        
-            private void cbEscuelaAlumno_SelectedIndexChanged(object sender, EventArgs e)
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = txtIdEscuelaAlumno.Text;
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXIDA(sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(8, 4));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + "a" + sub2 + Convert.ToString(n);
+            label10.Text = newID;
+        }
+        private void cbEscuelaAlumno_SelectedIndexChanged(object sender, EventArgs e)
             {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {

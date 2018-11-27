@@ -208,7 +208,7 @@ namespace sistema_maestros1
         {
             opcionBotones = 0;
 
-            txtIdPadre.Enabled = true; txtIdPadre.Text = "";
+            txtIdPadre.Text = "";
             tctNombrePadre.Enabled = true; tctNombrePadre.Text = "";
             txtApellidoPatPadre.Enabled = true; txtApellidoPatPadre.Text = "";
             txtApellidoMatPadre.Enabled = true; txtApellidoMatPadre.Text = "";
@@ -251,19 +251,44 @@ namespace sistema_maestros1
 
             btnAceptar.Enabled = true;
         }
-
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = cbParentescoPadre.Text.Substring(0, 2);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXID(sub1);
+            if (ultimoID == "")
+                n = 0;
+            //ultimoID = "0000";
+            //n = Convert.ToInt32(ultimoID.Substring(2,2));
+            else
+                n = Convert.ToInt32(ultimoID.Substring(2, 4));
+            //guardar el numero del ultimo ID
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label7.Text = newID;
+        }
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtIdPadre.Text != "" && tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco"/*txtParentesco.Text != ""*/ && txtCorreoPadre.Text != "" )
+            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco"/*txtParentesco.Text != ""*/ && txtCorreoPadre.Text != "" )
             {
+                generarID();
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if (opcionBotones == 0)
                     {
+                        
                         ClassPadres tu = new ClassPadres();
 
-                        tu.tu_id_tutor = txtIdPadre.Text;
+                        tu.tu_id_tutor = label7.Text;
                         tu.tu_nombre_tutor = tctNombrePadre.Text;
                         tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
                         tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;

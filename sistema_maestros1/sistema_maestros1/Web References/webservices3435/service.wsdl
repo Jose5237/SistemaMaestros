@@ -55,6 +55,10 @@
   <wsdl:message name="cargarNombreProfesorResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="BuscarMAXIDPRequest" />
+  <wsdl:message name="BuscarMAXIDPResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosEscuelaRequest" />
   <wsdl:message name="cargarDatosEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -103,6 +107,10 @@
     <wsdl:part name="nombre_esc" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="cargarNombresEscuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="BuscarMAXIDERequest" />
+  <wsdl:message name="BuscarMAXIDEResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="cargarDatosTutorRequest" />
@@ -191,6 +199,12 @@
     <wsdl:part name="id_alm" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="eliminarAlumnoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="BuscarMAXIDARequest">
+    <wsdl:part name="sub" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="BuscarMAXIDAResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="cargarDatosDeTallerRequest" />
@@ -410,6 +424,11 @@
       <wsdl:input message="tns:cargarNombreProfesorRequest" />
       <wsdl:output message="tns:cargarNombreProfesorResponse" />
     </wsdl:operation>
+    <wsdl:operation name="BuscarMAXIDP">
+      <documentation>cargar ID MAX</documentation>
+      <wsdl:input message="tns:BuscarMAXIDPRequest" />
+      <wsdl:output message="tns:BuscarMAXIDPResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosEscuela">
       <documentation>cargar datos escuela</documentation>
       <wsdl:input message="tns:cargarDatosEscuelaRequest" />
@@ -439,6 +458,11 @@
       <documentation>Cargar Nombres Escuela</documentation>
       <wsdl:input message="tns:cargarNombresEscuelaRequest" />
       <wsdl:output message="tns:cargarNombresEscuelaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarMAXIDE">
+      <documentation>cargar ID MAX</documentation>
+      <wsdl:input message="tns:BuscarMAXIDERequest" />
+      <wsdl:output message="tns:BuscarMAXIDEResponse" />
     </wsdl:operation>
     <wsdl:operation name="cargarDatosTutor">
       <documentation> Cargar datos tutor</documentation>
@@ -494,6 +518,11 @@
       <documentation>Eliminar datos alumno</documentation>
       <wsdl:input message="tns:eliminarAlumnoRequest" />
       <wsdl:output message="tns:eliminarAlumnoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarMAXIDA">
+      <documentation>buscar MAX id</documentation>
+      <wsdl:input message="tns:BuscarMAXIDARequest" />
+      <wsdl:output message="tns:BuscarMAXIDAResponse" />
     </wsdl:operation>
     <wsdl:operation name="cargarDatosDeTaller">
       <documentation>Cargar datos taller</documentation>
@@ -666,6 +695,15 @@
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarMAXIDP">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/BuscarMAXIDP" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosEscuela">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosEscuela" style="rpc" />
       <wsdl:input>
@@ -713,6 +751,15 @@
     </wsdl:operation>
     <wsdl:operation name="cargarNombresEscuela">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarNombresEscuela" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarMAXIDE">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/BuscarMAXIDE" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
@@ -817,6 +864,15 @@
       </wsdl:input>
       <wsdl:output>
         <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarMAXIDA">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/BuscarMAXIDA" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="cargarDatosDeTaller">

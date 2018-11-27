@@ -43,6 +43,8 @@ namespace sistema_maestros1.webservices3435 {
         
         private System.Threading.SendOrPostCallback cargarNombreProfesorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback BuscarMAXIDPOperationCompleted;
+        
         private System.Threading.SendOrPostCallback cargarDatosEscuelaOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarEscuelaOperationCompleted;
@@ -54,6 +56,8 @@ namespace sistema_maestros1.webservices3435 {
         private System.Threading.SendOrPostCallback eliminarEscuelaOperationCompleted;
         
         private System.Threading.SendOrPostCallback cargarNombresEscuelaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback BuscarMAXIDEOperationCompleted;
         
         private System.Threading.SendOrPostCallback cargarDatosTutorOperationCompleted;
         
@@ -76,6 +80,8 @@ namespace sistema_maestros1.webservices3435 {
         private System.Threading.SendOrPostCallback modificarAlumnoOperationCompleted;
         
         private System.Threading.SendOrPostCallback eliminarAlumnoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback BuscarMAXIDAOperationCompleted;
         
         private System.Threading.SendOrPostCallback cargarDatosDeTallerOperationCompleted;
         
@@ -179,6 +185,9 @@ namespace sistema_maestros1.webservices3435 {
         public event cargarNombreProfesorCompletedEventHandler cargarNombreProfesorCompleted;
         
         /// <remarks/>
+        public event BuscarMAXIDPCompletedEventHandler BuscarMAXIDPCompleted;
+        
+        /// <remarks/>
         public event cargarDatosEscuelaCompletedEventHandler cargarDatosEscuelaCompleted;
         
         /// <remarks/>
@@ -195,6 +204,9 @@ namespace sistema_maestros1.webservices3435 {
         
         /// <remarks/>
         public event cargarNombresEscuelaCompletedEventHandler cargarNombresEscuelaCompleted;
+        
+        /// <remarks/>
+        public event BuscarMAXIDECompletedEventHandler BuscarMAXIDECompleted;
         
         /// <remarks/>
         public event cargarDatosTutorCompletedEventHandler cargarDatosTutorCompleted;
@@ -228,6 +240,9 @@ namespace sistema_maestros1.webservices3435 {
         
         /// <remarks/>
         public event eliminarAlumnoCompletedEventHandler eliminarAlumnoCompleted;
+        
+        /// <remarks/>
+        public event BuscarMAXIDACompletedEventHandler BuscarMAXIDACompleted;
         
         /// <remarks/>
         public event cargarDatosDeTallerCompletedEventHandler cargarDatosDeTallerCompleted;
@@ -519,6 +534,34 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/BuscarMAXIDP", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string BuscarMAXIDP() {
+            object[] results = this.Invoke("BuscarMAXIDP", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDPAsync() {
+            this.BuscarMAXIDPAsync(null);
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDPAsync(object userState) {
+            if ((this.BuscarMAXIDPOperationCompleted == null)) {
+                this.BuscarMAXIDPOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBuscarMAXIDPOperationCompleted);
+            }
+            this.InvokeAsync("BuscarMAXIDP", new object[0], this.BuscarMAXIDPOperationCompleted, userState);
+        }
+        
+        private void OnBuscarMAXIDPOperationCompleted(object arg) {
+            if ((this.BuscarMAXIDPCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.BuscarMAXIDPCompleted(this, new BuscarMAXIDPCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/cargarDatosEscuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public string cargarDatosEscuela() {
@@ -725,6 +768,34 @@ namespace sistema_maestros1.webservices3435 {
             if ((this.cargarNombresEscuelaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.cargarNombresEscuelaCompleted(this, new cargarNombresEscuelaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/BuscarMAXIDE", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string BuscarMAXIDE() {
+            object[] results = this.Invoke("BuscarMAXIDE", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDEAsync() {
+            this.BuscarMAXIDEAsync(null);
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDEAsync(object userState) {
+            if ((this.BuscarMAXIDEOperationCompleted == null)) {
+                this.BuscarMAXIDEOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBuscarMAXIDEOperationCompleted);
+            }
+            this.InvokeAsync("BuscarMAXIDE", new object[0], this.BuscarMAXIDEOperationCompleted, userState);
+        }
+        
+        private void OnBuscarMAXIDEOperationCompleted(object arg) {
+            if ((this.BuscarMAXIDECompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.BuscarMAXIDECompleted(this, new BuscarMAXIDECompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1103,6 +1174,36 @@ namespace sistema_maestros1.webservices3435 {
             if ((this.eliminarAlumnoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.eliminarAlumnoCompleted(this, new eliminarAlumnoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/BuscarMAXIDA", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string BuscarMAXIDA(string sub) {
+            object[] results = this.Invoke("BuscarMAXIDA", new object[] {
+                        sub});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDAAsync(string sub) {
+            this.BuscarMAXIDAAsync(sub, null);
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDAAsync(string sub, object userState) {
+            if ((this.BuscarMAXIDAOperationCompleted == null)) {
+                this.BuscarMAXIDAOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBuscarMAXIDAOperationCompleted);
+            }
+            this.InvokeAsync("BuscarMAXIDA", new object[] {
+                        sub}, this.BuscarMAXIDAOperationCompleted, userState);
+        }
+        
+        private void OnBuscarMAXIDAOperationCompleted(object arg) {
+            if ((this.BuscarMAXIDACompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.BuscarMAXIDACompleted(this, new BuscarMAXIDACompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2057,6 +2158,32 @@ namespace sistema_maestros1.webservices3435 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void BuscarMAXIDPCompletedEventHandler(object sender, BuscarMAXIDPCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class BuscarMAXIDPCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal BuscarMAXIDPCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
     public delegate void cargarDatosEscuelaCompletedEventHandler(object sender, cargarDatosEscuelaCompletedEventArgs e);
     
     /// <remarks/>
@@ -2198,6 +2325,32 @@ namespace sistema_maestros1.webservices3435 {
         private object[] results;
         
         internal cargarNombresEscuelaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void BuscarMAXIDECompletedEventHandler(object sender, BuscarMAXIDECompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class BuscarMAXIDECompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal BuscarMAXIDECompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2484,6 +2637,32 @@ namespace sistema_maestros1.webservices3435 {
         private object[] results;
         
         internal eliminarAlumnoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void BuscarMAXIDACompletedEventHandler(object sender, BuscarMAXIDACompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class BuscarMAXIDACompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal BuscarMAXIDACompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
