@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloDinamicas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtFechaFinDinamicas = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.dtFechaIniDinamicas = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBuscadorDinamicas = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -78,6 +78,8 @@
             this.txtFechaFin = new System.Windows.Forms.TextBox();
             this.txtIdEscuela = new System.Windows.Forms.TextBox();
             this.txtIdTaller = new System.Windows.Forms.TextBox();
+            this.txtFechaIniTaller = new System.Windows.Forms.TextBox();
+            this.txtFechaFinTaller = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDinamica)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +93,19 @@
             this.dtFechaFinDinamicas.Name = "dtFechaFinDinamicas";
             this.dtFechaFinDinamicas.Size = new System.Drawing.Size(211, 20);
             this.dtFechaFinDinamicas.TabIndex = 7;
+            this.dtFechaFinDinamicas.Value = new System.DateTime(2018, 11, 28, 13, 43, 5, 904);
+            this.dtFechaFinDinamicas.ValueChanged += new System.EventHandler(this.dtFechaFinDinamicas_ValueChanged);
+            // 
+            // dtFechaIniDinamicas
+            // 
+            this.dtFechaIniDinamicas.CustomFormat = "yyyy-MM-dd";
+            this.dtFechaIniDinamicas.Enabled = false;
+            this.dtFechaIniDinamicas.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtFechaIniDinamicas.Location = new System.Drawing.Point(165, 387);
+            this.dtFechaIniDinamicas.Name = "dtFechaIniDinamicas";
+            this.dtFechaIniDinamicas.Size = new System.Drawing.Size(211, 20);
+            this.dtFechaIniDinamicas.TabIndex = 6;
+            this.dtFechaIniDinamicas.ValueChanged += new System.EventHandler(this.dtFechaIniDinamicas_ValueChanged);
             // 
             // label7
             // 
@@ -102,16 +117,6 @@
             this.label7.Size = new System.Drawing.Size(110, 17);
             this.label7.TabIndex = 73;
             this.label7.Text = "Fecha de termino:";
-            // 
-            // dtFechaIniDinamicas
-            // 
-            this.dtFechaIniDinamicas.CustomFormat = "yyyy-MM-dd";
-            this.dtFechaIniDinamicas.Enabled = false;
-            this.dtFechaIniDinamicas.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaIniDinamicas.Location = new System.Drawing.Point(165, 387);
-            this.dtFechaIniDinamicas.Name = "dtFechaIniDinamicas";
-            this.dtFechaIniDinamicas.Size = new System.Drawing.Size(211, 20);
-            this.dtFechaIniDinamicas.TabIndex = 6;
             // 
             // label5
             // 
@@ -591,23 +596,23 @@
             this.dgvDinamica.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDinamica.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDinamica.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.NavajoWhite;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDinamica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDinamica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDinamica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDinamica.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDinamica.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDinamica.EnableHeadersVisualStyles = false;
             this.dgvDinamica.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvDinamica.Location = new System.Drawing.Point(423, 105);
@@ -615,8 +620,8 @@
             this.dgvDinamica.Name = "dgvDinamica";
             this.dgvDinamica.ReadOnly = true;
             this.dgvDinamica.RowHeadersVisible = false;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvDinamica.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvDinamica.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDinamica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDinamica.Size = new System.Drawing.Size(704, 513);
             this.dgvDinamica.TabIndex = 138;
@@ -629,7 +634,6 @@
             this.txtFechaInicio.Name = "txtFechaInicio";
             this.txtFechaInicio.Size = new System.Drawing.Size(100, 20);
             this.txtFechaInicio.TabIndex = 139;
-            this.txtFechaInicio.Visible = false;
             // 
             // txtFechaFin
             // 
@@ -638,7 +642,6 @@
             this.txtFechaFin.Name = "txtFechaFin";
             this.txtFechaFin.Size = new System.Drawing.Size(100, 20);
             this.txtFechaFin.TabIndex = 140;
-            this.txtFechaFin.Visible = false;
             // 
             // txtIdEscuela
             // 
@@ -656,12 +659,30 @@
             this.txtIdTaller.Size = new System.Drawing.Size(100, 20);
             this.txtIdTaller.TabIndex = 142;
             // 
+            // txtFechaIniTaller
+            // 
+            this.txtFechaIniTaller.Enabled = false;
+            this.txtFechaIniTaller.Location = new System.Drawing.Point(304, 145);
+            this.txtFechaIniTaller.Name = "txtFechaIniTaller";
+            this.txtFechaIniTaller.Size = new System.Drawing.Size(60, 20);
+            this.txtFechaIniTaller.TabIndex = 143;
+            // 
+            // txtFechaFinTaller
+            // 
+            this.txtFechaFinTaller.Enabled = false;
+            this.txtFechaFinTaller.Location = new System.Drawing.Point(364, 145);
+            this.txtFechaFinTaller.Name = "txtFechaFinTaller";
+            this.txtFechaFinTaller.Size = new System.Drawing.Size(60, 20);
+            this.txtFechaFinTaller.TabIndex = 144;
+            // 
             // ModuloDinamicas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.txtFechaFinTaller);
+            this.Controls.Add(this.txtFechaIniTaller);
             this.Controls.Add(this.txtIdTaller);
             this.Controls.Add(this.txtIdEscuela);
             this.Controls.Add(this.txtFechaFin);
@@ -768,5 +789,7 @@
         private System.Windows.Forms.TextBox txtFechaFin;
         private System.Windows.Forms.TextBox txtIdEscuela;
         private System.Windows.Forms.TextBox txtIdTaller;
+        private System.Windows.Forms.TextBox txtFechaIniTaller;
+        private System.Windows.Forms.TextBox txtFechaFinTaller;
     }
 }

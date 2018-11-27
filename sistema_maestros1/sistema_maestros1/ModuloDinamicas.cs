@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using variablesGlobales;
+
 namespace sistema_maestros1
 {
     public partial class ModuloDinamicas : Form
@@ -172,12 +174,22 @@ namespace sistema_maestros1
 
             cbTallerDinamicas.Enabled = true; cbTallerDinamicas.Text = "Seleccionar Taller";
             txtIdTaller.Enabled = true; txtIdTaller.Text = "";
+            txtFechaIniTaller.Text = "";
+            txtFechaIniTaller.Text = "";
+            txtFechaFinTaller.Text = "";
 
             txtIdDinamicas.Enabled = true; txtIdDinamicas.Text = "";
             txtNombreDinamicas.Enabled = true; txtNombreDinamicas.Text = "";
             txtDescripcionDinamicas.Enabled = true; txtDescripcionDinamicas.Text = "";
+
             dtFechaIniDinamicas.Enabled = true;
             dtFechaFinDinamicas.Enabled = true;
+            dtFechaFinDinamicas.Value = dtFechaIniDinamicas.Value.AddDays(1);
+            txtFechaInicio.Text = "";
+            txtFechaFin.Text = "";
+            
+            
+
             txtHabilidadesDinamicas.Enabled = true; txtHabilidadesDinamicas.Text = "";
             txtJustificacionCostoDinamicas.Enabled = true; txtJustificacionCostoDinamicas.Text = "";
             txtHerramientasDinamicas.Enabled = true; txtHerramientasDinamicas.Text = "";
@@ -200,6 +212,7 @@ namespace sistema_maestros1
 
             //txtIdDinamicas.Enabled = true; 
             //txtNombreDinamicas.Enabled = true;
+
             txtNombreDinamicas.Enabled = true; 
             txtDescripcionDinamicas.Enabled = true; 
             dtFechaIniDinamicas.Enabled = true;
@@ -257,6 +270,11 @@ namespace sistema_maestros1
 
         private void ModuloDinamicas_Load(object sender, EventArgs e)
         {
+            
+            
+
+            //dtFechaFinDinamicas.Value = dtFechaIniDinamicas.Value.AddDays(1);
+
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
 
@@ -292,6 +310,9 @@ namespace sistema_maestros1
 
                         item.Text = nomTall.ta_nombre_taller;
                         item.Value = Convert.ToString(nomTall.ta_id_taller);
+                        //COMENTADOS RECIENTEMENTE txtFechaIniTaller.Text = nomTall.ta_fecha_ini_taller;
+                        //COMENTADOS RECIENTEMENTE txtFechaFinTaller.Text = nomTall.ta_fecha_fin_taller;
+
                         cbTallerDinamicas.Items.Add(item);
 
                     }
@@ -380,12 +401,13 @@ namespace sistema_maestros1
                     else if (opcionBotones == 2)
                     {
                         ClassDinamica di = new ClassDinamica();
-
+                        di.di_id_escuela = txtIdEscuela.Text;
+                        di.di_id_taller = txtIdTaller.Text;
                         di.di_id_dinamica = txtIdDinamicas.Text;
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-                            string mensaje = wsPHP.eliminarDinamica(di.di_id_dinamica);
+                            string mensaje = wsPHP.eliminarDinamica(di.di_id_escuela, di.di_id_taller, di.di_id_dinamica);
                             MessageBox.Show(mensaje, "¡Dinamica Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
@@ -413,6 +435,8 @@ namespace sistema_maestros1
 
                     cbTallerDinamicas.Enabled = false; cbTallerDinamicas.Text = "Seleccionar Taller";
                     txtIdTaller.Enabled = false; txtIdTaller.Text = "";
+                    txtFechaIniTaller.Text = "";
+                    txtFechaFinTaller.Text = "";
 
                     txtIdDinamicas.Enabled = false; txtIdDinamicas.Text = "";
                     txtNombreDinamicas.Enabled = false; txtNombreDinamicas.Text = "";
@@ -442,6 +466,62 @@ namespace sistema_maestros1
             cbTallerDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtIdTaller.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[1].Value.ToString());
 
+
+
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+               
+
+                String resFechaIniTal = wsPHP.buscarTallerXIDescuela(txtIdEscuela.Text, txtIdTaller.Text);
+
+
+                var des_fechaI_ta = JsonConvert.DeserializeObject<List<ClassTaller>>(resFechaIniTal);
+
+
+                
+
+
+                foreach (var fechIT in des_fechaI_ta)
+                {
+                    
+                    txtFechaIniTaller.Text = Convert.ToString(fechIT.ta_fecha_ini_taller);
+                    txtFechaFinTaller.Text = Convert.ToString(fechIT.ta_fecha_fin_taller);
+                    
+                }
+
+
+                //var des_fechI_ta = JsonConvert.DeserializeObject<List<ClassTaller>>(resFechaIniTal);
+
+
+                //txtFechaIniTaller.Text = resFechaIniTal;
+                //foreach (var a in des_fechI_ta)
+                //{
+                //    txtFechaIniTaller.Text = Convert.ToString(clienTall.dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
+                //    break;
+                //
+                //}
+
+                //string fechaITall = Convert.ToString(clienTall.dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
+
+
+
+
+
+
+                //foreach (var a in resFechaIniTal)
+                //{
+                //
+                //    txtFechaIniTaller.Text = fechaITall;
+                //}
+
+
+
+
+
+            }
+
+            
+
             txtIdDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[2].Value.ToString());
             txtNombreDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[3].Value.ToString());
             txtDescripcionDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[4].Value.ToString());
@@ -450,7 +530,7 @@ namespace sistema_maestros1
             txtHabilidadesDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[7].Value.ToString());
             txtJustificacionCostoDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[8].Value.ToString());
             txtHerramientasDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[9].Value.ToString());
-
+            
 
             string newI = fechaI.Replace("-", "/");
             txtFechaInicio.Text = newI;
@@ -494,10 +574,14 @@ namespace sistema_maestros1
                     
                     item.Text = nomtal.ta_nombre_taller;
                     item.Value = Convert.ToString(nomtal.ta_id_taller);
+                    // COMENTADO RECIENTEMENTE txtFechaIniTaller.Text = Convert.ToString(nomtal.ta_fecha_ini_taller);
                     string id = item.Value.ToString();
                     
                     cbTallerDinamicas.Items.Add(item);
                 }
+
+                //NUEVO
+                
             }
         }
 
@@ -517,6 +601,11 @@ namespace sistema_maestros1
 
                     ComboBoxItem item = new ComboBoxItem();
                     item.Value = Convert.ToString(nomTall.ta_id_taller);
+
+                    //Nueva linea: 532
+                    txtFechaIniTaller.Text = Convert.ToString(nomTall.ta_fecha_ini_taller);
+                    txtFechaFinTaller.Text = Convert.ToString(nomTall.ta_fecha_fin_taller);
+
                     string id = item.Value.ToString();
                     txtIdTaller.Text = id;
 
@@ -550,6 +639,55 @@ namespace sistema_maestros1
 
                 }
             }
+        }
+
+
+
+        private void dtFechaIniDinamicas_ValueChanged(object sender, EventArgs e)
+        {
+
+            txtFechaInicio.Text = Convert.ToString(dtFechaIniDinamicas.Value);
+
+            if(dtFechaIniDinamicas.Value.Date < Convert.ToDateTime( txtFechaIniTaller.Text))
+            {
+                MessageBox.Show("¡ERROR! No puedes asignarle una fecha menor a la dinamica de la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text);
+            }
+            if(dtFechaIniDinamicas.Value.Date > Convert.ToDateTime(txtFechaFinTaller.Text))
+            {
+                MessageBox.Show("¡ERROR! No puedes asignarle una fecha de termino de dinamica 'MAYOR' a la de fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text);
+            }
+        }
+
+        private void dtFechaFinDinamicas_ValueChanged(object sender, EventArgs e)
+        {
+
+            txtFechaFin.Text = Convert.ToString(dtFechaFinDinamicas.Value);
+
+            if (((dtFechaFinDinamicas.Value.Month == dtFechaIniDinamicas.Value.Month) && (dtFechaFinDinamicas.Value.Day >= dtFechaIniDinamicas.Value.Day)))
+            {
+
+            }
+            else if ((dtFechaFinDinamicas.Value.Year < dtFechaIniDinamicas.Value.Year) || (dtFechaFinDinamicas.Value.Month < dtFechaIniDinamicas.Value.Month) || ((dtFechaFinDinamicas.Value.Month == dtFechaIniDinamicas.Value.Month) && (dtFechaFinDinamicas.Value.Day < dtFechaIniDinamicas.Value.Day)))
+            {
+                MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino menor a la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtFechaFinDinamicas.Value = dtFechaIniDinamicas.Value.AddDays(1);
+            }
+            if (txtFechaFinTaller.Text != "" && txtFechaFin.Text != "")
+            {
+                if (Convert.ToDateTime(txtFechaFin.Text) > Convert.ToDateTime(txtFechaFinTaller.Text))
+                {
+                    MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino mayor a la fecha de termino de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dtFechaFinDinamicas.Value = Convert.ToDateTime(txtFechaFinTaller.Text);
+                }
+            }
+            //else 
+            //if(dtFechaFinDinamicas.Value.Date > Convert.ToDateTime(txtFechaFinTaller))
+            //{
+            //    MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino mayor a la fecha de termino de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    dtFechaFinDinamicas.Value = Convert.ToDateTime(txtFechaFinTaller.Text);
+            //}
         }
     }
 

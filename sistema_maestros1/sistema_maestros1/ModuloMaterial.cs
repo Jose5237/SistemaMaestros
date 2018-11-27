@@ -285,8 +285,8 @@ namespace sistema_maestros1
                         ma.ma_id_material = txtIdMaterial.Text;
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-                            string mensaje = wsPHP.eliminarMaterial(ma.ma_id_material);
-                            MessageBox.Show(mensaje, "¡Material Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                          //  string mensaje = wsPHP.eliminarMaterial(ma.ma_id_material);
+                          //  MessageBox.Show(mensaje, "¡Material Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
                     }

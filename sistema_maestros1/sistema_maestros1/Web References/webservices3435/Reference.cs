@@ -65,6 +65,8 @@ namespace sistema_maestros1.webservices3435 {
         
         private System.Threading.SendOrPostCallback eliminarTutorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback BuscarMAXIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback cargarDatosAlumnoOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarAlumnoOperationCompleted;
@@ -85,7 +87,7 @@ namespace sistema_maestros1.webservices3435 {
         
         private System.Threading.SendOrPostCallback eliminarTallerOperationCompleted;
         
-        private System.Threading.SendOrPostCallback cargarNombreTallerOperationCompleted;
+        private System.Threading.SendOrPostCallback buscarTallerXIDescuelaOperationCompleted;
         
         private System.Threading.SendOrPostCallback cargarDatosAhasTOperationCompleted;
         
@@ -210,6 +212,9 @@ namespace sistema_maestros1.webservices3435 {
         public event eliminarTutorCompletedEventHandler eliminarTutorCompleted;
         
         /// <remarks/>
+        public event BuscarMAXIDCompletedEventHandler BuscarMAXIDCompleted;
+        
+        /// <remarks/>
         public event cargarDatosAlumnoCompletedEventHandler cargarDatosAlumnoCompleted;
         
         /// <remarks/>
@@ -240,7 +245,7 @@ namespace sistema_maestros1.webservices3435 {
         public event eliminarTallerCompletedEventHandler eliminarTallerCompleted;
         
         /// <remarks/>
-        public event cargarNombreTallerCompletedEventHandler cargarNombreTallerCompleted;
+        public event buscarTallerXIDescuelaCompletedEventHandler buscarTallerXIDescuelaCompleted;
         
         /// <remarks/>
         public event cargarDatosAhasTCompletedEventHandler cargarDatosAhasTCompleted;
@@ -896,6 +901,36 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/BuscarMAXID", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string BuscarMAXID(string sub) {
+            object[] results = this.Invoke("BuscarMAXID", new object[] {
+                        sub});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDAsync(string sub) {
+            this.BuscarMAXIDAsync(sub, null);
+        }
+        
+        /// <remarks/>
+        public void BuscarMAXIDAsync(string sub, object userState) {
+            if ((this.BuscarMAXIDOperationCompleted == null)) {
+                this.BuscarMAXIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBuscarMAXIDOperationCompleted);
+            }
+            this.InvokeAsync("BuscarMAXID", new object[] {
+                        sub}, this.BuscarMAXIDOperationCompleted, userState);
+        }
+        
+        private void OnBuscarMAXIDOperationCompleted(object arg) {
+            if ((this.BuscarMAXIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.BuscarMAXIDCompleted(this, new BuscarMAXIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/cargarDatosAlumno", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public string cargarDatosAlumno() {
@@ -1270,32 +1305,34 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/cargarNombreTaller", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/buscarTallerXIDescuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string cargarNombreTaller(string busqueda) {
-            object[] results = this.Invoke("cargarNombreTaller", new object[] {
-                        busqueda});
+        public string buscarTallerXIDescuela(string id_esc, string id_tall) {
+            object[] results = this.Invoke("buscarTallerXIDescuela", new object[] {
+                        id_esc,
+                        id_tall});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void cargarNombreTallerAsync(string busqueda) {
-            this.cargarNombreTallerAsync(busqueda, null);
+        public void buscarTallerXIDescuelaAsync(string id_esc, string id_tall) {
+            this.buscarTallerXIDescuelaAsync(id_esc, id_tall, null);
         }
         
         /// <remarks/>
-        public void cargarNombreTallerAsync(string busqueda, object userState) {
-            if ((this.cargarNombreTallerOperationCompleted == null)) {
-                this.cargarNombreTallerOperationCompleted = new System.Threading.SendOrPostCallback(this.OncargarNombreTallerOperationCompleted);
+        public void buscarTallerXIDescuelaAsync(string id_esc, string id_tall, object userState) {
+            if ((this.buscarTallerXIDescuelaOperationCompleted == null)) {
+                this.buscarTallerXIDescuelaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnbuscarTallerXIDescuelaOperationCompleted);
             }
-            this.InvokeAsync("cargarNombreTaller", new object[] {
-                        busqueda}, this.cargarNombreTallerOperationCompleted, userState);
+            this.InvokeAsync("buscarTallerXIDescuela", new object[] {
+                        id_esc,
+                        id_tall}, this.buscarTallerXIDescuelaOperationCompleted, userState);
         }
         
-        private void OncargarNombreTallerOperationCompleted(object arg) {
-            if ((this.cargarNombreTallerCompleted != null)) {
+        private void OnbuscarTallerXIDescuelaOperationCompleted(object arg) {
+            if ((this.buscarTallerXIDescuelaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.cargarNombreTallerCompleted(this, new cargarNombreTallerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.buscarTallerXIDescuelaCompleted(this, new buscarTallerXIDescuelaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1580,23 +1617,27 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/eliminarDinamica", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string eliminarDinamica(string id_din) {
+        public string eliminarDinamica(string id_escuela, string id_taller, string id_din) {
             object[] results = this.Invoke("eliminarDinamica", new object[] {
+                        id_escuela,
+                        id_taller,
                         id_din});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void eliminarDinamicaAsync(string id_din) {
-            this.eliminarDinamicaAsync(id_din, null);
+        public void eliminarDinamicaAsync(string id_escuela, string id_taller, string id_din) {
+            this.eliminarDinamicaAsync(id_escuela, id_taller, id_din, null);
         }
         
         /// <remarks/>
-        public void eliminarDinamicaAsync(string id_din, object userState) {
+        public void eliminarDinamicaAsync(string id_escuela, string id_taller, string id_din, object userState) {
             if ((this.eliminarDinamicaOperationCompleted == null)) {
                 this.eliminarDinamicaOperationCompleted = new System.Threading.SendOrPostCallback(this.OneliminarDinamicaOperationCompleted);
             }
             this.InvokeAsync("eliminarDinamica", new object[] {
+                        id_escuela,
+                        id_taller,
                         id_din}, this.eliminarDinamicaOperationCompleted, userState);
         }
         
@@ -1780,23 +1821,29 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/eliminarMaterial", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string eliminarMaterial(string id_mat) {
+        public string eliminarMaterial(string id_esc, string id_tall, string id_din, string id_mat) {
             object[] results = this.Invoke("eliminarMaterial", new object[] {
+                        id_esc,
+                        id_tall,
+                        id_din,
                         id_mat});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void eliminarMaterialAsync(string id_mat) {
-            this.eliminarMaterialAsync(id_mat, null);
+        public void eliminarMaterialAsync(string id_esc, string id_tall, string id_din, string id_mat) {
+            this.eliminarMaterialAsync(id_esc, id_tall, id_din, id_mat, null);
         }
         
         /// <remarks/>
-        public void eliminarMaterialAsync(string id_mat, object userState) {
+        public void eliminarMaterialAsync(string id_esc, string id_tall, string id_din, string id_mat, object userState) {
             if ((this.eliminarMaterialOperationCompleted == null)) {
                 this.eliminarMaterialOperationCompleted = new System.Threading.SendOrPostCallback(this.OneliminarMaterialOperationCompleted);
             }
             this.InvokeAsync("eliminarMaterial", new object[] {
+                        id_esc,
+                        id_tall,
+                        id_din,
                         id_mat}, this.eliminarMaterialOperationCompleted, userState);
         }
         
@@ -2296,6 +2343,32 @@ namespace sistema_maestros1.webservices3435 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void BuscarMAXIDCompletedEventHandler(object sender, BuscarMAXIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class BuscarMAXIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal BuscarMAXIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
     public delegate void cargarDatosAlumnoCompletedEventHandler(object sender, cargarDatosAlumnoCompletedEventArgs e);
     
     /// <remarks/>
@@ -2556,17 +2629,17 @@ namespace sistema_maestros1.webservices3435 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
-    public delegate void cargarNombreTallerCompletedEventHandler(object sender, cargarNombreTallerCompletedEventArgs e);
+    public delegate void buscarTallerXIDescuelaCompletedEventHandler(object sender, buscarTallerXIDescuelaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class cargarNombreTallerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class buscarTallerXIDescuelaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal cargarNombreTallerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal buscarTallerXIDescuelaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

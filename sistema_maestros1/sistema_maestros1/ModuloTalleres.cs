@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using variablesGlobales;
+
 namespace sistema_maestros1
 {
     public partial class ModuloTalleres : Form
@@ -294,6 +296,8 @@ namespace sistema_maestros1
                       ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
                       ta.ta_herramientas_taller = txtHerramientasTaller.Text;
 
+                        Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
+
                         //data = JsonConvert.SerializeObject(ta, Newtonsoft.Json.Formatting.Indented);
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
@@ -326,7 +330,9 @@ namespace sistema_maestros1
                         ta.ta_habilidades_taller = txtHabilidadesTaller.Text;
                         ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
                         ta.ta_herramientas_taller = txtHerramientasTaller.Text;
-                        
+
+                        Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
+
                         //data += JsonConvert.SerializeObject(ta, Newtonsoft.Json.Formatting.Indented);
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())

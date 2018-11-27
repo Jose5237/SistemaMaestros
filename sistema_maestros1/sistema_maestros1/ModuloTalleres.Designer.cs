@@ -859,14 +859,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtBuscadorTaller;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox txtCostoTaller;
         private System.Windows.Forms.TextBox txtDescripcionTaller;
         private System.Windows.Forms.TextBox txtNombreTaller;
-        private System.Windows.Forms.TextBox txtIdTaller;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -874,10 +871,7 @@
         private System.Windows.Forms.Button btnEliminarTaller;
         private System.Windows.Forms.Button btnModificarTaller;
         private System.Windows.Forms.Button btnAgregarTaller;
-        private System.Windows.Forms.DataGridView dgvTaller;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtFechaIniTaller;
-        private System.Windows.Forms.DateTimePicker dtFechaFinTaller;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbNivelTaller;
@@ -897,11 +891,7 @@
         private System.Windows.Forms.Button btnAlumnos2;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbEscuelaTaller;
         private System.Windows.Forms.Button btnPagos2;
-        private System.Windows.Forms.TextBox txtIdEscuela;
-        private System.Windows.Forms.TextBox txtFechaInicio;
-        private System.Windows.Forms.TextBox txtFechaFin;
         private System.Windows.Forms.TextBox txtIdProfesorTaller;
         private System.Windows.Forms.TextBox txtHabilidadesTaller;
         private System.Windows.Forms.Label label10;
@@ -914,5 +904,14 @@
         private System.Windows.Forms.TextBox txtProfeTaller;
         private System.Windows.Forms.DataGridView dgvProfeTaller;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.TextBox txtBuscadorTaller;
+        public System.Windows.Forms.TextBox txtIdTaller;
+        public System.Windows.Forms.DataGridView dgvTaller;
+        public System.Windows.Forms.DateTimePicker dtFechaIniTaller;
+        public System.Windows.Forms.DateTimePicker dtFechaFinTaller;
+        public System.Windows.Forms.ComboBox cbEscuelaTaller;
+        public System.Windows.Forms.TextBox txtIdEscuela;
+        public System.Windows.Forms.TextBox txtFechaInicio;
+        public System.Windows.Forms.TextBox txtFechaFin;
     }
 }
