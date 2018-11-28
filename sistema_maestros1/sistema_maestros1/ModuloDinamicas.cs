@@ -170,15 +170,15 @@ namespace sistema_maestros1
             opcionBotones = 0;
             btnAceptar.BackColor = Color.YellowGreen;
             cbEscuelaDinamicas.Enabled = true; cbEscuelaDinamicas.Text = "Seleccionar Escuela";
-            txtIdEscuela.Enabled = true; txtIdEscuela.Text = "";
+            txtIdEscuela.Text = "";
 
             cbTallerDinamicas.Enabled = true; cbTallerDinamicas.Text = "Seleccionar Taller";
-            txtIdTaller.Enabled = true; txtIdTaller.Text = "";
+            txtIdTaller.Text = "";
             txtFechaIniTaller.Text = "";
             txtFechaIniTaller.Text = "";
             txtFechaFinTaller.Text = "";
 
-            txtIdDinamicas.Enabled = true; txtIdDinamicas.Text = "";
+            txtIdDinamicas.Text = "";
             txtNombreDinamicas.Enabled = true; txtNombreDinamicas.Text = "";
             txtDescripcionDinamicas.Enabled = true; txtDescripcionDinamicas.Text = "";
 
@@ -204,15 +204,6 @@ namespace sistema_maestros1
         {
             opcionBotones = 1;
             btnAceptar.BackColor = Color.SkyBlue;
-            //cbEscuelaDinamicas.Enabled = true;
-            //txtIdEscuela.Enabled = true;
-
-            //cbTallerDinamicas.Enabled = true;
-            //txtIdTaller.Enabled = true;
-
-            //txtIdDinamicas.Enabled = true; 
-            //txtNombreDinamicas.Enabled = true;
-
             txtNombreDinamicas.Enabled = true; 
             txtDescripcionDinamicas.Enabled = true; 
             dtFechaIniDinamicas.Enabled = true;
@@ -342,9 +333,32 @@ namespace sistema_maestros1
             dgvDinamica.Columns[9].HeaderText = "Herramientas";
         }
 
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = "d" + cbTallerDinamicas.Text.Substring(0, 3);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDD(txtIdEscuela.Text, txtIdTaller.Text, sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(4, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label13.Text = newID;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((cbEscuelaDinamicas.Text != "" && txtIdEscuela.Text != "") && (cbTallerDinamicas.Text != "" && txtIdTaller.Text != "") && (txtIdDinamicas.Text != "") && (txtNombreDinamicas.Text != "") && (txtDescripcionDinamicas.Text != "") && (dtFechaIniDinamicas.Text != "") && (dtFechaFinDinamicas.Text != "") && (txtHabilidadesDinamicas.Text != "") && (txtJustificacionCostoDinamicas.Text != "") && (txtHerramientasDinamicas.Text != ""))
+            if ((cbEscuelaDinamicas.Text != "" && txtIdEscuela.Text != "") && (cbTallerDinamicas.Text != "" && txtIdTaller.Text != "") && (txtNombreDinamicas.Text != "") && (txtDescripcionDinamicas.Text != "") && (dtFechaIniDinamicas.Text != "") && (dtFechaFinDinamicas.Text != "") && (txtHabilidadesDinamicas.Text != "") && (txtJustificacionCostoDinamicas.Text != "") && (txtHerramientasDinamicas.Text != ""))
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -355,11 +369,11 @@ namespace sistema_maestros1
 
                     if (opcionBotones == 0)
                     {
-
+                        generarID();
                         ClassDinamica di = new ClassDinamica();
                         di.di_id_escuela = txtIdEscuela.Text;
                         di.di_id_taller = txtIdTaller.Text;
-                        di.di_id_dinamica = txtIdDinamicas.Text;
+                        di.di_id_dinamica = label13.Text;
                         di.di_nombre_dinamica = txtNombreDinamicas.Text;
                         di.di_descripcion_dinamica = txtDescripcionDinamicas.Text;
                         di.di_fecha_ini_dinamica = dtFechaIniDinamicas.Text;

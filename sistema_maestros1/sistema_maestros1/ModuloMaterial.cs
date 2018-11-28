@@ -192,8 +192,7 @@ namespace sistema_maestros1
 
             cbDinamicaMaterial.Enabled = true; cbDinamicaMaterial.Text = "Seleccionar Dinamica";
             txtIdDinamica.Text = "";
-
-            txtIdMaterial.Enabled = true; txtIdMaterial.Text = "";
+            txtIdMaterial.Text = "";
             txtNombreMaterial.Enabled = true; txtNombreMaterial.Text = "";
             txtCostoMaterial.Enabled = true; txtCostoMaterial.Text = "";
 
@@ -232,22 +231,43 @@ namespace sistema_maestros1
             btnAceptar.Enabled = true;
 
         }
-
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = "m" + cbTallerMaterial.Text.Substring(0, 3);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(4, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label8.Text = newID;
+        }
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((cbEscuelaMaterial.Text != "" && txtIdEscuela.Text != "") && (cbTallerMaterial.Text != "" && txtIdTaller.Text != "") && (cbDinamicaMaterial.Text != "" && txtIdDinamica.Text != "") && (txtIdMaterial.Text != "") && (txtNombreMaterial.Text != "") && (txtCostoMaterial.Text != ""))
+            if ((cbEscuelaMaterial.Text != "" && txtIdEscuela.Text != "") && (cbTallerMaterial.Text != "" && txtIdTaller.Text != "") && (cbDinamicaMaterial.Text != "" && txtIdDinamica.Text != "")&& (txtNombreMaterial.Text != "") && (txtCostoMaterial.Text != ""))
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if (opcionBotones == 0)
                     {
-
+                        generarID();
                         ClassMaterial ma = new ClassMaterial();
                         ma.ma_id_escuela = txtIdEscuela.Text;
                         ma.ma_id_taller = txtIdTaller.Text;
                         ma.ma_id_dinamica = txtIdDinamica.Text;
-                        ma.ma_id_material = txtIdMaterial.Text;
+                        ma.ma_id_material = label8.Text;
                         ma.ma_nombre_material = txtNombreMaterial.Text;
                         ma.ma_costo_material = Convert.ToDouble(txtCostoMaterial.Text);
 
@@ -324,7 +344,9 @@ namespace sistema_maestros1
                     btnAceptar.Enabled = false;
 
                 }
+                btnAceptar.BackColor = Color.Silver;
             }
+            
             else
             {
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");

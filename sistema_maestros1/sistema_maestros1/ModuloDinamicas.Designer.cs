@@ -80,6 +80,7 @@
             this.txtIdTaller = new System.Windows.Forms.TextBox();
             this.txtFechaIniTaller = new System.Windows.Forms.TextBox();
             this.txtFechaFinTaller = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDinamica)).BeginInit();
             this.SuspendLayout();
@@ -675,12 +676,22 @@
             this.txtFechaFinTaller.Size = new System.Drawing.Size(60, 20);
             this.txtFechaFinTaller.TabIndex = 144;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(53, 555);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.TabIndex = 145;
+            this.label13.Text = "label13";
+            // 
             // ModuloDinamicas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtFechaFinTaller);
             this.Controls.Add(this.txtFechaIniTaller);
             this.Controls.Add(this.txtIdTaller);
@@ -791,5 +802,6 @@
         private System.Windows.Forms.TextBox txtIdTaller;
         private System.Windows.Forms.TextBox txtFechaIniTaller;
         private System.Windows.Forms.TextBox txtFechaFinTaller;
+        private System.Windows.Forms.Label label13;
     }
 }

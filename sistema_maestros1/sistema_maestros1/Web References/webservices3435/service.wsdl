@@ -267,6 +267,13 @@
   <wsdl:message name="buscarTallerXIDescuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="buscarMAXIDTRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="sub" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDTResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosAhasTRequest" />
   <wsdl:message name="cargarDatosAhasTResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -347,6 +354,14 @@
   <wsdl:message name="buscarDinamicaXTallerYEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="buscarMAXIDDRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
+    <wsdl:part name="sub" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDDResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosMaterialRequest" />
   <wsdl:message name="cargarDatosMaterialResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -386,6 +401,13 @@
     <wsdl:part name="id_mat" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="eliminarMaterialResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDMRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="sub" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDMResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:portType name="WSPHPPortType">
@@ -554,6 +576,11 @@
       <wsdl:input message="tns:buscarTallerXIDescuelaRequest" />
       <wsdl:output message="tns:buscarTallerXIDescuelaResponse" />
     </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDT">
+      <documentation>buscar ID MAX taller</documentation>
+      <wsdl:input message="tns:buscarMAXIDTRequest" />
+      <wsdl:output message="tns:buscarMAXIDTResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosAhasT">
       <documentation>Cargar datos AT</documentation>
       <wsdl:input message="tns:cargarDatosAhasTRequest" />
@@ -604,6 +631,11 @@
       <wsdl:input message="tns:buscarDinamicaXTallerYEscuelaRequest" />
       <wsdl:output message="tns:buscarDinamicaXTallerYEscuelaResponse" />
     </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDD">
+      <documentation>buscar ID MAX dinamica</documentation>
+      <wsdl:input message="tns:buscarMAXIDDRequest" />
+      <wsdl:output message="tns:buscarMAXIDDResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosMaterial">
       <documentation>Cargar datos material</documentation>
       <wsdl:input message="tns:cargarDatosMaterialRequest" />
@@ -628,6 +660,11 @@
       <documentation>eliminar datos material</documentation>
       <wsdl:input message="tns:eliminarMaterialRequest" />
       <wsdl:output message="tns:eliminarMaterialResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDM">
+      <documentation>buscar ID MAX material</documentation>
+      <wsdl:input message="tns:buscarMAXIDMRequest" />
+      <wsdl:output message="tns:buscarMAXIDMResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSPHPBinding" type="tns:WSPHPPortType">
@@ -929,6 +966,15 @@
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDT">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDT" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosAhasT">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosAhasT" style="rpc" />
       <wsdl:input>
@@ -1019,6 +1065,15 @@
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDD">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDD" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosMaterial">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosMaterial" style="rpc" />
       <wsdl:input>
@@ -1057,6 +1112,15 @@
     </wsdl:operation>
     <wsdl:operation name="eliminarMaterial">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarMaterial" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDM">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDM" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

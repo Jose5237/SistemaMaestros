@@ -325,10 +325,8 @@ namespace sistema_maestros1
                                 {
                                     string mensaje = wsPHP.agregarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
                                     MessageBox.Show(mensaje, "¡Alumno Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.WindowState = FormWindowState.Minimized;
-                                tutor_has_alumno tha = new tutor_has_alumno();
-                                tha.Show();
-                                tha.WindowState = FormWindowState.Normal;
+                                    tutor_has_alumno tha = new tutor_has_alumno();
+                                    tha.Show();
         
                                 }
                                 catch
@@ -489,10 +487,10 @@ namespace sistema_maestros1
                         {
                             MessageBox.Show("No se encuentra ningun Padre o Tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este usuario", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
-        
-        
                     }
                 }
+                else
+                    cargarDatosTabla();
             }
         public void generarID()
         {

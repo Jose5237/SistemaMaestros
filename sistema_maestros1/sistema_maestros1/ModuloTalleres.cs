@@ -193,7 +193,7 @@ namespace sistema_maestros1
             opcionBotones = 0;
             btnAceptar.BackColor = Color.YellowGreen;
             cbEscuelaTaller.Enabled = true; cbEscuelaTaller.Text = "Seleccionar Escuela";
-            txtIdTaller.Enabled = true; txtIdTaller.Text = "";
+            txtIdTaller.Text = "";
             txtNombreTaller.Enabled = true; txtNombreTaller.Text = "";
             txtDescripcionTaller.Enabled = true; txtDescripcionTaller.Text = "";
             txtCostoTaller.Enabled = true; txtCostoTaller.Text = "";
@@ -222,7 +222,7 @@ namespace sistema_maestros1
             opcionBotones = 1;
             btnAceptar.BackColor = Color.SkyBlue;
             cbEscuelaTaller.Enabled = true; 
-            txtIdTaller.Enabled = true; 
+           
             txtNombreTaller.Enabled = true; 
             txtDescripcionTaller.Enabled = true;
             txtCostoTaller.Enabled = true; 
@@ -259,30 +259,46 @@ namespace sistema_maestros1
 
             btnAceptar.Enabled = true;
         }
-
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar pr|el|qi
+            sub1 = txtNombreTaller.Text.Substring(0, 3);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDT(txtIdEscuela.Text, sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(3, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label16.Text = newID;
+        }
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cbEscuelaTaller.Text != "Seleccionar Escuela" && txtIdTaller.Text != "" && txtNombreTaller.Text != "" && txtCostoTaller.Text != "" && txtDescripcionTaller.Text != ""  && dtFechaIniTaller.Text != "" && dtFechaFinTaller.Text != "" && cbNivelTaller.Text != "" && cbGradoTaller.Text != "" /*&& txtIdProfesorTaller.Text != "" */&& txtHabilidadesTaller.Text != "" && txtJustificacionCostoTaller.Text != "" && txtHerramientasTaller.Text != "")
+            if (cbEscuelaTaller.Text != "Seleccionar Escuela" && txtNombreTaller.Text != "" && txtCostoTaller.Text != "" && txtDescripcionTaller.Text != ""  && dtFechaIniTaller.Text != "" && dtFechaFinTaller.Text != "" && cbNivelTaller.Text != "" && cbGradoTaller.Text != "" /*&& txtIdProfesorTaller.Text != "" */&& txtHabilidadesTaller.Text != "" && txtJustificacionCostoTaller.Text != "" && txtHerramientasTaller.Text != "")
             {
         
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                   
-        
                     txtFechaInicio.Text = dtFechaIniTaller.Text;
                     txtFechaFin.Text = dtFechaFinTaller.Text;
-
                     //string data = "";
                     if (opcionBotones == 0)
-                  {
-
+                    {
                         
-        
+                      generarID();
                       ClassTaller ta = new ClassTaller();
-        
                       ta.ta_id_escuela = txtIdEscuela.Text;
-                      ta.ta_id_taller = txtIdTaller.Text;
+                      ta.ta_id_taller = label16.Text;
                       ta.ta_nombre_taller = txtNombreTaller.Text;
                       ta.ta_costo_taller = Convert.ToDouble(txtCostoTaller.Text);
                       ta.ta_descripcion_taller = txtDescripcionTaller.Text;
@@ -348,7 +364,7 @@ namespace sistema_maestros1
                     {
                         ClassTaller ta = new ClassTaller();
                         ta.ta_id_taller = txtIdTaller.Text;
-        
+                        ta.ta_id_escuela = txtIdEscuela.Text;
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
                             string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);

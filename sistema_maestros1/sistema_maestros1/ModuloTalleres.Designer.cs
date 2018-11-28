@@ -87,6 +87,7 @@
             this.txtProfeTaller = new System.Windows.Forms.TextBox();
             this.dgvProfeTaller = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaller)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfeTaller)).BeginInit();
@@ -784,12 +785,22 @@
             this.pictureBox1.TabIndex = 136;
             this.pictureBox1.TabStop = false;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(66, 594);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 13);
+            this.label16.TabIndex = 137;
+            this.label16.Text = "label16";
+            // 
             // ModuloTalleres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 725);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvProfeTaller);
             this.Controls.Add(this.txtProfeTaller);
@@ -913,5 +924,6 @@
         public System.Windows.Forms.TextBox txtIdEscuela;
         public System.Windows.Forms.TextBox txtFechaInicio;
         public System.Windows.Forms.TextBox txtFechaFin;
+        private System.Windows.Forms.Label label16;
     }
 }
