@@ -208,9 +208,8 @@ namespace sistema_maestros1
             //BOTON AGREGAR ALUMNO
             private void btnAgregarAlumno_Click(object sender, EventArgs e)
             {
-                
+                dgvAlumnos.Enabled = false;
                 opcionBotones = 0;
-        
                 cbEscuelaAlumno.Enabled = true; cbEscuelaAlumno.Text = "Seleccionar Escuela";
                 txtIdEscuelaAlumno.Text = "";
                 txtIdAlumno.Text = "";
@@ -219,26 +218,22 @@ namespace sistema_maestros1
                 txtApellidoMatAlumno.Enabled = true; txtApellidoMatAlumno.Text = "";
                 cbGradoAlumno.Enabled = true; cbGradoAlumno.Text = "Seleccionar Grado";
                 cbNivelAlumno.Enabled = true; cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
-            cbStatusAlumno.Enabled = true; cbStatusAlumno.Text = "Seleccionar Status";
+                cbStatusAlumno.Enabled = true; cbStatusAlumno.Text = "Seleccionar Status";
                 btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
-            btnAsignarPadre.Visible = false; 
-        
-        
-        
-        
+                btnAsignarPadre.Visible = false; 
             }
         
             //BOTON MODIFICAR ALUMNO
             private void btnModificarAlumno_Click(object sender, EventArgs e)
             {
-            
-            opcionBotones = 1;
+                dgvAlumnos.Enabled = true;
+                opcionBotones = 1;
                 txtNombreAlumno.Enabled = true;
                 txtApellidoPatAlumno.Enabled = true; 
                 txtApellidoMatAlumno.Enabled = true;
-            cbStatusAlumno.Enabled = true;
+                cbStatusAlumno.Enabled = true;
                 btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
-            btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true;
+                btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true;
 
             Globales.id_escuela = txtIdEscuelaAlumno.Text;
             Globales.id_alumno = txtIdAlumno.Text;
@@ -249,7 +244,7 @@ namespace sistema_maestros1
         //BOTON ELIMINAR ALUMNO
         private void btnEliminarAlumno_Click(object sender, EventArgs e)
             {
-                
+                dgvAlumnos.Enabled = true;
                 opcionBotones = 2;
                 cbEscuelaAlumno.Enabled = false;
                 txtIdEscuelaAlumno.Enabled = false;
@@ -267,7 +262,7 @@ namespace sistema_maestros1
             //BOTON DE SALIR
             private void exit_Click(object sender, EventArgs e)
            {
-               if (MessageBox.Show("¿Estas seguro de cerrar ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+               if (MessageBox.Show("¿Estas seguro de volver al menu princiapal?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                {
                    this.Hide();
                    principal principal = new principal();
@@ -284,7 +279,7 @@ namespace sistema_maestros1
             //BOTON ACEPTAR (CRUD)
             private void btnAceptar_Click(object sender, EventArgs e)
             {
-            generarID();
+           
                 if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtNombreAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
                 {
                     if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -292,13 +287,10 @@ namespace sistema_maestros1
         
                         if (opcionBotones == 0)
                         {
-
+                            generarID();
                             ClassAlumno al = new ClassAlumno();
-
                             //al.al_id_escuela = Convert.ToString(cbEscuelaAlumno.SelectedIndex);
-        
                             al.al_id_escuela = txtIdEscuelaAlumno.Text;
-        
                             //al.al_id_escuela = cbEscuelaAlumno.Text;
                             al.al_id_alumno = label10.Text;
                             al.al_nombre_alumno = txtNombreAlumno.Text;
@@ -306,38 +298,32 @@ namespace sistema_maestros1
                             al.al_apellidoMat_alumno = txtApellidoMatAlumno.Text;
                             al.al_grado_alumno = cbGradoAlumno.Text;
                             al.al_nivel_educativo_alumno = cbNivelAlumno.Text;
-                        al.al_status_alumno = cbStatusAlumno.Text;
-
-                        Globales.id_escuela = al.al_id_escuela;
-                        Globales.id_alumno = al.al_id_alumno;
-                        Globales.nombre_alumno = al.al_nombre_alumno + " " + al.al_apellidoPat_alumno + " " + al.al_apellidoMat_alumno;
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            al.al_status_alumno = cbStatusAlumno.Text;
+                            Globales.id_escuela = al.al_id_escuela;
+                            Globales.id_alumno = al.al_id_alumno;
+                            Globales.nombre_alumno = al.al_nombre_alumno + " " + al.al_apellidoPat_alumno + " " + al.al_apellidoMat_alumno;
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                
                                 try
                                 {
                                     string mensaje = wsPHP.agregarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
                                     MessageBox.Show(mensaje, "¡Alumno Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     tutor_has_alumno tha = new tutor_has_alumno();
                                     tha.Show();
-        
                                 }
                                 catch
                                 {
-                                    MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido modificar los datos", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
         
                             }
-        
+                        dgvAlumnos.Enabled = true;
                         }
                         else if (opcionBotones == 1)
                         {
-                            ClassAlumno al = new ClassAlumno();
-        
-        
+                            ClassAlumno al = new ClassAlumno();  
                             //al.al_id_escuela = cbEscuelaAlumno.SelectedIndex + 1;
                             al.al_id_escuela = txtIdEscuelaAlumno.Text;
-        
                             //al.al_id_escuela = cbEscuelaAlumno.Text;
                             al.al_id_alumno = txtIdAlumno.Text;
                             al.al_nombre_alumno = txtNombreAlumno.Text;
@@ -345,51 +331,38 @@ namespace sistema_maestros1
                             al.al_apellidoMat_alumno = txtApellidoMatAlumno.Text;
                             al.al_grado_alumno = cbGradoAlumno.Text;
                             al.al_nivel_educativo_alumno = cbNivelAlumno.Text;
-                        al.al_status_alumno = cbStatusAlumno.Text;
-
-                        Globales.id_escuela = al.al_id_escuela;
-                        Globales.id_alumno = al.al_id_alumno;
-                        Globales.nombre_alumno = al.al_nombre_alumno + " " + al.al_apellidoPat_alumno + " " + al.al_apellidoMat_alumno;
-
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            al.al_status_alumno = cbStatusAlumno.Text;
+                            Globales.id_escuela = al.al_id_escuela;
+                            Globales.id_alumno = al.al_id_alumno;
+                            Globales.nombre_alumno = al.al_nombre_alumno + " " + al.al_apellidoPat_alumno + " " + al.al_apellidoMat_alumno;
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                
                                 try
                                 {
-        
                                     string mensaje = wsPHP.modificarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
                                     MessageBox.Show(mensaje, "¡Alumno Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                if (MessageBox.Show("¿Deseas tambien actualizar las relaciones de Padres con Alumno?", "Cambiar relacion Padres con Alumno", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                                {
-                                    tutor_has_alumno tha = new tutor_has_alumno();
-                                    tha.Show();
-                                }
-        
+                                    if (MessageBox.Show("¿Deseas tambien actualizar las relaciones de Padres con Alumno?", "Cambiar relacion Padres con Alumno", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                    {
+                                        tutor_has_alumno tha = new tutor_has_alumno();
+                                        tha.Show();
+                                    }
                                 }
                                 catch
                                 {
                                     MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-        
                             }
-        
-        
                         }
                         else if (opcionBotones == 2)
                         {
                             ClassAlumno al = new ClassAlumno();
-                            
                             al.al_id_alumno = txtIdAlumno.Text;
-        
                             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
                                 try
                                 {
                                    string mensaje = wsPHP.eliminarAlumno(al.al_id_alumno);
                                    MessageBox.Show(mensaje, "¡Usuario Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        
                                 }
                                 catch
                                 {
@@ -397,10 +370,8 @@ namespace sistema_maestros1
                                 }
                             }
                         }
-        
                         cargarDatosTabla();
-                    inicializacionCampos();
-
+                        inicializacionCampos();
                     }
                 }
                 else
@@ -409,10 +380,7 @@ namespace sistema_maestros1
                 }
             btnAceptar.BackColor = Color.Silver;
             }
-        
-
-        
-            //BOTON RELACIONAR ALUMNOS CON PADRES
+        //BOTON RELACIONAR ALUMNOS CON PADRES
             private void btnAsignarPadre_Click(object sender, EventArgs e)
             {
                 tutor_has_alumno tha = new tutor_has_alumno();
@@ -529,9 +497,7 @@ namespace sistema_maestros1
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtBuscadorAlumno.Text), typeof(DataTable));
                         dgvAlumnos.DataSource = dt;
-
                         NombresColumnas();
-
                     }
                     catch (Exception)
                     {
@@ -539,15 +505,13 @@ namespace sistema_maestros1
                         cargarDatosTabla();
                     }
                 }
-            } else
-            {
-                cargarDatosTabla();
             }
+            else
+                cargarDatosTabla();
         }
 
         public void cargarDatosTabla()
         {
-
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
 
@@ -563,8 +527,6 @@ namespace sistema_maestros1
                     MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
         }
 
         public void generarID()

@@ -215,9 +215,8 @@ namespace sistema_maestros1
         //BOTON AGREGAR ESCUELA
         private void btnAgregarEscuela_Click(object sender, EventArgs e)
         {
-            
             opcionBotones = 0;
-
+            dgvEscuela.Enabled = false;
             txtIdEscuela.Text = "";
             txtNombreEscuela.Enabled = true; txtNombreEscuela.Text = "";
             txtDireccionEscuela.Enabled = true; txtDireccionEscuela.Text = "";
@@ -227,7 +226,6 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = true; txtCorreoEscuela.Text = "";
             txtContactoEscuela.Enabled = true; txtContactoEscuela.Text = "";
             txtResponsablePagoEscuela.Enabled = true; txtResponsablePagoEscuela.Text = "";
-
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
@@ -235,7 +233,7 @@ namespace sistema_maestros1
         private void btnModificarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-
+            dgvEscuela.Enabled = true;
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = true;
             txtDireccionEscuela.Enabled = true; 
@@ -253,7 +251,7 @@ namespace sistema_maestros1
         private void btnEliminarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-            
+            dgvEscuela.Enabled = true;
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = false;
             txtDireccionEscuela.Enabled = false;
@@ -263,7 +261,6 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = false;
             txtContactoEscuela.Enabled = false;
             txtResponsablePagoEscuela.Enabled = false;
-
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
 
@@ -275,8 +272,6 @@ namespace sistema_maestros1
             {
                 //if (txtTel1Escuela.Text.Length == 10 || txtTel2Escuela.Text.Length == 10 || txtTel3Escuela.Text.Length == 10)
                 //{
-
-
                     if (opcionBotones == 0)
                     {
                         generarID();
@@ -301,7 +296,7 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
-
+                                    btnAceptar.BackColor = Color.Silver;
                                 }
                                 catch
                                 {
@@ -309,11 +304,6 @@ namespace sistema_maestros1
                                 }
                             }
                         }
-
-
-
-
-
                     }
                     else if (opcionBotones == 1)
                     {
@@ -339,6 +329,7 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
+                                    btnAceptar.BackColor = Color.Silver;
                                 }
                                 catch
                                 {
@@ -346,21 +337,13 @@ namespace sistema_maestros1
                                 }
                             }
                         }
-
-
-
-
-
                     }
                     else if (opcionBotones == 2)
                     {
-                        if (MessageBox.Show("¿Estas seguro de realizar esta accion? Recuerda que al eliminar una escuela tambien se eliminan todas sus relaciones (Alumnos, Talleres, Dinamicas, Materiales, Incidencias)", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("¿Estas seguro de eliminar los datos de "+ txtNombreEscuela.Text+ "? Si eliminas una escuela tambien se eliminaran los taller, dinamicas, materiales y alumnos de esta escuela ", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             ClassEscuela es = new ClassEscuela();
                             es.es_id_escuela = txtIdEscuela.Text;
-
-
-
                             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
                                 try
@@ -369,6 +352,7 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
+                                    btnAceptar.BackColor = Color.Silver;
                                 }
                                 catch
                                 {

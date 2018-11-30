@@ -207,7 +207,7 @@ namespace sistema_maestros1
         private void btnAgregarPadre_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
-
+            dgvPadre.Enabled = false;
             txtIdPadre.Text = "";
             tctNombrePadre.Enabled = true; tctNombrePadre.Text = "";
             txtApellidoPatPadre.Enabled = true; txtApellidoPatPadre.Text = "";
@@ -215,7 +215,6 @@ namespace sistema_maestros1
             txtTelefonoPadre.Enabled = true; txtTelefonoPadre.Text = "";
             cbParentescoPadre.Enabled = true; cbParentescoPadre.Text = "Seleccionar el parentesco";
             txtCorreoPadre.Enabled = true; txtCorreoPadre.Text = "";
-            
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
@@ -223,15 +222,13 @@ namespace sistema_maestros1
         private void btnModificarPadre_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-
-            
+            dgvPadre.Enabled = true;
             tctNombrePadre.Enabled = true; 
             txtApellidoPatPadre.Enabled = true; 
             txtApellidoMatPadre.Enabled = true; 
             txtTelefonoPadre.Enabled = true;
-            cbParentescoPadre.Enabled = true;
+            cbParentescoPadre.Enabled = false;
             txtCorreoPadre.Enabled = true;
-
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
         }
 
@@ -239,7 +236,7 @@ namespace sistema_maestros1
         private void btnEliminarPadre_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-
+            dgvPadre.Enabled = true;
             txtIdPadre.Enabled = false;
             tctNombrePadre.Enabled = false;
             txtApellidoPatPadre.Enabled = false;
@@ -247,23 +244,20 @@ namespace sistema_maestros1
             txtTelefonoPadre.Enabled = false;
             cbParentescoPadre.Enabled = false;
             txtCorreoPadre.Enabled = false;
-
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
 
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco"/*txtParentesco.Text != ""*/ && txtCorreoPadre.Text != "" )
+            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco"&& txtCorreoPadre.Text != "" )
             {
-                generarID();
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if (opcionBotones == 0)
                     {
-                        
+                        generarID();
                         ClassPadres tu = new ClassPadres();
-
                         tu.tu_id_tutor = label7.Text;
                         tu.tu_nombre_tutor = tctNombrePadre.Text;
                         tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
@@ -277,10 +271,10 @@ namespace sistema_maestros1
                             
                              try
                              {
-
+                                dgvPadre.Enabled = true;
                                 string mensaje = wsPHP.agregarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
                                 MessageBox.Show(mensaje, "¡Usuario Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                btnAceptar.BackColor = Color.Silver;
                             }
                              catch
                              {
@@ -291,7 +285,6 @@ namespace sistema_maestros1
                     else if (opcionBotones == 1)
                     {
                         ClassPadres tu = new ClassPadres();
-
                         tu.tu_id_tutor = txtIdPadre.Text;
                         tu.tu_nombre_tutor = tctNombrePadre.Text;
                         tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
@@ -302,19 +295,16 @@ namespace sistema_maestros1
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-
-                            string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
-                            MessageBox.Show(mensaje, "¡Usuario modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                           //try
-                           //{
-                           //    
-                           //
-                           //}
-                           //catch
-                           //{
-                           //    MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //}
+                           try
+                           {
+                                string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
+                                MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnAceptar.BackColor = Color.Silver;
+                            }
+                           catch
+                           {
+                               MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                           }
                         }
 
                     }
@@ -328,7 +318,7 @@ namespace sistema_maestros1
                             try
                             {
                                 string mensaje = wsPHP.eliminarTutor(tu.tu_id_tutor);
-                                MessageBox.Show(mensaje, "¡Usuario Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show(mensaje, "¡Tutor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             }
                             catch
@@ -339,16 +329,12 @@ namespace sistema_maestros1
                     }
                     cargarDatosTabla();
                     inicializacionCampos();
-                    
-
                 }
             }
             else
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
             
         }
-
-        
 
         private void ModuloPadre_o_Tutor_Load(object sender, EventArgs e)
         {
