@@ -183,7 +183,7 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = true; txtApellidoMatProfe.Text = "";
             txtPasswordProfe.Enabled = true; txtPasswordProfe.Text = "";
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
         //BOTON MODIFICAR PROFESOR
@@ -197,7 +197,7 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = true;
             txtPasswordProfe.Enabled = true;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
         }
 
         //BOTON ELIMINAR PROFESOR
@@ -211,36 +211,19 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = false;
             txtPasswordProfe.Enabled = false;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
-        public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar tu|ma|pa
-            sub1 = "p";
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.BuscarMAXIDP();
-            if (ultimoID == "")
-                n = 0;
-            else
-                //guardar el numero del ultimo ID
-                n = Convert.ToInt32(ultimoID.Substring(1, 4));
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (4 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + sub2 + Convert.ToString(n);
-            label7.Text = newID;
-        }
+
 
         //BOTON DE ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ( txtNombreProfe.Text != "" && txtApellidoPatProfe.Text != "" && txtApellidoMatProfe.Text != "" && txtPasswordProfe.Text != "")
+            if (txtNombreProfe.Text != "" && txtApellidoPatProfe.Text != "" && txtApellidoMatProfe.Text != "" && txtPasswordProfe.Text != "")
             {
+                if (txtPasswordProfe.Text.Length > 5)
+                {
+
+                
 
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -315,28 +298,16 @@ namespace sistema_maestros1
                         }
                     }
 
-                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                    {
-                        try
-                        {
-                            DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosProfesor(), typeof(DataTable));
-                            dgvProfe.DataSource = dt;
+                    cargarDatosTabla();
+                    inicializacionCampos();
 
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
 
-                    txtIdProfe.Enabled = false; txtIdProfe.Text = "";
-                    txtNombreProfe.Enabled = false; txtNombreProfe.Text = "";
-                    txtApellidoPatProfe.Enabled = false; txtApellidoPatProfe.Text = "";
-                    txtApellidoMatProfe.Enabled = false; txtApellidoMatProfe.Text = "";
-                    txtPasswordProfe.Enabled = false; txtPasswordProfe.Text = "";
-                    btnAceptar.Enabled = false;
 
                 }
+            } else
+            {
+                MessageBox.Show("La contraseña debe tener almenos 6 caracteres", "¡Contraseña Insegura!");
+            }
 
             }
             else
@@ -347,11 +318,7 @@ namespace sistema_maestros1
 
         private void ModuloProfesores_Load(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosProfesor(), typeof(DataTable));
-                dgvProfe.DataSource = dt;
-            }
+            cargarDatosTabla();
         }
 
         private void dgvProfe_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -375,31 +342,28 @@ namespace sistema_maestros1
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarDatosProfesor(txtBuscadorProfe.Text), typeof(DataTable));
                         dgvProfe.DataSource = dt;
-                        dgvProfe.Columns[0].HeaderText = "ID Profesor";
-                        dgvProfe.Columns[1].HeaderText = "Nombre";
-                        dgvProfe.Columns[2].HeaderText = "Apellido Paterno";
-                        dgvProfe.Columns[3].HeaderText = "Apellido Materno";
-                        dgvProfe.Columns[4].HeaderText = "Contraseña";
+                        NombresColumnas();
 
                     }
-                    catch
+                    catch (Exception)
                     {
-                        MessageBox.Show("No se encuentra ninguna escuela con estos datos, Por favor ingrese un nombre o ID Escuela correcto", "No existe esta escuela", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("No se encuentra ningun Profesor con estos datos, Por favor ingrese un nombre o ID Profesor correcto", "No existe este profesor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
                     }
 
 
                 }
             }
+            else
+            {
+                cargarDatosTabla();
+            }
         }
 
         private void dgvProfe_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            dgvProfe.Columns[0].HeaderText = "ID Profesor";
-            dgvProfe.Columns[1].HeaderText = "Nombre";
-            dgvProfe.Columns[2].HeaderText = "Apellido Paterno";
-            dgvProfe.Columns[3].HeaderText = "Apellido Materno";
-            dgvProfe.Columns[4].HeaderText = "Contraseña";
 
+            NombresColumnas();
             txtIdProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtNombreProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtApellidoPatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[2].Value.ToString());
@@ -421,5 +385,68 @@ namespace sistema_maestros1
         {
             v.SoloLetras(e);
         }
+
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosProfesor(), typeof(DataTable));
+                    dgvProfe.DataSource = dt;
+                    NombresColumnas();
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = "p";
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXIDP();
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(1, 4));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label7.Text = newID;
+        }
+
+        public void NombresColumnas()
+        {
+            dgvProfe.Columns[0].HeaderText = "ID Profesor";
+            dgvProfe.Columns[1].HeaderText = "Nombre";
+            dgvProfe.Columns[2].HeaderText = "Apellido Paterno";
+            dgvProfe.Columns[3].HeaderText = "Apellido Materno";
+            dgvProfe.Columns[4].HeaderText = "Contraseña";
+        }
+
+        public void inicializacionCampos()
+        {
+            txtIdProfe.Enabled = false; txtIdProfe.Text = "";
+            txtNombreProfe.Enabled = false; txtNombreProfe.Text = "";
+            txtApellidoPatProfe.Enabled = false; txtApellidoPatProfe.Text = "";
+            txtApellidoMatProfe.Enabled = false; txtApellidoMatProfe.Text = "";
+            txtPasswordProfe.Enabled = false; txtPasswordProfe.Text = "";
+
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
+        }
+
     }
 }

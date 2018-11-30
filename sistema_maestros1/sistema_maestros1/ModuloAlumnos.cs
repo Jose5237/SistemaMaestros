@@ -37,14 +37,7 @@ namespace sistema_maestros1
 
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvAlumnos.Columns[0].HeaderText = "Escuela";
-            dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
-            dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
-            dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
-            dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
-            dgvAlumnos.Columns[5].HeaderText = "Grado";
-            dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
-            dgvAlumnos.Columns[7].HeaderText = "Status";
+            NombresColumnas();
 
             cbEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtIdEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -215,7 +208,7 @@ namespace sistema_maestros1
             //BOTON AGREGAR ALUMNO
             private void btnAgregarAlumno_Click(object sender, EventArgs e)
             {
-                btnAceptar.BackColor = Color.YellowGreen;
+                
                 opcionBotones = 0;
         
                 cbEscuelaAlumno.Enabled = true; cbEscuelaAlumno.Text = "Seleccionar Escuela";
@@ -227,8 +220,8 @@ namespace sistema_maestros1
                 cbGradoAlumno.Enabled = true; cbGradoAlumno.Text = "Seleccionar Grado";
                 cbNivelAlumno.Enabled = true; cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
             cbStatusAlumno.Enabled = true; cbStatusAlumno.Text = "Seleccionar Status";
-                btnAceptar.Enabled = true; 
-                btnAsignarPadre.Visible = false; 
+                btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
+            btnAsignarPadre.Visible = false; 
         
         
         
@@ -238,14 +231,14 @@ namespace sistema_maestros1
             //BOTON MODIFICAR ALUMNO
             private void btnModificarAlumno_Click(object sender, EventArgs e)
             {
-            btnAceptar.BackColor = Color.SkyBlue;
+            
             opcionBotones = 1;
                 txtNombreAlumno.Enabled = true;
                 txtApellidoPatAlumno.Enabled = true; 
                 txtApellidoMatAlumno.Enabled = true;
             cbStatusAlumno.Enabled = true;
-                btnAceptar.Enabled = true;
-                btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true;
+                btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
+            btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true;
 
             Globales.id_escuela = txtIdEscuelaAlumno.Text;
             Globales.id_alumno = txtIdAlumno.Text;
@@ -256,7 +249,7 @@ namespace sistema_maestros1
         //BOTON ELIMINAR ALUMNO
         private void btnEliminarAlumno_Click(object sender, EventArgs e)
             {
-                btnAceptar.BackColor = Color.IndianRed;
+                
                 opcionBotones = 2;
                 cbEscuelaAlumno.Enabled = false;
                 txtIdEscuelaAlumno.Enabled = false;
@@ -267,8 +260,8 @@ namespace sistema_maestros1
                 cbGradoAlumno.Enabled = false;
                 cbNivelAlumno.Enabled = false;
             cbStatusAlumno.Enabled = false;
-                btnAceptar.Enabled = true;
-                btnAsignarPadre.Visible = false;
+                btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
+            btnAsignarPadre.Visible = false;
             }
         
             //BOTON DE SALIR
@@ -406,17 +399,8 @@ namespace sistema_maestros1
                         }
         
                         cargarDatosTabla();
-                        cbEscuelaAlumno.Enabled = false; cbEscuelaAlumno.Text = "Seleccionar Escuela";
-                        txtIdEscuelaAlumno.Enabled = false; txtIdEscuelaAlumno.Text = "";
-                        txtIdAlumno.Enabled = false; txtIdAlumno.Text = "";
-                        txtNombreAlumno.Enabled = false; txtNombreAlumno.Text = "";
-                        txtApellidoPatAlumno.Enabled = false; txtApellidoPatAlumno.Text = "";
-                        txtApellidoMatAlumno.Enabled = false; txtApellidoMatAlumno.Text = "";
-                        cbGradoAlumno.Enabled = false; cbGradoAlumno.Text = "Seleccionar Grado";
-                        cbNivelAlumno.Enabled = false; cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
-                    cbStatusAlumno.Enabled = false; cbStatusAlumno.Text = "Seleccionar Status";
-                        btnAceptar.Enabled = false;
-                        btnAsignarPadre.Visible = false;
+                    inicializacionCampos();
+
                     }
                 }
                 else
@@ -426,36 +410,7 @@ namespace sistema_maestros1
             btnAceptar.BackColor = Color.Silver;
             }
         
-            public void cargarDatosTabla()
-            {
-        
-                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                {
-                    
-                    try
-                    {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
-                    dgvAlumnos.DataSource = dt;
 
-
-                    dgvAlumnos.Columns[0].HeaderText = "Escuela";
-                        dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
-                        dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
-                        dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
-                        dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
-                        dgvAlumnos.Columns[5].HeaderText = "Grado";
-                        dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
-                    dgvAlumnos.Columns[7].HeaderText = "Status";
-
-                }
-                    catch
-                    {
-                        MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-        
-        
-            }
         
             //BOTON RELACIONAR ALUMNOS CON PADRES
             private void btnAsignarPadre_Click(object sender, EventArgs e)
@@ -467,53 +422,7 @@ namespace sistema_maestros1
             
         
 
-        
-            private void txtBuscadorAlumno_TextChanged(object sender, EventArgs e)
-            {
-                if(txtBuscadorAlumno.Text != "")
-                {
-                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                    {
-        
-                        DataTable dt = new DataTable();
-                        try
-                        {
-                           dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtBuscadorAlumno.Text), typeof(DataTable));
-                           dgvAlumnos.DataSource = dt;
-        
-        
-                        }
-                        catch
-                        {
-                            MessageBox.Show("No se encuentra ningun Padre o Tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este usuario", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
-                    }
-                }
-                else
-                    cargarDatosTabla();
-            }
-        public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar tu|ma|pa
-            sub1 = txtIdEscuelaAlumno.Text;
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.BuscarMAXIDA(sub1);
-            if (ultimoID == "")
-                n = 0;
-            else
-                //guardar el numero del ultimo ID
-                n = Convert.ToInt32(ultimoID.Substring(8, 4));
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (4 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + "a" + sub2 + Convert.ToString(n);
-            label10.Text = newID;
-        }
+
         private void cbEscuelaAlumno_SelectedIndexChanged(object sender, EventArgs e)
             {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
@@ -540,26 +449,14 @@ namespace sistema_maestros1
 
         private void ModuloAlumnos_Load_1(object sender, EventArgs e)
         {
-            cargarDatosTabla();
-
-             
-
+            
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
-                dgvAlumnos.DataSource = dt;
+                DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
+                dgvAlumnos.DataSource = dt1;
                 try
                 {
-
-
-                    dgvAlumnos.Columns[0].HeaderText = "Escuela";
-                    dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
-                    dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
-                    dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
-                    dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
-                    dgvAlumnos.Columns[5].HeaderText = "Grado";
-                    dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
-                    dgvAlumnos.Columns[7].HeaderText = "Status";
+                    NombresColumnas();
 
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
 
@@ -620,5 +517,130 @@ namespace sistema_maestros1
                 cbGradoAlumno.Items.Add("6°");
             }
         }
+
+        private void txtBuscadorAlumno_TextChanged(object sender, EventArgs e)
+        {
+            if(txtBuscadorAlumno.Text != "")
+            {
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                {
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtBuscadorAlumno.Text), typeof(DataTable));
+                        dgvAlumnos.DataSource = dt;
+
+                        NombresColumnas();
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre o ID Alumno correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
+                    }
+                }
+            } else
+            {
+                cargarDatosTabla();
+            }
+        }
+
+        public void cargarDatosTabla()
+        {
+
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
+                    dgvAlumnos.DataSource = dt;
+                    NombresColumnas();
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+        }
+
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = txtIdEscuelaAlumno.Text;
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXIDA(sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(8, 4));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + "a" + sub2 + Convert.ToString(n);
+            label10.Text = newID;
+        }
+
+        public void NombresColumnas()
+        {
+            dgvAlumnos.Columns[0].HeaderText = "Escuela";
+            dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
+            dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
+            dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
+            dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
+            dgvAlumnos.Columns[5].HeaderText = "Grado";
+            dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
+            dgvAlumnos.Columns[7].HeaderText = "Status";
+        }
+
+        public void inicializacionCampos()
+        {
+            cbEscuelaAlumno.Enabled = false; cbEscuelaAlumno.Text = "Seleccionar Escuela";
+            txtIdEscuelaAlumno.Enabled = false; txtIdEscuelaAlumno.Text = "";
+            txtIdAlumno.Enabled = false; txtIdAlumno.Text = "";
+            txtNombreAlumno.Enabled = false; txtNombreAlumno.Text = "";
+            txtApellidoPatAlumno.Enabled = false; txtApellidoPatAlumno.Text = "";
+            txtApellidoMatAlumno.Enabled = false; txtApellidoMatAlumno.Text = "";
+            cbGradoAlumno.Enabled = false; cbGradoAlumno.Text = "Seleccionar Grado";
+            cbNivelAlumno.Enabled = false; cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
+            cbStatusAlumno.Enabled = false; cbStatusAlumno.Text = "Seleccionar Status";
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
+            btnAsignarPadre.Visible = false;
+        }
+
+
+        //Metodos para no poder editar el texto de los combobox
+        #region
+
+        private void cbEscuelaAlumno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbNivelAlumno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbGradoAlumno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbStatusAlumno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
     }
-    }
+}

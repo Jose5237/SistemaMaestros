@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorTaller = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -47,7 +46,6 @@
             this.btnEliminarTaller = new System.Windows.Forms.Button();
             this.btnModificarTaller = new System.Windows.Forms.Button();
             this.btnAgregarTaller = new System.Windows.Forms.Button();
-            this.dgvTaller = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.dtFechaIniTaller = new System.Windows.Forms.DateTimePicker();
             this.dtFechaFinTaller = new System.Windows.Forms.DateTimePicker();
@@ -84,14 +82,11 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
             this.btnIncidencias2 = new System.Windows.Forms.Button();
-            this.txtProfeTaller = new System.Windows.Forms.TextBox();
-            this.dgvProfeTaller = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.dgvTaller = new System.Windows.Forms.DataGridView();
+            this.cbProfeTaller = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaller)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProfeTaller)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscadorTaller
@@ -209,6 +204,8 @@
             // btnEliminarTaller
             // 
             this.btnEliminarTaller.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarTaller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarTaller.BackgroundImage")));
+            this.btnEliminarTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarTaller.FlatAppearance.BorderSize = 0;
             this.btnEliminarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarTaller.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -217,13 +214,14 @@
             this.btnEliminarTaller.Name = "btnEliminarTaller";
             this.btnEliminarTaller.Size = new System.Drawing.Size(96, 37);
             this.btnEliminarTaller.TabIndex = 27;
-            this.btnEliminarTaller.Text = "Eliminar";
             this.btnEliminarTaller.UseVisualStyleBackColor = false;
             this.btnEliminarTaller.Click += new System.EventHandler(this.btnEliminarTaller_Click);
             // 
             // btnModificarTaller
             // 
-            this.btnModificarTaller.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarTaller.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarTaller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarTaller.BackgroundImage")));
+            this.btnModificarTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarTaller.FlatAppearance.BorderSize = 0;
             this.btnModificarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarTaller.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -232,13 +230,14 @@
             this.btnModificarTaller.Name = "btnModificarTaller";
             this.btnModificarTaller.Size = new System.Drawing.Size(96, 37);
             this.btnModificarTaller.TabIndex = 26;
-            this.btnModificarTaller.Text = "Modificar";
             this.btnModificarTaller.UseVisualStyleBackColor = false;
             this.btnModificarTaller.Click += new System.EventHandler(this.btnModificarTaller_Click);
             // 
             // btnAgregarTaller
             // 
-            this.btnAgregarTaller.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarTaller.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarTaller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarTaller.BackgroundImage")));
+            this.btnAgregarTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarTaller.FlatAppearance.BorderSize = 0;
             this.btnAgregarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarTaller.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -247,58 +246,15 @@
             this.btnAgregarTaller.Name = "btnAgregarTaller";
             this.btnAgregarTaller.Size = new System.Drawing.Size(96, 37);
             this.btnAgregarTaller.TabIndex = 25;
-            this.btnAgregarTaller.Text = "Agregar";
             this.btnAgregarTaller.UseVisualStyleBackColor = false;
             this.btnAgregarTaller.Click += new System.EventHandler(this.btnAgregarTaller_Click);
-            // 
-            // dgvTaller
-            // 
-            this.dgvTaller.AllowUserToAddRows = false;
-            this.dgvTaller.AllowUserToDeleteRows = false;
-            this.dgvTaller.AllowUserToOrderColumns = true;
-            this.dgvTaller.AllowUserToResizeColumns = false;
-            this.dgvTaller.AllowUserToResizeRows = false;
-            this.dgvTaller.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvTaller.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTaller.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvTaller.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTaller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTaller.EnableHeadersVisualStyles = false;
-            this.dgvTaller.GridColor = System.Drawing.Color.MistyRose;
-            this.dgvTaller.Location = new System.Drawing.Point(412, 107);
-            this.dgvTaller.MultiSelect = false;
-            this.dgvTaller.Name = "dgvTaller";
-            this.dgvTaller.ReadOnly = true;
-            this.dgvTaller.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTaller.Size = new System.Drawing.Size(715, 513);
-            this.dgvTaller.TabIndex = 35;
-            this.dgvTaller.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaller_CellContentClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label5.Location = new System.Drawing.Point(167, 323);
+            this.label5.Location = new System.Drawing.Point(167, 405);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 17);
             this.label5.TabIndex = 51;
@@ -309,28 +265,31 @@
             this.dtFechaIniTaller.CustomFormat = "yyyy-MM-dd";
             this.dtFechaIniTaller.Enabled = false;
             this.dtFechaIniTaller.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaIniTaller.Location = new System.Drawing.Point(170, 340);
+            this.dtFechaIniTaller.Location = new System.Drawing.Point(170, 422);
             this.dtFechaIniTaller.Name = "dtFechaIniTaller";
             this.dtFechaIniTaller.Size = new System.Drawing.Size(211, 20);
             this.dtFechaIniTaller.TabIndex = 6;
+            this.dtFechaIniTaller.ValueChanged += new System.EventHandler(this.dtFechaIniTaller_ValueChanged);
+            this.dtFechaIniTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaIniTaller_KeyPress);
             // 
             // dtFechaFinTaller
             // 
             this.dtFechaFinTaller.CustomFormat = "yyyy-MM-dd";
             this.dtFechaFinTaller.Enabled = false;
             this.dtFechaFinTaller.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaFinTaller.Location = new System.Drawing.Point(170, 383);
+            this.dtFechaFinTaller.Location = new System.Drawing.Point(170, 465);
             this.dtFechaFinTaller.Name = "dtFechaFinTaller";
             this.dtFechaFinTaller.Size = new System.Drawing.Size(211, 20);
             this.dtFechaFinTaller.TabIndex = 7;
             this.dtFechaFinTaller.ValueChanged += new System.EventHandler(this.dtFechaFinTaller_ValueChanged);
+            this.dtFechaFinTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaFinTaller_KeyPress);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label7.Location = new System.Drawing.Point(167, 363);
+            this.label7.Location = new System.Drawing.Point(167, 445);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 17);
             this.label7.TabIndex = 53;
@@ -341,7 +300,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label8.Location = new System.Drawing.Point(167, 406);
+            this.label8.Location = new System.Drawing.Point(167, 323);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(105, 17);
             this.label8.TabIndex = 55;
@@ -355,11 +314,12 @@
             "PRESCOLAR",
             "PRIMARIA",
             "SECUNDARIA"});
-            this.cbNivelTaller.Location = new System.Drawing.Point(170, 423);
+            this.cbNivelTaller.Location = new System.Drawing.Point(170, 340);
             this.cbNivelTaller.Name = "cbNivelTaller";
             this.cbNivelTaller.Size = new System.Drawing.Size(211, 21);
             this.cbNivelTaller.TabIndex = 8;
             this.cbNivelTaller.SelectedIndexChanged += new System.EventHandler(this.cbNivelTaller_SelectedIndexChanged);
+            this.cbNivelTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNivelTaller_KeyPress);
             // 
             // cbGradoTaller
             // 
@@ -372,10 +332,12 @@
             "4",
             "5",
             "6"});
-            this.cbGradoTaller.Location = new System.Drawing.Point(170, 464);
+            this.cbGradoTaller.Location = new System.Drawing.Point(170, 381);
             this.cbGradoTaller.Name = "cbGradoTaller";
             this.cbGradoTaller.Size = new System.Drawing.Size(211, 21);
             this.cbGradoTaller.TabIndex = 9;
+            this.cbGradoTaller.SelectedIndexChanged += new System.EventHandler(this.cbGradoTaller_SelectedIndexChanged);
+            this.cbGradoTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGradoTaller_KeyPress);
             // 
             // label9
             // 
@@ -393,7 +355,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label11.Location = new System.Drawing.Point(167, 447);
+            this.label11.Location = new System.Drawing.Point(167, 364);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 17);
             this.label11.TabIndex = 57;
@@ -567,12 +529,14 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Location = new System.Drawing.Point(170, 684);
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAceptar.Location = new System.Drawing.Point(170, 675);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 14;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // label13
@@ -595,6 +559,7 @@
             this.cbEscuelaTaller.Size = new System.Drawing.Size(211, 21);
             this.cbEscuelaTaller.TabIndex = 1;
             this.cbEscuelaTaller.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaTaller_SelectedIndexChanged);
+            this.cbEscuelaTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaTaller_KeyPress);
             // 
             // btnPagos2
             // 
@@ -622,7 +587,7 @@
             // txtFechaInicio
             // 
             this.txtFechaInicio.Enabled = false;
-            this.txtFechaInicio.Location = new System.Drawing.Point(265, 320);
+            this.txtFechaInicio.Location = new System.Drawing.Point(265, 402);
             this.txtFechaInicio.Name = "txtFechaInicio";
             this.txtFechaInicio.Size = new System.Drawing.Size(100, 20);
             this.txtFechaInicio.TabIndex = 118;
@@ -630,7 +595,7 @@
             // txtFechaFin
             // 
             this.txtFechaFin.Enabled = false;
-            this.txtFechaFin.Location = new System.Drawing.Point(277, 363);
+            this.txtFechaFin.Location = new System.Drawing.Point(277, 445);
             this.txtFechaFin.Name = "txtFechaFin";
             this.txtFechaFin.Size = new System.Drawing.Size(100, 20);
             this.txtFechaFin.TabIndex = 119;
@@ -646,7 +611,7 @@
             // txtHabilidadesTaller
             // 
             this.txtHabilidadesTaller.Enabled = false;
-            this.txtHabilidadesTaller.Location = new System.Drawing.Point(170, 567);
+            this.txtHabilidadesTaller.Location = new System.Drawing.Point(170, 554);
             this.txtHabilidadesTaller.Name = "txtHabilidadesTaller";
             this.txtHabilidadesTaller.Size = new System.Drawing.Size(211, 20);
             this.txtHabilidadesTaller.TabIndex = 11;
@@ -656,7 +621,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label10.Location = new System.Drawing.Point(167, 550);
+            this.label10.Location = new System.Drawing.Point(167, 537);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 17);
             this.label10.TabIndex = 122;
@@ -665,7 +630,7 @@
             // txtJustificacionCostoTaller
             // 
             this.txtJustificacionCostoTaller.Enabled = false;
-            this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(170, 607);
+            this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(170, 594);
             this.txtJustificacionCostoTaller.Name = "txtJustificacionCostoTaller";
             this.txtJustificacionCostoTaller.Size = new System.Drawing.Size(211, 20);
             this.txtJustificacionCostoTaller.TabIndex = 12;
@@ -675,7 +640,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label14.Location = new System.Drawing.Point(167, 590);
+            this.label14.Location = new System.Drawing.Point(167, 577);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(136, 17);
             this.label14.TabIndex = 124;
@@ -684,7 +649,7 @@
             // txtHerramientasTaller
             // 
             this.txtHerramientasTaller.Enabled = false;
-            this.txtHerramientasTaller.Location = new System.Drawing.Point(170, 647);
+            this.txtHerramientasTaller.Location = new System.Drawing.Point(170, 634);
             this.txtHerramientasTaller.Name = "txtHerramientasTaller";
             this.txtHerramientasTaller.Size = new System.Drawing.Size(211, 20);
             this.txtHerramientasTaller.TabIndex = 13;
@@ -694,7 +659,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label15.Location = new System.Drawing.Point(167, 630);
+            this.label15.Location = new System.Drawing.Point(167, 617);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(91, 17);
             this.label15.TabIndex = 126;
@@ -731,60 +696,6 @@
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
             // 
-            // txtProfeTaller
-            // 
-            this.txtProfeTaller.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtProfeTaller.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProfeTaller.Enabled = false;
-            this.txtProfeTaller.Location = new System.Drawing.Point(170, 505);
-            this.txtProfeTaller.Name = "txtProfeTaller";
-            this.txtProfeTaller.Size = new System.Drawing.Size(191, 20);
-            this.txtProfeTaller.TabIndex = 133;
-            this.txtProfeTaller.TextChanged += new System.EventHandler(this.txtProfeTaller_TextChanged);
-            // 
-            // dgvProfeTaller
-            // 
-            this.dgvProfeTaller.AllowUserToAddRows = false;
-            this.dgvProfeTaller.AllowUserToDeleteRows = false;
-            this.dgvProfeTaller.AllowUserToOrderColumns = true;
-            this.dgvProfeTaller.AllowUserToResizeColumns = false;
-            this.dgvProfeTaller.AllowUserToResizeRows = false;
-            this.dgvProfeTaller.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProfeTaller.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProfeTaller.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProfeTaller.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfeTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvProfeTaller.ColumnHeadersVisible = false;
-            this.dgvProfeTaller.EnableHeadersVisualStyles = false;
-            this.dgvProfeTaller.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProfeTaller.Location = new System.Drawing.Point(170, 525);
-            this.dgvProfeTaller.MultiSelect = false;
-            this.dgvProfeTaller.Name = "dgvProfeTaller";
-            this.dgvProfeTaller.ReadOnly = true;
-            this.dgvProfeTaller.RowHeadersVisible = false;
-            this.dgvProfeTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProfeTaller.Size = new System.Drawing.Size(211, 22);
-            this.dgvProfeTaller.TabIndex = 134;
-            this.dgvProfeTaller.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfeTaller_CellContentClick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(361, 505);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 136;
-            this.pictureBox1.TabStop = false;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -793,6 +704,60 @@
             this.label16.Size = new System.Drawing.Size(41, 13);
             this.label16.TabIndex = 137;
             this.label16.Text = "label16";
+            this.label16.Visible = false;
+            // 
+            // dgvTaller
+            // 
+            this.dgvTaller.AllowUserToAddRows = false;
+            this.dgvTaller.AllowUserToDeleteRows = false;
+            this.dgvTaller.AllowUserToOrderColumns = true;
+            this.dgvTaller.AllowUserToResizeColumns = false;
+            this.dgvTaller.AllowUserToResizeRows = false;
+            this.dgvTaller.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvTaller.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvTaller.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTaller.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTaller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTaller.EnableHeadersVisualStyles = false;
+            this.dgvTaller.GridColor = System.Drawing.Color.IndianRed;
+            this.dgvTaller.Location = new System.Drawing.Point(423, 105);
+            this.dgvTaller.MultiSelect = false;
+            this.dgvTaller.Name = "dgvTaller";
+            this.dgvTaller.ReadOnly = true;
+            this.dgvTaller.RowHeadersVisible = false;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTaller.Size = new System.Drawing.Size(704, 513);
+            this.dgvTaller.TabIndex = 138;
+            this.dgvTaller.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaller_CellContentClick);
+            // 
+            // cbProfeTaller
+            // 
+            this.cbProfeTaller.Enabled = false;
+            this.cbProfeTaller.FormattingEnabled = true;
+            this.cbProfeTaller.Location = new System.Drawing.Point(170, 511);
+            this.cbProfeTaller.Name = "cbProfeTaller";
+            this.cbProfeTaller.Size = new System.Drawing.Size(211, 21);
+            this.cbProfeTaller.TabIndex = 139;
+            this.cbProfeTaller.Text = "Seleccionar Profesor";
+            this.cbProfeTaller.SelectedIndexChanged += new System.EventHandler(this.cbProfeTaller_SelectedIndexChanged);
             // 
             // ModuloTalleres
             // 
@@ -800,10 +765,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 725);
+            this.Controls.Add(this.cbProfeTaller);
+            this.Controls.Add(this.dgvTaller);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dgvProfeTaller);
-            this.Controls.Add(this.txtProfeTaller);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
             this.Controls.Add(this.txtHerramientasTaller);
@@ -854,7 +818,6 @@
             this.Controls.Add(this.btnEliminarTaller);
             this.Controls.Add(this.btnModificarTaller);
             this.Controls.Add(this.btnAgregarTaller);
-            this.Controls.Add(this.dgvTaller);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloTalleres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -862,8 +825,6 @@
             this.Load += new System.EventHandler(this.ModuloTalleres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaller)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProfeTaller)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -912,12 +873,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnRecomendaciones2;
         private System.Windows.Forms.Button btnIncidencias2;
-        private System.Windows.Forms.TextBox txtProfeTaller;
-        private System.Windows.Forms.DataGridView dgvProfeTaller;
-        private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.TextBox txtBuscadorTaller;
         public System.Windows.Forms.TextBox txtIdTaller;
-        public System.Windows.Forms.DataGridView dgvTaller;
         public System.Windows.Forms.DateTimePicker dtFechaIniTaller;
         public System.Windows.Forms.DateTimePicker dtFechaFinTaller;
         public System.Windows.Forms.ComboBox cbEscuelaTaller;
@@ -925,5 +882,7 @@
         public System.Windows.Forms.TextBox txtFechaInicio;
         public System.Windows.Forms.TextBox txtFechaFin;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView dgvTaller;
+        private System.Windows.Forms.ComboBox cbProfeTaller;
     }
 }

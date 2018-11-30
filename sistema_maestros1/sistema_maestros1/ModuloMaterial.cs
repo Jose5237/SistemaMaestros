@@ -239,7 +239,7 @@ namespace sistema_maestros1
             //guardar dpro|dele|dqui
             sub1 = "m" + cbTallerMaterial.Text.Substring(0, 3);
             //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, sub1);
+            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, txtIdTaller.Text, txtIdDinamica.Text ,sub1);
             if (ultimoID == "")
                 n = 0;
             else
@@ -302,11 +302,14 @@ namespace sistema_maestros1
                     else if (opcionBotones == 2)
                     {
                         ClassMaterial ma = new ClassMaterial();
+                        ma.ma_id_escuela = txtIdEscuela.Text;
+                        ma.ma_id_taller = txtIdTaller.Text;
+                        ma.ma_id_dinamica = txtIdDinamica.Text;
                         ma.ma_id_material = txtIdMaterial.Text;
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-                          //  string mensaje = wsPHP.eliminarMaterial(ma.ma_id_material);
-                          //  MessageBox.Show(mensaje, "¡Material Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string mensaje = wsPHP.eliminarMaterial(ma.ma_id_escuela, ma.ma_id_taller, ma.ma_id_dinamica,ma.ma_id_material);
+                            MessageBox.Show(mensaje, "¡Material Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
                     }

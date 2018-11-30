@@ -28,6 +28,7 @@ namespace sistema_maestros1
 
         int opcionBotones = 0;
 
+        //BOTONES DEL MODULO (no tan importantes)
         #region
         //BOTON DE SALIR
         private void exit_Click(object sender, EventArgs e)
@@ -181,11 +182,40 @@ namespace sistema_maestros1
         #endregion
 
 
+        //METODOS PARA VALIDAR
+        #region
         //METODO DE txtCostoTaller PARA ACEPTAR SOLO NUMEROS
         private void txtCostoTaller_KeyPress(object sender, KeyPressEventArgs e)
         {
             v.SoloNumerosDecimal(e);
         }
+
+        private void cbEscuelaTaller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void dtFechaIniTaller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void dtFechaFinTaller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbNivelTaller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbGradoTaller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
 
         //BOTON AGREGAR TALLER
         private void btnAgregarTaller_Click(object sender, EventArgs e)
@@ -205,14 +235,14 @@ namespace sistema_maestros1
             cbNivelTaller.Enabled = true; cbNivelTaller.Text = "Seleccionar Nivel Educativo";
             cbGradoTaller.Enabled = true; cbGradoTaller.Text = "Seleccionar Grado";
             
-            txtIdProfesorTaller.Enabled = true; txtIdProfesorTaller.Text = "";
-            txtProfeTaller.Enabled = true; txtProfeTaller.Text = "";
+            txtIdProfesorTaller.Enabled = false; txtIdProfesorTaller.Text = "";
+            cbProfeTaller.Enabled = true; cbProfeTaller.Text = "Seleccionar Profesor";
 
             txtHabilidadesTaller.Enabled = true; txtHabilidadesTaller.Text = "";
             txtJustificacionCostoTaller.Enabled = true; txtJustificacionCostoTaller.Text = "";
             txtHerramientasTaller.Enabled = true; txtHerramientasTaller.Text = "";
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
 
         }
 
@@ -221,7 +251,7 @@ namespace sistema_maestros1
         {
             opcionBotones = 1;
             btnAceptar.BackColor = Color.SkyBlue;
-            cbEscuelaTaller.Enabled = true; 
+            cbEscuelaTaller.Enabled = false;
            
             txtNombreTaller.Enabled = true; 
             txtDescripcionTaller.Enabled = true;
@@ -230,12 +260,12 @@ namespace sistema_maestros1
             dtFechaFinTaller.Enabled = true; 
             cbNivelTaller.Enabled = true; 
             cbGradoTaller.Enabled = true; 
-            txtIdProfesorTaller.Enabled = true;
+            txtIdProfesorTaller.Enabled = false;
             txtHabilidadesTaller.Enabled = true;
             txtJustificacionCostoTaller.Enabled = true;
             txtHerramientasTaller.Enabled = true;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
         }
 
         //BOTON ELIMINAR TALLER
@@ -253,162 +283,158 @@ namespace sistema_maestros1
             cbNivelTaller.Enabled = false;
             cbGradoTaller.Enabled = false;
             txtIdProfesorTaller.Enabled = false;
+            cbProfeTaller.Enabled = false;
             txtHabilidadesTaller.Enabled = false;
             txtJustificacionCostoTaller.Enabled = false;
             txtHerramientasTaller.Enabled = false;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
-        public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar pr|el|qi
-            sub1 = txtNombreTaller.Text.Substring(0, 3);
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.buscarMAXIDT(txtIdEscuela.Text, sub1);
-            if (ultimoID == "")
-                n = 0;
-            else
-                //guardar el numero del ultimo ID
-                n = Convert.ToInt32(ultimoID.Substring(3, 3));
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (3 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + sub2 + Convert.ToString(n);
-            label16.Text = newID;
-        }
+
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cbEscuelaTaller.Text != "Seleccionar Escuela" && txtNombreTaller.Text != "" && txtCostoTaller.Text != "" && txtDescripcionTaller.Text != ""  && dtFechaIniTaller.Text != "" && dtFechaFinTaller.Text != "" && cbNivelTaller.Text != "" && cbGradoTaller.Text != "" /*&& txtIdProfesorTaller.Text != "" */&& txtHabilidadesTaller.Text != "" && txtJustificacionCostoTaller.Text != "" && txtHerramientasTaller.Text != "")
+            if (cbEscuelaTaller.Text != "Seleccionar Escuela" && txtNombreTaller.Text != "" && txtCostoTaller.Text != "" && txtDescripcionTaller.Text != "" && dtFechaIniTaller.Text != "" && dtFechaFinTaller.Text != "" && cbNivelTaller.Text != "" && cbGradoTaller.Text != "" && cbProfeTaller.Text != "Seleccionar Profesor" && txtHabilidadesTaller.Text != "" && txtJustificacionCostoTaller.Text != "" && txtHerramientasTaller.Text != "")
             {
-        
-                if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    txtFechaInicio.Text = dtFechaIniTaller.Text;
+
+                
+                ClassTaller tal = new ClassTaller();
+                tal.ta_id_escuela = txtIdEscuela.Text;
+                tal.ta_fecha_ini_taller = txtFechaInicio.Text;
+                tal.ta_fecha_fin_taller = txtFechaInicio.Text;
+                tal.ta_nivel_educativo_taller = cbNivelTaller.Text;
+                tal.ta_grados_taller = cbGradoTaller.Text;
+
+                webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+                int consultar = wsPHP.validarTallerXgrupo(tal.ta_id_escuela, tal.ta_nivel_educativo_taller, tal.ta_grados_taller, tal.ta_fecha_ini_taller);
+
+
+
+                txtFechaInicio.Text = dtFechaIniTaller.Text;
                     txtFechaFin.Text = dtFechaFinTaller.Text;
                     //string data = "";
                     if (opcionBotones == 0)
                     {
+
+                    if (consultar == 0)
+                    {
+                        if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            generarID();
+                            ClassTaller ta = new ClassTaller();
+                            ta.ta_id_escuela = txtIdEscuela.Text;
+                            ta.ta_id_taller = label16.Text;
+                            ta.ta_nombre_taller = txtNombreTaller.Text;
+                            ta.ta_costo_taller = Convert.ToDouble(txtCostoTaller.Text);
+                            ta.ta_descripcion_taller = txtDescripcionTaller.Text;
+                            ta.ta_fecha_ini_taller = dtFechaIniTaller.Text;
+                            ta.ta_fecha_fin_taller = dtFechaFinTaller.Text;
+                            ta.ta_nivel_educativo_taller = cbNivelTaller.Text;
+                            ta.ta_grados_taller = cbGradoTaller.Text;
+                            //ta.ta_id_profesor_taller = cbProfesorTaller.Text;
+                            ta.ta_id_profesor = txtIdProfesorTaller.Text;
+                            ta.ta_habilidades_taller = txtHabilidadesTaller.Text;
+                            ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
+                            ta.ta_herramientas_taller = txtHerramientasTaller.Text;
+
+                            Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
+
+                            //data = JsonConvert.SerializeObject(ta, Newtonsoft.Json.Formatting.Indented);
+
+                            //using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            //{
+                            string mensaje = wsPHP.agregarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
+                            MessageBox.Show(mensaje, "¡Taller Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            //}
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pueden asignar 2 taller a los mismos grupos en un mismo periodo de tiempo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                         
-                      generarID();
-                      ClassTaller ta = new ClassTaller();
-                      ta.ta_id_escuela = txtIdEscuela.Text;
-                      ta.ta_id_taller = label16.Text;
-                      ta.ta_nombre_taller = txtNombreTaller.Text;
-                      ta.ta_costo_taller = Convert.ToDouble(txtCostoTaller.Text);
-                      ta.ta_descripcion_taller = txtDescripcionTaller.Text;
-                      ta.ta_fecha_ini_taller = dtFechaIniTaller.Text;
-                      ta.ta_fecha_fin_taller = dtFechaFinTaller.Text;
-                      ta.ta_nivel_educativo_taller = cbNivelTaller.Text;
-                      ta.ta_grados_taller = cbGradoTaller.Text;
-                      //ta.ta_id_profesor_taller = cbProfesorTaller.Text;
-                      ta.ta_id_profesor = txtIdProfesorTaller.Text;
-                      ta.ta_habilidades_taller = txtHabilidadesTaller.Text;
-                      ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
-                      ta.ta_herramientas_taller = txtHerramientasTaller.Text;
+                        
 
-                        Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
 
-                        //data = JsonConvert.SerializeObject(ta, Newtonsoft.Json.Formatting.Indented);
 
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                      {
-                          string mensaje = wsPHP.agregarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
-                          MessageBox.Show(mensaje, "¡Taller Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                          
-                      }
-        
-        
-        
-              }
+                    }
+
+                    
                     else if (opcionBotones == 1)
                     {
-        
-                        
-        
-                        ClassTaller ta = new ClassTaller();
-        
-                        ta.ta_id_escuela = txtIdEscuela.Text;
-                        ta.ta_id_taller = txtIdTaller.Text;
-                        ta.ta_nombre_taller = txtNombreTaller.Text;
-                        ta.ta_costo_taller = Convert.ToDouble(txtCostoTaller.Text);
-                        ta.ta_descripcion_taller = txtDescripcionTaller.Text;
-                        ta.ta_fecha_ini_taller = txtFechaInicio.Text;
-                        ta.ta_fecha_fin_taller = txtFechaFin.Text;
-                        ta.ta_nivel_educativo_taller = cbNivelTaller.Text;
-                        ta.ta_grados_taller = cbGradoTaller.Text;
-                        ta.ta_id_profesor = txtIdProfesorTaller.Text;
-                        ta.ta_habilidades_taller = txtHabilidadesTaller.Text;
-                        ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
-                        ta.ta_herramientas_taller = txtHerramientasTaller.Text;
 
-                        Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
-
-                        //data += JsonConvert.SerializeObject(ta, Newtonsoft.Json.Formatting.Indented);
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                    //if(consultar == 0)
+                    //{
+                        if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
+                            ClassTaller ta = new ClassTaller();
+
+                            ta.ta_id_escuela = txtIdEscuela.Text;
+                            ta.ta_id_taller = txtIdTaller.Text;
+                            ta.ta_nombre_taller = txtNombreTaller.Text;
+                            ta.ta_costo_taller = Convert.ToDouble(txtCostoTaller.Text);
+                            ta.ta_descripcion_taller = txtDescripcionTaller.Text;
+                            ta.ta_fecha_ini_taller = txtFechaInicio.Text;
+                            ta.ta_fecha_fin_taller = txtFechaFin.Text;
+                            ta.ta_nivel_educativo_taller = cbNivelTaller.Text;
+                            ta.ta_grados_taller = cbGradoTaller.Text;
+                            ta.ta_id_profesor = txtIdProfesorTaller.Text;
+                            ta.ta_habilidades_taller = txtHabilidadesTaller.Text;
+                            ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
+                            ta.ta_herramientas_taller = txtHerramientasTaller.Text;
+
+                            Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
+
+                            //data += JsonConvert.SerializeObject(ta, Newtonsoft.Json.Formatting.Indented);
+
+                            //using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            //{
                             string mensaje = wsPHP.modificarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
-        
+
                             MessageBox.Show(mensaje, "¡Taller Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                           
+
+                            //}
+
                         }
-        
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("No se pueden asignar 2 taller a los mismos grupos en un mismo periodo de tiempo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+
+
+                        
                     }
+
+                    
                     else if (opcionBotones == 2)
                     {
+
+                    if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
                         ClassTaller ta = new ClassTaller();
                         ta.ta_id_taller = txtIdTaller.Text;
                         ta.ta_id_escuela = txtIdEscuela.Text;
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        {
-                            string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);
-                            MessageBox.Show(mensaje, "¡Taller Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                           
-        
-                        }
+                        //using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        //{
+                        string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);
+                        MessageBox.Show(mensaje, "¡Taller Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        //}
                     }
-
-                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                    {
-                        
-                        try
-                        {
-                            DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosDeTaller(), typeof(DataTable));
-                            dgvTaller.DataSource = dt;
-
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    cbEscuelaTaller.Enabled = false; cbEscuelaTaller.Text = "Seleccionar Escuela";
-                    txtIdTaller.Enabled = false; txtIdTaller.Text = "";
-                    txtNombreTaller.Enabled = false; txtNombreTaller.Text = "";
-                    txtDescripcionTaller.Enabled = false; txtDescripcionTaller.Text = "";
-                    txtCostoTaller.Enabled = false; txtCostoTaller.Text = "";
-                    dtFechaIniTaller.Enabled = false; dtFechaIniTaller.Text = "";
-                    dtFechaFinTaller.Enabled = false; dtFechaFinTaller.Text = "";
-                    cbNivelTaller.Enabled = false; cbNivelTaller.Text = "Seleccionar Nivel Educativo";
-                    cbGradoTaller.Enabled = false; cbGradoTaller.Text = "Seleccionar Grado";
-
-                    txtIdProfesorTaller.Enabled = false; txtIdProfesorTaller.Text = "";
-                    txtProfeTaller.Enabled = false; txtProfeTaller.Text = "";
-
-                    txtHabilidadesTaller.Enabled = false; txtHabilidadesTaller.Text = "";
-                    txtJustificacionCostoTaller.Enabled = false; txtJustificacionCostoTaller.Text = "";
-                    txtHerramientasTaller.Enabled = false; txtHerramientasTaller.Text = "";
-
-                    btnAceptar.Enabled = false;
 
 
                 }
+
+                    cargarDatosTabla();
+                    inicializacionCampos();
+
+
+                
+            
         
             }
             else
@@ -418,36 +444,10 @@ namespace sistema_maestros1
             btnAceptar.BackColor = Color.Silver;
         }
 
-        private void dgvTaller_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTallers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            NombresColumnas();
-
-            cbEscuelaTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuela.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtNombreTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtDescripcionTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[4].Value.ToString());
-            string fechaI = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
-            string fechaF = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[6].Value.ToString());
-            cbNivelTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[7].Value.ToString());
-            cbGradoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[8].Value.ToString());
-            txtProfeTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
-            txtIdProfesorTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
-            txtHabilidadesTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[10].Value.ToString());
-            txtJustificacionCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[11].Value.ToString());
-            txtHerramientasTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[12].Value.ToString());
-
-
-            string newI = fechaI.Replace("-", "/");
-            txtFechaInicio.Text = newI;
-            dtFechaIniTaller.Value = DateTime.ParseExact(newI, "yyyy/MM/dd", CultureInfo.InvariantCulture);
-
-            string newF = fechaF.Replace("-", "/");
-            txtFechaFin.Text = newF;
-            dtFechaFinTaller.Value = DateTime.ParseExact(newF, "yyyy/MM/dd", CultureInfo.InvariantCulture);
-
+           
         }
 
         private void txtBuscadorTaller_TextChanged(object sender, EventArgs e)
@@ -470,29 +470,32 @@ namespace sistema_maestros1
                     catch
                     {
                         MessageBox.Show("No se encuentra ningun taller con estos datos, Por favor ingrese un nombre o ID Taller correcto", "No existe este taller", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
                     }
 
 
                 }
             }
+            else
+            {
+                cargarDatosTabla();
+            }
         }
 
         private void ModuloTalleres_Load(object sender, EventArgs e)
         {
-            //txtProfeTaller.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //txtProfeTaller.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            //AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
 
-            dtFechaFinTaller.Value = dtFechaIniTaller.Value.AddDays(1);
+            
+
+
+            //dtFechaFinTaller.Value = dtFechaIniTaller.Value.AddDays(1);
 
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
                 try
                 {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosDeTaller(), typeof(DataTable));
-                    dgvTaller.DataSource = dt;
-
-                    NombresColumnas();
+                    cargarDatosTabla();
+                    
                     //label16.Text = wsPHP.cargarDatosDeTaller();
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
                     var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
@@ -510,20 +513,42 @@ namespace sistema_maestros1
                     }
 
 
-                   // string respuestaProfe = wsPHP.cargarNombreProfesor(txtProfeTaller.Text);
-                   // var respProf = JsonConvert.DeserializeObject<List<ClassProfesor>>(respuestaProfe);
-                   // 
-                   // 
-                   // 
-                   // foreach (var nomProf in respProf)
-                   // {
-                   //     txtProfeTaller.Text = nomProf.pr_nombre_profesor + " " + nomProf.pr_apellidoPat_profesor;
-                   //
-                   //     txtIdProfesorTaller.Text = Convert.ToString(nomProf.pr_id_profesor);
-                   //     coll.Add(txtProfeTaller.Text);
-                   // }
-                   // 
-                   // txtIdProfesorTaller.AutoCompleteCustomSource = coll;
+                    String respuestaProfes = wsPHP.cargarDatosProfesor();
+                    var respProfes = JsonConvert.DeserializeObject<List<ClassProfesor>>(respuestaProfes);
+
+                    AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+
+
+                    foreach (var nomProfes in respProfes)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomProfes.pr_nombre_profesor;
+                        item.Value = Convert.ToString(nomProfes.pr_id_profesor);
+                        cbProfeTaller.Items.Add(item);
+                        collection.Add(item.Text);
+
+                    }
+
+                    cbProfeTaller.AutoCompleteCustomSource = collection;
+                    cbProfeTaller.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    cbProfeTaller.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+                    // string respuestaProfe = wsPHP.cargarNombreProfesor(txtProfeTaller.Text);
+                    // var respProf = JsonConvert.DeserializeObject<List<ClassProfesor>>(respuestaProfe);
+                    // 
+                    // 
+                    // 
+                    // foreach (var nomProf in respProf)
+                    // {
+                    //     txtProfeTaller.Text = nomProf.pr_nombre_profesor + " " + nomProf.pr_apellidoPat_profesor;
+                    //
+                    //     txtIdProfesorTaller.Text = Convert.ToString(nomProf.pr_id_profesor);
+                    //     coll.Add(txtProfeTaller.Text);
+                    // }
+                    // 
+                    // txtIdProfesorTaller.AutoCompleteCustomSource = coll;
 
                 }
                 catch
@@ -533,25 +558,7 @@ namespace sistema_maestros1
             }
         }
 
-        public void NombresColumnas()
-        {
 
-            
-
-            dgvTaller.Columns[0].HeaderText = "Escuela";
-            dgvTaller.Columns[1].HeaderText = "ID Taller";
-            dgvTaller.Columns[2].HeaderText = "Nombre Taller";
-            dgvTaller.Columns[3].HeaderText = "Costo";
-            dgvTaller.Columns[4].HeaderText = "Descripcion";
-            dgvTaller.Columns[5].HeaderText = "Fecha de Inicio";
-            dgvTaller.Columns[6].HeaderText = "Fecha de Termino";
-            dgvTaller.Columns[7].HeaderText = "Nivel Educativo";
-            dgvTaller.Columns[8].HeaderText = "Grado";
-            dgvTaller.Columns[9].HeaderText = "Profesor";
-            dgvTaller.Columns[10].HeaderText = "Habilidades a desarrollar";
-            dgvTaller.Columns[11].HeaderText = "Justificacion de costo";
-            dgvTaller.Columns[12].HeaderText = "Herramientas";
-        }
 
         private void cbEscuelaTaller_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -630,48 +637,6 @@ namespace sistema_maestros1
 
         }*/
 
-        private void txtProfeTaller_TextChanged(object sender, EventArgs e)
-        {
-            if (txtProfeTaller.Text != "")
-            {
-
-               
-                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                {
-                    
-
-                    try
-                    {
-
-                        DataTable dt = new DataTable();
-                        dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarNombreProfesor(txtProfeTaller.Text), typeof(DataTable));
-                        dgvProfeTaller.DataSource = dt;
-
-                        dgvProfeTaller.Columns[0].Visible = false;
-                        dgvProfeTaller.Columns[4].Visible = false;
-
-                    }
-                    catch
-                    {
-                        if (txtProfeTaller.Text == "" && txtIdProfesorTaller.Text == "")
-                        {
-                            MessageBox.Show("No se encuentra ningun taller con estos datos, Por favor ingrese un nombre o ID Taller correcto", "No existe este taller", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
-
-                    }
-            
-            
-                }
-            }
-        }
-
-        private void dgvProfeTaller_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtIdProfesorTaller.Text = Convert.ToString(dgvProfeTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtProfeTaller.Text = Convert.ToString(dgvProfeTaller.Rows[e.RowIndex].Cells[1].Value.ToString() + " " + dgvProfeTaller.Rows[e.RowIndex].Cells[2].Value.ToString() + " " + dgvProfeTaller.Rows[e.RowIndex].Cells[3].Value.ToString());
-            
-        }
-
         private void cbNivelTaller_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbNivelTaller.SelectedIndex == 0 || cbNivelTaller.SelectedIndex == 2)
@@ -709,6 +674,11 @@ namespace sistema_maestros1
 
         private void dtFechaFinTaller_ValueChanged(object sender, EventArgs e)
         {
+
+            txtFechaFin.Text = Convert.ToString(dtFechaFinTaller.Value.ToString("yyyy-MM-dd"));
+
+            //dtFechaIniTaller.Value = DateTime.ParseExact(txtFechaInicio.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
             if (((dtFechaFinTaller.Value.Month == dtFechaIniTaller.Value.Month) && (dtFechaFinTaller.Value.Day >= dtFechaIniTaller.Value.Day)))
             {
 
@@ -717,6 +687,184 @@ namespace sistema_maestros1
                 MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino menor a la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dtFechaFinTaller.Value = dtFechaIniTaller.Value.AddDays(1);
             }
+        }
+
+        private void dgvTaller_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            NombresColumnas();
+
+            cbEscuelaTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdEscuela.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtNombreTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtDescripcionTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[4].Value.ToString());
+            string fechaI = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
+            string fechaF = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[6].Value.ToString());
+            cbNivelTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[7].Value.ToString());
+            cbGradoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[8].Value.ToString());
+            cbProfeTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
+            txtIdProfesorTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
+            txtHabilidadesTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[10].Value.ToString());
+            txtJustificacionCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[11].Value.ToString());
+            txtHerramientasTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[12].Value.ToString());
+
+
+            string newI = fechaI.Replace("-", "/");
+            txtFechaInicio.Text = newI;
+            dtFechaIniTaller.Value = DateTime.ParseExact(newI, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
+            string newF = fechaF.Replace("-", "/");
+            txtFechaFin.Text = newF;
+            dtFechaFinTaller.Value = DateTime.ParseExact(newF, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
+        }
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosDeTaller(), typeof(DataTable));
+                    dgvTaller.DataSource = dt;
+
+
+                    NombresColumnas();
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar pr|el|qi
+            sub1 = txtNombreTaller.Text.Substring(0, 3);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDT(txtIdEscuela.Text, sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(3, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label16.Text = newID;
+        }
+
+        public void NombresColumnas()
+        {
+
+            dgvTaller.Columns[0].HeaderText = "Escuela";
+            dgvTaller.Columns[1].HeaderText = "ID Taller";
+            dgvTaller.Columns[2].HeaderText = "Nombre Taller";
+            dgvTaller.Columns[3].HeaderText = "Costo";
+            dgvTaller.Columns[4].HeaderText = "Descripcion del Taller";
+            dgvTaller.Columns[5].HeaderText = "Fecha de Inicio";
+            dgvTaller.Columns[6].HeaderText = "Fecha de Termino";
+            dgvTaller.Columns[7].HeaderText = "Nivel Educativo";
+            dgvTaller.Columns[8].HeaderText = "Grado";
+            dgvTaller.Columns[9].HeaderText = "Profesor";
+            dgvTaller.Columns[10].HeaderText = "Habilidades a desarrollar";
+            dgvTaller.Columns[11].HeaderText = "Justificacion de costo";
+            dgvTaller.Columns[12].HeaderText = "Herramientas";
+        }
+
+        public void inicializacionCampos()
+        {
+            cbEscuelaTaller.Enabled = false; cbEscuelaTaller.Text = "Seleccionar Escuela";
+            txtIdEscuela.Text = "";
+
+            txtIdTaller.Enabled = false; txtIdTaller.Text = "";
+            txtNombreTaller.Enabled = false; txtNombreTaller.Text = "";
+            txtDescripcionTaller.Enabled = false; txtDescripcionTaller.Text = "";
+            txtCostoTaller.Enabled = false; txtCostoTaller.Text = "";
+
+            dtFechaIniTaller.Enabled = false; dtFechaIniTaller.Text = "";
+            txtFechaInicio.Text = "";
+
+            dtFechaFinTaller.Enabled = false; dtFechaFinTaller.Text = "";
+            txtFechaFin.Text = "";
+
+            cbNivelTaller.Enabled = false; cbNivelTaller.Text = "Seleccionar Nivel Educativo";
+            cbGradoTaller.Enabled = false; cbGradoTaller.Text = "Seleccionar Grado";
+
+            txtIdProfesorTaller.Enabled = false; txtIdProfesorTaller.Text = "";
+            cbProfeTaller.Enabled = false; cbProfeTaller.Text = "";
+
+            txtHabilidadesTaller.Enabled = false; txtHabilidadesTaller.Text = "";
+            txtJustificacionCostoTaller.Enabled = false; txtJustificacionCostoTaller.Text = "";
+            txtHerramientasTaller.Enabled = false; txtHerramientasTaller.Text = "";
+
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
+        }
+
+
+        
+
+        private void cbProfeTaller_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaProfes = wsPHP.buscarDatosProfesor(cbProfeTaller.Text);
+                var respProfes = JsonConvert.DeserializeObject<List<ClassProfesor>>(respuestaProfes);
+
+
+
+                foreach (var nomProfes in respProfes)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomProfes.pr_id_profesor);
+                    string id = item.Value.ToString();
+                    txtIdProfesorTaller.Text = id;
+                }
+
+
+
+
+
+            }
+        }
+
+        private void cbGradoTaller_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtFechaIniTaller_ValueChanged(object sender, EventArgs e)
+        {
+            txtFechaInicio.Text = Convert.ToString(dtFechaIniTaller.Value.ToString("yyyy-MM-dd"));
+
+            ClassTaller tal = new ClassTaller();
+            tal.ta_id_escuela = txtIdEscuela.Text;
+            tal.ta_fecha_ini_taller = txtFechaInicio.Text;
+            tal.ta_fecha_fin_taller = txtFechaInicio.Text;
+            tal.ta_nivel_educativo_taller = cbNivelTaller.Text;
+            tal.ta_grados_taller = cbGradoTaller.Text;
+
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            int consultar = wsPHP.validarTallerXgrupo(tal.ta_id_escuela, tal.ta_nivel_educativo_taller, tal.ta_grados_taller, tal.ta_fecha_ini_taller);
+
+
+            if (consultar != 0)
+            {
+                MessageBox.Show("No se pueden asignar 2 taller a los mismos grupos en un mismo periodo de tiempo", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
         }
     }
 }

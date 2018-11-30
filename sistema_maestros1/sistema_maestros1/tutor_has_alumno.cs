@@ -25,6 +25,9 @@ namespace sistema_maestros1
         {
             if (MessageBox.Show("¿Estas seguro de cerrar ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                Globales.nombre_alumno = "";
+                Globales.id_alumno="";
+                Globales.id_escuela="";
                 this.Hide();
             }
         }
@@ -53,6 +56,7 @@ namespace sistema_maestros1
 
                         DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
                         dgvAhasTAll.DataSource = dt;
+                        NombresColumnasAhT();
 
                     }
                 }
@@ -97,33 +101,9 @@ namespace sistema_maestros1
             txtIdAlumno.Text = Globales.id_alumno;
             txtIdEscuela.Text = Globales.id_escuela;
 
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                try
-                {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosTutor(), typeof(DataTable));
-                    dgvTutor.DataSource = dt;
+            cargarDatosTablaPadres();
 
-                    dgvTutor.Columns[0].Visible = false;
-                    dgvTutor.Columns[1].HeaderText = "Nombre(s)";
-                    dgvTutor.Columns[2].HeaderText = "Apellido Paterno";
-                    dgvTutor.Columns[3].HeaderText = "Apellido Materno";
-                    dgvTutor.Columns[4].Visible = false;
-                    dgvTutor.Columns[5].HeaderText = "Parentesco";
-                    dgvTutor.Columns[6].Visible = false;
-
-                    DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
-                    dgvAhasTAll.DataSource = dt1;
-
-
-
-
-                }
-                catch
-                {
-                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
         }
 
         private void txtBuscadorPadre_TextChanged(object sender, EventArgs e)
@@ -138,29 +118,21 @@ namespace sistema_maestros1
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarTutor(txtBuscadorPadre.Text), typeof(DataTable));
                         dgvTutor.DataSource = dt;
-
-                        dgvTutor.Columns[0].Visible = false;
-                        dgvTutor.Columns[1].HeaderText = "Nombre(s)";
-                        dgvTutor.Columns[2].HeaderText = "Apellido Paterno";
-                        dgvTutor.Columns[3].HeaderText = "Apellido Materno";
-                        dgvTutor.Columns[4].Visible = false;
-                        dgvTutor.Columns[5].HeaderText = "Parentesco";
-                        dgvTutor.Columns[6].Visible = false;
-
-
-                        
-
-                        
-
+                        NombresColumnasPadres();
 
                     }
-                    catch
+                    catch (Exception)
                     {
-                        MessageBox.Show("No se encuentra ningun Padre o Tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este usuario", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("No se encuentra ningun Padre/Tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este tutor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTablaPadres();
                     }
 
 
                 }
+            }
+            else
+            {
+                cargarDatosTablaPadres();
             }
         }
 
@@ -213,6 +185,74 @@ namespace sistema_maestros1
                     MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+
+        public void cargarDatosTablaPadres()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosTutor(), typeof(DataTable));
+                    dgvTutor.DataSource = dt;
+
+                    NombresColumnasPadres();
+
+                    DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
+                    dgvAhasTAll.DataSource = dt1;
+                    NombresColumnasAhT();
+
+
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void NombresColumnasPadres()
+        {
+            dgvTutor.Columns[0].Visible = false;
+            dgvTutor.Columns[1].HeaderText = "Nombre(s)";
+            dgvTutor.Columns[2].HeaderText = "Apellido Paterno";
+            dgvTutor.Columns[3].HeaderText = "Apellido Materno";
+            dgvTutor.Columns[4].Visible = false;
+            dgvTutor.Columns[5].HeaderText = "Parentesco";
+            dgvTutor.Columns[6].Visible = false;
+        }
+
+        public void cargarDatosTablaAhT()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
+                    dgvAhasTAll.DataSource = dt;
+
+                    NombresColumnasAhT();
+                    
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void NombresColumnasAhT()
+        {
+            dgvAhasTAll.Columns[0].HeaderText = "Escuela";
+            dgvAhasTAll.Columns[1].HeaderText = "Nombre del Alumno";
+            dgvAhasTAll.Columns[2].HeaderText = "Padre o Tutor";
+        }
+
+        private void dgvTutor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -274,6 +274,15 @@
   <wsdl:message name="buscarMAXIDTResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="validarTallerXgrupoRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="nivel" type="xsd:string" />
+    <wsdl:part name="grados" type="xsd:string" />
+    <wsdl:part name="fecha" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validarTallerXgrupoResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosAhasTRequest" />
   <wsdl:message name="cargarDatosAhasTResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -405,9 +414,140 @@
   </wsdl:message>
   <wsdl:message name="buscarMAXIDMRequest">
     <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
     <wsdl:part name="sub" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="buscarMAXIDMResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarPagosRequest" />
+  <wsdl:message name="cargarPagosResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarPagosRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarPagosResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarPagosRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_alm" type="xsd:string" />
+    <wsdl:part name="id_pago" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarPagosResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarPagosRequest">
+    <wsdl:part name="id_pago" type="xsd:string" />
+    <wsdl:part name="mes" type="xsd:string" />
+    <wsdl:part name="fecha" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarPagosResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDPAGORequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDPAGOResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarRecomendacionesRequest" />
+  <wsdl:message name="cargarRecomendacionesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarRecomendacionesRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarRecomendacionesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="AgregarRecomendacionesRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="id_mat" type="xsd:string" />
+    <wsdl:part name="id_rec" type="xsd:string" />
+    <wsdl:part name="especificacion" type="xsd:string" />
+    <wsdl:part name="recom" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="AgregarRecomendacionesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarRecomendacionesRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="id_mat" type="xsd:string" />
+    <wsdl:part name="id_rec" type="xsd:string" />
+    <wsdl:part name="especificacion" type="xsd:string" />
+    <wsdl:part name="recom" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarRecomendacionesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarRecomendacionesRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="id_mat" type="xsd:string" />
+    <wsdl:part name="id_rec" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarRecomendacionesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDRRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+    <wsdl:part name="id_mat" type="xsd:string" />
+    <wsdl:part name="sub" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDRResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargarIncidenciasRequest" />
+  <wsdl:message name="cargarIncidenciasResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarIncidenciasRequest">
+    <wsdl:part name="busqueda" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarIncidenciasResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarIncidenciasRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_inc" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="desc" type="xsd:string" />
+    <wsdl:part name="tipo" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarIncidenciasResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarIncidenciasRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_inc" type="xsd:string" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="desc" type="xsd:string" />
+    <wsdl:part name="tipo" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificarIncidenciasResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarIncidenciasRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_inc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="eliminarIncidenciasResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDIRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMAXIDIResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:portType name="WSPHPPortType">
@@ -581,6 +721,11 @@
       <wsdl:input message="tns:buscarMAXIDTRequest" />
       <wsdl:output message="tns:buscarMAXIDTResponse" />
     </wsdl:operation>
+    <wsdl:operation name="validarTallerXgrupo">
+      <documentation>Validar taller x grupo al mismo tiempo</documentation>
+      <wsdl:input message="tns:validarTallerXgrupoRequest" />
+      <wsdl:output message="tns:validarTallerXgrupoResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosAhasT">
       <documentation>Cargar datos AT</documentation>
       <wsdl:input message="tns:cargarDatosAhasTRequest" />
@@ -665,6 +810,91 @@
       <documentation>buscar ID MAX material</documentation>
       <wsdl:input message="tns:buscarMAXIDMRequest" />
       <wsdl:output message="tns:buscarMAXIDMResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarPagos">
+      <documentation>Cargar datos pagos</documentation>
+      <wsdl:input message="tns:cargarPagosRequest" />
+      <wsdl:output message="tns:cargarPagosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarPagos">
+      <documentation>buscar datos pagos</documentation>
+      <wsdl:input message="tns:buscarPagosRequest" />
+      <wsdl:output message="tns:buscarPagosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarPagos">
+      <documentation>Agregar datos pagos</documentation>
+      <wsdl:input message="tns:agregarPagosRequest" />
+      <wsdl:output message="tns:agregarPagosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarPagos">
+      <documentation>Agregar datos pagos</documentation>
+      <wsdl:input message="tns:modificarPagosRequest" />
+      <wsdl:output message="tns:modificarPagosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDPAGO">
+      <documentation>Agregar datos pagos</documentation>
+      <wsdl:input message="tns:buscarMAXIDPAGORequest" />
+      <wsdl:output message="tns:buscarMAXIDPAGOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarRecomendaciones">
+      <documentation>Cargar datos recomendaciones</documentation>
+      <wsdl:input message="tns:cargarRecomendacionesRequest" />
+      <wsdl:output message="tns:cargarRecomendacionesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarRecomendaciones">
+      <documentation>buscar datos pagos</documentation>
+      <wsdl:input message="tns:buscarRecomendacionesRequest" />
+      <wsdl:output message="tns:buscarRecomendacionesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarRecomendaciones">
+      <documentation>Agregar recomendaciones</documentation>
+      <wsdl:input message="tns:AgregarRecomendacionesRequest" />
+      <wsdl:output message="tns:AgregarRecomendacionesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarRecomendaciones">
+      <documentation>modificar recomendaciones</documentation>
+      <wsdl:input message="tns:modificarRecomendacionesRequest" />
+      <wsdl:output message="tns:modificarRecomendacionesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarRecomendaciones">
+      <documentation>eliminar recomendaciones</documentation>
+      <wsdl:input message="tns:eliminarRecomendacionesRequest" />
+      <wsdl:output message="tns:eliminarRecomendacionesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDR">
+      <documentation>buscar MAX ID de recomendaciones</documentation>
+      <wsdl:input message="tns:buscarMAXIDRRequest" />
+      <wsdl:output message="tns:buscarMAXIDRResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarIncidencias">
+      <documentation>Cargar datos incidencias</documentation>
+      <wsdl:input message="tns:cargarIncidenciasRequest" />
+      <wsdl:output message="tns:cargarIncidenciasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarIncidencias">
+      <documentation>buscar datos incidencias</documentation>
+      <wsdl:input message="tns:buscarIncidenciasRequest" />
+      <wsdl:output message="tns:buscarIncidenciasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarIncidencias">
+      <documentation>agregar datos incidencias</documentation>
+      <wsdl:input message="tns:agregarIncidenciasRequest" />
+      <wsdl:output message="tns:agregarIncidenciasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarIncidencias">
+      <documentation>agregar datos incidencias</documentation>
+      <wsdl:input message="tns:modificarIncidenciasRequest" />
+      <wsdl:output message="tns:modificarIncidenciasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarIncidencias">
+      <documentation>elimiar datos incidencias</documentation>
+      <wsdl:input message="tns:eliminarIncidenciasRequest" />
+      <wsdl:output message="tns:eliminarIncidenciasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDI">
+      <documentation>buscar MAX ID de incidencias</documentation>
+      <wsdl:input message="tns:buscarMAXIDIRequest" />
+      <wsdl:output message="tns:buscarMAXIDIResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSPHPBinding" type="tns:WSPHPPortType">
@@ -975,6 +1205,15 @@
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="validarTallerXgrupo">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/validarTallerXgrupo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosAhasT">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosAhasT" style="rpc" />
       <wsdl:input>
@@ -1121,6 +1360,159 @@
     </wsdl:operation>
     <wsdl:operation name="buscarMAXIDM">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDM" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarPagos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarPagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPagos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarPagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarPagos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarPagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarPagos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarPagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDPAGO">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDPAGO" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarRecomendaciones">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarRecomendaciones" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarRecomendaciones">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarRecomendaciones" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarRecomendaciones">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/AgregarRecomendaciones" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarRecomendaciones">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarRecomendaciones" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarRecomendaciones">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarRecomendaciones" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDR">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDR" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarIncidencias">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarIncidencias" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarIncidencias">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarIncidencias" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarIncidencias">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarIncidencias" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarIncidencias">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/modificarIncidencias" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarIncidencias">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/eliminarIncidencias" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarMAXIDI">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDI" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

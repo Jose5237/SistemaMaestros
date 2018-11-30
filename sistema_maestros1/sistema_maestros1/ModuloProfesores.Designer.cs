@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloProfesores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -326,7 +326,6 @@
             // btnRecomendaciones2
             // 
             this.btnRecomendaciones2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRecomendaciones2.Enabled = false;
             this.btnRecomendaciones2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRecomendaciones2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecomendaciones2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,7 +333,7 @@
             this.btnRecomendaciones2.Location = new System.Drawing.Point(3, 473);
             this.btnRecomendaciones2.Name = "btnRecomendaciones2";
             this.btnRecomendaciones2.Size = new System.Drawing.Size(143, 42);
-            this.btnRecomendaciones2.TabIndex = 130;
+            this.btnRecomendaciones2.TabIndex = 18;
             this.btnRecomendaciones2.Text = "Recomendaciones";
             this.btnRecomendaciones2.UseVisualStyleBackColor = false;
             this.btnRecomendaciones2.Click += new System.EventHandler(this.btnRecomendaciones2_Click);
@@ -349,7 +348,7 @@
             this.btnIncidencias2.Location = new System.Drawing.Point(3, 430);
             this.btnIncidencias2.Name = "btnIncidencias2";
             this.btnIncidencias2.Size = new System.Drawing.Size(143, 42);
-            this.btnIncidencias2.TabIndex = 129;
+            this.btnIncidencias2.TabIndex = 17;
             this.btnIncidencias2.Text = "    Incidencias";
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
@@ -357,6 +356,8 @@
             // btnEliminarProfe
             // 
             this.btnEliminarProfe.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarProfe.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarProfe.BackgroundImage")));
+            this.btnEliminarProfe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarProfe.FlatAppearance.BorderSize = 0;
             this.btnEliminarProfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarProfe.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -364,14 +365,15 @@
             this.btnEliminarProfe.Location = new System.Drawing.Point(393, 53);
             this.btnEliminarProfe.Name = "btnEliminarProfe";
             this.btnEliminarProfe.Size = new System.Drawing.Size(96, 37);
-            this.btnEliminarProfe.TabIndex = 133;
-            this.btnEliminarProfe.Text = "Eliminar";
+            this.btnEliminarProfe.TabIndex = 21;
             this.btnEliminarProfe.UseVisualStyleBackColor = false;
             this.btnEliminarProfe.Click += new System.EventHandler(this.btnEliminarProfe_Click);
             // 
             // btnModificarProfe
             // 
-            this.btnModificarProfe.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarProfe.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarProfe.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarProfe.BackgroundImage")));
+            this.btnModificarProfe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarProfe.FlatAppearance.BorderSize = 0;
             this.btnModificarProfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarProfe.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -379,14 +381,15 @@
             this.btnModificarProfe.Location = new System.Drawing.Point(282, 53);
             this.btnModificarProfe.Name = "btnModificarProfe";
             this.btnModificarProfe.Size = new System.Drawing.Size(96, 37);
-            this.btnModificarProfe.TabIndex = 132;
-            this.btnModificarProfe.Text = "Modificar";
+            this.btnModificarProfe.TabIndex = 20;
             this.btnModificarProfe.UseVisualStyleBackColor = false;
             this.btnModificarProfe.Click += new System.EventHandler(this.btnModificarProfe_Click);
             // 
             // btnAgregarProfe
             // 
-            this.btnAgregarProfe.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarProfe.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarProfe.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarProfe.BackgroundImage")));
+            this.btnAgregarProfe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarProfe.FlatAppearance.BorderSize = 0;
             this.btnAgregarProfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarProfe.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,8 +397,7 @@
             this.btnAgregarProfe.Location = new System.Drawing.Point(170, 53);
             this.btnAgregarProfe.Name = "btnAgregarProfe";
             this.btnAgregarProfe.Size = new System.Drawing.Size(96, 37);
-            this.btnAgregarProfe.TabIndex = 131;
-            this.btnAgregarProfe.Text = "Agregar";
+            this.btnAgregarProfe.TabIndex = 19;
             this.btnAgregarProfe.UseVisualStyleBackColor = false;
             this.btnAgregarProfe.Click += new System.EventHandler(this.btnAgregarProfe_Click);
             // 
@@ -405,7 +407,7 @@
             this.txtIdProfe.Location = new System.Drawing.Point(170, 123);
             this.txtIdProfe.Name = "txtIdProfe";
             this.txtIdProfe.Size = new System.Drawing.Size(211, 20);
-            this.txtIdProfe.TabIndex = 134;
+            this.txtIdProfe.TabIndex = 1;
             // 
             // txtNombreProfe
             // 
@@ -413,7 +415,7 @@
             this.txtNombreProfe.Location = new System.Drawing.Point(170, 168);
             this.txtNombreProfe.Name = "txtNombreProfe";
             this.txtNombreProfe.Size = new System.Drawing.Size(211, 20);
-            this.txtNombreProfe.TabIndex = 135;
+            this.txtNombreProfe.TabIndex = 2;
             this.txtNombreProfe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreProfe_KeyPress);
             // 
             // txtApellidoPatProfe
@@ -422,7 +424,7 @@
             this.txtApellidoPatProfe.Location = new System.Drawing.Point(170, 214);
             this.txtApellidoPatProfe.Name = "txtApellidoPatProfe";
             this.txtApellidoPatProfe.Size = new System.Drawing.Size(211, 20);
-            this.txtApellidoPatProfe.TabIndex = 136;
+            this.txtApellidoPatProfe.TabIndex = 3;
             this.txtApellidoPatProfe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoPatProfe_KeyPress);
             // 
             // txtApellidoMatProfe
@@ -431,7 +433,7 @@
             this.txtApellidoMatProfe.Location = new System.Drawing.Point(170, 260);
             this.txtApellidoMatProfe.Name = "txtApellidoMatProfe";
             this.txtApellidoMatProfe.Size = new System.Drawing.Size(211, 20);
-            this.txtApellidoMatProfe.TabIndex = 137;
+            this.txtApellidoMatProfe.TabIndex = 4;
             this.txtApellidoMatProfe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellidoMatProfe_KeyPress);
             // 
             // txtPasswordProfe
@@ -441,7 +443,7 @@
             this.txtPasswordProfe.Name = "txtPasswordProfe";
             this.txtPasswordProfe.PasswordChar = '•';
             this.txtPasswordProfe.Size = new System.Drawing.Size(211, 20);
-            this.txtPasswordProfe.TabIndex = 138;
+            this.txtPasswordProfe.TabIndex = 5;
             // 
             // btnAceptar
             // 
@@ -450,12 +452,14 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.Location = new System.Drawing.Point(170, 356);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
-            this.btnAceptar.TabIndex = 139;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // dgvProfe
@@ -469,23 +473,23 @@
             this.dgvProfe.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvProfe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProfe.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProfe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvProfe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProfe.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProfe.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProfe.EnableHeadersVisualStyles = false;
             this.dgvProfe.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvProfe.Location = new System.Drawing.Point(423, 105);
@@ -493,8 +497,8 @@
             this.dgvProfe.Name = "dgvProfe";
             this.dgvProfe.ReadOnly = true;
             this.dgvProfe.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvProfe.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvProfe.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvProfe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfe.Size = new System.Drawing.Size(690, 513);
             this.dgvProfe.TabIndex = 140;
@@ -507,7 +511,7 @@
             this.txtBuscadorProfe.Multiline = true;
             this.txtBuscadorProfe.Name = "txtBuscadorProfe";
             this.txtBuscadorProfe.Size = new System.Drawing.Size(283, 30);
-            this.txtBuscadorProfe.TabIndex = 141;
+            this.txtBuscadorProfe.TabIndex = 7;
             this.txtBuscadorProfe.TextChanged += new System.EventHandler(this.txtBuscadorProfe_TextChanged);
             // 
             // label7

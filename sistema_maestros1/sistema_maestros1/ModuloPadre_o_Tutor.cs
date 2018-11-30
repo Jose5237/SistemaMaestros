@@ -215,9 +215,8 @@ namespace sistema_maestros1
             txtTelefonoPadre.Enabled = true; txtTelefonoPadre.Text = "";
             cbParentescoPadre.Enabled = true; cbParentescoPadre.Text = "Seleccionar el parentesco";
             txtCorreoPadre.Enabled = true; txtCorreoPadre.Text = "";
-
-
-            btnAceptar.Enabled = true;
+            
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
         //BOTON MODIFICAR PADRES
@@ -233,7 +232,7 @@ namespace sistema_maestros1
             cbParentescoPadre.Enabled = true;
             txtCorreoPadre.Enabled = true;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
         }
 
         //BOTON ELIMINAR PADRES
@@ -249,32 +248,9 @@ namespace sistema_maestros1
             cbParentescoPadre.Enabled = false;
             txtCorreoPadre.Enabled = false;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
-        public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar tu|ma|pa
-            sub1 = cbParentescoPadre.Text.Substring(0, 2);
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.BuscarMAXID(sub1);
-            if (ultimoID == "")
-                n = 0;
-            //ultimoID = "0000";
-            //n = Convert.ToInt32(ultimoID.Substring(2,2));
-            else
-                n = Convert.ToInt32(ultimoID.Substring(2, 4));
-            //guardar el numero del ultimo ID
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (4 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + sub2 + Convert.ToString(n);
-            label7.Text = newID;
-        }
+
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -362,16 +338,8 @@ namespace sistema_maestros1
                         }
                     }
                     cargarDatosTabla();
-
-                    txtIdPadre.Enabled = false; txtIdPadre.Text = "";
-                    tctNombrePadre.Enabled = false; tctNombrePadre.Text = "";
-                    txtApellidoPatPadre.Enabled = false; txtApellidoPatPadre.Text = "";
-                    txtApellidoMatPadre.Enabled = false; txtApellidoMatPadre.Text = "";
-                    txtTelefonoPadre.Enabled = false; txtTelefonoPadre.Text = "";
-                    cbParentescoPadre.Enabled = false; cbParentescoPadre.Text = "Seleccionar el parentesco";
-                    txtCorreoPadre.Enabled = false; txtCorreoPadre.Text = "";
-
-                    btnAceptar.Enabled = false;
+                    inicializacionCampos();
+                    
 
                 }
             }
@@ -380,31 +348,7 @@ namespace sistema_maestros1
             
         }
 
-        //METODO PARA CARGAR LOS DATOS EN EL DGV 
-        public void cargarDatosTabla()
-        {
-             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                    {
-                        try
-                        {
-                            DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosTutor(), typeof(DataTable));
-                            dgvPadre.DataSource = dt;
-
-                            dgvPadre.Columns[0].HeaderText = "ID Padre o Tutor";
-                            dgvPadre.Columns[1].HeaderText = "Nombre(s)";
-                            dgvPadre.Columns[2].HeaderText = "Apellido Paterno";
-                            dgvPadre.Columns[3].HeaderText = "Apellido Materno";
-                            dgvPadre.Columns[4].HeaderText = "Telefono";
-                            dgvPadre.Columns[5].HeaderText = "Parentesco";
-                            dgvPadre.Columns[6].HeaderText = "Correo electronico";
-
-                }
-                        catch
-                        {
-                            MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-        }
+        
 
         private void ModuloPadre_o_Tutor_Load(object sender, EventArgs e)
         {
@@ -413,13 +357,7 @@ namespace sistema_maestros1
 
         private void dgvPadre_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvPadre.Columns[0].HeaderText = "ID Padre o Tutor";
-            dgvPadre.Columns[1].HeaderText = "Nombre(s)";
-            dgvPadre.Columns[2].HeaderText = "Apellido Paterno";
-            dgvPadre.Columns[3].HeaderText = "Apellido Materno";
-            dgvPadre.Columns[4].HeaderText = "Telefono";
-            dgvPadre.Columns[5].HeaderText = "Parentesco";
-            dgvPadre.Columns[6].HeaderText = "Correo electronico";
+            NombresColumnas();
 
             txtIdPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[0].Value.ToString());
             tctNombrePadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[1].Value.ToString());
@@ -443,18 +381,96 @@ namespace sistema_maestros1
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarTutor(txtBuscadorPadre.Text), typeof(DataTable));
                         dgvPadre.DataSource = dt;
-
+                        NombresColumnas();
 
                     }
-                    catch
+                    catch (Exception)
                     {
-                        MessageBox.Show("No se encuentra ningun Padre o Tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este usuario", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("No se encuentra ninguna padre/tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este tutor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
                     }
 
 
                 }
             }
+            else
+            {
+                cargarDatosTabla();
+            }
         }
 
+        //METODO PARA CARGAR LOS DATOS EN EL DGV 
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosTutor(), typeof(DataTable));
+                    dgvPadre.DataSource = dt;
+
+                    NombresColumnas();
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = cbParentescoPadre.Text.Substring(0, 2);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXID(sub1);
+            if (ultimoID == "")
+                n = 0;
+            //ultimoID = "0000";
+            //n = Convert.ToInt32(ultimoID.Substring(2,2));
+            else
+                n = Convert.ToInt32(ultimoID.Substring(2, 4));
+            //guardar el numero del ultimo ID
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (4 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label7.Text = newID;
+        }
+
+        public void NombresColumnas()
+        {
+            dgvPadre.Columns[0].HeaderText = "ID Padre o Tutor";
+            dgvPadre.Columns[1].HeaderText = "Nombre(s)";
+            dgvPadre.Columns[2].HeaderText = "Apellido Paterno";
+            dgvPadre.Columns[3].HeaderText = "Apellido Materno";
+            dgvPadre.Columns[4].HeaderText = "Telefono";
+            dgvPadre.Columns[5].HeaderText = "Parentesco";
+            dgvPadre.Columns[6].HeaderText = "Correo electronico";
+        }
+
+        public void inicializacionCampos()
+        {
+            txtIdPadre.Enabled = false; txtIdPadre.Text = "";
+            tctNombrePadre.Enabled = false; tctNombrePadre.Text = "";
+            txtApellidoPatPadre.Enabled = false; txtApellidoPatPadre.Text = "";
+            txtApellidoMatPadre.Enabled = false; txtApellidoMatPadre.Text = "";
+            txtTelefonoPadre.Enabled = false; txtTelefonoPadre.Text = "";
+            cbParentescoPadre.Enabled = false; cbParentescoPadre.Text = "Seleccionar el parentesco";
+            txtCorreoPadre.Enabled = false; txtCorreoPadre.Text = "";
+
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
+        }
+
+        private void cbParentescoPadre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEscuelas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorEscuela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -177,12 +177,14 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.Location = new System.Drawing.Point(167, 553);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtTel1Escuela
@@ -193,7 +195,9 @@
             this.txtTel1Escuela.Name = "txtTel1Escuela";
             this.txtTel1Escuela.Size = new System.Drawing.Size(211, 20);
             this.txtTel1Escuela.TabIndex = 4;
+            this.txtTel1Escuela.Click += new System.EventHandler(this.txtTel1Escuela_Click);
             this.txtTel1Escuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel1Escuela_KeyPress);
+            this.txtTel1Escuela.Validating += new System.ComponentModel.CancelEventHandler(this.txtTel1Escuela_Validating);
             // 
             // txtDireccionEscuela
             // 
@@ -266,6 +270,8 @@
             // btnEliminarEscuela
             // 
             this.btnEliminarEscuela.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarEscuela.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarEscuela.BackgroundImage")));
+            this.btnEliminarEscuela.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarEscuela.FlatAppearance.BorderSize = 0;
             this.btnEliminarEscuela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarEscuela.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -273,14 +279,15 @@
             this.btnEliminarEscuela.Location = new System.Drawing.Point(393, 53);
             this.btnEliminarEscuela.Name = "btnEliminarEscuela";
             this.btnEliminarEscuela.Size = new System.Drawing.Size(96, 37);
-            this.btnEliminarEscuela.TabIndex = 38;
-            this.btnEliminarEscuela.Text = "Eliminar";
+            this.btnEliminarEscuela.TabIndex = 25;
             this.btnEliminarEscuela.UseVisualStyleBackColor = false;
             this.btnEliminarEscuela.Click += new System.EventHandler(this.btnEliminarEscuela_Click);
             // 
             // btnModificarEscuela
             // 
-            this.btnModificarEscuela.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarEscuela.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarEscuela.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarEscuela.BackgroundImage")));
+            this.btnModificarEscuela.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarEscuela.FlatAppearance.BorderSize = 0;
             this.btnModificarEscuela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarEscuela.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,14 +295,15 @@
             this.btnModificarEscuela.Location = new System.Drawing.Point(282, 53);
             this.btnModificarEscuela.Name = "btnModificarEscuela";
             this.btnModificarEscuela.Size = new System.Drawing.Size(96, 37);
-            this.btnModificarEscuela.TabIndex = 37;
-            this.btnModificarEscuela.Text = "Modificar";
+            this.btnModificarEscuela.TabIndex = 24;
             this.btnModificarEscuela.UseVisualStyleBackColor = false;
             this.btnModificarEscuela.Click += new System.EventHandler(this.btnModificarEscuela_Click);
             // 
             // btnAgregarEscuela
             // 
-            this.btnAgregarEscuela.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarEscuela.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarEscuela.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarEscuela.BackgroundImage")));
+            this.btnAgregarEscuela.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarEscuela.FlatAppearance.BorderSize = 0;
             this.btnAgregarEscuela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarEscuela.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -303,8 +311,7 @@
             this.btnAgregarEscuela.Location = new System.Drawing.Point(170, 53);
             this.btnAgregarEscuela.Name = "btnAgregarEscuela";
             this.btnAgregarEscuela.Size = new System.Drawing.Size(96, 37);
-            this.btnAgregarEscuela.TabIndex = 36;
-            this.btnAgregarEscuela.Text = "Agregar";
+            this.btnAgregarEscuela.TabIndex = 23;
             this.btnAgregarEscuela.UseVisualStyleBackColor = false;
             this.btnAgregarEscuela.Click += new System.EventHandler(this.btnAgregarEscuela_Click);
             // 
@@ -319,23 +326,23 @@
             this.dgvEscuela.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvEscuela.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEscuela.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEscuela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEscuela.EnableHeadersVisualStyles = false;
             this.dgvEscuela.GridColor = System.Drawing.Color.Thistle;
             this.dgvEscuela.Location = new System.Drawing.Point(423, 105);
@@ -343,8 +350,8 @@
             this.dgvEscuela.Name = "dgvEscuela";
             this.dgvEscuela.ReadOnly = true;
             this.dgvEscuela.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvEscuela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEscuela.Size = new System.Drawing.Size(704, 513);
             this.dgvEscuela.TabIndex = 35;
@@ -420,7 +427,7 @@
             this.btnMenuPrincipal2.Location = new System.Drawing.Point(3, 46);
             this.btnMenuPrincipal2.Name = "btnMenuPrincipal2";
             this.btnMenuPrincipal2.Size = new System.Drawing.Size(143, 38);
-            this.btnMenuPrincipal2.TabIndex = 96;
+            this.btnMenuPrincipal2.TabIndex = 12;
             this.btnMenuPrincipal2.Text = "☰    Menu   ";
             this.btnMenuPrincipal2.UseVisualStyleBackColor = true;
             this.btnMenuPrincipal2.Click += new System.EventHandler(this.btnMenuPrincipal2_Click);
@@ -435,7 +442,7 @@
             this.btnMaterial2.Location = new System.Drawing.Point(3, 344);
             this.btnMaterial2.Name = "btnMaterial2";
             this.btnMaterial2.Size = new System.Drawing.Size(143, 42);
-            this.btnMaterial2.TabIndex = 95;
+            this.btnMaterial2.TabIndex = 19;
             this.btnMaterial2.Text = "      Materiales";
             this.btnMaterial2.UseVisualStyleBackColor = false;
             this.btnMaterial2.Click += new System.EventHandler(this.btnMaterial2_Click);
@@ -450,7 +457,7 @@
             this.btnDinamicas2.Location = new System.Drawing.Point(3, 301);
             this.btnDinamicas2.Name = "btnDinamicas2";
             this.btnDinamicas2.Size = new System.Drawing.Size(143, 42);
-            this.btnDinamicas2.TabIndex = 94;
+            this.btnDinamicas2.TabIndex = 18;
             this.btnDinamicas2.Text = "      Dinamicas";
             this.btnDinamicas2.UseVisualStyleBackColor = false;
             this.btnDinamicas2.Click += new System.EventHandler(this.btnDinamicas2_Click);
@@ -465,7 +472,7 @@
             this.btnProfesores2.Location = new System.Drawing.Point(3, 258);
             this.btnProfesores2.Name = "btnProfesores2";
             this.btnProfesores2.Size = new System.Drawing.Size(143, 42);
-            this.btnProfesores2.TabIndex = 93;
+            this.btnProfesores2.TabIndex = 16;
             this.btnProfesores2.Text = "      Profesores";
             this.btnProfesores2.UseVisualStyleBackColor = false;
             this.btnProfesores2.Click += new System.EventHandler(this.btnProfesores2_Click);
@@ -480,7 +487,7 @@
             this.btnPadreOTutor2.Location = new System.Drawing.Point(3, 215);
             this.btnPadreOTutor2.Name = "btnPadreOTutor2";
             this.btnPadreOTutor2.Size = new System.Drawing.Size(143, 42);
-            this.btnPadreOTutor2.TabIndex = 92;
+            this.btnPadreOTutor2.TabIndex = 16;
             this.btnPadreOTutor2.Text = "            Padre o Tutor";
             this.btnPadreOTutor2.UseVisualStyleBackColor = false;
             this.btnPadreOTutor2.Click += new System.EventHandler(this.btnPadreOTutor2_Click);
@@ -495,7 +502,7 @@
             this.btnTalleres2.Location = new System.Drawing.Point(3, 172);
             this.btnTalleres2.Name = "btnTalleres2";
             this.btnTalleres2.Size = new System.Drawing.Size(143, 42);
-            this.btnTalleres2.TabIndex = 91;
+            this.btnTalleres2.TabIndex = 15;
             this.btnTalleres2.Text = "   Talleres";
             this.btnTalleres2.UseVisualStyleBackColor = false;
             this.btnTalleres2.Click += new System.EventHandler(this.btnTalleres2_Click);
@@ -511,7 +518,7 @@
             this.btnEscuelas2.Location = new System.Drawing.Point(3, 129);
             this.btnEscuelas2.Name = "btnEscuelas2";
             this.btnEscuelas2.Size = new System.Drawing.Size(143, 42);
-            this.btnEscuelas2.TabIndex = 90;
+            this.btnEscuelas2.TabIndex = 14;
             this.btnEscuelas2.Text = "     Escuelas";
             this.btnEscuelas2.UseVisualStyleBackColor = false;
             this.btnEscuelas2.Click += new System.EventHandler(this.btnEscuelas2_Click);
@@ -527,7 +534,7 @@
             this.btnAlumnos2.Location = new System.Drawing.Point(3, 86);
             this.btnAlumnos2.Name = "btnAlumnos2";
             this.btnAlumnos2.Size = new System.Drawing.Size(143, 42);
-            this.btnAlumnos2.TabIndex = 89;
+            this.btnAlumnos2.TabIndex = 13;
             this.btnAlumnos2.Text = "      Alumnos";
             this.btnAlumnos2.UseVisualStyleBackColor = false;
             this.btnAlumnos2.Click += new System.EventHandler(this.btnAlumnos2_Click);
@@ -542,7 +549,7 @@
             this.btnPagos2.Location = new System.Drawing.Point(3, 387);
             this.btnPagos2.Name = "btnPagos2";
             this.btnPagos2.Size = new System.Drawing.Size(143, 42);
-            this.btnPagos2.TabIndex = 106;
+            this.btnPagos2.TabIndex = 20;
             this.btnPagos2.Text = "Pagos";
             this.btnPagos2.UseVisualStyleBackColor = false;
             this.btnPagos2.Click += new System.EventHandler(this.btnPagos2_Click);
@@ -554,6 +561,7 @@
             this.txtResponsablePagoEscuela.Name = "txtResponsablePagoEscuela";
             this.txtResponsablePagoEscuela.Size = new System.Drawing.Size(211, 20);
             this.txtResponsablePagoEscuela.TabIndex = 9;
+            this.txtResponsablePagoEscuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtResponsablePagoEscuela_KeyPress);
             // 
             // label7
             // 
@@ -569,7 +577,6 @@
             // btnRecomendaciones2
             // 
             this.btnRecomendaciones2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRecomendaciones2.Enabled = false;
             this.btnRecomendaciones2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRecomendaciones2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecomendaciones2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -577,7 +584,7 @@
             this.btnRecomendaciones2.Location = new System.Drawing.Point(3, 473);
             this.btnRecomendaciones2.Name = "btnRecomendaciones2";
             this.btnRecomendaciones2.Size = new System.Drawing.Size(143, 42);
-            this.btnRecomendaciones2.TabIndex = 132;
+            this.btnRecomendaciones2.TabIndex = 22;
             this.btnRecomendaciones2.Text = "Recomendaciones";
             this.btnRecomendaciones2.UseVisualStyleBackColor = false;
             this.btnRecomendaciones2.Click += new System.EventHandler(this.btnRecomendaciones2_Click);
@@ -592,7 +599,7 @@
             this.btnIncidencias2.Location = new System.Drawing.Point(3, 430);
             this.btnIncidencias2.Name = "btnIncidencias2";
             this.btnIncidencias2.Size = new System.Drawing.Size(143, 42);
-            this.btnIncidencias2.TabIndex = 131;
+            this.btnIncidencias2.TabIndex = 21;
             this.btnIncidencias2.Text = "    Incidencias";
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
@@ -605,6 +612,7 @@
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 133;
             this.label8.Text = "label8";
+            this.label8.Visible = false;
             // 
             // ModuloEscuelas
             // 
