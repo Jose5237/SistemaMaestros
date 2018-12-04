@@ -1577,29 +1577,33 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/validarTallerXgrupo", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public int validarTallerXgrupo(string id_esc, string nivel, string grados, string fecha) {
+        public int validarTallerXgrupo(string id_esc, string nivel, string prim, string seg, string ter, string fecha) {
             object[] results = this.Invoke("validarTallerXgrupo", new object[] {
                         id_esc,
                         nivel,
-                        grados,
+                        prim,
+                        seg,
+                        ter,
                         fecha});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void validarTallerXgrupoAsync(string id_esc, string nivel, string grados, string fecha) {
-            this.validarTallerXgrupoAsync(id_esc, nivel, grados, fecha, null);
+        public void validarTallerXgrupoAsync(string id_esc, string nivel, string prim, string seg, string ter, string fecha) {
+            this.validarTallerXgrupoAsync(id_esc, nivel, prim, seg, ter, fecha, null);
         }
         
         /// <remarks/>
-        public void validarTallerXgrupoAsync(string id_esc, string nivel, string grados, string fecha, object userState) {
+        public void validarTallerXgrupoAsync(string id_esc, string nivel, string prim, string seg, string ter, string fecha, object userState) {
             if ((this.validarTallerXgrupoOperationCompleted == null)) {
                 this.validarTallerXgrupoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnvalidarTallerXgrupoOperationCompleted);
             }
             this.InvokeAsync("validarTallerXgrupo", new object[] {
                         id_esc,
                         nivel,
-                        grados,
+                        prim,
+                        seg,
+                        ter,
                         fecha}, this.validarTallerXgrupoOperationCompleted, userState);
         }
         
