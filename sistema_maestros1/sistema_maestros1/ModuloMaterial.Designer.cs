@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloMaterial));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label12 = new System.Windows.Forms.Label();
             this.txtBuscadorMaterial = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -89,11 +89,12 @@
             // 
             // txtBuscadorMaterial
             // 
+            this.txtBuscadorMaterial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscadorMaterial.Location = new System.Drawing.Point(813, 55);
             this.txtBuscadorMaterial.Multiline = true;
             this.txtBuscadorMaterial.Name = "txtBuscadorMaterial";
             this.txtBuscadorMaterial.Size = new System.Drawing.Size(283, 30);
-            this.txtBuscadorMaterial.TabIndex = 90;
+            this.txtBuscadorMaterial.TabIndex = 8;
             this.txtBuscadorMaterial.TextChanged += new System.EventHandler(this.txtBuscadorMaterial_TextChanged);
             // 
             // label6
@@ -124,7 +125,7 @@
             this.txtCostoMaterial.Location = new System.Drawing.Point(166, 395);
             this.txtCostoMaterial.Name = "txtCostoMaterial";
             this.txtCostoMaterial.Size = new System.Drawing.Size(212, 20);
-            this.txtCostoMaterial.TabIndex = 86;
+            this.txtCostoMaterial.TabIndex = 6;
             this.txtCostoMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoMaterial_KeyPress);
             // 
             // txtNombreMaterial
@@ -133,7 +134,7 @@
             this.txtNombreMaterial.Location = new System.Drawing.Point(166, 348);
             this.txtNombreMaterial.Name = "txtNombreMaterial";
             this.txtNombreMaterial.Size = new System.Drawing.Size(211, 20);
-            this.txtNombreMaterial.TabIndex = 85;
+            this.txtNombreMaterial.TabIndex = 5;
             // 
             // txtIdMaterial
             // 
@@ -141,7 +142,7 @@
             this.txtIdMaterial.Location = new System.Drawing.Point(166, 301);
             this.txtIdMaterial.Name = "txtIdMaterial";
             this.txtIdMaterial.Size = new System.Drawing.Size(211, 20);
-            this.txtIdMaterial.TabIndex = 84;
+            this.txtIdMaterial.TabIndex = 4;
             // 
             // label4
             // 
@@ -179,6 +180,8 @@
             // btnEliminarMaterial
             // 
             this.btnEliminarMaterial.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarMaterial.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarMaterial.BackgroundImage")));
+            this.btnEliminarMaterial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarMaterial.FlatAppearance.BorderSize = 0;
             this.btnEliminarMaterial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarMaterial.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -186,14 +189,15 @@
             this.btnEliminarMaterial.Location = new System.Drawing.Point(393, 53);
             this.btnEliminarMaterial.Name = "btnEliminarMaterial";
             this.btnEliminarMaterial.Size = new System.Drawing.Size(96, 37);
-            this.btnEliminarMaterial.TabIndex = 80;
-            this.btnEliminarMaterial.Text = "Eliminar";
+            this.btnEliminarMaterial.TabIndex = 22;
             this.btnEliminarMaterial.UseVisualStyleBackColor = false;
             this.btnEliminarMaterial.Click += new System.EventHandler(this.btnEliminarMaterial_Click);
             // 
             // btnModificarMaterial
             // 
-            this.btnModificarMaterial.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarMaterial.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarMaterial.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarMaterial.BackgroundImage")));
+            this.btnModificarMaterial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarMaterial.FlatAppearance.BorderSize = 0;
             this.btnModificarMaterial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarMaterial.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,14 +205,15 @@
             this.btnModificarMaterial.Location = new System.Drawing.Point(282, 53);
             this.btnModificarMaterial.Name = "btnModificarMaterial";
             this.btnModificarMaterial.Size = new System.Drawing.Size(96, 37);
-            this.btnModificarMaterial.TabIndex = 79;
-            this.btnModificarMaterial.Text = "Modificar";
+            this.btnModificarMaterial.TabIndex = 21;
             this.btnModificarMaterial.UseVisualStyleBackColor = false;
             this.btnModificarMaterial.Click += new System.EventHandler(this.btnModificarMaterial_Click);
             // 
             // btnAgregarMaterial
             // 
-            this.btnAgregarMaterial.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarMaterial.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarMaterial.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarMaterial.BackgroundImage")));
+            this.btnAgregarMaterial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarMaterial.FlatAppearance.BorderSize = 0;
             this.btnAgregarMaterial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarMaterial.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -216,8 +221,7 @@
             this.btnAgregarMaterial.Location = new System.Drawing.Point(170, 53);
             this.btnAgregarMaterial.Name = "btnAgregarMaterial";
             this.btnAgregarMaterial.Size = new System.Drawing.Size(96, 37);
-            this.btnAgregarMaterial.TabIndex = 78;
-            this.btnAgregarMaterial.Text = "Agregar";
+            this.btnAgregarMaterial.TabIndex = 20;
             this.btnAgregarMaterial.UseVisualStyleBackColor = false;
             this.btnAgregarMaterial.Click += new System.EventHandler(this.btnAgregarMaterial_Click);
             // 
@@ -260,12 +264,14 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.Location = new System.Drawing.Point(167, 473);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
-            this.btnAceptar.TabIndex = 95;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "GUARDAR✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // label3
@@ -308,8 +314,9 @@
             this.cbEscuelaMaterial.Location = new System.Drawing.Point(166, 156);
             this.cbEscuelaMaterial.Name = "cbEscuelaMaterial";
             this.cbEscuelaMaterial.Size = new System.Drawing.Size(211, 21);
-            this.cbEscuelaMaterial.TabIndex = 100;
+            this.cbEscuelaMaterial.TabIndex = 1;
             this.cbEscuelaMaterial.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaMaterial_SelectedIndexChanged);
+            this.cbEscuelaMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaMaterial_KeyPress);
             // 
             // cbTallerMaterial
             // 
@@ -318,8 +325,9 @@
             this.cbTallerMaterial.Location = new System.Drawing.Point(166, 205);
             this.cbTallerMaterial.Name = "cbTallerMaterial";
             this.cbTallerMaterial.Size = new System.Drawing.Size(211, 21);
-            this.cbTallerMaterial.TabIndex = 101;
+            this.cbTallerMaterial.TabIndex = 2;
             this.cbTallerMaterial.SelectedIndexChanged += new System.EventHandler(this.cbTallerMaterial_SelectedIndexChanged);
+            this.cbTallerMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTallerMaterial_KeyPress);
             // 
             // cbDinamicaMaterial
             // 
@@ -328,8 +336,9 @@
             this.cbDinamicaMaterial.Location = new System.Drawing.Point(166, 253);
             this.cbDinamicaMaterial.Name = "cbDinamicaMaterial";
             this.cbDinamicaMaterial.Size = new System.Drawing.Size(211, 21);
-            this.cbDinamicaMaterial.TabIndex = 102;
+            this.cbDinamicaMaterial.TabIndex = 3;
             this.cbDinamicaMaterial.SelectedIndexChanged += new System.EventHandler(this.cbDinamicaMaterial_SelectedIndexChanged);
+            this.cbDinamicaMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbDinamicaMaterial_KeyPress);
             // 
             // btnMenuPrincipal2
             // 
@@ -337,7 +346,7 @@
             this.btnMenuPrincipal2.Location = new System.Drawing.Point(3, 46);
             this.btnMenuPrincipal2.Name = "btnMenuPrincipal2";
             this.btnMenuPrincipal2.Size = new System.Drawing.Size(143, 38);
-            this.btnMenuPrincipal2.TabIndex = 110;
+            this.btnMenuPrincipal2.TabIndex = 9;
             this.btnMenuPrincipal2.Text = "☰    Menu   ";
             this.btnMenuPrincipal2.UseVisualStyleBackColor = true;
             this.btnMenuPrincipal2.Click += new System.EventHandler(this.btnMenuPrincipal2_Click);
@@ -353,7 +362,7 @@
             this.btnMaterial2.Location = new System.Drawing.Point(3, 344);
             this.btnMaterial2.Name = "btnMaterial2";
             this.btnMaterial2.Size = new System.Drawing.Size(143, 42);
-            this.btnMaterial2.TabIndex = 109;
+            this.btnMaterial2.TabIndex = 16;
             this.btnMaterial2.Text = "      Materiales";
             this.btnMaterial2.UseVisualStyleBackColor = false;
             this.btnMaterial2.Click += new System.EventHandler(this.btnMaterial2_Click);
@@ -368,7 +377,7 @@
             this.btnDinamicas2.Location = new System.Drawing.Point(3, 301);
             this.btnDinamicas2.Name = "btnDinamicas2";
             this.btnDinamicas2.Size = new System.Drawing.Size(143, 42);
-            this.btnDinamicas2.TabIndex = 108;
+            this.btnDinamicas2.TabIndex = 15;
             this.btnDinamicas2.Text = "      Dinamicas";
             this.btnDinamicas2.UseVisualStyleBackColor = false;
             this.btnDinamicas2.Click += new System.EventHandler(this.btnDinamicas2_Click);
@@ -383,7 +392,7 @@
             this.btnProfesores2.Location = new System.Drawing.Point(3, 258);
             this.btnProfesores2.Name = "btnProfesores2";
             this.btnProfesores2.Size = new System.Drawing.Size(143, 42);
-            this.btnProfesores2.TabIndex = 107;
+            this.btnProfesores2.TabIndex = 14;
             this.btnProfesores2.Text = "      Profesores";
             this.btnProfesores2.UseVisualStyleBackColor = false;
             this.btnProfesores2.Click += new System.EventHandler(this.btnProfesores2_Click);
@@ -398,7 +407,7 @@
             this.btnPadreOTutor2.Location = new System.Drawing.Point(3, 215);
             this.btnPadreOTutor2.Name = "btnPadreOTutor2";
             this.btnPadreOTutor2.Size = new System.Drawing.Size(143, 42);
-            this.btnPadreOTutor2.TabIndex = 106;
+            this.btnPadreOTutor2.TabIndex = 13;
             this.btnPadreOTutor2.Text = "            Padre o Tutor";
             this.btnPadreOTutor2.UseVisualStyleBackColor = false;
             this.btnPadreOTutor2.Click += new System.EventHandler(this.btnPadreOTutor2_Click);
@@ -413,7 +422,7 @@
             this.btnTalleres2.Location = new System.Drawing.Point(3, 172);
             this.btnTalleres2.Name = "btnTalleres2";
             this.btnTalleres2.Size = new System.Drawing.Size(143, 42);
-            this.btnTalleres2.TabIndex = 105;
+            this.btnTalleres2.TabIndex = 12;
             this.btnTalleres2.Text = "   Talleres";
             this.btnTalleres2.UseVisualStyleBackColor = false;
             this.btnTalleres2.Click += new System.EventHandler(this.btnTalleres2_Click);
@@ -428,7 +437,7 @@
             this.btnEscuelas2.Location = new System.Drawing.Point(3, 129);
             this.btnEscuelas2.Name = "btnEscuelas2";
             this.btnEscuelas2.Size = new System.Drawing.Size(143, 42);
-            this.btnEscuelas2.TabIndex = 104;
+            this.btnEscuelas2.TabIndex = 11;
             this.btnEscuelas2.Text = "     Escuelas";
             this.btnEscuelas2.UseVisualStyleBackColor = false;
             this.btnEscuelas2.Click += new System.EventHandler(this.btnEscuelas2_Click);
@@ -444,7 +453,7 @@
             this.btnAlumnos2.Location = new System.Drawing.Point(3, 86);
             this.btnAlumnos2.Name = "btnAlumnos2";
             this.btnAlumnos2.Size = new System.Drawing.Size(143, 42);
-            this.btnAlumnos2.TabIndex = 103;
+            this.btnAlumnos2.TabIndex = 10;
             this.btnAlumnos2.Text = "      Alumnos";
             this.btnAlumnos2.UseVisualStyleBackColor = false;
             this.btnAlumnos2.Click += new System.EventHandler(this.btnAlumnos2_Click);
@@ -459,7 +468,7 @@
             this.btnPagos2.Location = new System.Drawing.Point(3, 387);
             this.btnPagos2.Name = "btnPagos2";
             this.btnPagos2.Size = new System.Drawing.Size(143, 42);
-            this.btnPagos2.TabIndex = 111;
+            this.btnPagos2.TabIndex = 17;
             this.btnPagos2.Text = "Pagos";
             this.btnPagos2.UseVisualStyleBackColor = false;
             this.btnPagos2.Click += new System.EventHandler(this.btnPagos2_Click);
@@ -475,7 +484,7 @@
             this.btnRecomendaciones2.Location = new System.Drawing.Point(3, 473);
             this.btnRecomendaciones2.Name = "btnRecomendaciones2";
             this.btnRecomendaciones2.Size = new System.Drawing.Size(143, 42);
-            this.btnRecomendaciones2.TabIndex = 132;
+            this.btnRecomendaciones2.TabIndex = 19;
             this.btnRecomendaciones2.Text = "Recomendaciones";
             this.btnRecomendaciones2.UseVisualStyleBackColor = false;
             this.btnRecomendaciones2.Click += new System.EventHandler(this.btnRecomendaciones2_Click);
@@ -490,7 +499,7 @@
             this.btnIncidencias2.Location = new System.Drawing.Point(3, 430);
             this.btnIncidencias2.Name = "btnIncidencias2";
             this.btnIncidencias2.Size = new System.Drawing.Size(143, 42);
-            this.btnIncidencias2.TabIndex = 131;
+            this.btnIncidencias2.TabIndex = 18;
             this.btnIncidencias2.Text = "    Incidencias";
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
@@ -502,26 +511,27 @@
             this.dgvMaterial.AllowUserToOrderColumns = true;
             this.dgvMaterial.AllowUserToResizeColumns = false;
             this.dgvMaterial.AllowUserToResizeRows = false;
+            this.dgvMaterial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMaterial.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvMaterial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMaterial.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.NavajoWhite;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMaterial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMaterial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvMaterial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMaterial.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMaterial.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgvMaterial.EnableHeadersVisualStyles = false;
             this.dgvMaterial.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvMaterial.Location = new System.Drawing.Point(423, 105);
@@ -529,8 +539,8 @@
             this.dgvMaterial.Name = "dgvMaterial";
             this.dgvMaterial.ReadOnly = true;
             this.dgvMaterial.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvMaterial.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvMaterial.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvMaterial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMaterial.Size = new System.Drawing.Size(690, 513);
             this.dgvMaterial.TabIndex = 139;
@@ -568,6 +578,7 @@
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 143;
             this.label8.Text = "label8";
+            this.label8.Visible = false;
             // 
             // ModuloMaterial
             // 

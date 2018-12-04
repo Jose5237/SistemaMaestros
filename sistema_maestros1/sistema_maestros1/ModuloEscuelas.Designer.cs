@@ -73,6 +73,7 @@
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
             this.btnIncidencias2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.masktxtTel1Escuela = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).BeginInit();
             this.SuspendLayout();
@@ -614,12 +615,22 @@
             this.label8.Text = "label8";
             this.label8.Visible = false;
             // 
+            // masktxtTel1Escuela
+            // 
+            this.masktxtTel1Escuela.Location = new System.Drawing.Point(241, 240);
+            this.masktxtTel1Escuela.Mask = "(999)-000-0000";
+            this.masktxtTel1Escuela.Name = "masktxtTel1Escuela";
+            this.masktxtTel1Escuela.Size = new System.Drawing.Size(137, 20);
+            this.masktxtTel1Escuela.TabIndex = 134;
+            this.masktxtTel1Escuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.masktxtTel1Escuela_KeyPress);
+            // 
             // ModuloEscuelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.masktxtTel1Escuela);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
@@ -717,5 +728,6 @@
         private System.Windows.Forms.Button btnRecomendaciones2;
         private System.Windows.Forms.Button btnIncidencias2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.MaskedTextBox masktxtTel1Escuela;
     }
 }

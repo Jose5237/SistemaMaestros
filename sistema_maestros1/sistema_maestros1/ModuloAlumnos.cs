@@ -209,7 +209,9 @@ namespace sistema_maestros1
             private void btnAgregarAlumno_Click(object sender, EventArgs e)
             {
                 dgvAlumnos.Enabled = false;
+
                 opcionBotones = 0;
+
                 cbEscuelaAlumno.Enabled = true; cbEscuelaAlumno.Text = "Seleccionar Escuela";
                 txtIdEscuelaAlumno.Text = "";
                 txtIdAlumno.Text = "";
@@ -276,6 +278,8 @@ namespace sistema_maestros1
                WindowState = FormWindowState.Minimized;
            }
         
+
+
             //BOTON ACEPTAR (CRUD)
             private void btnAceptar_Click(object sender, EventArgs e)
             {
@@ -378,8 +382,10 @@ namespace sistema_maestros1
                 {
                     MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
                 }
-            btnAceptar.BackColor = Color.Silver;
             }
+
+
+
         //BOTON RELACIONAR ALUMNOS CON PADRES
             private void btnAsignarPadre_Click(object sender, EventArgs e)
             {
@@ -387,10 +393,7 @@ namespace sistema_maestros1
                 tha.Show();
             }
         
-            
-        
-
-
+          
         private void cbEscuelaAlumno_SelectedIndexChanged(object sender, EventArgs e)
             {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())

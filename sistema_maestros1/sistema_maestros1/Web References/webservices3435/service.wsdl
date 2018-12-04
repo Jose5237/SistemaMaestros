@@ -277,7 +277,9 @@
   <wsdl:message name="validarTallerXgrupoRequest">
     <wsdl:part name="id_esc" type="xsd:string" />
     <wsdl:part name="nivel" type="xsd:string" />
-    <wsdl:part name="grados" type="xsd:string" />
+    <wsdl:part name="prim" type="xsd:string" />
+    <wsdl:part name="seg" type="xsd:string" />
+    <wsdl:part name="ter" type="xsd:string" />
     <wsdl:part name="fecha" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="validarTallerXgrupoResponse">

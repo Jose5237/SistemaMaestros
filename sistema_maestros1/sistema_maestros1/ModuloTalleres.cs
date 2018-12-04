@@ -324,22 +324,22 @@ namespace sistema_maestros1
                         ta.ta_herramientas_taller = txtHerramientasTaller.Text;
                         Globales.fechaIni_taller = txtFechaFin.Text;
                         string auxgrados = cbGradoTaller.Text.Replace("º","");
-                        valid= wsPHP.validarTallerXgrupo(txtIdEscuela.Text, cbNivelTaller.Text, auxgrados, Globales.fechaIni_taller);
-                        if (valid == 0)
-                        {
-                            try
-                            {
-                                string mensaje = wsPHP.agregarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
-                                MessageBox.Show(mensaje, "¡Taller Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                dgvTaller.Enabled = true;
-                            }
-                            catch
-                            {
-                                MessageBox.Show("No se pudo agregar este taller", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                            MessageBox.Show("No puede asigar dos o mas taller al mismo grupo en el mismo periodo. Por favor seleccione otra fecha inicial", "¡Error!", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                        //valid= wsPHP.validarTallerXgrupo(txtIdEscuela.Text, cbNivelTaller.Text, auxgrados, Globales.fechaIni_taller);
+                        //if (valid == 0)
+                        //{
+                        //    try
+                        //    {
+                        //        string mensaje = wsPHP.agregarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
+                        //        MessageBox.Show(mensaje, "¡Taller Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //        dgvTaller.Enabled = true;
+                        //    }
+                        //    catch
+                        //    {
+                        //        MessageBox.Show("No se pudo agregar este taller", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    }
+                        //}
+                        //else
+                        //    MessageBox.Show("No puede asigar dos o mas taller al mismo grupo en el mismo periodo. Por favor seleccione otra fecha inicial", "¡Error!", MessageBoxButtons.OK ,MessageBoxIcon.Error);
                     }
                 }
                 else if (opcionBotones == 1)
@@ -361,21 +361,21 @@ namespace sistema_maestros1
                         ta.ta_justificacioncosto_taller = txtJustificacionCostoTaller.Text;
                         ta.ta_herramientas_taller = txtHerramientasTaller.Text;
                         Globales.fechaIni_taller = ta.ta_fecha_fin_taller;
-                        valid = wsPHP.validarTallerXgrupo(txtIdEscuela.Text, cbNivelTaller.Text, cbGradoTaller.Text, Globales.fechaIni_taller);
-                        if(valid == 0)
-                        {
-                            try
-                            {
-                                string mensaje = wsPHP.modificarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
-                                MessageBox.Show(mensaje, "¡Taller Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("No se pudo modificar los datos de este taller", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                            MessageBox.Show("No puede asigar dos o mas taller al mismo grupo en el mismo periodo. Por favor seleccione otra fecha inicial", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //valid = wsPHP.validarTallerXgrupo(txtIdEscuela.Text, cbNivelTaller.Text, cbGradoTaller.Text, Globales.fechaIni_taller);
+                        //if(valid == 0)
+                        //{
+                        //    try
+                        //    {
+                        //        string mensaje = wsPHP.modificarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
+                        //        MessageBox.Show(mensaje, "¡Taller Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //    }
+                        //    catch
+                        //    {
+                        //        MessageBox.Show("No se pudo modificar los datos de este taller", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    }
+                        //}
+                        //else
+                        //    MessageBox.Show("No puede asigar dos o mas taller al mismo grupo en el mismo periodo. Por favor seleccione otra fecha inicial", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else if (opcionBotones == 2)

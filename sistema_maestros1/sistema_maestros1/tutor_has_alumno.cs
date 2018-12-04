@@ -162,31 +162,52 @@ namespace sistema_maestros1
 
         private void dgvAhasTAll_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtAlumno2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtPadre2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[2].Value.ToString());
+            
+            txtEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIDEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtAlumno2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtIDAlumno2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtPadre2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtIDPadre2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[5].Value.ToString());
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ClassAlumnoHasTutor aht = new ClassAlumnoHasTutor();
-            aht.al_id_alumno = txtAlumno2.Text;
-            aht.al_id_tutor = txtPadre2.Text;
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                try
-                {
-                    string mensaje = wsPHP.eliminarAlumnoTutor(aht.al_id_alumno, aht.al_id_tutor);
-                    MessageBox.Show(mensaje, "¡Relacion Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            aht.es_id_escuela = txtIDEscuela2.Text;
+            aht.al_id_alumno = txtIDAlumno2.Text;
+            aht.al_id_tutor = txtIDPadre2.Text;
 
-                }
-                catch
+            if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        string mensaje = wsPHP.eliminarAlumnoTutor(aht.al_id_alumno, aht.al_id_tutor);
+                        MessageBox.Show(mensaje, "¡Relacion Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                cargarDatosTablaAhT();
+                inicializarTextBox();
             }
         }
 
+
+        public void inicializarTextBox()
+        {
+            txtIDEscuela2.Text = "";
+            txtEscuela2.Text = "";
+            txtIDAlumno2.Text = "";
+            txtAlumno2.Text = "";
+            txtIDPadre2.Text = "";
+            txtPadre2.Text = "";
+        }
 
         public void cargarDatosTablaPadres()
         {
@@ -246,8 +267,11 @@ namespace sistema_maestros1
         public void NombresColumnasAhT()
         {
             dgvAhasTAll.Columns[0].HeaderText = "Escuela";
-            dgvAhasTAll.Columns[1].HeaderText = "Nombre del Alumno";
-            dgvAhasTAll.Columns[2].HeaderText = "Padre o Tutor";
+            dgvAhasTAll.Columns[1].Visible = false;
+            dgvAhasTAll.Columns[2].HeaderText = "Nombre del Alumno";
+            dgvAhasTAll.Columns[3].Visible = false;
+            dgvAhasTAll.Columns[4].HeaderText = "Padre o Tutor";
+            dgvAhasTAll.Columns[5].Visible = false;
         }
 
         private void dgvTutor_CellContentClick(object sender, DataGridViewCellEventArgs e)

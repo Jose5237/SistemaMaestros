@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloIncidencias));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPagos2 = new System.Windows.Forms.Button();
             this.btnMenuPrincipal2 = new System.Windows.Forms.Button();
             this.btnMaterial2 = new System.Windows.Forms.Button();
@@ -61,10 +61,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbEscuelaIncidencia = new System.Windows.Forms.ComboBox();
-            this.cbTipoIncidencia = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvIncidencia = new System.Windows.Forms.DataGridView();
             this.txtIdEscuelaIncidencia = new System.Windows.Forms.TextBox();
+            this.txtTipoIncidencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIncidencia)).BeginInit();
             this.SuspendLayout();
@@ -280,6 +280,8 @@
             // btnEliminarIncidencia
             // 
             this.btnEliminarIncidencia.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarIncidencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarIncidencia.BackgroundImage")));
+            this.btnEliminarIncidencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarIncidencia.FlatAppearance.BorderSize = 0;
             this.btnEliminarIncidencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarIncidencia.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,13 +290,14 @@
             this.btnEliminarIncidencia.Name = "btnEliminarIncidencia";
             this.btnEliminarIncidencia.Size = new System.Drawing.Size(96, 37);
             this.btnEliminarIncidencia.TabIndex = 109;
-            this.btnEliminarIncidencia.Text = "Eliminar";
             this.btnEliminarIncidencia.UseVisualStyleBackColor = false;
             this.btnEliminarIncidencia.Click += new System.EventHandler(this.btnEliminarIncidencia_Click);
             // 
             // btnModificarIncidencia
             // 
-            this.btnModificarIncidencia.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarIncidencia.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarIncidencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarIncidencia.BackgroundImage")));
+            this.btnModificarIncidencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarIncidencia.FlatAppearance.BorderSize = 0;
             this.btnModificarIncidencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarIncidencia.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -303,13 +306,14 @@
             this.btnModificarIncidencia.Name = "btnModificarIncidencia";
             this.btnModificarIncidencia.Size = new System.Drawing.Size(96, 37);
             this.btnModificarIncidencia.TabIndex = 108;
-            this.btnModificarIncidencia.Text = "Modificar";
             this.btnModificarIncidencia.UseVisualStyleBackColor = false;
             this.btnModificarIncidencia.Click += new System.EventHandler(this.btnModificarIncidencia_Click);
             // 
             // btnAgregarIncidencia
             // 
-            this.btnAgregarIncidencia.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarIncidencia.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarIncidencia.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarIncidencia.BackgroundImage")));
+            this.btnAgregarIncidencia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarIncidencia.FlatAppearance.BorderSize = 0;
             this.btnAgregarIncidencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarIncidencia.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -318,7 +322,6 @@
             this.btnAgregarIncidencia.Name = "btnAgregarIncidencia";
             this.btnAgregarIncidencia.Size = new System.Drawing.Size(96, 37);
             this.btnAgregarIncidencia.TabIndex = 107;
-            this.btnAgregarIncidencia.Text = "Agregar";
             this.btnAgregarIncidencia.UseVisualStyleBackColor = false;
             this.btnAgregarIncidencia.Click += new System.EventHandler(this.btnAgregarIncidencia_Click);
             // 
@@ -436,21 +439,13 @@
             // 
             // cbEscuelaIncidencia
             // 
+            this.cbEscuelaIncidencia.Enabled = false;
             this.cbEscuelaIncidencia.FormattingEnabled = true;
             this.cbEscuelaIncidencia.Location = new System.Drawing.Point(170, 150);
             this.cbEscuelaIncidencia.Name = "cbEscuelaIncidencia";
             this.cbEscuelaIncidencia.Size = new System.Drawing.Size(211, 21);
             this.cbEscuelaIncidencia.TabIndex = 1;
             this.cbEscuelaIncidencia.Text = "Seleccionar Escuela";
-            // 
-            // cbTipoIncidencia
-            // 
-            this.cbTipoIncidencia.FormattingEnabled = true;
-            this.cbTipoIncidencia.Location = new System.Drawing.Point(170, 372);
-            this.cbTipoIncidencia.Name = "cbTipoIncidencia";
-            this.cbTipoIncidencia.Size = new System.Drawing.Size(211, 21);
-            this.cbTipoIncidencia.TabIndex = 5;
-            this.cbTipoIncidencia.Text = "Seleccionar Tipo Incidencia";
             // 
             // btnAceptar
             // 
@@ -459,12 +454,14 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.Location = new System.Drawing.Point(170, 478);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // dgvIncidencia
@@ -478,23 +475,23 @@
             this.dgvIncidencia.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvIncidencia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvIncidencia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvIncidencia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvIncidencia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvIncidencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIncidencia.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIncidencia.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvIncidencia.EnableHeadersVisualStyles = false;
             this.dgvIncidencia.GridColor = System.Drawing.Color.Thistle;
             this.dgvIncidencia.Location = new System.Drawing.Point(423, 105);
@@ -502,8 +499,8 @@
             this.dgvIncidencia.Name = "dgvIncidencia";
             this.dgvIncidencia.ReadOnly = true;
             this.dgvIncidencia.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvIncidencia.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvIncidencia.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvIncidencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIncidencia.Size = new System.Drawing.Size(690, 513);
             this.dgvIncidencia.TabIndex = 141;
@@ -514,7 +511,14 @@
             this.txtIdEscuelaIncidencia.Name = "txtIdEscuelaIncidencia";
             this.txtIdEscuelaIncidencia.Size = new System.Drawing.Size(56, 20);
             this.txtIdEscuelaIncidencia.TabIndex = 142;
-            this.txtIdEscuelaIncidencia.Visible = false;
+            // 
+            // txtTipoIncidencia
+            // 
+            this.txtTipoIncidencia.Enabled = false;
+            this.txtTipoIncidencia.Location = new System.Drawing.Point(170, 372);
+            this.txtTipoIncidencia.Name = "txtTipoIncidencia";
+            this.txtTipoIncidencia.Size = new System.Drawing.Size(211, 20);
+            this.txtTipoIncidencia.TabIndex = 143;
             // 
             // ModuloIncidencias
             // 
@@ -522,10 +526,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.txtTipoIncidencia);
             this.Controls.Add(this.txtIdEscuelaIncidencia);
             this.Controls.Add(this.dgvIncidencia);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.cbTipoIncidencia);
             this.Controls.Add(this.cbEscuelaIncidencia);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtDescripcionIncidencia);
@@ -560,6 +564,7 @@
             this.Name = "ModuloIncidencias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloIncidencias";
+            this.Load += new System.EventHandler(this.ModuloIncidencias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIncidencia)).EndInit();
             this.ResumeLayout(false);
@@ -598,9 +603,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbEscuelaIncidencia;
-        private System.Windows.Forms.ComboBox cbTipoIncidencia;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.DataGridView dgvIncidencia;
         private System.Windows.Forms.TextBox txtIdEscuelaIncidencia;
+        private System.Windows.Forms.TextBox txtTipoIncidencia;
     }
 }
