@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace sistema_maestros1
 {
@@ -250,91 +252,111 @@ namespace sistema_maestros1
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco"&& txtCorreoPadre.Text != "" )
+            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco" && txtCorreoPadre.Text != "" )
             {
-                if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    if (opcionBotones == 0)
+
+               
+                string email = txtCorreoPadre.Text;
+                bool verificar = email.Contains("@"); 
+                bool verificar2 = email.Contains(".com");
+                    if ((verificar == true && verificar2 == true) || (txtCorreoPadre.Text == "No aplica" || txtCorreoPadre.Text == "no aplica" || txtCorreoPadre.Text == "No Aplica") || (txtCorreoPadre.Text == "n/a" || txtCorreoPadre.Text == "N/a" || txtCorreoPadre.Text == "N/A"))
                     {
-                        generarID();
-                        ClassPadres tu = new ClassPadres();
-                        tu.tu_id_tutor = label7.Text;
-                        tu.tu_nombre_tutor = tctNombrePadre.Text;
-                        tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
-                        tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
-                        tu.tu_telefono_tutor = txtTelefonoPadre.Text;
-                        tu.tu_parentesco_tutor = cbParentescoPadre.Text;
-                        tu.tu_correo_tutor = txtCorreoPadre.Text;
 
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        {
-                            
-                             try
-                             {
-                                dgvPadre.Enabled = true;
-                                string mensaje = wsPHP.agregarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
-                                MessageBox.Show(mensaje, "¡Usuario Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                btnAceptar.BackColor = Color.Silver;
-                            }
-                             catch
-                             {
-                                 MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                             }
-                        }
-                    }
-                    else if (opcionBotones == 1)
+
+
+
+                    if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        ClassPadres tu = new ClassPadres();
-                        tu.tu_id_tutor = txtIdPadre.Text;
-                        tu.tu_nombre_tutor = tctNombrePadre.Text;
-                        tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
-                        tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
-                        tu.tu_telefono_tutor = txtTelefonoPadre.Text;
-                        tu.tu_parentesco_tutor = cbParentescoPadre.Text;
-                        tu.tu_correo_tutor = txtCorreoPadre.Text;
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        if (opcionBotones == 0)
                         {
-                           try
-                           {
-                                string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
-                                MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                btnAceptar.BackColor = Color.Silver;
-                            }
-                           catch
-                           {
-                               MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                           }
-                        }
+                            generarID();
+                            ClassPadres tu = new ClassPadres();
+                            tu.tu_id_tutor = label7.Text;
+                            tu.tu_nombre_tutor = tctNombrePadre.Text;
+                            tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
+                            tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
+                            tu.tu_telefono_tutor = txtTelefonoPadre.Text;
+                            tu.tu_parentesco_tutor = cbParentescoPadre.Text;
+                            tu.tu_correo_tutor = txtCorreoPadre.Text;
 
-                    }
-                    else if (opcionBotones == 2)
-                    {
-                        ClassPadres tu = new ClassPadres();
-                        tu.tu_id_tutor = txtIdPadre.Text;
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        {
-                            try
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                string mensaje = wsPHP.eliminarTutor(tu.tu_id_tutor);
-                                MessageBox.Show(mensaje, "¡Tutor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                try
+                                {
+                                    dgvPadre.Enabled = true;
+                                    string mensaje = wsPHP.agregarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
+                                    MessageBox.Show(mensaje, "¡Usuario Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    btnAceptar.BackColor = Color.Silver;
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
+                        else if (opcionBotones == 1)
+                        {
+                            ClassPadres tu = new ClassPadres();
+                            tu.tu_id_tutor = txtIdPadre.Text;
+                            tu.tu_nombre_tutor = tctNombrePadre.Text;
+                            tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
+                            tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
+                            tu.tu_telefono_tutor = txtTelefonoPadre.Text;
+                            tu.tu_parentesco_tutor = cbParentescoPadre.Text;
+                            tu.tu_correo_tutor = txtCorreoPadre.Text;
+
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            {
+                                try
+                                {
+                                    string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
+                                    MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    btnAceptar.BackColor = Color.Silver;
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+
+                        }
+
+                        else if (opcionBotones == 2)
+                        {
+                            ClassPadres tu = new ClassPadres();
+                            tu.tu_id_tutor = txtIdPadre.Text;
+
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            {
+                                try
+                                {
+                                    string mensaje = wsPHP.eliminarTutor(tu.tu_id_tutor);
+                                    MessageBox.Show(mensaje, "¡Tutor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        cargarDatosTabla();
+                        inicializacionCampos();
                     }
-                    cargarDatosTabla();
-                    inicializacionCampos();
-                }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Correo Invalido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                
             }
             else
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
             
         }
+
+
 
         private void ModuloPadre_o_Tutor_Load(object sender, EventArgs e)
         {

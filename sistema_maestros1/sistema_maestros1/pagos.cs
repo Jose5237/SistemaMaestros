@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -156,5 +157,57 @@ namespace sistema_maestros1
             }
         }
 
+        private void ModuloPagos_Load(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    String respuestaEscuela = wsPHP.cargarDatosEscuela();
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+                    
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomEsc.es_nombre_escuela;
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        cbEscuelaPagos.Items.Add(item);
+
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void cbEscuelaPagos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaPagos.Text);
+                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+
+
+                foreach (var nomEsc in respEsc)
+                {
+                    //cbEscuelaAlumno.ValueMember = nomEsc.es_id_escuela;
+                    //cbEscuelaAlumno.DisplayMember = nomEsc.es_nombre_escuela;
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                    //cbEscuelaAlumno.Items.Add(nomEsc.es_nombre_escuela.ToString());
+                    string id = item.Value.ToString();
+                    txtIdEscuela1.Text = id;
+                }
+
+                DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtIdEscuela1.Text), typeof(DataTable));
+                dgvAlumnoPagos.DataSource = dt;
+            }
+        }
     }
 }

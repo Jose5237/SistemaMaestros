@@ -168,7 +168,9 @@ namespace sistema_maestros1
         private void btnAgregarDinamicas_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
-            btnAceptar.BackColor = Color.YellowGreen;
+
+            dgvDinamica.Enabled = false;
+
             cbEscuelaDinamicas.Enabled = true; cbEscuelaDinamicas.Text = "Seleccionar Escuela";
             txtIdEscuela.Text = "";
 
@@ -194,8 +196,8 @@ namespace sistema_maestros1
             txtJustificacionCostoDinamicas.Enabled = true; txtJustificacionCostoDinamicas.Text = "";
             txtHerramientasDinamicas.Enabled = true; txtHerramientasDinamicas.Text = "";
 
-            btnAceptar.Enabled = true;
-            
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen;
+
 
         }
 
@@ -203,7 +205,10 @@ namespace sistema_maestros1
         private void btnModificarDinamicas_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-            btnAceptar.BackColor = Color.SkyBlue;
+
+            cbEscuelaDinamicas.Enabled = false;
+            cbTallerDinamicas.Enabled = false;
+            txtIdDinamicas.Enabled = false;
             txtNombreDinamicas.Enabled = true; 
             txtDescripcionDinamicas.Enabled = true; 
             dtFechaIniDinamicas.Enabled = true;
@@ -212,7 +217,7 @@ namespace sistema_maestros1
             txtJustificacionCostoDinamicas.Enabled = true; 
             txtHerramientasDinamicas.Enabled = true;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue;
 
         }
 
@@ -220,7 +225,7 @@ namespace sistema_maestros1
         private void btnEliminarDinamicas_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-            btnAceptar.BackColor = Color.IndianRed;
+            
             cbEscuelaDinamicas.Enabled = false;
             txtIdEscuela.Enabled = false;
 
@@ -229,6 +234,7 @@ namespace sistema_maestros1
 
             txtIdDinamicas.Enabled = false;
             txtNombreDinamicas.Enabled = false;
+
             txtDescripcionDinamicas.Enabled = false;
             dtFechaIniDinamicas.Enabled = false;
             dtFechaFinDinamicas.Enabled = false;
@@ -236,7 +242,7 @@ namespace sistema_maestros1
             txtJustificacionCostoDinamicas.Enabled = false;
             txtHerramientasDinamicas.Enabled = false;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed;
 
 
 
@@ -640,7 +646,6 @@ namespace sistema_maestros1
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarDinamica(txtBuscadorDinamicas.Text), typeof(DataTable));
                         dgvDinamica.DataSource = dt;
-
                         NombresColumnas();
 
 
@@ -648,11 +653,14 @@ namespace sistema_maestros1
                     catch
                     {
                         MessageBox.Show("No se encuentra ningun taller con estos datos, Por favor ingrese un nombre o ID Taller correcto", "No existe este taller", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
                     }
 
 
                 }
             }
+            else
+                cargarDatosTabla();
         }
 
 
@@ -702,6 +710,29 @@ namespace sistema_maestros1
             //    MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino mayor a la fecha de termino de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    dtFechaFinDinamicas.Value = Convert.ToDateTime(txtFechaFinTaller.Text);
             //}
+        }
+
+
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+                try
+                {
+
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosDinamica(), typeof(DataTable));
+                    dgvDinamica.DataSource = dt;
+                    NombresColumnas();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 

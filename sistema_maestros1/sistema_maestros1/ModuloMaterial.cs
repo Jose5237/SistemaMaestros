@@ -173,17 +173,41 @@ namespace sistema_maestros1
             }
         }
 
+
+        //METODOS DE VALIDACIONES
+        #region
         //METODO DE txtCostoMaterial PARA SOLO ACEPTAR NUMEROS Y NUMEROS CON PUNTO DECIMAL
         private void txtCostoMaterial_KeyPress(object sender, KeyPressEventArgs e)
         {
             v.SoloNumerosDecimal(e);
         }
 
+
+        private void cbEscuelaMaterial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTallerMaterial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbDinamicaMaterial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
+
+
         //BOTON AGREGAR MATERIAL
         private void btnAgregarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
-            btnAceptar.BackColor = Color.YellowGreen;
+
+            dgvMaterial.Enabled = false;
+
             cbEscuelaMaterial.Enabled = true; cbEscuelaMaterial.Text = "Seleccionar Escuela";
             txtIdEscuela.Text = "";
 
@@ -196,22 +220,22 @@ namespace sistema_maestros1
             txtNombreMaterial.Enabled = true; txtNombreMaterial.Text = "";
             txtCostoMaterial.Enabled = true; txtCostoMaterial.Text = "";
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
         //BOTON MODIFICAR MATERIAL
         private void btnModificarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-            btnAceptar.BackColor = Color.SkyBlue;
-            cbEscuelaMaterial.Enabled = true;
-            cbTallerMaterial.Enabled = true; 
-            cbDinamicaMaterial.Enabled = true; 
-            txtIdMaterial.Enabled = true; 
+            
+            cbEscuelaMaterial.Enabled = false;
+            cbTallerMaterial.Enabled = false; 
+            cbDinamicaMaterial.Enabled = false; 
+            txtIdMaterial.Enabled = false; 
             txtNombreMaterial.Enabled = true; 
             txtCostoMaterial.Enabled = true;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
 
         }
 
@@ -219,7 +243,7 @@ namespace sistema_maestros1
         private void btnEliminarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-            btnAceptar.BackColor = Color.IndianRed;
+            
             //opcionBotones = 1;
             cbEscuelaMaterial.Enabled = false;
             cbTallerMaterial.Enabled = false;
@@ -228,31 +252,10 @@ namespace sistema_maestros1
             txtNombreMaterial.Enabled = false;
             txtCostoMaterial.Enabled = false;
 
-            btnAceptar.Enabled = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
 
         }
-        public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar dpro|dele|dqui
-            sub1 = "m" + cbTallerMaterial.Text.Substring(0, 3);
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, txtIdTaller.Text, txtIdDinamica.Text ,sub1);
-            if (ultimoID == "")
-                n = 0;
-            else
-                //guardar el numero del ultimo ID
-                n = Convert.ToInt32(ultimoID.Substring(4, 3));
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (3 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + sub2 + Convert.ToString(n);
-            label8.Text = newID;
-        }
+        
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -314,40 +317,10 @@ namespace sistema_maestros1
                         }
                     }
 
-                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                    {
-
-                        try
-                        {
-                            DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosMaterial(), typeof(DataTable));
-                            dgvMaterial.DataSource = dt;
-                           
-
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-
-                    cbEscuelaMaterial.Enabled = false; cbEscuelaMaterial.Text = "Seleccionar Escuela";
-                    txtIdEscuela.Text = "";
-
-                    cbTallerMaterial.Enabled = false; cbTallerMaterial.Text = "Seleccionar Taller";
-                    txtIdTaller.Text = "";
-
-                    cbDinamicaMaterial.Enabled = false; cbDinamicaMaterial.Text = "Seleccionar Dinamica";
-                    txtIdDinamica.Text = "";
-
-                    txtIdMaterial.Enabled = false; txtIdMaterial.Text = "";
-                    txtNombreMaterial.Enabled = false; txtNombreMaterial.Text = "";
-                    txtCostoMaterial.Enabled = false; txtCostoMaterial.Text = "";
-
-                    btnAceptar.Enabled = false;
+                    cargarDatosTabla();
+                    inicializacionCampos();
 
                 }
-                btnAceptar.BackColor = Color.Silver;
             }
             
             else
@@ -405,6 +378,7 @@ namespace sistema_maestros1
                 {
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosMaterial(), typeof(DataTable));
                     dgvMaterial.DataSource = dt;
+                    NombresColumnas();
 
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
                     var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
@@ -548,22 +522,93 @@ namespace sistema_maestros1
             {
                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-
                     DataTable dt = new DataTable();
                     try
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarMaterial(txtBuscadorMaterial.Text), typeof(DataTable));
                         dgvMaterial.DataSource = dt;
-                        
+                        NombresColumnas();
                     }
-                    catch
+                    catch (Exception)
                     {
-                        MessageBox.Show("No se encuentra ningun material con estos datos, Por favor ingrese un nombre o ID Material correcto", "No existe este taller", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre o ID Alumno correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
                     }
+                }
+            }
+            else
+                cargarDatosTabla();
+        }
 
 
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = "m" + cbTallerMaterial.Text.Substring(0, 3);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, txtIdTaller.Text, txtIdDinamica.Text, sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(4, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label8.Text = newID;
+        }
+
+        public void NombresColumnas()
+        {
+            dgvMaterial.Columns[0].HeaderText = "Escuela";
+            dgvMaterial.Columns[1].HeaderText = "Taller";
+            dgvMaterial.Columns[2].HeaderText = "Dinamica";
+            dgvMaterial.Columns[3].HeaderText = "ID Material";
+            dgvMaterial.Columns[4].HeaderText = "Nombre de Material";
+            dgvMaterial.Columns[5].HeaderText = "Costo Unitario";
+        }
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosMaterial(), typeof(DataTable));
+                    dgvMaterial.DataSource = dt;
+                    NombresColumnas();
+
+                } catch (Exception)
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
+        public void inicializacionCampos()
+        {
+            cbEscuelaMaterial.Enabled = false; cbEscuelaMaterial.Text = "Seleccionar Escuela";
+            txtIdEscuela.Text = "";
+
+            cbTallerMaterial.Enabled = false; cbTallerMaterial.Text = "Seleccionar Taller";
+            txtIdTaller.Text = "";
+
+            cbDinamicaMaterial.Enabled = false; cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+            txtIdDinamica.Text = "";
+
+            txtIdMaterial.Enabled = false; txtIdMaterial.Text = "";
+            txtNombreMaterial.Enabled = false; txtNombreMaterial.Text = "";
+            txtCostoMaterial.Enabled = false; txtCostoMaterial.Text = "";
+
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
+        }
+
+
     }
 }

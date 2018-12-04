@@ -73,6 +73,7 @@
     <Compile Include="ClassAlumnoHasTutor.cs" />
     <Compile Include="ClassDinamica.cs" />
     <Compile Include="ClassEscuela.cs" />
+    <Compile Include="ClassIncidencia.cs" />
     <Compile Include="ClassMaterial.cs" />
     <Compile Include="ClassPadres.cs" />
     <Compile Include="ClassProfesor.cs" />

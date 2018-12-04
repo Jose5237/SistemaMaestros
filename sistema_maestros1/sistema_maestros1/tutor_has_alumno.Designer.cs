@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tutor_has_alumno));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNombreAlumno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,10 +46,16 @@
             this.txtIdAlumno = new System.Windows.Forms.TextBox();
             this.txtIdEscuela = new System.Windows.Forms.TextBox();
             this.dgvAhasTAll = new System.Windows.Forms.DataGridView();
+            this.txtIDAlumno2 = new System.Windows.Forms.TextBox();
+            this.txtIDEscuela2 = new System.Windows.Forms.TextBox();
+            this.txtIDPadre2 = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtPadre2 = new System.Windows.Forms.TextBox();
             this.txtAlumno2 = new System.Windows.Forms.TextBox();
             this.txtEscuela2 = new System.Windows.Forms.TextBox();
-            this.txtPadre2 = new System.Windows.Forms.TextBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAhT)).BeginInit();
@@ -116,14 +122,14 @@
             this.dgvTutor.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvTutor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvTutor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTutor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTutor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTutor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTutor.EnableHeadersVisualStyles = false;
             this.dgvTutor.GridColor = System.Drawing.Color.SkyBlue;
@@ -173,14 +179,14 @@
             this.dgvAhT.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvAhT.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvAhT.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAhT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAhT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAhT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAhT.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvAhT.Location = new System.Drawing.Point(446, 101);
@@ -275,36 +281,102 @@
             this.dgvAhasTAll.TabIndex = 95;
             this.dgvAhasTAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAhasTAll_CellContentClick);
             // 
-            // txtAlumno2
+            // txtIDAlumno2
             // 
-            this.txtAlumno2.Location = new System.Drawing.Point(668, 359);
-            this.txtAlumno2.Name = "txtAlumno2";
-            this.txtAlumno2.Size = new System.Drawing.Size(100, 20);
-            this.txtAlumno2.TabIndex = 96;
+            this.txtIDAlumno2.Enabled = false;
+            this.txtIDAlumno2.Location = new System.Drawing.Point(727, 335);
+            this.txtIDAlumno2.Name = "txtIDAlumno2";
+            this.txtIDAlumno2.Size = new System.Drawing.Size(100, 20);
+            this.txtIDAlumno2.TabIndex = 96;
+            this.txtIDAlumno2.Visible = false;
             // 
-            // txtEscuela2
+            // txtIDEscuela2
             // 
-            this.txtEscuela2.Location = new System.Drawing.Point(668, 396);
-            this.txtEscuela2.Name = "txtEscuela2";
-            this.txtEscuela2.Size = new System.Drawing.Size(100, 20);
-            this.txtEscuela2.TabIndex = 97;
+            this.txtIDEscuela2.Enabled = false;
+            this.txtIDEscuela2.Location = new System.Drawing.Point(727, 387);
+            this.txtIDEscuela2.Name = "txtIDEscuela2";
+            this.txtIDEscuela2.Size = new System.Drawing.Size(100, 20);
+            this.txtIDEscuela2.TabIndex = 97;
+            this.txtIDEscuela2.Visible = false;
             // 
-            // txtPadre2
+            // txtIDPadre2
             // 
-            this.txtPadre2.Location = new System.Drawing.Point(668, 433);
-            this.txtPadre2.Name = "txtPadre2";
-            this.txtPadre2.Size = new System.Drawing.Size(100, 20);
-            this.txtPadre2.TabIndex = 98;
+            this.txtIDPadre2.Enabled = false;
+            this.txtIDPadre2.Location = new System.Drawing.Point(727, 438);
+            this.txtIDPadre2.Name = "txtIDPadre2";
+            this.txtIDPadre2.Size = new System.Drawing.Size(100, 20);
+            this.txtIDPadre2.TabIndex = 98;
+            this.txtIDPadre2.Visible = false;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(682, 474);
+            this.btnEliminar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminar.Location = new System.Drawing.Point(662, 498);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(165, 30);
             this.btnEliminar.TabIndex = 99;
             this.btnEliminar.Text = "ELIMINAR";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // txtPadre2
+            // 
+            this.txtPadre2.Location = new System.Drawing.Point(661, 459);
+            this.txtPadre2.Name = "txtPadre2";
+            this.txtPadre2.Size = new System.Drawing.Size(166, 20);
+            this.txtPadre2.TabIndex = 102;
+            // 
+            // txtAlumno2
+            // 
+            this.txtAlumno2.Location = new System.Drawing.Point(661, 408);
+            this.txtAlumno2.Name = "txtAlumno2";
+            this.txtAlumno2.Size = new System.Drawing.Size(166, 20);
+            this.txtAlumno2.TabIndex = 101;
+            // 
+            // txtEscuela2
+            // 
+            this.txtEscuela2.Location = new System.Drawing.Point(661, 357);
+            this.txtEscuela2.Name = "txtEscuela2";
+            this.txtEscuela2.Size = new System.Drawing.Size(166, 20);
+            this.txtEscuela2.TabIndex = 100;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(657, 334);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 20);
+            this.label4.TabIndex = 103;
+            this.label4.Text = "Escuela:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(657, 385);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 20);
+            this.label5.TabIndex = 104;
+            this.label5.Text = "Alumno:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(658, 436);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 20);
+            this.label6.TabIndex = 105;
+            this.label6.Text = "Alumno:";
             // 
             // tutor_has_alumno
             // 
@@ -312,10 +384,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(850, 560);
-            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPadre2);
-            this.Controls.Add(this.txtEscuela2);
             this.Controls.Add(this.txtAlumno2);
+            this.Controls.Add(this.txtEscuela2);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.txtIDPadre2);
+            this.Controls.Add(this.txtIDEscuela2);
+            this.Controls.Add(this.txtIDAlumno2);
             this.Controls.Add(this.dgvAhasTAll);
             this.Controls.Add(this.txtIdEscuela);
             this.Controls.Add(this.txtIdAlumno);
@@ -362,9 +440,15 @@
         private System.Windows.Forms.TextBox txtIdAlumno;
         private System.Windows.Forms.TextBox txtIdEscuela;
         private System.Windows.Forms.DataGridView dgvAhasTAll;
+        private System.Windows.Forms.TextBox txtIDAlumno2;
+        private System.Windows.Forms.TextBox txtIDEscuela2;
+        private System.Windows.Forms.TextBox txtIDPadre2;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.TextBox txtPadre2;
         private System.Windows.Forms.TextBox txtAlumno2;
         private System.Windows.Forms.TextBox txtEscuela2;
-        private System.Windows.Forms.TextBox txtPadre2;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

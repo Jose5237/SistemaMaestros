@@ -272,6 +272,15 @@ namespace sistema_maestros1
             {
                 //if (txtTel1Escuela.Text.Length == 10 || txtTel2Escuela.Text.Length == 10 || txtTel3Escuela.Text.Length == 10)
                 //{
+
+                string email = txtCorreoEscuela.Text;
+                bool verificar = email.Contains("@");
+                bool verificar2 = email.Contains(".com");
+                if ((verificar == true && verificar2 == true) || (txtCorreoEscuela.Text == "No aplica" || txtCorreoEscuela.Text == "no aplica" || txtCorreoEscuela.Text == "No Aplica") || (txtCorreoEscuela.Text == "n/a" || txtCorreoEscuela.Text == "N/a" || txtCorreoEscuela.Text == "N/A"))
+                {
+
+
+
                     if (opcionBotones == 0)
                     {
                         generarID();
@@ -282,6 +291,9 @@ namespace sistema_maestros1
                             es.es_nombre_escuela = txtNombreEscuela.Text;
                             es.es_direccion_escuela = txtDireccionEscuela.Text;
                             es.es_telefono1_escuela = txtTel1Escuela.Text;
+
+                            //es.es_telefono1_escuela = masktxtTel1Escuela.Text;
+
                             es.es_telefono2_escuela = txtTel2Escuela.Text;
                             es.es_telefono3_escuela = txtTel3Escuela.Text;
                             es.es_correo_escuela = txtCorreoEscuela.Text;
@@ -296,7 +308,6 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
-                                    btnAceptar.BackColor = Color.Silver;
                                 }
                                 catch
                                 {
@@ -340,7 +351,7 @@ namespace sistema_maestros1
                     }
                     else if (opcionBotones == 2)
                     {
-                        if (MessageBox.Show("¿Estas seguro de eliminar los datos de "+ txtNombreEscuela.Text+ "? Si eliminas una escuela tambien se eliminaran los taller, dinamicas, materiales y alumnos de esta escuela ", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("¿Estas seguro de eliminar los datos de " + txtNombreEscuela.Text + "? Si eliminas una escuela tambien se eliminaran los taller, dinamicas, materiales y alumnos de esta escuela ", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             ClassEscuela es = new ClassEscuela();
                             es.es_id_escuela = txtIdEscuela.Text;
@@ -352,7 +363,7 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
-                                    btnAceptar.BackColor = Color.Silver;
+                                    //btnAceptar.BackColor = Color.Silver;
                                 }
                                 catch
                                 {
@@ -363,12 +374,17 @@ namespace sistema_maestros1
 
                     }
 
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Es necesario que el numero de telefono este completo", "¡Numero Telefono Incompleto!");
-                //}
-                //btnAceptar.BackColor = Color.Silver;
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Es necesario que el numero de telefono este completo", "¡Numero Telefono Incompleto!");
+                    //}
+                    //btnAceptar.BackColor = Color.Silver;
+                }
+                else
+                {
+                    MessageBox.Show("Correo Invalido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -505,12 +521,18 @@ namespace sistema_maestros1
 
         private void txtTel1Escuela_Click(object sender, EventArgs e)
         {
+
             
         }
 
         private void txtTel1Escuela_Validating(object sender, CancelEventArgs e)
         {
             
+        }
+
+        private void masktxtTel1Escuela_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.SoloNumeros(e);
         }
     }
 }

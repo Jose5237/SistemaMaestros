@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloRecomendaciones));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPagos2 = new System.Windows.Forms.Button();
             this.btnMenuPrincipal2 = new System.Windows.Forms.Button();
             this.btnMaterial2 = new System.Windows.Forms.Button();
@@ -287,6 +287,8 @@
             // btnEliminarRecomendacion
             // 
             this.btnEliminarRecomendacion.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarRecomendacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarRecomendacion.BackgroundImage")));
+            this.btnEliminarRecomendacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarRecomendacion.FlatAppearance.BorderSize = 0;
             this.btnEliminarRecomendacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarRecomendacion.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -295,13 +297,14 @@
             this.btnEliminarRecomendacion.Name = "btnEliminarRecomendacion";
             this.btnEliminarRecomendacion.Size = new System.Drawing.Size(96, 37);
             this.btnEliminarRecomendacion.TabIndex = 109;
-            this.btnEliminarRecomendacion.Text = "Eliminar";
             this.btnEliminarRecomendacion.UseVisualStyleBackColor = false;
             this.btnEliminarRecomendacion.Click += new System.EventHandler(this.btnEliminarRecomendacion_Click);
             // 
             // btnModificarRecomendacion
             // 
-            this.btnModificarRecomendacion.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarRecomendacion.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarRecomendacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarRecomendacion.BackgroundImage")));
+            this.btnModificarRecomendacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarRecomendacion.FlatAppearance.BorderSize = 0;
             this.btnModificarRecomendacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarRecomendacion.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,13 +313,14 @@
             this.btnModificarRecomendacion.Name = "btnModificarRecomendacion";
             this.btnModificarRecomendacion.Size = new System.Drawing.Size(96, 37);
             this.btnModificarRecomendacion.TabIndex = 108;
-            this.btnModificarRecomendacion.Text = "Modificar";
             this.btnModificarRecomendacion.UseVisualStyleBackColor = false;
             this.btnModificarRecomendacion.Click += new System.EventHandler(this.btnModificarRecomendacion_Click);
             // 
             // btnAgregarRecomendacion
             // 
-            this.btnAgregarRecomendacion.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarRecomendacion.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarRecomendacion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendacion.BackgroundImage")));
+            this.btnAgregarRecomendacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarRecomendacion.FlatAppearance.BorderSize = 0;
             this.btnAgregarRecomendacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarRecomendacion.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -325,7 +329,6 @@
             this.btnAgregarRecomendacion.Name = "btnAgregarRecomendacion";
             this.btnAgregarRecomendacion.Size = new System.Drawing.Size(96, 37);
             this.btnAgregarRecomendacion.TabIndex = 107;
-            this.btnAgregarRecomendacion.Text = "Agregar";
             this.btnAgregarRecomendacion.UseVisualStyleBackColor = false;
             this.btnAgregarRecomendacion.Click += new System.EventHandler(this.btnAgregarRecomendacion_Click);
             // 
@@ -371,23 +374,23 @@
             this.dgvRecomendacion.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvRecomendacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRecomendacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecomendacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecomendacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRecomendacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecomendacion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecomendacion.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvRecomendacion.EnableHeadersVisualStyles = false;
             this.dgvRecomendacion.GridColor = System.Drawing.Color.Thistle;
             this.dgvRecomendacion.Location = new System.Drawing.Point(423, 105);
@@ -395,8 +398,8 @@
             this.dgvRecomendacion.Name = "dgvRecomendacion";
             this.dgvRecomendacion.ReadOnly = true;
             this.dgvRecomendacion.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvRecomendacion.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvRecomendacion.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvRecomendacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecomendacion.Size = new System.Drawing.Size(690, 513);
             this.dgvRecomendacion.TabIndex = 142;
@@ -638,6 +641,7 @@
             this.Name = "ModuloRecomendaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloRecomendaciones";
+            this.Load += new System.EventHandler(this.ModuloRecomendaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecomendacion)).EndInit();
             this.ResumeLayout(false);

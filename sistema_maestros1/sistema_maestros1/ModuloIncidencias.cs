@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -170,26 +171,205 @@ namespace sistema_maestros1
         {
             opcionBotones = 0;
 
+            dgvIncidencia.Enabled = false;
+
+            txtIdEscuelaIncidencia.Enabled = false; txtIdEscuelaIncidencia.Text = "";
+            cbEscuelaIncidencia.Enabled = true; cbEscuelaIncidencia.Text = "Seleccionar Escuela";
+            txtIdIncidencia.Enabled = false; txtIdIncidencia.Text = "";
+            txtNombreIncidencia.Enabled = true; txtNombreIncidencia.Text = "";
+            txtDescripcionIncidencia.Enabled = true; txtDescripcionIncidencia.Text = "";
+            txtTipoIncidencia.Enabled = true; txtTipoIncidencia.Text = "";
+
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen;
+
         }
 
         private void btnModificarIncidencia_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
+
+            txtIdEscuelaIncidencia.Enabled = false; 
+            cbEscuelaIncidencia.Enabled = false; 
+            txtIdIncidencia.Enabled = false; 
+            txtNombreIncidencia.Enabled = true;
+            txtDescripcionIncidencia.Enabled = true; 
+            txtTipoIncidencia.Enabled = true;
+
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
         }
 
         private void btnEliminarIncidencia_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
+
+            txtIdEscuelaIncidencia.Enabled = false;
+            cbEscuelaIncidencia.Enabled = false;
+            txtIdIncidencia.Enabled = false;
+            txtNombreIncidencia.Enabled = false;
+            txtDescripcionIncidencia.Enabled = false;
+            txtTipoIncidencia.Enabled = false;
+
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if ((cbEscuelaIncidencia.Text != "" && txtIdEscuelaIncidencia.Text != "") && (txtNombreIncidencia.Text != "") && (txtDescripcionIncidencia.Text != "") && (txtTipoIncidencia.Text != ""))
+            {
+                if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (opcionBotones == 0)
+                    {
+                        //generarID();
 
+                        ClassIncidencia ins = new ClassIncidencia();
+                        ins.in_id_escuela = txtIdEscuelaIncidencia.Text;
+                        ins.in_id_incidencias = txtIdIncidencia.Text;
+                        ins.in_nombre_incidencias = txtNombreIncidencia.Text;
+                        ins.in_descripcion_incidencias = txtDescripcionIncidencia.Text;
+                        ins.in_tipo_incidencia = txtTipoIncidencia.Text;
+
+                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        {
+                            string mensaje = wsPHP.agregarIncidencias(ins.in_id_escuela, ins.in_id_incidencias, ins.in_nombre_incidencias, ins.in_descripcion_incidencias, ins.in_tipo_incidencia);
+                            MessageBox.Show(mensaje, "¡Insidencia Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
+                    }
+                    else if (opcionBotones == 1)
+                    {
+
+                        ClassIncidencia ins = new ClassIncidencia();
+                        ins.in_id_escuela = txtIdEscuelaIncidencia.Text;
+                        ins.in_id_incidencias = txtIdIncidencia.Text;
+                        ins.in_nombre_incidencias = txtNombreIncidencia.Text;
+                        ins.in_descripcion_incidencias = txtDescripcionIncidencia.Text;
+                        ins.in_tipo_incidencia = txtTipoIncidencia.Text;
+
+                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        {
+                            string mensaje = wsPHP.modificarIncidencias(ins.in_id_escuela, ins.in_id_incidencias, ins.in_nombre_incidencias, ins.in_descripcion_incidencias, ins.in_tipo_incidencia);
+                            MessageBox.Show(mensaje, "¡Incidencia Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
+                    else if (opcionBotones == 2)
+                    {
+                        ClassIncidencia ins = new ClassIncidencia();
+                        ins.in_id_escuela = txtIdEscuelaIncidencia.Text;
+                        ins.in_id_incidencias = txtIdIncidencia.Text;
+
+                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        {
+                            string mensaje = wsPHP.eliminarIncidencias(ins.in_id_escuela, ins.in_id_incidencias);
+                            MessageBox.Show(mensaje, "¡Incidencia Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
+
+                    cargarDatosTabla();
+                    inicializacionCampos();
+
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
+            }
         }
 
         private void txtBuscadorIncidencia_TextChanged(object sender, EventArgs e)
         {
+            if (txtBuscadorIncidencia.Text != "")
+            {
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                {
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarIncidencias(txtBuscadorIncidencia.Text), typeof(DataTable));
+                        dgvIncidencia.DataSource = dt;
+                        NombresColumnas();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre o ID Alumno correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTabla();
+                    }
+                }
+            }
+            else
+                cargarDatosTabla();
+        }
 
+        private void ModuloIncidencias_Load(object sender, EventArgs e)
+        {
+            cargarDatosTabla();
+        }
+
+
+        /*public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = "m" + cbTallerMaterial.Text.Substring(0, 3);
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, txtIdTaller.Text, txtIdDinamica.Text, sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(4, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label8.Text = newID;
+        }*/
+
+        public void NombresColumnas()
+        {
+            dgvIncidencia.Columns[0].HeaderText = "Escuela";
+            dgvIncidencia.Columns[1].HeaderText = "ID Incidencia";
+            dgvIncidencia.Columns[2].HeaderText = "Nombre Incidencia";
+            dgvIncidencia.Columns[3].HeaderText = "Descripcion";
+            dgvIncidencia.Columns[4].HeaderText = "Tipo Incidencia";
+        }
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarIncidencias(), typeof(DataTable));
+                    dgvIncidencia.DataSource = dt;
+                    NombresColumnas();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void inicializacionCampos()
+        {
+            txtIdEscuelaIncidencia.Enabled = false; txtIdEscuelaIncidencia.Text = "";
+            cbEscuelaIncidencia.Enabled = false; cbEscuelaIncidencia.Text = "Seleccionar Escuela";
+            txtIdIncidencia.Enabled = false; txtIdIncidencia.Text = "";
+            txtNombreIncidencia.Enabled = false; txtNombreIncidencia.Text = "";
+            txtDescripcionIncidencia.Enabled = false; txtDescripcionIncidencia.Text = "";
+            txtTipoIncidencia.Enabled = false; txtTipoIncidencia.Text = "";
+
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
     }
 }

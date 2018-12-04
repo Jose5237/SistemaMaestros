@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloDinamicas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtFechaFinDinamicas = new System.Windows.Forms.DateTimePicker();
             this.dtFechaIniDinamicas = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
@@ -132,6 +132,7 @@
             // 
             // txtBuscadorDinamicas
             // 
+            this.txtBuscadorDinamicas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscadorDinamicas.Location = new System.Drawing.Point(813, 55);
             this.txtBuscadorDinamicas.Multiline = true;
             this.txtBuscadorDinamicas.Name = "txtBuscadorDinamicas";
@@ -222,6 +223,8 @@
             // btnEliminarDinamicas
             // 
             this.btnEliminarDinamicas.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminarDinamicas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarDinamicas.BackgroundImage")));
+            this.btnEliminarDinamicas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminarDinamicas.FlatAppearance.BorderSize = 0;
             this.btnEliminarDinamicas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarDinamicas.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,13 +233,14 @@
             this.btnEliminarDinamicas.Name = "btnEliminarDinamicas";
             this.btnEliminarDinamicas.Size = new System.Drawing.Size(96, 37);
             this.btnEliminarDinamicas.TabIndex = 26;
-            this.btnEliminarDinamicas.Text = "Eliminar";
             this.btnEliminarDinamicas.UseVisualStyleBackColor = false;
             this.btnEliminarDinamicas.Click += new System.EventHandler(this.btnEliminarDinamicas_Click);
             // 
             // btnModificarDinamicas
             // 
-            this.btnModificarDinamicas.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnModificarDinamicas.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnModificarDinamicas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarDinamicas.BackgroundImage")));
+            this.btnModificarDinamicas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnModificarDinamicas.FlatAppearance.BorderSize = 0;
             this.btnModificarDinamicas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarDinamicas.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -245,13 +249,14 @@
             this.btnModificarDinamicas.Name = "btnModificarDinamicas";
             this.btnModificarDinamicas.Size = new System.Drawing.Size(96, 37);
             this.btnModificarDinamicas.TabIndex = 25;
-            this.btnModificarDinamicas.Text = "Modificar";
             this.btnModificarDinamicas.UseVisualStyleBackColor = false;
             this.btnModificarDinamicas.Click += new System.EventHandler(this.btnModificarDinamicas_Click);
             // 
             // btnAgregarDinamicas
             // 
-            this.btnAgregarDinamicas.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregarDinamicas.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregarDinamicas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarDinamicas.BackgroundImage")));
+            this.btnAgregarDinamicas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarDinamicas.FlatAppearance.BorderSize = 0;
             this.btnAgregarDinamicas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarDinamicas.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -260,7 +265,6 @@
             this.btnAgregarDinamicas.Name = "btnAgregarDinamicas";
             this.btnAgregarDinamicas.Size = new System.Drawing.Size(96, 37);
             this.btnAgregarDinamicas.TabIndex = 24;
-            this.btnAgregarDinamicas.Text = "Agregar";
             this.btnAgregarDinamicas.UseVisualStyleBackColor = false;
             this.btnAgregarDinamicas.Click += new System.EventHandler(this.btnAgregarDinamicas_Click);
             // 
@@ -506,7 +510,6 @@
             // btnRecomendaciones2
             // 
             this.btnRecomendaciones2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRecomendaciones2.Enabled = false;
             this.btnRecomendaciones2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRecomendaciones2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecomendaciones2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -597,23 +600,23 @@
             this.dgvDinamica.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDinamica.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDinamica.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.NavajoWhite;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDinamica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.NavajoWhite;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDinamica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDinamica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDinamica.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDinamica.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvDinamica.EnableHeadersVisualStyles = false;
             this.dgvDinamica.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvDinamica.Location = new System.Drawing.Point(423, 105);
@@ -621,8 +624,8 @@
             this.dgvDinamica.Name = "dgvDinamica";
             this.dgvDinamica.ReadOnly = true;
             this.dgvDinamica.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvDinamica.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvDinamica.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvDinamica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDinamica.Size = new System.Drawing.Size(704, 513);
             this.dgvDinamica.TabIndex = 138;

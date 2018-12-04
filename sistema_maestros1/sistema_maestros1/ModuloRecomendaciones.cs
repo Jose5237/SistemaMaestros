@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -209,6 +210,43 @@ namespace sistema_maestros1
         private void txtBuscadorRecomendacion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ModuloRecomendaciones_Load(object sender, EventArgs e)
+        {
+            cargarDatosTabla();
+
+        }
+
+
+        public void NombresColumnas()
+        {
+            dgvRecomendacion.Columns[0].HeaderText = "Escuela";
+            dgvRecomendacion.Columns[1].HeaderText = "Taller";
+            dgvRecomendacion.Columns[2].HeaderText = "Dinamica";
+            dgvRecomendacion.Columns[3].HeaderText = "Material";
+            dgvRecomendacion.Columns[4].HeaderText = "ID Recomendacion";
+            dgvRecomendacion.Columns[5].HeaderText = "Especificaciones Tecnicas";
+            dgvRecomendacion.Columns[6].HeaderText = "Recomendaciones de Uso";
+        }
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarRecomendaciones(), typeof(DataTable));
+                dgvRecomendacion.DataSource = dt;
+                NombresColumnas();
+                //try
+                //{
+                //    
+                //
+                //}
+                //catch (Exception)
+                //{
+                //    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+            }
         }
     }
 }

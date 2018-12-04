@@ -64,6 +64,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
             this.btnIncidencias2 = new System.Windows.Forms.Button();
+            this.txtIdEscuela1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
@@ -273,6 +274,8 @@
             this.cbEscuelaPagos.Name = "cbEscuelaPagos";
             this.cbEscuelaPagos.Size = new System.Drawing.Size(210, 21);
             this.cbEscuelaPagos.TabIndex = 111;
+            this.cbEscuelaPagos.Text = "Seleccionar Escuela";
+            this.cbEscuelaPagos.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaPagos_SelectedIndexChanged);
             // 
             // txtAlumnoPagos
             // 
@@ -478,12 +481,20 @@
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
             // 
+            // txtIdEscuela1
+            // 
+            this.txtIdEscuela1.Location = new System.Drawing.Point(228, 55);
+            this.txtIdEscuela1.Name = "txtIdEscuela1";
+            this.txtIdEscuela1.Size = new System.Drawing.Size(52, 20);
+            this.txtIdEscuela1.TabIndex = 162;
+            // 
             // ModuloPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(983, 513);
+            this.Controls.Add(this.txtIdEscuela1);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
             this.Controls.Add(this.txtNomAlumnoPagos);
@@ -518,12 +529,12 @@
             this.Controls.Add(this.btnEscuelas2);
             this.Controls.Add(this.btnAlumnos2);
             this.Controls.Add(this.shapeContainer1);
-            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModuloPagos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "pagos";
+            this.Load += new System.EventHandler(this.ModuloPagos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
@@ -569,5 +580,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRecomendaciones2;
         private System.Windows.Forms.Button btnIncidencias2;
+        private System.Windows.Forms.TextBox txtIdEscuela1;
     }
 }
