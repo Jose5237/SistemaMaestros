@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tutor_has_alumno));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNombreAlumno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,19 +65,20 @@
             // txtNombreAlumno
             // 
             this.txtNombreAlumno.Enabled = false;
-            this.txtNombreAlumno.Location = new System.Drawing.Point(72, 43);
+            this.txtNombreAlumno.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreAlumno.Location = new System.Drawing.Point(87, 43);
             this.txtNombreAlumno.Name = "txtNombreAlumno";
-            this.txtNombreAlumno.Size = new System.Drawing.Size(200, 20);
+            this.txtNombreAlumno.Size = new System.Drawing.Size(200, 23);
             this.txtNombreAlumno.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 44);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Alumno:";
             // 
@@ -85,18 +86,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 76);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
+            this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Padre:";
             // 
             // txtBuscadorPadre
             // 
-            this.txtBuscadorPadre.Location = new System.Drawing.Point(72, 75);
+            this.txtBuscadorPadre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscadorPadre.Location = new System.Drawing.Point(87, 75);
             this.txtBuscadorPadre.Name = "txtBuscadorPadre";
-            this.txtBuscadorPadre.Size = new System.Drawing.Size(179, 20);
+            this.txtBuscadorPadre.Size = new System.Drawing.Size(179, 23);
             this.txtBuscadorPadre.TabIndex = 2;
             this.txtBuscadorPadre.TextChanged += new System.EventHandler(this.txtBuscadorPadre_TextChanged);
             // 
@@ -104,7 +106,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(252, 75);
+            this.pictureBox1.Location = new System.Drawing.Point(267, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -122,14 +124,14 @@
             this.dgvTutor.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvTutor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvTutor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTutor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTutor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTutor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTutor.EnableHeadersVisualStyles = false;
             this.dgvTutor.GridColor = System.Drawing.Color.SkyBlue;
@@ -179,14 +181,14 @@
             this.dgvAhT.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvAhT.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvAhT.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAhT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAhT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAhT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAhT.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvAhT.Location = new System.Drawing.Point(446, 101);
@@ -202,11 +204,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(273, 4);
+            this.label3.Location = new System.Drawing.Point(229, -2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(335, 26);
+            this.label3.Size = new System.Drawing.Size(434, 33);
             this.label3.TabIndex = 90;
             this.label3.Text = "Asignar Padres o Tutor a Alumno";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -217,7 +219,7 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Location = new System.Drawing.Point(206, 298);
+            this.btnAceptar.Location = new System.Drawing.Point(320, 304);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 91;
@@ -244,18 +246,20 @@
             // txtIdAlumno
             // 
             this.txtIdAlumno.Enabled = false;
-            this.txtIdAlumno.Location = new System.Drawing.Point(278, 43);
+            this.txtIdAlumno.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdAlumno.Location = new System.Drawing.Point(293, 43);
             this.txtIdAlumno.Name = "txtIdAlumno";
-            this.txtIdAlumno.Size = new System.Drawing.Size(100, 20);
+            this.txtIdAlumno.Size = new System.Drawing.Size(100, 23);
             this.txtIdAlumno.TabIndex = 93;
             this.txtIdAlumno.Visible = false;
             // 
             // txtIdEscuela
             // 
             this.txtIdEscuela.Enabled = false;
-            this.txtIdEscuela.Location = new System.Drawing.Point(379, 43);
+            this.txtIdEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdEscuela.Location = new System.Drawing.Point(394, 43);
             this.txtIdEscuela.Name = "txtIdEscuela";
-            this.txtIdEscuela.Size = new System.Drawing.Size(100, 20);
+            this.txtIdEscuela.Size = new System.Drawing.Size(100, 23);
             this.txtIdEscuela.TabIndex = 94;
             this.txtIdEscuela.Visible = false;
             // 
@@ -271,7 +275,7 @@
             this.dgvAhasTAll.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAhasTAll.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvAhasTAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAhasTAll.Location = new System.Drawing.Point(12, 337);
+            this.dgvAhasTAll.Location = new System.Drawing.Point(12, 348);
             this.dgvAhasTAll.MultiSelect = false;
             this.dgvAhasTAll.Name = "dgvAhasTAll";
             this.dgvAhasTAll.ReadOnly = true;
@@ -284,7 +288,7 @@
             // txtIDAlumno2
             // 
             this.txtIDAlumno2.Enabled = false;
-            this.txtIDAlumno2.Location = new System.Drawing.Point(727, 335);
+            this.txtIDAlumno2.Location = new System.Drawing.Point(727, 353);
             this.txtIDAlumno2.Name = "txtIDAlumno2";
             this.txtIDAlumno2.Size = new System.Drawing.Size(100, 20);
             this.txtIDAlumno2.TabIndex = 96;
@@ -293,7 +297,7 @@
             // txtIDEscuela2
             // 
             this.txtIDEscuela2.Enabled = false;
-            this.txtIDEscuela2.Location = new System.Drawing.Point(727, 387);
+            this.txtIDEscuela2.Location = new System.Drawing.Point(727, 396);
             this.txtIDEscuela2.Name = "txtIDEscuela2";
             this.txtIDEscuela2.Size = new System.Drawing.Size(100, 20);
             this.txtIDEscuela2.TabIndex = 97;
@@ -302,9 +306,9 @@
             // txtIDPadre2
             // 
             this.txtIDPadre2.Enabled = false;
-            this.txtIDPadre2.Location = new System.Drawing.Point(727, 438);
+            this.txtIDPadre2.Location = new System.Drawing.Point(754, 440);
             this.txtIDPadre2.Name = "txtIDPadre2";
-            this.txtIDPadre2.Size = new System.Drawing.Size(100, 20);
+            this.txtIDPadre2.Size = new System.Drawing.Size(73, 20);
             this.txtIDPadre2.TabIndex = 98;
             this.txtIDPadre2.Visible = false;
             // 
@@ -316,7 +320,7 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEliminar.Location = new System.Drawing.Point(662, 498);
+            this.btnEliminar.Location = new System.Drawing.Point(662, 504);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(165, 30);
             this.btnEliminar.TabIndex = 99;
@@ -326,21 +330,21 @@
             // 
             // txtPadre2
             // 
-            this.txtPadre2.Location = new System.Drawing.Point(661, 459);
+            this.txtPadre2.Location = new System.Drawing.Point(661, 462);
             this.txtPadre2.Name = "txtPadre2";
             this.txtPadre2.Size = new System.Drawing.Size(166, 20);
             this.txtPadre2.TabIndex = 102;
             // 
             // txtAlumno2
             // 
-            this.txtAlumno2.Location = new System.Drawing.Point(661, 408);
+            this.txtAlumno2.Location = new System.Drawing.Point(661, 418);
             this.txtAlumno2.Name = "txtAlumno2";
             this.txtAlumno2.Size = new System.Drawing.Size(166, 20);
             this.txtAlumno2.TabIndex = 101;
             // 
             // txtEscuela2
             // 
-            this.txtEscuela2.Location = new System.Drawing.Point(661, 357);
+            this.txtEscuela2.Location = new System.Drawing.Point(661, 374);
             this.txtEscuela2.Name = "txtEscuela2";
             this.txtEscuela2.Size = new System.Drawing.Size(166, 20);
             this.txtEscuela2.TabIndex = 100;
@@ -350,7 +354,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(657, 334);
+            this.label4.Location = new System.Drawing.Point(657, 352);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
             this.label4.TabIndex = 103;
@@ -361,7 +365,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(657, 385);
+            this.label5.Location = new System.Drawing.Point(657, 396);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 104;
@@ -372,11 +376,11 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(658, 436);
+            this.label6.Location = new System.Drawing.Point(658, 440);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 20);
+            this.label6.Size = new System.Drawing.Size(98, 20);
             this.label6.TabIndex = 105;
-            this.label6.Text = "Alumno:";
+            this.label6.Text = "Padre/Tutor:";
             // 
             // tutor_has_alumno
             // 

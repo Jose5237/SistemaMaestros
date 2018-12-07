@@ -21,7 +21,12 @@ namespace sistema_maestros1
             InitializeComponent();
         }
 
+        //VARIABLES
         int opcionBotones = 0;
+
+
+        //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
+        #region
 
         //BOTON DE SALIR
         private void exit_Click(object sender, EventArgs e)
@@ -39,6 +44,7 @@ namespace sistema_maestros1
         {
             WindowState = FormWindowState.Minimized;
         }
+
 
         //BOTON DE MENU PRINCIPAL
         private void btnMenuPrincipal2_Click(object sender, EventArgs e)
@@ -172,12 +178,53 @@ namespace sistema_maestros1
             }
         }
 
+        #endregion
+
+
+        //METODOS DE VALIDACIONES
+        #region
+
+        private void txtNombreProfe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.SoloLetras(e);
+        }
+
+        private void txtApellidoPatProfe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.SoloLetras(e);
+        }
+
+        private void txtApellidoMatProfe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            v.SoloLetras(e);
+        }
+
+        #endregion
+
+
+        //METODO PARA ENCRIPTAR CONTRASEÑA EN EL DGV
+        private void dgvProfe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                if (e.Value != null)
+                {
+                    e.Value = new string('•', e.Value.ToString().Length);
+                }
+                else
+                    e.Value = "null";
+            }
+        }
+
+
         //BOTON AGREGAR PROFESOR
         private void btnAgregarProfe_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
+
             dgvProfe.Enabled = false;
-            txtIdProfe.Text = "";
+
+            txtIdProfe.Enabled = false; txtIdProfe.Text = "";
             txtNombreProfe.Enabled = true; txtNombreProfe.Text = "";
             txtApellidoPatProfe.Enabled = true; txtApellidoPatProfe.Text = "";
             txtApellidoMatProfe.Enabled = true; txtApellidoMatProfe.Text = "";
@@ -189,7 +236,9 @@ namespace sistema_maestros1
         private void btnModificarProfe_Click(object sender, EventArgs e)
         {
             dgvProfe.Enabled = true;
+
             opcionBotones = 1;
+
             txtNombreProfe.Enabled = true;
             txtApellidoPatProfe.Enabled = true;
             txtApellidoMatProfe.Enabled = true;
@@ -201,13 +250,16 @@ namespace sistema_maestros1
         private void btnEliminarProfe_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
+
             dgvProfe.Enabled = true;
+
             txtNombreProfe.Enabled = false;
             txtApellidoPatProfe.Enabled = false;
             txtApellidoMatProfe.Enabled = false;
             txtPasswordProfe.Enabled = false;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
+        
         //BOTON DE ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -284,6 +336,7 @@ namespace sistema_maestros1
                         }
                         cargarDatosTabla();
                         inicializacionCampos();
+                        dgvProfe.Enabled = true;
                     }
             }
                 else
@@ -293,13 +346,19 @@ namespace sistema_maestros1
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
         }
 
+
+        //LOAD
         private void ModuloProfesores_Load(object sender, EventArgs e)
         {
             cargarDatosTabla();
         }
 
-        private void dgvProfe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        //CELLCONTENT (DGV)
+        private void dgvProfe_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            NombresColumnas();
+
             txtIdProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtNombreProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtApellidoPatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[2].Value.ToString());
@@ -307,13 +366,14 @@ namespace sistema_maestros1
             txtPasswordProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[4].Value.ToString());
         }
 
+
+        //BUSCADOR DE PROFESOR
         private void txtBuscadorProfe_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscadorProfe.Text != "")
             {
                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-
                     DataTable dt = new DataTable();
                     try
                     {
@@ -327,8 +387,6 @@ namespace sistema_maestros1
                         MessageBox.Show("No se encuentra ningun Profesor con estos datos, Por favor ingrese un nombre o ID Profesor correcto", "No existe este profesor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         cargarDatosTabla();
                     }
-
-
                 }
             }
             else
@@ -337,32 +395,9 @@ namespace sistema_maestros1
             }
         }
 
-        private void dgvProfe_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
 
-            NombresColumnas();
-            txtIdProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtNombreProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtApellidoPatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtApellidoMatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtPasswordProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[4].Value.ToString());
-        }
-
-        private void txtNombreProfe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            v.SoloLetras(e);
-        }
-
-        private void txtApellidoPatProfe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            v.SoloLetras(e);
-        }
-
-        private void txtApellidoMatProfe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            v.SoloLetras(e);
-        }
-
+        //METODOS FACILITADORES 'cargarDatosTabla(), generarID(), NombresColumnas(), inicializacionCampos()'
+        #region
 
         public void cargarDatosTabla()
         {
@@ -412,7 +447,6 @@ namespace sistema_maestros1
             dgvProfe.Columns[2].HeaderText = "Apellido Paterno";
             dgvProfe.Columns[3].HeaderText = "Apellido Materno";
             dgvProfe.Columns[4].HeaderText = "Contraseña";
-           // dgvProfe.Columns[4].
         }
 
         public void inicializacionCampos()
@@ -426,17 +460,7 @@ namespace sistema_maestros1
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
-        private void dgvProfe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == 4)
-            {
-                if (e.Value != null)
-                {
-                    e.Value = new string('*', e.Value.ToString().Length);
-                }
-                else
-                    e.Value = "null";
-            }
-        }
+        #endregion
+        
     }
 }

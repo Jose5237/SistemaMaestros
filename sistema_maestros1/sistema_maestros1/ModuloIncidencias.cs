@@ -178,7 +178,7 @@ namespace sistema_maestros1
             txtIdIncidencia.Enabled = false; txtIdIncidencia.Text = "";
             txtNombreIncidencia.Enabled = true; txtNombreIncidencia.Text = "";
             txtDescripcionIncidencia.Enabled = true; txtDescripcionIncidencia.Text = "";
-            txtTipoIncidencia.Enabled = true; txtTipoIncidencia.Text = "";
+            cbTipoIncidencias.Enabled = true; cbTipoIncidencias.Text = "Seleccionar Tipo de Incidencia";
 
             btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen;
 
@@ -193,7 +193,7 @@ namespace sistema_maestros1
             txtIdIncidencia.Enabled = false; 
             txtNombreIncidencia.Enabled = true;
             txtDescripcionIncidencia.Enabled = true; 
-            txtTipoIncidencia.Enabled = true;
+            cbTipoIncidencias.Enabled = true;
 
             btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
         }
@@ -207,27 +207,51 @@ namespace sistema_maestros1
             txtIdIncidencia.Enabled = false;
             txtNombreIncidencia.Enabled = false;
             txtDescripcionIncidencia.Enabled = false;
-            txtTipoIncidencia.Enabled = false;
+            cbTipoIncidencias.Enabled = false;
 
             btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
         }
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = txtIdEscuelaIncidencia.Text + "in";
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDI(txtIdEscuelaIncidencia.Text);
 
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(9, 2));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (2 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label5.Text = newID;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((cbEscuelaIncidencia.Text != "" && txtIdEscuelaIncidencia.Text != "") && (txtNombreIncidencia.Text != "") && (txtDescripcionIncidencia.Text != "") && (txtTipoIncidencia.Text != ""))
+            if ((cbEscuelaIncidencia.Text != "" && txtIdEscuelaIncidencia.Text != "") && (txtNombreIncidencia.Text != "") && (txtDescripcionIncidencia.Text != "") && (cbTipoIncidencias.Text != "Seleccionar Tipo de Incidencia"))
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if (opcionBotones == 0)
                     {
-                        //generarID();
+                        generarID();
+                        
 
                         ClassIncidencia ins = new ClassIncidencia();
                         ins.in_id_escuela = txtIdEscuelaIncidencia.Text;
-                        ins.in_id_incidencias = txtIdIncidencia.Text;
+                        ins.in_id_incidencias = label5.Text;
+
                         ins.in_nombre_incidencias = txtNombreIncidencia.Text;
                         ins.in_descripcion_incidencias = txtDescripcionIncidencia.Text;
-                        ins.in_tipo_incidencia = txtTipoIncidencia.Text;
+                        ins.in_tipo_incidencia = cbTipoIncidencias.Text;
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
@@ -245,7 +269,7 @@ namespace sistema_maestros1
                         ins.in_id_incidencias = txtIdIncidencia.Text;
                         ins.in_nombre_incidencias = txtNombreIncidencia.Text;
                         ins.in_descripcion_incidencias = txtDescripcionIncidencia.Text;
-                        ins.in_tipo_incidencia = txtTipoIncidencia.Text;
+                        ins.in_tipo_incidencia = cbTipoIncidencias.Text;
 
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
@@ -270,6 +294,7 @@ namespace sistema_maestros1
 
                     cargarDatosTabla();
                     inicializacionCampos();
+                    dgvIncidencia.Enabled = true;
 
                 }
             }
@@ -295,7 +320,7 @@ namespace sistema_maestros1
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre o ID Alumno correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre de escuela o ID Escuela correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         cargarDatosTabla();
                     }
                 }
@@ -307,31 +332,52 @@ namespace sistema_maestros1
         private void ModuloIncidencias_Load(object sender, EventArgs e)
         {
             cargarDatosTabla();
+
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    NombresColumnas();
+
+                    String respuestaEscuela = wsPHP.cargarDatosEscuela();
+
+                    //using (servidorweb.WSPHP wsPHP = new servidorweb.WSPHP())
+                    //{
+                    //    String respuestaEscuela = wsPHP.cargarNombresEscuela();
+                    //   var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+                    //
+                    //   foreach (var nomEsc in respEsc)
+                    //   {
+                    //       cbEscuelaAlumno.Items.Add(nomEsc.es_nombre_escuela.ToString());
+                    //
+                    //       string id = nomEsc.es_id_escuela.ToString();
+                    //       txtIdEscuelaAlumno.Text = id;
+                    //
+
+                    //}
+
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+
+
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomEsc.es_nombre_escuela;
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        cbEscuelaIncidencia.Items.Add(item);
+
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
-
-        /*public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar dpro|dele|dqui
-            sub1 = "m" + cbTallerMaterial.Text.Substring(0, 3);
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.buscarMAXIDM(txtIdEscuela.Text, txtIdTaller.Text, txtIdDinamica.Text, sub1);
-            if (ultimoID == "")
-                n = 0;
-            else
-                //guardar el numero del ultimo ID
-                n = Convert.ToInt32(ultimoID.Substring(4, 3));
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (3 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + sub2 + Convert.ToString(n);
-            label8.Text = newID;
-        }*/
 
         public void NombresColumnas()
         {
@@ -367,9 +413,56 @@ namespace sistema_maestros1
             txtIdIncidencia.Enabled = false; txtIdIncidencia.Text = "";
             txtNombreIncidencia.Enabled = false; txtNombreIncidencia.Text = "";
             txtDescripcionIncidencia.Enabled = false; txtDescripcionIncidencia.Text = "";
-            txtTipoIncidencia.Enabled = false; txtTipoIncidencia.Text = "";
+            cbTipoIncidencias.Enabled = false; cbTipoIncidencias.Text = "";
 
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
+        }
+
+        private void cbEscuelaIncidencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaIncidencia.Text);
+                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+
+
+                foreach (var nomEsc in respEsc)
+                {
+                    //cbEscuelaAlumno.ValueMember = nomEsc.es_id_escuela;
+                    //cbEscuelaAlumno.DisplayMember = nomEsc.es_nombre_escuela;
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                    //cbEscuelaAlumno.Items.Add(nomEsc.es_nombre_escuela.ToString());
+                    string id = item.Value.ToString();
+                    txtIdEscuelaIncidencia.Text = id;
+                }
+            }
+        }
+
+        private void dgvIncidencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            NombresColumnas();
+
+            cbEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            txtIdIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtNombreIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtDescripcionIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[3].Value.ToString());
+            cbTipoIncidencias.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[4].Value.ToString());
+        }
+
+        private void cbEscuelaIncidencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTipoIncidencias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

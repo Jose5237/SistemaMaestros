@@ -147,3 +147,4 @@ C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\si
 C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.Pruebas.resources
 C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.tutor_has_alumno.resources
 C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.csproj.GenerateResource.Cache
+C:\Users\anell\Desktop\Actializador_Chatbot_S3435_Estadia\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloActualizacionMasivaAlumnos.resources

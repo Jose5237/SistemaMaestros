@@ -238,6 +238,7 @@
             // 
             // btnAlumnos1
             // 
+            this.btnAlumnos1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAlumnos1.Image = ((System.Drawing.Image)(resources.GetObject("btnAlumnos1.Image")));
             this.btnAlumnos1.Location = new System.Drawing.Point(17, 22);
             this.btnAlumnos1.Name = "btnAlumnos1";
@@ -249,6 +250,7 @@
             // 
             // btnPadreOTutor1
             // 
+            this.btnPadreOTutor1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPadreOTutor1.Image = ((System.Drawing.Image)(resources.GetObject("btnPadreOTutor1.Image")));
             this.btnPadreOTutor1.Location = new System.Drawing.Point(20, 186);
             this.btnPadreOTutor1.Name = "btnPadreOTutor1";
@@ -260,6 +262,7 @@
             // 
             // btnMateriales1
             // 
+            this.btnMateriales1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMateriales1.Image = ((System.Drawing.Image)(resources.GetObject("btnMateriales1.Image")));
             this.btnMateriales1.Location = new System.Drawing.Point(729, 22);
             this.btnMateriales1.Name = "btnMateriales1";
@@ -271,6 +274,7 @@
             // 
             // btnProfesores1
             // 
+            this.btnProfesores1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProfesores1.Image = ((System.Drawing.Image)(resources.GetObject("btnProfesores1.Image")));
             this.btnProfesores1.Location = new System.Drawing.Point(254, 186);
             this.btnProfesores1.Name = "btnProfesores1";
@@ -282,6 +286,7 @@
             // 
             // btnEscuela1
             // 
+            this.btnEscuela1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEscuela1.Image = ((System.Drawing.Image)(resources.GetObject("btnEscuela1.Image")));
             this.btnEscuela1.Location = new System.Drawing.Point(254, 22);
             this.btnEscuela1.Name = "btnEscuela1";
@@ -293,6 +298,7 @@
             // 
             // btnDinamicas1
             // 
+            this.btnDinamicas1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDinamicas1.Image = ((System.Drawing.Image)(resources.GetObject("btnDinamicas1.Image")));
             this.btnDinamicas1.Location = new System.Drawing.Point(493, 186);
             this.btnDinamicas1.Name = "btnDinamicas1";
@@ -304,6 +310,7 @@
             // 
             // btnTalleres1
             // 
+            this.btnTalleres1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTalleres1.Image = ((System.Drawing.Image)(resources.GetObject("btnTalleres1.Image")));
             this.btnTalleres1.Location = new System.Drawing.Point(493, 22);
             this.btnTalleres1.Name = "btnTalleres1";
@@ -399,7 +406,7 @@
             // 
             // btnPagos1
             // 
-            this.btnPagos1.Enabled = false;
+            this.btnPagos1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagos1.Image = ((System.Drawing.Image)(resources.GetObject("btnPagos1.Image")));
             this.btnPagos1.Location = new System.Drawing.Point(20, 351);
             this.btnPagos1.Name = "btnPagos1";
@@ -427,7 +434,7 @@
             // 
             // btnIncidencias1
             // 
-            this.btnIncidencias1.Enabled = false;
+            this.btnIncidencias1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIncidencias1.Image = ((System.Drawing.Image)(resources.GetObject("btnIncidencias1.Image")));
             this.btnIncidencias1.Location = new System.Drawing.Point(254, 351);
             this.btnIncidencias1.Name = "btnIncidencias1";
@@ -458,7 +465,7 @@
             // 
             // btnRecomendaciones1
             // 
-            this.btnRecomendaciones1.Enabled = false;
+            this.btnRecomendaciones1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecomendaciones1.Image = ((System.Drawing.Image)(resources.GetObject("btnRecomendaciones1.Image")));
             this.btnRecomendaciones1.Location = new System.Drawing.Point(729, 186);
             this.btnRecomendaciones1.Name = "btnRecomendaciones1";

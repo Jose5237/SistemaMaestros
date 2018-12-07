@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloTalleres));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorTaller = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -93,7 +93,7 @@
             // 
             this.txtBuscadorTaller.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtBuscadorTaller.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtBuscadorTaller.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscadorTaller.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscadorTaller.Location = new System.Drawing.Point(813, 55);
             this.txtBuscadorTaller.Multiline = true;
             this.txtBuscadorTaller.Name = "txtBuscadorTaller";
@@ -105,10 +105,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(687, 60);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(703, 60);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 20);
+            this.label6.Size = new System.Drawing.Size(113, 21);
             this.label6.TabIndex = 49;
             this.label6.Text = "Buscar Taller: ";
             // 
@@ -126,45 +126,49 @@
             // txtCostoTaller
             // 
             this.txtCostoTaller.Enabled = false;
-            this.txtCostoTaller.Location = new System.Drawing.Point(170, 228);
+            this.txtCostoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCostoTaller.Location = new System.Drawing.Point(170, 240);
             this.txtCostoTaller.Name = "txtCostoTaller";
-            this.txtCostoTaller.Size = new System.Drawing.Size(211, 20);
+            this.txtCostoTaller.Size = new System.Drawing.Size(211, 23);
             this.txtCostoTaller.TabIndex = 4;
             this.txtCostoTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoTaller_KeyPress);
             // 
             // txtDescripcionTaller
             // 
             this.txtDescripcionTaller.Enabled = false;
-            this.txtDescripcionTaller.Location = new System.Drawing.Point(170, 269);
+            this.txtDescripcionTaller.Location = new System.Drawing.Point(170, 283);
             this.txtDescripcionTaller.Multiline = true;
             this.txtDescripcionTaller.Name = "txtDescripcionTaller";
+            this.txtDescripcionTaller.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDescripcionTaller.Size = new System.Drawing.Size(211, 51);
             this.txtDescripcionTaller.TabIndex = 5;
             // 
             // txtNombreTaller
             // 
             this.txtNombreTaller.Enabled = false;
-            this.txtNombreTaller.Location = new System.Drawing.Point(170, 188);
+            this.txtNombreTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreTaller.Location = new System.Drawing.Point(170, 197);
             this.txtNombreTaller.Name = "txtNombreTaller";
-            this.txtNombreTaller.Size = new System.Drawing.Size(211, 20);
+            this.txtNombreTaller.Size = new System.Drawing.Size(211, 23);
             this.txtNombreTaller.TabIndex = 3;
             // 
             // txtIdTaller
             // 
             this.txtIdTaller.Enabled = false;
-            this.txtIdTaller.Location = new System.Drawing.Point(170, 148);
+            this.txtIdTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdTaller.Location = new System.Drawing.Point(170, 154);
             this.txtIdTaller.Name = "txtIdTaller";
-            this.txtIdTaller.Size = new System.Drawing.Size(211, 20);
+            this.txtIdTaller.Size = new System.Drawing.Size(211, 23);
             this.txtIdTaller.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label4.Location = new System.Drawing.Point(167, 131);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(167, 134);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 17);
+            this.label4.Size = new System.Drawing.Size(69, 20);
             this.label4.TabIndex = 42;
             this.label4.Text = "ID Taller:";
             // 
@@ -172,10 +176,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label3.Location = new System.Drawing.Point(167, 211);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(167, 220);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 17);
+            this.label3.Size = new System.Drawing.Size(56, 20);
             this.label3.TabIndex = 41;
             this.label3.Text = "Costo:";
             // 
@@ -183,10 +187,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label2.Location = new System.Drawing.Point(167, 251);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(167, 263);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 40;
             this.label2.Text = "Descripcion:";
             // 
@@ -194,10 +198,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label1.Location = new System.Drawing.Point(167, 171);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(167, 177);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 39;
             this.label1.Text = "Nombre:";
             // 
@@ -253,10 +257,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label5.Location = new System.Drawing.Point(167, 405);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(167, 423);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 17);
+            this.label5.Size = new System.Drawing.Size(127, 20);
             this.label5.TabIndex = 51;
             this.label5.Text = "Fecha de Inicio:";
             // 
@@ -264,10 +268,11 @@
             // 
             this.dtFechaIniTaller.CustomFormat = "yyyy-MM-dd";
             this.dtFechaIniTaller.Enabled = false;
+            this.dtFechaIniTaller.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaIniTaller.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaIniTaller.Location = new System.Drawing.Point(170, 422);
+            this.dtFechaIniTaller.Location = new System.Drawing.Point(170, 443);
             this.dtFechaIniTaller.Name = "dtFechaIniTaller";
-            this.dtFechaIniTaller.Size = new System.Drawing.Size(211, 20);
+            this.dtFechaIniTaller.Size = new System.Drawing.Size(211, 22);
             this.dtFechaIniTaller.TabIndex = 6;
             this.dtFechaIniTaller.ValueChanged += new System.EventHandler(this.dtFechaIniTaller_ValueChanged);
             this.dtFechaIniTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaIniTaller_KeyPress);
@@ -276,10 +281,11 @@
             // 
             this.dtFechaFinTaller.CustomFormat = "yyyy-MM-dd";
             this.dtFechaFinTaller.Enabled = false;
+            this.dtFechaFinTaller.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaFinTaller.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaFinTaller.Location = new System.Drawing.Point(170, 465);
+            this.dtFechaFinTaller.Location = new System.Drawing.Point(170, 485);
             this.dtFechaFinTaller.Name = "dtFechaFinTaller";
-            this.dtFechaFinTaller.Size = new System.Drawing.Size(211, 20);
+            this.dtFechaFinTaller.Size = new System.Drawing.Size(211, 22);
             this.dtFechaFinTaller.TabIndex = 7;
             this.dtFechaFinTaller.ValueChanged += new System.EventHandler(this.dtFechaFinTaller_ValueChanged);
             this.dtFechaFinTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaFinTaller_KeyPress);
@@ -288,10 +294,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label7.Location = new System.Drawing.Point(167, 445);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(167, 465);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 17);
+            this.label7.Size = new System.Drawing.Size(142, 20);
             this.label7.TabIndex = 53;
             this.label7.Text = "Fecha de termino:";
             // 
@@ -299,24 +305,25 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label8.Location = new System.Drawing.Point(167, 323);
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(167, 334);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 17);
+            this.label8.Size = new System.Drawing.Size(129, 20);
             this.label8.TabIndex = 55;
             this.label8.Text = "Nivel Educativo:";
             // 
             // cbNivelTaller
             // 
             this.cbNivelTaller.Enabled = false;
+            this.cbNivelTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNivelTaller.FormattingEnabled = true;
             this.cbNivelTaller.Items.AddRange(new object[] {
             "PRESCOLAR",
             "PRIMARIA",
             "SECUNDARIA"});
-            this.cbNivelTaller.Location = new System.Drawing.Point(170, 340);
+            this.cbNivelTaller.Location = new System.Drawing.Point(170, 354);
             this.cbNivelTaller.Name = "cbNivelTaller";
-            this.cbNivelTaller.Size = new System.Drawing.Size(211, 21);
+            this.cbNivelTaller.Size = new System.Drawing.Size(211, 25);
             this.cbNivelTaller.TabIndex = 8;
             this.cbNivelTaller.SelectedIndexChanged += new System.EventHandler(this.cbNivelTaller_SelectedIndexChanged);
             this.cbNivelTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNivelTaller_KeyPress);
@@ -324,6 +331,7 @@
             // cbGradoTaller
             // 
             this.cbGradoTaller.Enabled = false;
+            this.cbGradoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGradoTaller.FormattingEnabled = true;
             this.cbGradoTaller.Items.AddRange(new object[] {
             "1",
@@ -332,21 +340,20 @@
             "4",
             "5",
             "6"});
-            this.cbGradoTaller.Location = new System.Drawing.Point(170, 381);
+            this.cbGradoTaller.Location = new System.Drawing.Point(170, 398);
             this.cbGradoTaller.Name = "cbGradoTaller";
-            this.cbGradoTaller.Size = new System.Drawing.Size(211, 21);
+            this.cbGradoTaller.Size = new System.Drawing.Size(211, 25);
             this.cbGradoTaller.TabIndex = 9;
-            this.cbGradoTaller.SelectedIndexChanged += new System.EventHandler(this.cbGradoTaller_SelectedIndexChanged);
             this.cbGradoTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGradoTaller_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label9.Location = new System.Drawing.Point(167, 488);
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(167, 507);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 17);
+            this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 59;
             this.label9.Text = "Profesor:";
             // 
@@ -354,10 +361,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label11.Location = new System.Drawing.Point(167, 364);
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(167, 379);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 17);
+            this.label11.Size = new System.Drawing.Size(61, 20);
             this.label11.TabIndex = 57;
             this.label11.Text = "Grado:";
             // 
@@ -365,11 +372,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Book Antiqua", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 26.25F);
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(451, 2);
+            this.label12.Location = new System.Drawing.Point(444, 1);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(305, 39);
+            this.label12.Size = new System.Drawing.Size(335, 42);
             this.label12.TabIndex = 66;
             this.label12.Text = "Modulo de Talleres";
             // 
@@ -407,7 +414,7 @@
             // 
             // btnMenuPrincipal2
             // 
-            this.btnMenuPrincipal2.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuPrincipal2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuPrincipal2.Location = new System.Drawing.Point(3, 46);
             this.btnMenuPrincipal2.Name = "btnMenuPrincipal2";
             this.btnMenuPrincipal2.Size = new System.Drawing.Size(143, 38);
@@ -421,13 +428,13 @@
             this.btnMaterial2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnMaterial2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnMaterial2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaterial2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaterial2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnMaterial2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnMaterial2.Location = new System.Drawing.Point(3, 344);
             this.btnMaterial2.Name = "btnMaterial2";
             this.btnMaterial2.Size = new System.Drawing.Size(143, 42);
             this.btnMaterial2.TabIndex = 23;
-            this.btnMaterial2.Text = "      Materiales";
+            this.btnMaterial2.Text = "Materiales";
             this.btnMaterial2.UseVisualStyleBackColor = false;
             this.btnMaterial2.Click += new System.EventHandler(this.btnMaterial2_Click);
             // 
@@ -436,13 +443,13 @@
             this.btnDinamicas2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDinamicas2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDinamicas2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDinamicas2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDinamicas2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnDinamicas2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnDinamicas2.Location = new System.Drawing.Point(3, 301);
             this.btnDinamicas2.Name = "btnDinamicas2";
             this.btnDinamicas2.Size = new System.Drawing.Size(143, 42);
             this.btnDinamicas2.TabIndex = 22;
-            this.btnDinamicas2.Text = "      Dinamicas";
+            this.btnDinamicas2.Text = "Dinamicas";
             this.btnDinamicas2.UseVisualStyleBackColor = false;
             this.btnDinamicas2.Click += new System.EventHandler(this.btnDinamicas2_Click);
             // 
@@ -451,13 +458,13 @@
             this.btnProfesores2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnProfesores2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnProfesores2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProfesores2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfesores2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnProfesores2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnProfesores2.Location = new System.Drawing.Point(3, 258);
             this.btnProfesores2.Name = "btnProfesores2";
             this.btnProfesores2.Size = new System.Drawing.Size(143, 42);
             this.btnProfesores2.TabIndex = 21;
-            this.btnProfesores2.Text = "      Profesores";
+            this.btnProfesores2.Text = "Profesores";
             this.btnProfesores2.UseVisualStyleBackColor = false;
             this.btnProfesores2.Click += new System.EventHandler(this.btnProfesores2_Click);
             // 
@@ -466,28 +473,29 @@
             this.btnPadreOTutor2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnPadreOTutor2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPadreOTutor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPadreOTutor2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPadreOTutor2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPadreOTutor2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnPadreOTutor2.Location = new System.Drawing.Point(3, 215);
             this.btnPadreOTutor2.Name = "btnPadreOTutor2";
             this.btnPadreOTutor2.Size = new System.Drawing.Size(143, 42);
             this.btnPadreOTutor2.TabIndex = 20;
-            this.btnPadreOTutor2.Text = "            Padre o Tutor";
+            this.btnPadreOTutor2.Text = "Padre o Tutor";
             this.btnPadreOTutor2.UseVisualStyleBackColor = false;
             this.btnPadreOTutor2.Click += new System.EventHandler(this.btnPadreOTutor2_Click);
             // 
             // btnTalleres2
             // 
             this.btnTalleres2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTalleres2.Enabled = false;
             this.btnTalleres2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnTalleres2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTalleres2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTalleres2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTalleres2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnTalleres2.Location = new System.Drawing.Point(3, 172);
             this.btnTalleres2.Name = "btnTalleres2";
             this.btnTalleres2.Size = new System.Drawing.Size(143, 42);
             this.btnTalleres2.TabIndex = 19;
-            this.btnTalleres2.Text = "   Talleres";
+            this.btnTalleres2.Text = "Talleres";
             this.btnTalleres2.UseVisualStyleBackColor = false;
             this.btnTalleres2.Click += new System.EventHandler(this.btnTalleres2_Click);
             // 
@@ -496,13 +504,13 @@
             this.btnEscuelas2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEscuelas2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnEscuelas2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEscuelas2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEscuelas2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnEscuelas2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnEscuelas2.Location = new System.Drawing.Point(3, 129);
             this.btnEscuelas2.Name = "btnEscuelas2";
             this.btnEscuelas2.Size = new System.Drawing.Size(143, 42);
             this.btnEscuelas2.TabIndex = 18;
-            this.btnEscuelas2.Text = "     Escuelas";
+            this.btnEscuelas2.Text = "Escuelas";
             this.btnEscuelas2.UseVisualStyleBackColor = false;
             this.btnEscuelas2.Click += new System.EventHandler(this.btnEscuelas2_Click);
             // 
@@ -512,13 +520,13 @@
             this.btnAlumnos2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAlumnos2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAlumnos2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlumnos2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlumnos2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnAlumnos2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnAlumnos2.Location = new System.Drawing.Point(3, 86);
             this.btnAlumnos2.Name = "btnAlumnos2";
             this.btnAlumnos2.Size = new System.Drawing.Size(143, 42);
             this.btnAlumnos2.TabIndex = 17;
-            this.btnAlumnos2.Text = "      Alumnos";
+            this.btnAlumnos2.Text = "Alumnos";
             this.btnAlumnos2.UseVisualStyleBackColor = false;
             this.btnAlumnos2.Click += new System.EventHandler(this.btnAlumnos2_Click);
             // 
@@ -530,7 +538,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(170, 675);
+            this.btnAceptar.Location = new System.Drawing.Point(170, 686);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 14;
@@ -543,20 +551,21 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label13.Location = new System.Drawing.Point(167, 90);
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(167, 89);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 17);
+            this.label13.Size = new System.Drawing.Size(69, 20);
             this.label13.TabIndex = 114;
             this.label13.Text = "Escuela:";
             // 
             // cbEscuelaTaller
             // 
             this.cbEscuelaTaller.Enabled = false;
+            this.cbEscuelaTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEscuelaTaller.FormattingEnabled = true;
-            this.cbEscuelaTaller.Location = new System.Drawing.Point(170, 107);
+            this.cbEscuelaTaller.Location = new System.Drawing.Point(170, 109);
             this.cbEscuelaTaller.Name = "cbEscuelaTaller";
-            this.cbEscuelaTaller.Size = new System.Drawing.Size(211, 21);
+            this.cbEscuelaTaller.Size = new System.Drawing.Size(211, 25);
             this.cbEscuelaTaller.TabIndex = 1;
             this.cbEscuelaTaller.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaTaller_SelectedIndexChanged);
             this.cbEscuelaTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaTaller_KeyPress);
@@ -566,7 +575,7 @@
             this.btnPagos2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnPagos2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPagos2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagos2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagos2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnPagos2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnPagos2.Location = new System.Drawing.Point(3, 387);
             this.btnPagos2.Name = "btnPagos2";
@@ -579,89 +588,92 @@
             // txtIdEscuela
             // 
             this.txtIdEscuela.Enabled = false;
-            this.txtIdEscuela.Location = new System.Drawing.Point(229, 87);
+            this.txtIdEscuela.Location = new System.Drawing.Point(234, 88);
             this.txtIdEscuela.Name = "txtIdEscuela";
-            this.txtIdEscuela.Size = new System.Drawing.Size(65, 20);
+            this.txtIdEscuela.Size = new System.Drawing.Size(83, 20);
             this.txtIdEscuela.TabIndex = 117;
             // 
             // txtFechaInicio
             // 
             this.txtFechaInicio.Enabled = false;
-            this.txtFechaInicio.Location = new System.Drawing.Point(265, 402);
+            this.txtFechaInicio.Location = new System.Drawing.Point(291, 423);
             this.txtFechaInicio.Name = "txtFechaInicio";
-            this.txtFechaInicio.Size = new System.Drawing.Size(100, 20);
+            this.txtFechaInicio.Size = new System.Drawing.Size(90, 20);
             this.txtFechaInicio.TabIndex = 118;
             // 
             // txtFechaFin
             // 
             this.txtFechaFin.Enabled = false;
-            this.txtFechaFin.Location = new System.Drawing.Point(277, 445);
+            this.txtFechaFin.Location = new System.Drawing.Point(305, 465);
             this.txtFechaFin.Name = "txtFechaFin";
-            this.txtFechaFin.Size = new System.Drawing.Size(100, 20);
+            this.txtFechaFin.Size = new System.Drawing.Size(76, 20);
             this.txtFechaFin.TabIndex = 119;
             // 
             // txtIdProfesorTaller
             // 
             this.txtIdProfesorTaller.Enabled = false;
-            this.txtIdProfesorTaller.Location = new System.Drawing.Point(232, 485);
+            this.txtIdProfesorTaller.Location = new System.Drawing.Point(239, 507);
             this.txtIdProfesorTaller.Name = "txtIdProfesorTaller";
-            this.txtIdProfesorTaller.Size = new System.Drawing.Size(65, 20);
+            this.txtIdProfesorTaller.Size = new System.Drawing.Size(78, 20);
             this.txtIdProfesorTaller.TabIndex = 121;
             // 
             // txtHabilidadesTaller
             // 
             this.txtHabilidadesTaller.Enabled = false;
-            this.txtHabilidadesTaller.Location = new System.Drawing.Point(170, 554);
+            this.txtHabilidadesTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHabilidadesTaller.Location = new System.Drawing.Point(170, 572);
             this.txtHabilidadesTaller.Name = "txtHabilidadesTaller";
-            this.txtHabilidadesTaller.Size = new System.Drawing.Size(211, 20);
+            this.txtHabilidadesTaller.Size = new System.Drawing.Size(211, 23);
             this.txtHabilidadesTaller.TabIndex = 11;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label10.Location = new System.Drawing.Point(167, 537);
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(167, 552);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 17);
+            this.label10.Size = new System.Drawing.Size(98, 20);
             this.label10.TabIndex = 122;
             this.label10.Text = "Habilidades:";
             // 
             // txtJustificacionCostoTaller
             // 
             this.txtJustificacionCostoTaller.Enabled = false;
-            this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(170, 594);
+            this.txtJustificacionCostoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(170, 615);
             this.txtJustificacionCostoTaller.Name = "txtJustificacionCostoTaller";
-            this.txtJustificacionCostoTaller.Size = new System.Drawing.Size(211, 20);
+            this.txtJustificacionCostoTaller.Size = new System.Drawing.Size(211, 23);
             this.txtJustificacionCostoTaller.TabIndex = 12;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label14.Location = new System.Drawing.Point(167, 577);
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(167, 595);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(136, 17);
+            this.label14.Size = new System.Drawing.Size(174, 20);
             this.label14.TabIndex = 124;
             this.label14.Text = "Justificacion de Costo:";
             // 
             // txtHerramientasTaller
             // 
             this.txtHerramientasTaller.Enabled = false;
-            this.txtHerramientasTaller.Location = new System.Drawing.Point(170, 634);
+            this.txtHerramientasTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHerramientasTaller.Location = new System.Drawing.Point(170, 658);
             this.txtHerramientasTaller.Name = "txtHerramientasTaller";
-            this.txtHerramientasTaller.Size = new System.Drawing.Size(211, 20);
+            this.txtHerramientasTaller.Size = new System.Drawing.Size(211, 23);
             this.txtHerramientasTaller.TabIndex = 13;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Book Antiqua", 9.75F);
-            this.label15.Location = new System.Drawing.Point(167, 617);
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(167, 638);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(91, 17);
+            this.label15.Size = new System.Drawing.Size(109, 20);
             this.label15.TabIndex = 126;
             this.label15.Text = "Herramientas:";
             // 
@@ -671,7 +683,7 @@
             this.btnRecomendaciones2.Enabled = false;
             this.btnRecomendaciones2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRecomendaciones2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecomendaciones2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecomendaciones2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.btnRecomendaciones2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnRecomendaciones2.Location = new System.Drawing.Point(3, 473);
             this.btnRecomendaciones2.Name = "btnRecomendaciones2";
@@ -686,20 +698,20 @@
             this.btnIncidencias2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnIncidencias2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnIncidencias2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncidencias2.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncidencias2.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnIncidencias2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnIncidencias2.Location = new System.Drawing.Point(3, 430);
             this.btnIncidencias2.Name = "btnIncidencias2";
             this.btnIncidencias2.Size = new System.Drawing.Size(143, 42);
             this.btnIncidencias2.TabIndex = 131;
-            this.btnIncidencias2.Text = "    Incidencias";
+            this.btnIncidencias2.Text = "Incidencias";
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(66, 594);
+            this.label16.Location = new System.Drawing.Point(46, 557);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 13);
             this.label16.TabIndex = 137;
@@ -717,23 +729,23 @@
             this.dgvTaller.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvTaller.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTaller.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvTaller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgvTaller.EnableHeadersVisualStyles = false;
             this.dgvTaller.GridColor = System.Drawing.Color.IndianRed;
             this.dgvTaller.Location = new System.Drawing.Point(423, 105);
@@ -741,8 +753,8 @@
             this.dgvTaller.Name = "dgvTaller";
             this.dgvTaller.ReadOnly = true;
             this.dgvTaller.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTaller.Size = new System.Drawing.Size(704, 513);
             this.dgvTaller.TabIndex = 138;
@@ -751,10 +763,11 @@
             // cbProfeTaller
             // 
             this.cbProfeTaller.Enabled = false;
+            this.cbProfeTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProfeTaller.FormattingEnabled = true;
-            this.cbProfeTaller.Location = new System.Drawing.Point(170, 511);
+            this.cbProfeTaller.Location = new System.Drawing.Point(170, 527);
             this.cbProfeTaller.Name = "cbProfeTaller";
-            this.cbProfeTaller.Size = new System.Drawing.Size(211, 21);
+            this.cbProfeTaller.Size = new System.Drawing.Size(211, 25);
             this.cbProfeTaller.TabIndex = 139;
             this.cbProfeTaller.Text = "Seleccionar Profesor";
             this.cbProfeTaller.SelectedIndexChanged += new System.EventHandler(this.cbProfeTaller_SelectedIndexChanged);

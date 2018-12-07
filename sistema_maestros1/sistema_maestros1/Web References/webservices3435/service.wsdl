@@ -159,6 +159,12 @@
   <wsdl:message name="BuscarMAXIDResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="validarNumeroRequest">
+    <wsdl:part name="telefono" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validarNumeroResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosAlumnoRequest" />
   <wsdl:message name="cargarDatosAlumnoResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -373,6 +379,14 @@
   <wsdl:message name="buscarMAXIDDResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="validarDinamicaXtallerRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="fecha" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validarDinamicaXtallerResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosMaterialRequest" />
   <wsdl:message name="cargarDatosMaterialResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -455,6 +469,13 @@
   <wsdl:message name="buscarMAXIDPAGOResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="buscarAlumnosPagosRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="alumno" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarAlumnosPagosResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarRecomendacionesRequest" />
   <wsdl:message name="cargarRecomendacionesResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -504,9 +525,16 @@
     <wsdl:part name="id_tal" type="xsd:string" />
     <wsdl:part name="id_din" type="xsd:string" />
     <wsdl:part name="id_mat" type="xsd:string" />
-    <wsdl:part name="sub" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="buscarMAXIDRResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMaterialxdinamicaRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
+    <wsdl:part name="id_din" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="buscarMaterialxdinamicaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="cargarIncidenciasRequest" />
@@ -550,6 +578,51 @@
     <wsdl:part name="id_esc" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="buscarMAXIDIResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="actualizarGruposRequest">
+    <wsdl:part name="newgrado" type="xsd:string" />
+    <wsdl:part name="oldgrado" type="xsd:string" />
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="nivel_edu" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="actualizarGruposResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="actualizarNivelRequest">
+    <wsdl:part name="newnivel" type="xsd:string" />
+    <wsdl:part name="oldnivel" type="xsd:string" />
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="grado" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="actualizarNivelResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validarGradoRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validarGradoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="actualizarpagosRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="actualizarpagosResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="filtrarAlumnosXnivelRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="nivel" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="filtrarAlumnosXnivelResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="filtrarAlumnosXnivelYgradoRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+    <wsdl:part name="nivel" type="xsd:string" />
+    <wsdl:part name="grado" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="filtrarAlumnosXnivelYgradoResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:portType name="WSPHPPortType">
@@ -657,6 +730,11 @@
       <documentation>buscar MAX id</documentation>
       <wsdl:input message="tns:BuscarMAXIDRequest" />
       <wsdl:output message="tns:BuscarMAXIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validarNumero">
+      <documentation>validar numero existente</documentation>
+      <wsdl:input message="tns:validarNumeroRequest" />
+      <wsdl:output message="tns:validarNumeroResponse" />
     </wsdl:operation>
     <wsdl:operation name="cargarDatosAlumno">
       <documentation> Cargar datos alumno</documentation>
@@ -783,6 +861,11 @@
       <wsdl:input message="tns:buscarMAXIDDRequest" />
       <wsdl:output message="tns:buscarMAXIDDResponse" />
     </wsdl:operation>
+    <wsdl:operation name="validarDinamicaXtaller">
+      <documentation>validar dinamicas con diferentes fechas de I y F</documentation>
+      <wsdl:input message="tns:validarDinamicaXtallerRequest" />
+      <wsdl:output message="tns:validarDinamicaXtallerResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosMaterial">
       <documentation>Cargar datos material</documentation>
       <wsdl:input message="tns:cargarDatosMaterialRequest" />
@@ -838,6 +921,11 @@
       <wsdl:input message="tns:buscarMAXIDPAGORequest" />
       <wsdl:output message="tns:buscarMAXIDPAGOResponse" />
     </wsdl:operation>
+    <wsdl:operation name="buscarAlumnosPagos">
+      <documentation>Agregar datos pagos</documentation>
+      <wsdl:input message="tns:buscarAlumnosPagosRequest" />
+      <wsdl:output message="tns:buscarAlumnosPagosResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarRecomendaciones">
       <documentation>Cargar datos recomendaciones</documentation>
       <wsdl:input message="tns:cargarRecomendacionesRequest" />
@@ -868,6 +956,11 @@
       <wsdl:input message="tns:buscarMAXIDRRequest" />
       <wsdl:output message="tns:buscarMAXIDRResponse" />
     </wsdl:operation>
+    <wsdl:operation name="buscarMaterialxdinamica">
+      <documentation>buscar MAX ID de recomendaciones</documentation>
+      <wsdl:input message="tns:buscarMaterialxdinamicaRequest" />
+      <wsdl:output message="tns:buscarMaterialxdinamicaResponse" />
+    </wsdl:operation>
     <wsdl:operation name="cargarIncidencias">
       <documentation>Cargar datos incidencias</documentation>
       <wsdl:input message="tns:cargarIncidenciasRequest" />
@@ -897,6 +990,36 @@
       <documentation>buscar MAX ID de incidencias</documentation>
       <wsdl:input message="tns:buscarMAXIDIRequest" />
       <wsdl:output message="tns:buscarMAXIDIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizarGrupos">
+      <documentation>Actualizar el grado de los alumnos por ID de escuela</documentation>
+      <wsdl:input message="tns:actualizarGruposRequest" />
+      <wsdl:output message="tns:actualizarGruposResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizarNivel">
+      <documentation>Actualizar el nivel educativo de los alumnos por ID escuela</documentation>
+      <wsdl:input message="tns:actualizarNivelRequest" />
+      <wsdl:output message="tns:actualizarNivelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validarGrado">
+      <documentation>Pasar a Inactivo a los alumnos de 3 de secundaria cuando termine el ciclo escolar</documentation>
+      <wsdl:input message="tns:validarGradoRequest" />
+      <wsdl:output message="tns:validarGradoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizarpagos">
+      <documentation>borrar los registros de los pagos de los alumnos por ciclo escolar</documentation>
+      <wsdl:input message="tns:actualizarpagosRequest" />
+      <wsdl:output message="tns:actualizarpagosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="filtrarAlumnosXnivel">
+      <documentation>borrar los registros de los pagos de los alumnos por ciclo escolar</documentation>
+      <wsdl:input message="tns:filtrarAlumnosXnivelRequest" />
+      <wsdl:output message="tns:filtrarAlumnosXnivelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="filtrarAlumnosXnivelYgrado">
+      <documentation>borrar los registros de los pagos de los alumnos por ciclo escolar</documentation>
+      <wsdl:input message="tns:filtrarAlumnosXnivelYgradoRequest" />
+      <wsdl:output message="tns:filtrarAlumnosXnivelYgradoResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSPHPBinding" type="tns:WSPHPPortType">
@@ -1083,6 +1206,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarMAXID">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/BuscarMAXID" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarNumero">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/validarNumero" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
@@ -1315,6 +1447,15 @@
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="validarDinamicaXtaller">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/validarDinamicaXtaller" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarDatosMaterial">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarDatosMaterial" style="rpc" />
       <wsdl:input>
@@ -1414,6 +1555,15 @@
         <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarAlumnosPagos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarAlumnosPagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarRecomendaciones">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarRecomendaciones" style="rpc" />
       <wsdl:input>
@@ -1468,6 +1618,15 @@
         <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarMaterialxdinamica">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMaterialxdinamica" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicestadia.000webhostapp.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="cargarIncidencias">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/cargarIncidencias" style="rpc" />
       <wsdl:input>
@@ -1515,6 +1674,60 @@
     </wsdl:operation>
     <wsdl:operation name="buscarMAXIDI">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/buscarMAXIDI" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarGrupos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/actualizarGrupos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarNivel">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/actualizarNivel" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarGrado">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/validarGrado" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarpagos">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/actualizarpagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filtrarAlumnosXnivel">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/filtrarAlumnosXnivel" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="filtrarAlumnosXnivelYgrado">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/filtrarAlumnosXnivelYgrado" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

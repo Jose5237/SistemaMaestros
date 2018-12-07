@@ -24,8 +24,12 @@ namespace sistema_maestros1
             InitializeComponent();
         }
 
+        //VARIABLES
         int opcionBotones = 0;
 
+
+        //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
+        #region
 
         //BOTON DE SALIR
         private void exit_Click(object sender, EventArgs e)
@@ -43,6 +47,7 @@ namespace sistema_maestros1
         {
             WindowState = FormWindowState.Minimized;
         }
+
 
         //BOTON DE MENU PRINCIPAL
         private void btnMenuPrincipal2_Click(object sender, EventArgs e)
@@ -176,9 +181,12 @@ namespace sistema_maestros1
             }
         }
 
+        #endregion
 
+        
         //METODOS DE VALIDACIONES
         #region
+
         //METODO DEL txtTel1Escuela PARA ACEPTAR SOLO NUMEROS
         private void txtTel1Escuela_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -204,6 +212,7 @@ namespace sistema_maestros1
             v.SoloLetrasYComas(e);
         }
 
+        //METODO DEL txtResponsablePagoEscuela PARA ACEPTAR LETRAS COMAS Y PUNTOS
         private void txtResponsablePagoEscuela_KeyPress(object sender, KeyPressEventArgs e)
         {
             v.SoloLetrasYComas(e);
@@ -216,8 +225,10 @@ namespace sistema_maestros1
         private void btnAgregarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
+
             dgvEscuela.Enabled = false;
-            txtIdEscuela.Text = "";
+
+            txtIdEscuela.Enabled = false; txtIdEscuela.Text = "";
             txtNombreEscuela.Enabled = true; txtNombreEscuela.Text = "";
             txtDireccionEscuela.Enabled = true; txtDireccionEscuela.Text = "";
             txtTel1Escuela.Enabled = true; txtTel1Escuela.Text = "";
@@ -233,7 +244,9 @@ namespace sistema_maestros1
         private void btnModificarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
+
             dgvEscuela.Enabled = true;
+
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = true;
             txtDireccionEscuela.Enabled = true; 
@@ -251,7 +264,9 @@ namespace sistema_maestros1
         private void btnEliminarEscuela_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
+
             dgvEscuela.Enabled = true;
+
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = false;
             txtDireccionEscuela.Enabled = false;
@@ -263,27 +278,22 @@ namespace sistema_maestros1
             txtResponsablePagoEscuela.Enabled = false;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
         }
-
-
+        
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if ((txtNombreEscuela.Text != "") && (txtDireccionEscuela.Text != "") && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != ""))
             {
-                //if (txtTel1Escuela.Text.Length == 10 || txtTel2Escuela.Text.Length == 10 || txtTel3Escuela.Text.Length == 10)
-                //{
 
                 string email = txtCorreoEscuela.Text;
                 bool verificar = email.Contains("@");
                 bool verificar2 = email.Contains(".com");
                 if ((verificar == true && verificar2 == true) || (txtCorreoEscuela.Text == "No aplica" || txtCorreoEscuela.Text == "no aplica" || txtCorreoEscuela.Text == "No Aplica") || (txtCorreoEscuela.Text == "n/a" || txtCorreoEscuela.Text == "N/a" || txtCorreoEscuela.Text == "N/A"))
                 {
-
-
-
                     if (opcionBotones == 0)
                     {
                         generarID();
+
                         if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de agregar estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             ClassEscuela es = new ClassEscuela();
@@ -291,9 +301,6 @@ namespace sistema_maestros1
                             es.es_nombre_escuela = txtNombreEscuela.Text;
                             es.es_direccion_escuela = txtDireccionEscuela.Text;
                             es.es_telefono1_escuela = txtTel1Escuela.Text;
-
-                            //es.es_telefono1_escuela = masktxtTel1Escuela.Text;
-
                             es.es_telefono2_escuela = txtTel2Escuela.Text;
                             es.es_telefono3_escuela = txtTel3Escuela.Text;
                             es.es_correo_escuela = txtCorreoEscuela.Text;
@@ -308,6 +315,7 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
+                                    dgvEscuela.Enabled = true;
                                 }
                                 catch
                                 {
@@ -341,6 +349,7 @@ namespace sistema_maestros1
                                     cargarDatosTabla();
                                     inicializacionCampos();
                                     btnAceptar.BackColor = Color.Silver;
+                                    dgvEscuela.Enabled = true;
                                 }
                                 catch
                                 {
@@ -363,7 +372,7 @@ namespace sistema_maestros1
                                     MessageBox.Show(mensaje, "¡Escuela Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
-                                    //btnAceptar.BackColor = Color.Silver;
+                                    dgvEscuela.Enabled = true;
                                 }
                                 catch
                                 {
@@ -373,13 +382,6 @@ namespace sistema_maestros1
                         }
 
                     }
-
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Es necesario que el numero de telefono este completo", "¡Numero Telefono Incompleto!");
-                    //}
-                    //btnAceptar.BackColor = Color.Silver;
                 }
                 else
                 {
@@ -392,17 +394,19 @@ namespace sistema_maestros1
             }
         }
 
+
+        //LOAD
         private void ModuloEscuelas_Load(object sender, EventArgs e)
         {
             cargarDatosTabla();
         }
 
+
+        //CELLCONTENT (DGV)
         private void dgvEscuela_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             NombresColumnas();
-
-
-
+            
             txtIdEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtNombreEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtDireccionEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[2].Value.ToString());
@@ -415,39 +419,36 @@ namespace sistema_maestros1
         }
 
 
-
-
-
+        //BUSCADOR DE ESCUELAS
         private void txtBuscadorEscuela_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscadorEscuela.Text != "")
             {
                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-
                     DataTable dt = new DataTable();
                     try
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarEscuela(txtBuscadorEscuela.Text), typeof(DataTable));
                         dgvEscuela.DataSource = dt;
                         NombresColumnas();
-
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("No se encuentra ninguna escuela con estos datos, Por favor ingrese un nombre o ID Escuela correcto", "No existe esta escuela", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         cargarDatosTabla();
                     }
-
-
                 }
             }
             else
             {
                 cargarDatosTabla();
             }
-
         }
+
+
+        //METODOS FACILITADORES 'cargarDatosTabla(), generarID(), NombresColumnas(), inicializacionCampos()'
+        #region
 
         public void cargarDatosTabla()
         {
@@ -458,8 +459,6 @@ namespace sistema_maestros1
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosEscuela(), typeof(DataTable));
                     dgvEscuela.DataSource = dt;
                     NombresColumnas();
-
-
                 }
                 catch
                 {
@@ -519,20 +518,7 @@ namespace sistema_maestros1
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
-        private void txtTel1Escuela_Click(object sender, EventArgs e)
-        {
+        #endregion
 
-            
-        }
-
-        private void txtTel1Escuela_Validating(object sender, CancelEventArgs e)
-        {
-            
-        }
-
-        private void masktxtTel1Escuela_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            v.SoloNumeros(e);
-        }
     }
 }

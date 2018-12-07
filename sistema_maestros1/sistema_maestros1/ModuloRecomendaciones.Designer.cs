@@ -72,6 +72,7 @@
             this.txtRecomendacionUsoRec = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecomendacion)).BeginInit();
             this.SuspendLayout();
@@ -403,23 +404,27 @@
             this.dgvRecomendacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecomendacion.Size = new System.Drawing.Size(690, 513);
             this.dgvRecomendacion.TabIndex = 142;
+            this.dgvRecomendacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecomendacion_CellContentClick);
             // 
             // txtIdEscuelaRec
             // 
+            this.txtIdEscuelaRec.Enabled = false;
             this.txtIdEscuelaRec.Location = new System.Drawing.Point(225, 130);
             this.txtIdEscuelaRec.Name = "txtIdEscuelaRec";
             this.txtIdEscuelaRec.Size = new System.Drawing.Size(56, 20);
             this.txtIdEscuelaRec.TabIndex = 153;
-            this.txtIdEscuelaRec.Visible = false;
             // 
             // cbEscuelaRec
             // 
+            this.cbEscuelaRec.Enabled = false;
             this.cbEscuelaRec.FormattingEnabled = true;
             this.cbEscuelaRec.Location = new System.Drawing.Point(170, 150);
             this.cbEscuelaRec.Name = "cbEscuelaRec";
             this.cbEscuelaRec.Size = new System.Drawing.Size(211, 21);
             this.cbEscuelaRec.TabIndex = 1;
             this.cbEscuelaRec.Text = "Seleccionar Escuela";
+            this.cbEscuelaRec.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaRec_SelectedIndexChanged);
+            this.cbEscuelaRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaRec_KeyPress);
             // 
             // label11
             // 
@@ -478,62 +483,71 @@
             // 
             // txtIdTallerRec
             // 
+            this.txtIdTallerRec.Enabled = false;
             this.txtIdTallerRec.Location = new System.Drawing.Point(225, 177);
             this.txtIdTallerRec.Name = "txtIdTallerRec";
             this.txtIdTallerRec.Size = new System.Drawing.Size(56, 20);
             this.txtIdTallerRec.TabIndex = 155;
-            this.txtIdTallerRec.Visible = false;
             // 
             // cbTallerRec
             // 
+            this.cbTallerRec.Enabled = false;
             this.cbTallerRec.FormattingEnabled = true;
             this.cbTallerRec.Location = new System.Drawing.Point(170, 197);
             this.cbTallerRec.Name = "cbTallerRec";
             this.cbTallerRec.Size = new System.Drawing.Size(211, 21);
             this.cbTallerRec.TabIndex = 2;
             this.cbTallerRec.Text = "Seleccionar Taller";
+            this.cbTallerRec.SelectedIndexChanged += new System.EventHandler(this.cbTallerRec_SelectedIndexChanged);
+            this.cbTallerRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTallerRec_KeyPress);
             // 
             // txtIdDinamicaRec
             // 
+            this.txtIdDinamicaRec.Enabled = false;
             this.txtIdDinamicaRec.Location = new System.Drawing.Point(241, 221);
             this.txtIdDinamicaRec.Name = "txtIdDinamicaRec";
             this.txtIdDinamicaRec.Size = new System.Drawing.Size(56, 20);
             this.txtIdDinamicaRec.TabIndex = 157;
-            this.txtIdDinamicaRec.Visible = false;
             // 
             // cbDinamicaRec
             // 
+            this.cbDinamicaRec.Enabled = false;
             this.cbDinamicaRec.FormattingEnabled = true;
             this.cbDinamicaRec.Location = new System.Drawing.Point(170, 241);
             this.cbDinamicaRec.Name = "cbDinamicaRec";
             this.cbDinamicaRec.Size = new System.Drawing.Size(211, 21);
             this.cbDinamicaRec.TabIndex = 3;
             this.cbDinamicaRec.Text = "Seleccionar Dinamica";
+            this.cbDinamicaRec.SelectedIndexChanged += new System.EventHandler(this.cbDinamicaRec_SelectedIndexChanged);
+            this.cbDinamicaRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbDinamicaRec_KeyPress);
             // 
             // txtIdMaterialRec
             // 
+            this.txtIdMaterialRec.Enabled = false;
             this.txtIdMaterialRec.Location = new System.Drawing.Point(241, 268);
             this.txtIdMaterialRec.Name = "txtIdMaterialRec";
             this.txtIdMaterialRec.Size = new System.Drawing.Size(56, 20);
             this.txtIdMaterialRec.TabIndex = 159;
-            this.txtIdMaterialRec.Visible = false;
             // 
             // cbMaterialRec
             // 
+            this.cbMaterialRec.Enabled = false;
             this.cbMaterialRec.FormattingEnabled = true;
             this.cbMaterialRec.Location = new System.Drawing.Point(170, 288);
             this.cbMaterialRec.Name = "cbMaterialRec";
             this.cbMaterialRec.Size = new System.Drawing.Size(211, 21);
             this.cbMaterialRec.TabIndex = 4;
             this.cbMaterialRec.Text = "Seleccionar Material";
+            this.cbMaterialRec.SelectedIndexChanged += new System.EventHandler(this.cbMaterialRec_SelectedIndexChanged);
+            this.cbMaterialRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMaterialRec_KeyPress);
             // 
             // txtIdRecomendacion
             // 
+            this.txtIdRecomendacion.Enabled = false;
             this.txtIdRecomendacion.Location = new System.Drawing.Point(170, 334);
             this.txtIdRecomendacion.Name = "txtIdRecomendacion";
             this.txtIdRecomendacion.Size = new System.Drawing.Size(211, 20);
             this.txtIdRecomendacion.TabIndex = 5;
-            this.txtIdRecomendacion.Visible = false;
             // 
             // label5
             // 
@@ -548,21 +562,23 @@
             // 
             // txtEspecificacionesRec
             // 
+            this.txtEspecificacionesRec.Enabled = false;
             this.txtEspecificacionesRec.Location = new System.Drawing.Point(170, 380);
             this.txtEspecificacionesRec.Multiline = true;
             this.txtEspecificacionesRec.Name = "txtEspecificacionesRec";
+            this.txtEspecificacionesRec.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtEspecificacionesRec.Size = new System.Drawing.Size(211, 60);
             this.txtEspecificacionesRec.TabIndex = 6;
-            this.txtEspecificacionesRec.Visible = false;
             // 
             // txtRecomendacionUsoRec
             // 
+            this.txtRecomendacionUsoRec.Enabled = false;
             this.txtRecomendacionUsoRec.Location = new System.Drawing.Point(170, 466);
             this.txtRecomendacionUsoRec.Multiline = true;
             this.txtRecomendacionUsoRec.Name = "txtRecomendacionUsoRec";
+            this.txtRecomendacionUsoRec.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRecomendacionUsoRec.Size = new System.Drawing.Size(211, 60);
             this.txtRecomendacionUsoRec.TabIndex = 7;
-            this.txtRecomendacionUsoRec.Visible = false;
             // 
             // label7
             // 
@@ -582,13 +598,24 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.Location = new System.Drawing.Point(170, 550);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(101, 529);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 164;
+            this.label8.Text = "label8";
             // 
             // ModuloRecomendaciones
             // 
@@ -596,6 +623,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtRecomendacionUsoRec);
             this.Controls.Add(this.label7);
@@ -691,5 +719,6 @@
         private System.Windows.Forms.TextBox txtRecomendacionUsoRec;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label8;
     }
 }

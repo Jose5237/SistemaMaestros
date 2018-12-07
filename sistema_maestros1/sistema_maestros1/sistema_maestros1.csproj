@@ -76,6 +76,7 @@
     <Compile Include="ClassIncidencia.cs" />
     <Compile Include="ClassMaterial.cs" />
     <Compile Include="ClassPadres.cs" />
+    <Compile Include="ClassPagos.cs" />
     <Compile Include="ClassProfesor.cs" />
     <Compile Include="ClassRecomendacion.cs" />
     <Compile Include="ClassTaller.cs" />
@@ -85,6 +86,12 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloActualizacionMasivaAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloActualizacionMasivaAlumnos.Designer.cs">
+      <DependentUpon>ModuloActualizacionMasivaAlumnos.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloAlumnos.cs">
       <SubType>Form</SubType>
@@ -175,6 +182,9 @@
     </Compile>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloActualizacionMasivaAlumnos.resx">
+      <DependentUpon>ModuloActualizacionMasivaAlumnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloAlumnos.resx">
       <DependentUpon>ModuloAlumnos.cs</DependentUpon>

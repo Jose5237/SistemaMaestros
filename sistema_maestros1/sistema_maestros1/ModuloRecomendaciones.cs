@@ -170,34 +170,140 @@ namespace sistema_maestros1
         private void btnAgregarRecomendacion_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
+
+            dgvRecomendacion.Enabled = false;
+
+            cbEscuelaRec.Enabled = true; cbEscuelaRec.Text = "Seleccionar Escuela";
+            txtIdEscuelaRec.Text = "";
+
+            cbTallerRec.Enabled = true; cbTallerRec.Text = "Seleccionar Taller";
+            txtIdTallerRec.Text = "";
+
+            cbDinamicaRec.Enabled = true; cbDinamicaRec.Text = "Seleccionar Dinamica";
+            txtIdDinamicaRec.Text = "";
+
+            cbMaterialRec.Enabled = true; cbMaterialRec.Text = "Seleccionar Material";
+            txtIdMaterialRec.Text = "";
+
+            txtIdRecomendacion.Enabled = false; txtIdRecomendacion.Text = "";
+            txtEspecificacionesRec.Enabled = true; txtEspecificacionesRec.Text = "";
+            txtRecomendacionUsoRec.Enabled = true; txtRecomendacionUsoRec.Text = "";
+
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen;
         }
 
         private void btnModificarRecomendacion_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
+
+            dgvRecomendacion.Enabled = true;
+
+            cbEscuelaRec.Enabled = false;
+
+            cbTallerRec.Enabled = false;
+
+            cbDinamicaRec.Enabled = false;
+
+            cbMaterialRec.Enabled = false;
+
+            txtIdRecomendacion.Enabled = false;
+            txtEspecificacionesRec.Enabled = true;
+            txtRecomendacionUsoRec.Enabled = true;
+
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
         }
 
         private void btnEliminarRecomendacion_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
+
+            dgvRecomendacion.Enabled = true;
+
+            cbEscuelaRec.Enabled = false;
+
+            cbTallerRec.Enabled = false;
+
+            cbDinamicaRec.Enabled = false;
+
+            cbMaterialRec.Enabled = false;
+
+            txtIdRecomendacion.Enabled = false;
+            txtEspecificacionesRec.Enabled = false;
+            txtRecomendacionUsoRec.Enabled = false;
+
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cbEscuelaRec.Text != "" && cbTallerRec.Text != "" && cbDinamicaRec.Text != "" && cbMaterialRec.Text != "" && txtIdRecomendacion.Text != "" && txtEspecificacionesRec.Text != "" && txtRecomendacionUsoRec.Text != "")
+            if (cbEscuelaRec.Text != "" && cbTallerRec.Text != "" && cbDinamicaRec.Text != "" && cbMaterialRec.Text != "" && txtEspecificacionesRec.Text != "" && txtRecomendacionUsoRec.Text != "")
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if(opcionBotones == 0)
                     {
 
+                        generarID();
+
+                        
+                        ClassRecomendacion re = new ClassRecomendacion();
+                        re.re_id_escuela = txtIdEscuelaRec.Text;
+                        re.re_id_taller = txtIdTallerRec.Text;
+                        re.re_id_dinamica = txtIdDinamicaRec.Text;
+                        re.re_id_material = txtIdMaterialRec.Text;
+                        re.re_id_recomendaciones = label8.Text;
+                        re.re_especificaciones_recomendaciones = txtEspecificacionesRec.Text;
+                        re.re_recomendaciones_recomendaciones = txtRecomendacionUsoRec.Text;
+                        
+
+                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        {
+                            string mensaje = wsPHP.AgregarRecomendaciones(re.re_id_escuela, re.re_id_taller, re.re_id_dinamica, re.re_id_material, re.re_id_recomendaciones, re.re_especificaciones_recomendaciones, re.re_recomendaciones_recomendaciones);
+                            MessageBox.Show(mensaje, "¡Recomendacion Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
                     } else if (opcionBotones == 1)
                     {
 
+                        ClassRecomendacion re = new ClassRecomendacion();
+                        re.re_id_escuela = txtIdEscuelaRec.Text;
+                        re.re_id_taller = txtIdTallerRec.Text;
+                        re.re_id_dinamica = txtIdDinamicaRec.Text;
+                        re.re_id_material = txtIdMaterialRec.Text;
+                        re.re_id_recomendaciones = txtIdRecomendacion.Text;
+                        re.re_especificaciones_recomendaciones = txtEspecificacionesRec.Text;
+                        re.re_recomendaciones_recomendaciones = txtRecomendacionUsoRec.Text;
+
+
+                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        {
+                            string mensaje = wsPHP.modificarRecomendaciones(re.re_id_escuela, re.re_id_taller, re.re_id_dinamica, re.re_id_material, re.re_id_recomendaciones, re.re_especificaciones_recomendaciones, re.re_recomendaciones_recomendaciones);
+                            MessageBox.Show(mensaje, "¡Recomendacion Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
                     } else if (opcionBotones == 2)
                     {
+                        ClassRecomendacion re = new ClassRecomendacion();
+                        re.re_id_escuela = txtIdEscuelaRec.Text;
+                        re.re_id_taller = txtIdTallerRec.Text;
+                        re.re_id_dinamica = txtIdDinamicaRec.Text;
+                        re.re_id_material = txtIdMaterialRec.Text;
+                        re.re_id_recomendaciones = txtIdRecomendacion.Text;
 
+
+                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        {
+                            string mensaje = wsPHP.eliminarRecomendaciones(re.re_id_escuela, re.re_id_taller, re.re_id_dinamica, re.re_id_material, re.re_id_recomendaciones);
+                            MessageBox.Show(mensaje, "¡Recomendacion Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
                     }
+
+                    cargarDatosTabla();
+                    inicializacionCampos();
+                    dgvRecomendacion.Enabled = true;
                 }
 
             }
@@ -216,8 +322,92 @@ namespace sistema_maestros1
         {
             cargarDatosTabla();
 
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+                try
+                {
+                    
+
+                    String respuestaEscuela = wsPHP.cargarDatosEscuela();
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+
+
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomEsc.es_nombre_escuela;
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        cbEscuelaRec.Items.Add(item);
+
+                    }
+
+                    //TALLER
+
+                    String respuestaTaller = wsPHP.cargarDatosDeTaller();
+                    var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
+
+
+
+                    foreach (var nomTall in respTall)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomTall.ta_nombre_taller;
+                        item.Value = Convert.ToString(nomTall.ta_id_taller);
+                        cbTallerRec.Items.Add(item);
+
+                    }
+
+                    //DINAMICA
+                    String respuestaDinamica = wsPHP.cargarDatosDinamica();
+                    var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
+
+
+
+                    foreach (var nomDina in respDina)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomDina.di_nombre_dinamica;
+                        item.Value = Convert.ToString(nomDina.di_id_dinamica);
+                        cbDinamicaRec.Items.Add(item);
+
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = "re";
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDR(txtIdEscuelaRec.Text, txtIdTallerRec.Text, txtIdDinamicaRec.Text, txtIdMaterialRec.Text);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(2, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label8.Text = newID;
+        }
 
         public void NombresColumnas()
         {
@@ -234,19 +424,225 @@ namespace sistema_maestros1
         {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
-                DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarRecomendaciones(), typeof(DataTable));
-                dgvRecomendacion.DataSource = dt;
-                NombresColumnas();
-                //try
-                //{
-                //    
-                //
-                //}
-                //catch (Exception)
-                //{
-                //    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                
+                try
+                {
+
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarRecomendaciones(), typeof(DataTable));
+                    dgvRecomendacion.DataSource = dt;
+                    NombresColumnas();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        public void inicializacionCampos()
+        {
+            cbEscuelaRec.Enabled = false; cbEscuelaRec.Text = "Seleccionar Escuela";
+            txtIdEscuelaRec.Text = "";
+
+            cbTallerRec.Enabled = false; cbTallerRec.Text = "Seleccionar Taller";
+            txtIdTallerRec.Text = "";
+
+            cbDinamicaRec.Enabled = false; cbDinamicaRec.Text = "Seleccionar Dinamica";
+            txtIdDinamicaRec.Text = "";
+
+            cbMaterialRec.Enabled = false; cbMaterialRec.Text = "Seleccionar Material";
+            txtIdMaterialRec.Text = "";
+
+            txtIdRecomendacion.Enabled = false; txtIdRecomendacion.Text = "";
+            txtEspecificacionesRec.Enabled = false; txtEspecificacionesRec.Text = "";
+            txtRecomendacionUsoRec.Enabled = false; txtRecomendacionUsoRec.Text = "";
+
+            btnAceptar.Enabled = false; btnAceptar.Visible = false;
+        }
+
+        private void cbEscuelaRec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaRec.Text);
+                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+
+
+                foreach (var nomEsc in respEsc)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                    string id = item.Value.ToString();
+                    txtIdEscuelaRec.Text = id;
+                }
+
+
+
+                //NUEVO AGREGADO TALLER
+                String respuestaTal = wsPHP.buscarTaller(txtIdEscuelaRec.Text);
+                var resptal = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTal);
+                cbTallerRec.Items.Clear();
+                foreach (var nomtal in resptal)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+
+                    item.Text = nomtal.ta_nombre_taller;
+                    item.Value = Convert.ToString(nomtal.ta_id_taller);
+                    string id = item.Value.ToString();
+
+                    cbTallerRec.Items.Add(item);
+                }
+            }
+        }
+
+        private void cbTallerRec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaTaller = wsPHP.buscarTaller(cbTallerRec.Text);
+                var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
+
+
+
+                foreach (var nomTall in respTall)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomTall.ta_id_taller);
+                    string id = item.Value.ToString();
+                    txtIdTallerRec.Text = id;
+
+
+                }
+
+                //NUEVO AGREGADO dinamica
+                String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdEscuelaRec.Text, txtIdTallerRec.Text);
+                var respDin = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDin);
+                cbDinamicaRec.Items.Clear();
+                foreach (var nomDin in respDin)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+
+                    item.Text = nomDin.di_nombre_dinamica;
+                    item.Value = Convert.ToString(nomDin.di_id_dinamica);
+                    string id = item.Value.ToString();
+
+                    cbDinamicaRec.Items.Add(item);
+                }
+            }
+        }
+
+        private void cbDinamicaRec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaDinamica = wsPHP.buscarDinamica(cbDinamicaRec.Text);
+                var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
+
+
+
+                foreach (var nomDina in respDina)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomDina.di_id_dinamica);
+                    string id = item.Value.ToString();
+                    txtIdDinamicaRec.Text = id;
+
+
+                }
+
+                //NUEVO AGREGADO
+                String respuestaMat = wsPHP.buscarMaterialxdinamica(txtIdEscuelaRec.Text, txtIdTallerRec.Text, txtIdDinamicaRec.Text);
+                var respMat = JsonConvert.DeserializeObject<List<ClassMaterial>>(respuestaMat);
+                cbMaterialRec.Items.Clear();
+                foreach (var nomMat in respMat)
+                {
+                
+                    ComboBoxItem item = new ComboBoxItem();
+                
+                    item.Text = nomMat.ma_nombre_material;
+                    item.Value = Convert.ToString(nomMat.ma_id_material);
+                    string id = item.Value.ToString();
+                
+                    cbMaterialRec.Items.Add(item);
+                }
+            }
+        }
+
+        private void cbMaterialRec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+
+
+                String respuestaMaterial = wsPHP.buscarMaterial(cbMaterialRec.Text);
+                var respMate = JsonConvert.DeserializeObject<List<ClassMaterial>>(respuestaMaterial);
+
+
+
+                foreach (var nomMate in respMate)
+                {
+
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomMate.ma_id_material);
+                    string id = item.Value.ToString();
+                    txtIdMaterialRec.Text = id;
+
+
+                }
+            }
+        }
+
+        private void cbEscuelaRec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTallerRec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbDinamicaRec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbMaterialRec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void dgvRecomendacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            NombresColumnas();
+
+            cbEscuelaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdEscuelaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            cbTallerRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtIdTallerRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[1].Value.ToString());
+
+            cbDinamicaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtIdDinamicaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[2].Value.ToString());
+
+            cbMaterialRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtIdMaterialRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+            txtIdRecomendacion.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtEspecificacionesRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txtRecomendacionUsoRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[6].Value.ToString());
         }
     }
 }
