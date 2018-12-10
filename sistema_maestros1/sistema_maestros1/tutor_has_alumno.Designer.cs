@@ -69,7 +69,7 @@
             this.txtNombreAlumno.Location = new System.Drawing.Point(87, 43);
             this.txtNombreAlumno.Name = "txtNombreAlumno";
             this.txtNombreAlumno.Size = new System.Drawing.Size(200, 23);
-            this.txtNombreAlumno.TabIndex = 0;
+            this.txtNombreAlumno.TabIndex = 1;
             // 
             // label1
             // 
@@ -97,6 +97,7 @@
             // 
             this.txtBuscadorPadre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscadorPadre.Location = new System.Drawing.Point(87, 75);
+            this.txtBuscadorPadre.MaxLength = 70;
             this.txtBuscadorPadre.Name = "txtBuscadorPadre";
             this.txtBuscadorPadre.Size = new System.Drawing.Size(179, 23);
             this.txtBuscadorPadre.TabIndex = 2;
@@ -142,8 +143,7 @@
             this.dgvTutor.RowHeadersVisible = false;
             this.dgvTutor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTutor.Size = new System.Drawing.Size(388, 191);
-            this.dgvTutor.TabIndex = 86;
-            this.dgvTutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTutor_CellContentClick);
+            this.dgvTutor.TabIndex = 3;
             // 
             // btnAgregar
             // 
@@ -153,7 +153,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(410, 166);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(30, 27);
-            this.btnAgregar.TabIndex = 87;
+            this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = ">>";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -166,7 +166,7 @@
             this.btnQuitar.Location = new System.Drawing.Point(410, 199);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(30, 27);
-            this.btnQuitar.TabIndex = 88;
+            this.btnQuitar.TabIndex = 6;
             this.btnQuitar.Text = "<<";
             this.btnQuitar.UseVisualStyleBackColor = true;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
@@ -197,8 +197,7 @@
             this.dgvAhT.RowHeadersVisible = false;
             this.dgvAhT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAhT.Size = new System.Drawing.Size(390, 191);
-            this.dgvAhT.TabIndex = 89;
-            this.dgvAhT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAhT_CellContentClick);
+            this.dgvAhT.TabIndex = 5;
             // 
             // label3
             // 
@@ -211,18 +210,18 @@
             this.label3.Size = new System.Drawing.Size(434, 33);
             this.label3.TabIndex = 90;
             this.label3.Text = "Asignar Padres o Tutor a Alumno";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.Silver;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(320, 304);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
-            this.btnAceptar.TabIndex = 91;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "GUARDAR ✔";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -282,7 +281,7 @@
             this.dgvAhasTAll.RowHeadersVisible = false;
             this.dgvAhasTAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAhasTAll.Size = new System.Drawing.Size(631, 191);
-            this.dgvAhasTAll.TabIndex = 95;
+            this.dgvAhasTAll.TabIndex = 8;
             this.dgvAhasTAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAhasTAll_CellContentClick);
             // 
             // txtIDAlumno2
@@ -316,6 +315,7 @@
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -323,13 +323,14 @@
             this.btnEliminar.Location = new System.Drawing.Point(662, 504);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(165, 30);
-            this.btnEliminar.TabIndex = 99;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtPadre2
             // 
+            this.txtPadre2.Enabled = false;
             this.txtPadre2.Location = new System.Drawing.Point(661, 462);
             this.txtPadre2.Name = "txtPadre2";
             this.txtPadre2.Size = new System.Drawing.Size(166, 20);
@@ -337,6 +338,7 @@
             // 
             // txtAlumno2
             // 
+            this.txtAlumno2.Enabled = false;
             this.txtAlumno2.Location = new System.Drawing.Point(661, 418);
             this.txtAlumno2.Name = "txtAlumno2";
             this.txtAlumno2.Size = new System.Drawing.Size(166, 20);
@@ -344,6 +346,7 @@
             // 
             // txtEscuela2
             // 
+            this.txtEscuela2.Enabled = false;
             this.txtEscuela2.Location = new System.Drawing.Point(661, 374);
             this.txtEscuela2.Name = "txtEscuela2";
             this.txtEscuela2.Size = new System.Drawing.Size(166, 20);

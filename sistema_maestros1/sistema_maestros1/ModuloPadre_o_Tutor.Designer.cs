@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloPadre_o_Tutor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorPadre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -229,6 +229,7 @@
             this.btnEliminarPadre.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminarPadre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarPadre.BackgroundImage")));
             this.btnEliminarPadre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarPadre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminarPadre.FlatAppearance.BorderSize = 0;
             this.btnEliminarPadre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarPadre.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -245,6 +246,7 @@
             this.btnModificarPadre.BackColor = System.Drawing.Color.SteelBlue;
             this.btnModificarPadre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarPadre.BackgroundImage")));
             this.btnModificarPadre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnModificarPadre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificarPadre.FlatAppearance.BorderSize = 0;
             this.btnModificarPadre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarPadre.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -261,6 +263,7 @@
             this.btnAgregarPadre.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregarPadre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarPadre.BackgroundImage")));
             this.btnAgregarPadre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarPadre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarPadre.FlatAppearance.BorderSize = 0;
             this.btnAgregarPadre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarPadre.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -283,23 +286,23 @@
             this.dgvPadre.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPadre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPadre.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPadre.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPadre.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPadre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPadre.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPadre.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPadre.EnableHeadersVisualStyles = false;
             this.dgvPadre.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvPadre.Location = new System.Drawing.Point(423, 105);
@@ -307,8 +310,8 @@
             this.dgvPadre.Name = "dgvPadre";
             this.dgvPadre.ReadOnly = true;
             this.dgvPadre.RowHeadersVisible = false;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvPadre.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvPadre.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPadre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPadre.Size = new System.Drawing.Size(690, 513);
             this.dgvPadre.TabIndex = 35;
@@ -361,6 +364,7 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.Silver;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Enabled = false;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

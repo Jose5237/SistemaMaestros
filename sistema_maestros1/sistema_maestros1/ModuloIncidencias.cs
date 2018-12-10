@@ -18,8 +18,14 @@ namespace sistema_maestros1
             InitializeComponent();
         }
 
+        //VARIABLES
         int opcionBotones = 0;
 
+
+        //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
+        #region
+
+        //BOTON DE SALIR
         private void exit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Estas seguro de cerrar ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -30,10 +36,12 @@ namespace sistema_maestros1
             }
         }
 
+        //BOTON DE MINIMIZAR
         private void esconder_pantalla_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
+
 
         //BOTON DE MENU PRINCIPAL
         private void btnMenuPrincipal2_Click(object sender, EventArgs e)
@@ -167,10 +175,31 @@ namespace sistema_maestros1
             }
         }
 
+        #endregion
+
+
+        //METODOS DE VALIDACIONES
+        #region
+
+        private void cbEscuelaIncidencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbTipoIncidencias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        #endregion
+
+
+        //BOTON DE AGREGAR INCIDENCIA
         private void btnAgregarIncidencia_Click(object sender, EventArgs e)
         {
             opcionBotones = 0;
 
+            dgvIncidencia.ClearSelection();
             dgvIncidencia.Enabled = false;
 
             txtIdEscuelaIncidencia.Enabled = false; txtIdEscuelaIncidencia.Text = "";
@@ -184,9 +213,12 @@ namespace sistema_maestros1
 
         }
 
+        //BOTON DE MODIFICAR INCIDENCIA
         private void btnModificarIncidencia_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
+
+            dgvIncidencia.Enabled = true;
 
             txtIdEscuelaIncidencia.Enabled = false; 
             cbEscuelaIncidencia.Enabled = false; 
@@ -198,9 +230,12 @@ namespace sistema_maestros1
             btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
         }
 
+        //BOTON DE ELIMINAR INCIDENCIA
         private void btnEliminarIncidencia_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
+
+            dgvIncidencia.Enabled = true;
 
             txtIdEscuelaIncidencia.Enabled = false;
             cbEscuelaIncidencia.Enabled = false;
@@ -211,29 +246,8 @@ namespace sistema_maestros1
 
             btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
         }
-        public void generarID()
-        {
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-            string sub1, sub2, newID, ultimoID;
-            int n;
-            //guardar dpro|dele|dqui
-            sub1 = txtIdEscuelaIncidencia.Text + "in";
-            //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.buscarMAXIDI(txtIdEscuelaIncidencia.Text);
 
-            if (ultimoID == "")
-                n = 0;
-            else
-                //guardar el numero del ultimo ID
-                n = Convert.ToInt32(ultimoID.Substring(9, 2));
-            //incrementar para nuevo ID
-            n++;
-            //Generar los 0 necesarios para el ID
-            sub2 = new string('0', (2 - Convert.ToString(n).Length));
-            //Concatenar el ID
-            newID = sub1 + sub2 + Convert.ToString(n);
-            label5.Text = newID;
-        }
+        //BOTON DE ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if ((cbEscuelaIncidencia.Text != "" && txtIdEscuelaIncidencia.Text != "") && (txtNombreIncidencia.Text != "") && (txtDescripcionIncidencia.Text != "") && (cbTipoIncidencias.Text != "Seleccionar Tipo de Incidencia"))
@@ -244,7 +258,6 @@ namespace sistema_maestros1
                     {
                         generarID();
                         
-
                         ClassIncidencia ins = new ClassIncidencia();
                         ins.in_id_escuela = txtIdEscuelaIncidencia.Text;
                         ins.in_id_incidencias = label5.Text;
@@ -304,7 +317,74 @@ namespace sistema_maestros1
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
             }
         }
+        
 
+        //SELECTEDINDEX DE COMBOBOX
+        private void cbEscuelaIncidencia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaIncidencia.Text);
+                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+                foreach (var nomEsc in respEsc)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                    string id = item.Value.ToString();
+                    txtIdEscuelaIncidencia.Text = id;
+                }
+            }
+        }
+
+
+        //LOAD
+        private void ModuloIncidencias_Load(object sender, EventArgs e)
+        {
+            cargarDatosTabla();
+
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+
+                    String respuestaEscuela = wsPHP.cargarDatosEscuela();
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+                    
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomEsc.es_nombre_escuela;
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        cbEscuelaIncidencia.Items.Add(item);
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+        //CELLCONTENT (DGV)
+        private void dgvIncidencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            NombresColumnas();
+
+            cbEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            txtIdIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtNombreIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtDescripcionIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[3].Value.ToString());
+            cbTipoIncidencias.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[4].Value.ToString());
+        }
+
+
+        //BUSCADOR DE INCIDENCIAS
         private void txtBuscadorIncidencia_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscadorIncidencia.Text != "")
@@ -320,7 +400,7 @@ namespace sistema_maestros1
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre de escuela o ID Escuela correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("No se encuentra ninguna  incidencia con estos datos, Por favor ingrese los datos correctos", "No existe ningun registro con este dato", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         cargarDatosTabla();
                     }
                 }
@@ -329,64 +409,9 @@ namespace sistema_maestros1
                 cargarDatosTabla();
         }
 
-        private void ModuloIncidencias_Load(object sender, EventArgs e)
-        {
-            cargarDatosTabla();
 
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                try
-                {
-                    NombresColumnas();
-
-                    String respuestaEscuela = wsPHP.cargarDatosEscuela();
-
-                    //using (servidorweb.WSPHP wsPHP = new servidorweb.WSPHP())
-                    //{
-                    //    String respuestaEscuela = wsPHP.cargarNombresEscuela();
-                    //   var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-                    //
-                    //   foreach (var nomEsc in respEsc)
-                    //   {
-                    //       cbEscuelaAlumno.Items.Add(nomEsc.es_nombre_escuela.ToString());
-                    //
-                    //       string id = nomEsc.es_id_escuela.ToString();
-                    //       txtIdEscuelaAlumno.Text = id;
-                    //
-
-                    //}
-
-                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
-
-
-                    foreach (var nomEsc in respEsc)
-                    {
-                        ComboBoxItem item = new ComboBoxItem();
-
-                        item.Text = nomEsc.es_nombre_escuela;
-                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
-                        cbEscuelaIncidencia.Items.Add(item);
-
-                    }
-
-                }
-                catch
-                {
-                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
-        public void NombresColumnas()
-        {
-            dgvIncidencia.Columns[0].HeaderText = "Escuela";
-            dgvIncidencia.Columns[1].HeaderText = "ID Incidencia";
-            dgvIncidencia.Columns[2].HeaderText = "Nombre Incidencia";
-            dgvIncidencia.Columns[3].HeaderText = "Descripcion";
-            dgvIncidencia.Columns[4].HeaderText = "Tipo Incidencia";
-        }
+        //METODOS FACILITADORES 'cargarDatosTabla(), generarID(), NombresColumnas(), inicializacionCampos()'
+        #region
 
         public void cargarDatosTabla()
         {
@@ -397,6 +422,7 @@ namespace sistema_maestros1
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarIncidencias(), typeof(DataTable));
                     dgvIncidencia.DataSource = dt;
                     NombresColumnas();
+                    dgvIncidencia.ClearSelection();
 
                 }
                 catch (Exception)
@@ -404,6 +430,39 @@ namespace sistema_maestros1
                     MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        public void generarID()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar dpro|dele|dqui
+            sub1 = txtIdEscuelaIncidencia.Text + "in";
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.buscarMAXIDI(txtIdEscuelaIncidencia.Text);
+
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(9, 2));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (2 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label5.Text = newID;
+        }
+
+        public void NombresColumnas()
+        {
+            dgvIncidencia.Columns[0].HeaderText = "Escuela";
+            dgvIncidencia.Columns[1].HeaderText = "ID Incidencia";
+            dgvIncidencia.Columns[2].HeaderText = "Nombre Incidencia";
+            dgvIncidencia.Columns[3].HeaderText = "Descripcion";
+            dgvIncidencia.Columns[4].HeaderText = "Tipo Incidencia";
         }
 
         public void inicializacionCampos()
@@ -418,51 +477,8 @@ namespace sistema_maestros1
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
-        private void cbEscuelaIncidencia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
+        #endregion
 
 
-                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaIncidencia.Text);
-                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
-
-
-                foreach (var nomEsc in respEsc)
-                {
-                    //cbEscuelaAlumno.ValueMember = nomEsc.es_id_escuela;
-                    //cbEscuelaAlumno.DisplayMember = nomEsc.es_nombre_escuela;
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
-                    //cbEscuelaAlumno.Items.Add(nomEsc.es_nombre_escuela.ToString());
-                    string id = item.Value.ToString();
-                    txtIdEscuelaIncidencia.Text = id;
-                }
-            }
-        }
-
-        private void dgvIncidencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            NombresColumnas();
-
-            cbEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            txtIdIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtNombreIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtDescripcionIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[3].Value.ToString());
-            cbTipoIncidencias.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[4].Value.ToString());
-        }
-
-        private void cbEscuelaIncidencia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void cbTipoIncidencias_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
     }
 }

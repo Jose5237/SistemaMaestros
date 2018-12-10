@@ -237,7 +237,9 @@ namespace sistema_maestros1
         //BOTON AGREGAR ALUMNO
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
+            dgvAlumnos.ClearSelection();
             dgvAlumnos.Enabled = false;
+            dgvAlumnos.ScrollBars = ScrollBars.Both;
 
             opcionBotones = 0;
 
@@ -425,20 +427,34 @@ namespace sistema_maestros1
                     string id = item.Value.ToString();
                     txtIdEscuelaAlumno.Text = id;
                 }
+
+                String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuelaAlumno.Text);
+                var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+
+                foreach (var nomNiv in respNiv)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+
+                    item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+                    item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+                    //string id = item.Value.ToString();
+
+                    cbNivelAlumno.Items.Add(item.Text);
+                }
             }
         }
 
         //selectComboNivelEducativo
         private void cbNivelAlumno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbNivelAlumno.SelectedIndex == 0 || cbNivelAlumno.SelectedIndex == 2)
+            if (cbNivelAlumno.Text == "PRESCOLAR" || cbNivelAlumno.Text == "SECUNDARIA")
             {
                 cbGradoAlumno.Items.Clear();
                 cbGradoAlumno.Items.Add("1°");
                 cbGradoAlumno.Items.Add("2°");
                 cbGradoAlumno.Items.Add("3°");
             }
-            else if (cbNivelAlumno.SelectedIndex == 1)
+            else if (cbNivelAlumno.Text == "PRIMARIA")
             {
                 cbGradoAlumno.Items.Clear();
                 cbGradoAlumno.Items.Add("1°");
@@ -538,6 +554,7 @@ namespace sistema_maestros1
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
                     dgvAlumnos.DataSource = dt;
                     NombresColumnas();
+                    dgvAlumnos.ClearSelection();
 
                 }
                 catch

@@ -82,6 +82,7 @@
             this.btnAgregarAlumno.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregarAlumno.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarAlumno.BackgroundImage")));
             this.btnAgregarAlumno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarAlumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarAlumno.FlatAppearance.BorderSize = 0;
             this.btnAgregarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarAlumno.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,6 +99,7 @@
             this.btnModificarAlumno.BackColor = System.Drawing.Color.SteelBlue;
             this.btnModificarAlumno.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarAlumno.BackgroundImage")));
             this.btnModificarAlumno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnModificarAlumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificarAlumno.FlatAppearance.BorderSize = 0;
             this.btnModificarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarAlumno.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,6 +116,7 @@
             this.btnEliminarAlumno.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminarAlumno.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarAlumno.BackgroundImage")));
             this.btnEliminarAlumno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarAlumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminarAlumno.FlatAppearance.BorderSize = 0;
             this.btnEliminarAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarAlumno.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -261,10 +264,6 @@
             this.cbNivelAlumno.Enabled = false;
             this.cbNivelAlumno.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNivelAlumno.FormattingEnabled = true;
-            this.cbNivelAlumno.Items.AddRange(new object[] {
-            "PRESCOLAR",
-            "PRIMARIA",
-            "SECUNDARIA"});
             this.cbNivelAlumno.Location = new System.Drawing.Point(170, 365);
             this.cbNivelAlumno.Name = "cbNivelAlumno";
             this.cbNivelAlumno.Size = new System.Drawing.Size(211, 25);
@@ -289,6 +288,7 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.Silver;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Enabled = false;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -505,6 +505,7 @@
             // btnAsignarPadre
             // 
             this.btnAsignarPadre.BackColor = System.Drawing.Color.Silver;
+            this.btnAsignarPadre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAsignarPadre.Enabled = false;
             this.btnAsignarPadre.FlatAppearance.BorderSize = 0;
             this.btnAsignarPadre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

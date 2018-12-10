@@ -231,8 +231,8 @@ namespace sistema_maestros1
         {
             opcionBotones = 0;
 
-            dgvTaller.Enabled = false;
-
+            dgvTaller.ClearSelection();
+            
             cbEscuelaTaller.Enabled = true; cbEscuelaTaller.Text = "Seleccionar Escuela";
             txtIdTaller.Text = "";
             txtNombreTaller.Enabled = true; txtNombreTaller.Text = "";
@@ -421,11 +421,10 @@ namespace sistema_maestros1
                     {
                         ta.ta_id_taller = txtIdTaller.Text;
                         ta.ta_id_escuela = txtIdEscuela.Text;
-                        //using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        //{
+                        
                         string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);
                         MessageBox.Show(mensaje, "¡Taller Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //}
+                        
                     }
                     if (a == 0)
                     {
@@ -460,12 +459,25 @@ namespace sistema_maestros1
                     string id = item.Value.ToString();
                     txtIdEscuela.Text = id;
                 }
+
+                String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
+                var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+
+                foreach (var nomNiv in respNiv)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+
+                    item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+                    item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+                    
+                    cbNivelTaller.Items.Add(item.Text);
+                }
             }
         }
 
         private void cbNivelTaller_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbNivelTaller.SelectedIndex == 0 || cbNivelTaller.SelectedIndex == 2)
+            if (cbNivelTaller.Text == "PRESCOLAR" || cbNivelTaller.Text == "SECUNDARIA")
             {
                 cbGradoTaller.Items.Clear();
                 cbGradoTaller.Items.Add("1°");
@@ -477,7 +489,7 @@ namespace sistema_maestros1
                 cbGradoTaller.Items.Add("2°" + "3°");
                 cbGradoTaller.Items.Add("1°" + "2°" + "3°");
             }
-            else if (cbNivelTaller.SelectedIndex == 1)
+            else if (cbNivelTaller.Text == "PRIMARIA")
             {
                 cbGradoTaller.Items.Clear();
                 cbGradoTaller.Items.Add("1°");
@@ -666,6 +678,7 @@ namespace sistema_maestros1
 
 
                     NombresColumnas();
+                    dgvTaller.ClearSelection();
                 }
                 catch
                 {
@@ -743,7 +756,9 @@ namespace sistema_maestros1
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
+
         #endregion
-        
+
+
     }
 }

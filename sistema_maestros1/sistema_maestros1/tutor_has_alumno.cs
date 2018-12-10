@@ -21,6 +21,8 @@ namespace sistema_maestros1
             AgregarDGVtutor();
         }
 
+
+        //BOTON DE SALIR
         private void exit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Estas seguro de cerrar ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -32,6 +34,8 @@ namespace sistema_maestros1
             }
         }
 
+
+        //BOTON PARA ACEPTAR LA RELACION DE PADRES A ALUMNO
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if(dgvAhT.Rows.Count != 0)
@@ -40,17 +44,10 @@ namespace sistema_maestros1
                 {
                     using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                     {
-
-
                         for (int i = 0; i <= dgvAhT.RowCount - 1; i++)
                         {
-                            //ClassAlumnoHasTutor aht = new ClassAlumnoHasTutor();
-                            //aht.al_id_alumno = txtIdAlumno.Text;
-                            //aht.es_id_escuela = txtIdEscuela.Text;
-                            //aht.al_id_tutor = dgvAhT.
                             wsPHP.agregarAlumnoTutor(txtIdAlumno.Text, txtIdEscuela.Text, dgvAhT.Rows[i].Cells[2].Value.ToString());
                             
-
                         }
                         MessageBox.Show("Se ha agregado correctamente la relacion Alumno -> Tutor", "¡Tutor has Alumno Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -67,9 +64,9 @@ namespace sistema_maestros1
             }
         }
 
+        //BOTON DE GUARDAR
         public void AgregarDGVtutor()
         {
-            
             this.Controls.Add(dgvAhT);
 
             DataGridViewTextBoxColumn columnas1 = new DataGridViewTextBoxColumn();
@@ -95,6 +92,7 @@ namespace sistema_maestros1
             dgvAhT.Columns.Add(columnas5);
         }
 
+        //LOAD
         private void tutor_has_alumno_Load(object sender, EventArgs e)
         {
             txtNombreAlumno.Text = Globales.nombre_alumno;
@@ -102,32 +100,27 @@ namespace sistema_maestros1
             txtIdEscuela.Text = Globales.id_escuela;
 
             cargarDatosTablaPadres();
-
-            
         }
 
+        //BUSCADOR DE PADRE
         private void txtBuscadorPadre_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscadorPadre.Text != "")
             {
                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-
                     DataTable dt = new DataTable();
                     try
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarTutor(txtBuscadorPadre.Text), typeof(DataTable));
                         dgvTutor.DataSource = dt;
                         NombresColumnasPadres();
-
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("No se encuentra ningun Padre/Tutor con estos datos, Por favor ingrese un nombre o ID Padre correcto", "No existe este tutor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         cargarDatosTablaPadres();
                     }
-
-
                 }
             }
             else
@@ -136,33 +129,22 @@ namespace sistema_maestros1
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //BOTON >> PARA ASIGNAR PADRE A ALUMNO
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
             dgvAhT.Rows.Add(Globales.id_alumno,Globales.nombre_alumno, dgvTutor.CurrentRow.Cells[0].Value.ToString(),dgvTutor.CurrentRow.Cells[1].Value.ToString(), dgvTutor.CurrentRow.Cells[5].Value.ToString());
         }
 
-        private void dgvAhT_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        //BOTON << PARA QUITAR PADRE A ALUMNO
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-
             int fila = dgvAhT.CurrentRow.Index;
-
             dgvAhT.Rows.RemoveAt(fila);
         }
 
+        //CELLCONTENTS (DGV_AHAST)
         private void dgvAhasTAll_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
             txtEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtIDEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtAlumno2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[2].Value.ToString());
@@ -171,6 +153,7 @@ namespace sistema_maestros1
             txtIDPadre2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[5].Value.ToString());
         }
 
+        //BOTON ELIMINAR
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ClassAlumnoHasTutor aht = new ClassAlumnoHasTutor();
@@ -197,17 +180,7 @@ namespace sistema_maestros1
                 inicializarTextBox();
             }
         }
-
-
-        public void inicializarTextBox()
-        {
-            txtIDEscuela2.Text = "";
-            txtEscuela2.Text = "";
-            txtIDAlumno2.Text = "";
-            txtAlumno2.Text = "";
-            txtIDPadre2.Text = "";
-            txtPadre2.Text = "";
-        }
+        
 
         public void cargarDatosTablaPadres()
         {
@@ -223,9 +196,6 @@ namespace sistema_maestros1
                     DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
                     dgvAhasTAll.DataSource = dt1;
                     NombresColumnasAhT();
-
-
-
                 }
                 catch
                 {
@@ -274,9 +244,15 @@ namespace sistema_maestros1
             dgvAhasTAll.Columns[5].Visible = false;
         }
 
-        private void dgvTutor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void inicializarTextBox()
         {
-
+            txtIDEscuela2.Text = "";
+            txtEscuela2.Text = "";
+            txtIDAlumno2.Text = "";
+            txtAlumno2.Text = "";
+            txtIDPadre2.Text = "";
+            txtPadre2.Text = "";
         }
+
     }
 }

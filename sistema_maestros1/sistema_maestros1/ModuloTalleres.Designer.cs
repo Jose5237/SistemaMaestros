@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloTalleres));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorTaller = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -128,6 +128,7 @@
             this.txtCostoTaller.Enabled = false;
             this.txtCostoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostoTaller.Location = new System.Drawing.Point(170, 240);
+            this.txtCostoTaller.MaxLength = 10;
             this.txtCostoTaller.Name = "txtCostoTaller";
             this.txtCostoTaller.Size = new System.Drawing.Size(211, 23);
             this.txtCostoTaller.TabIndex = 4;
@@ -137,6 +138,7 @@
             // 
             this.txtDescripcionTaller.Enabled = false;
             this.txtDescripcionTaller.Location = new System.Drawing.Point(170, 283);
+            this.txtDescripcionTaller.MaxLength = 500;
             this.txtDescripcionTaller.Multiline = true;
             this.txtDescripcionTaller.Name = "txtDescripcionTaller";
             this.txtDescripcionTaller.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -148,6 +150,7 @@
             this.txtNombreTaller.Enabled = false;
             this.txtNombreTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreTaller.Location = new System.Drawing.Point(170, 197);
+            this.txtNombreTaller.MaxLength = 50;
             this.txtNombreTaller.Name = "txtNombreTaller";
             this.txtNombreTaller.Size = new System.Drawing.Size(211, 23);
             this.txtNombreTaller.TabIndex = 3;
@@ -210,6 +213,7 @@
             this.btnEliminarTaller.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminarTaller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarTaller.BackgroundImage")));
             this.btnEliminarTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarTaller.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminarTaller.FlatAppearance.BorderSize = 0;
             this.btnEliminarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarTaller.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -217,7 +221,7 @@
             this.btnEliminarTaller.Location = new System.Drawing.Point(393, 50);
             this.btnEliminarTaller.Name = "btnEliminarTaller";
             this.btnEliminarTaller.Size = new System.Drawing.Size(96, 37);
-            this.btnEliminarTaller.TabIndex = 27;
+            this.btnEliminarTaller.TabIndex = 29;
             this.btnEliminarTaller.UseVisualStyleBackColor = false;
             this.btnEliminarTaller.Click += new System.EventHandler(this.btnEliminarTaller_Click);
             // 
@@ -226,6 +230,7 @@
             this.btnModificarTaller.BackColor = System.Drawing.Color.SteelBlue;
             this.btnModificarTaller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarTaller.BackgroundImage")));
             this.btnModificarTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnModificarTaller.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificarTaller.FlatAppearance.BorderSize = 0;
             this.btnModificarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarTaller.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,7 +238,7 @@
             this.btnModificarTaller.Location = new System.Drawing.Point(282, 50);
             this.btnModificarTaller.Name = "btnModificarTaller";
             this.btnModificarTaller.Size = new System.Drawing.Size(96, 37);
-            this.btnModificarTaller.TabIndex = 26;
+            this.btnModificarTaller.TabIndex = 28;
             this.btnModificarTaller.UseVisualStyleBackColor = false;
             this.btnModificarTaller.Click += new System.EventHandler(this.btnModificarTaller_Click);
             // 
@@ -242,6 +247,7 @@
             this.btnAgregarTaller.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregarTaller.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarTaller.BackgroundImage")));
             this.btnAgregarTaller.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarTaller.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarTaller.FlatAppearance.BorderSize = 0;
             this.btnAgregarTaller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarTaller.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -249,7 +255,7 @@
             this.btnAgregarTaller.Location = new System.Drawing.Point(170, 50);
             this.btnAgregarTaller.Name = "btnAgregarTaller";
             this.btnAgregarTaller.Size = new System.Drawing.Size(96, 37);
-            this.btnAgregarTaller.TabIndex = 25;
+            this.btnAgregarTaller.TabIndex = 27;
             this.btnAgregarTaller.UseVisualStyleBackColor = false;
             this.btnAgregarTaller.Click += new System.EventHandler(this.btnAgregarTaller_Click);
             // 
@@ -273,7 +279,7 @@
             this.dtFechaIniTaller.Location = new System.Drawing.Point(170, 443);
             this.dtFechaIniTaller.Name = "dtFechaIniTaller";
             this.dtFechaIniTaller.Size = new System.Drawing.Size(211, 22);
-            this.dtFechaIniTaller.TabIndex = 6;
+            this.dtFechaIniTaller.TabIndex = 8;
             this.dtFechaIniTaller.ValueChanged += new System.EventHandler(this.dtFechaIniTaller_ValueChanged);
             this.dtFechaIniTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaIniTaller_KeyPress);
             // 
@@ -286,7 +292,7 @@
             this.dtFechaFinTaller.Location = new System.Drawing.Point(170, 485);
             this.dtFechaFinTaller.Name = "dtFechaFinTaller";
             this.dtFechaFinTaller.Size = new System.Drawing.Size(211, 22);
-            this.dtFechaFinTaller.TabIndex = 7;
+            this.dtFechaFinTaller.TabIndex = 9;
             this.dtFechaFinTaller.ValueChanged += new System.EventHandler(this.dtFechaFinTaller_ValueChanged);
             this.dtFechaFinTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaFinTaller_KeyPress);
             // 
@@ -317,14 +323,10 @@
             this.cbNivelTaller.Enabled = false;
             this.cbNivelTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNivelTaller.FormattingEnabled = true;
-            this.cbNivelTaller.Items.AddRange(new object[] {
-            "PRESCOLAR",
-            "PRIMARIA",
-            "SECUNDARIA"});
             this.cbNivelTaller.Location = new System.Drawing.Point(170, 354);
             this.cbNivelTaller.Name = "cbNivelTaller";
             this.cbNivelTaller.Size = new System.Drawing.Size(211, 25);
-            this.cbNivelTaller.TabIndex = 8;
+            this.cbNivelTaller.TabIndex = 6;
             this.cbNivelTaller.SelectedIndexChanged += new System.EventHandler(this.cbNivelTaller_SelectedIndexChanged);
             this.cbNivelTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNivelTaller_KeyPress);
             // 
@@ -343,7 +345,7 @@
             this.cbGradoTaller.Location = new System.Drawing.Point(170, 398);
             this.cbGradoTaller.Name = "cbGradoTaller";
             this.cbGradoTaller.Size = new System.Drawing.Size(211, 25);
-            this.cbGradoTaller.TabIndex = 9;
+            this.cbGradoTaller.TabIndex = 7;
             this.cbGradoTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGradoTaller_KeyPress);
             // 
             // label9
@@ -533,6 +535,7 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.Silver;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Enabled = false;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -622,6 +625,7 @@
             this.txtHabilidadesTaller.Enabled = false;
             this.txtHabilidadesTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHabilidadesTaller.Location = new System.Drawing.Point(170, 572);
+            this.txtHabilidadesTaller.MaxLength = 200;
             this.txtHabilidadesTaller.Name = "txtHabilidadesTaller";
             this.txtHabilidadesTaller.Size = new System.Drawing.Size(211, 23);
             this.txtHabilidadesTaller.TabIndex = 11;
@@ -642,6 +646,7 @@
             this.txtJustificacionCostoTaller.Enabled = false;
             this.txtJustificacionCostoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(170, 615);
+            this.txtJustificacionCostoTaller.MaxLength = 200;
             this.txtJustificacionCostoTaller.Name = "txtJustificacionCostoTaller";
             this.txtJustificacionCostoTaller.Size = new System.Drawing.Size(211, 23);
             this.txtJustificacionCostoTaller.TabIndex = 12;
@@ -662,6 +667,7 @@
             this.txtHerramientasTaller.Enabled = false;
             this.txtHerramientasTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHerramientasTaller.Location = new System.Drawing.Point(170, 658);
+            this.txtHerramientasTaller.MaxLength = 200;
             this.txtHerramientasTaller.Name = "txtHerramientasTaller";
             this.txtHerramientasTaller.Size = new System.Drawing.Size(211, 23);
             this.txtHerramientasTaller.TabIndex = 13;
@@ -680,7 +686,6 @@
             // btnRecomendaciones2
             // 
             this.btnRecomendaciones2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRecomendaciones2.Enabled = false;
             this.btnRecomendaciones2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRecomendaciones2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecomendaciones2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -688,7 +693,7 @@
             this.btnRecomendaciones2.Location = new System.Drawing.Point(3, 473);
             this.btnRecomendaciones2.Name = "btnRecomendaciones2";
             this.btnRecomendaciones2.Size = new System.Drawing.Size(143, 42);
-            this.btnRecomendaciones2.TabIndex = 132;
+            this.btnRecomendaciones2.TabIndex = 26;
             this.btnRecomendaciones2.Text = "Recomendaciones";
             this.btnRecomendaciones2.UseVisualStyleBackColor = false;
             this.btnRecomendaciones2.Click += new System.EventHandler(this.btnRecomendaciones2_Click);
@@ -703,7 +708,7 @@
             this.btnIncidencias2.Location = new System.Drawing.Point(3, 430);
             this.btnIncidencias2.Name = "btnIncidencias2";
             this.btnIncidencias2.Size = new System.Drawing.Size(143, 42);
-            this.btnIncidencias2.TabIndex = 131;
+            this.btnIncidencias2.TabIndex = 25;
             this.btnIncidencias2.Text = "Incidencias";
             this.btnIncidencias2.UseVisualStyleBackColor = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
@@ -729,23 +734,23 @@
             this.dgvTaller.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvTaller.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTaller.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTaller.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTaller.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTaller.EnableHeadersVisualStyles = false;
             this.dgvTaller.GridColor = System.Drawing.Color.IndianRed;
             this.dgvTaller.Location = new System.Drawing.Point(423, 105);
@@ -753,8 +758,8 @@
             this.dgvTaller.Name = "dgvTaller";
             this.dgvTaller.ReadOnly = true;
             this.dgvTaller.RowHeadersVisible = false;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTaller.Size = new System.Drawing.Size(704, 513);
             this.dgvTaller.TabIndex = 138;
@@ -768,7 +773,7 @@
             this.cbProfeTaller.Location = new System.Drawing.Point(170, 527);
             this.cbProfeTaller.Name = "cbProfeTaller";
             this.cbProfeTaller.Size = new System.Drawing.Size(211, 25);
-            this.cbProfeTaller.TabIndex = 139;
+            this.cbProfeTaller.TabIndex = 10;
             this.cbProfeTaller.Text = "Seleccionar Profesor";
             this.cbProfeTaller.SelectedIndexChanged += new System.EventHandler(this.cbProfeTaller_SelectedIndexChanged);
             // 

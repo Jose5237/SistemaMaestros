@@ -26,7 +26,7 @@ namespace sistema_maestros1
 
         //VARIABLES
         int opcionBotones = 0;
-
+        string nivelEducativoCheck;
 
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
         #region
@@ -226,7 +226,9 @@ namespace sistema_maestros1
         {
             opcionBotones = 0;
 
+            dgvEscuela.ClearSelection();
             dgvEscuela.Enabled = false;
+            dgvEscuela.ScrollBars = ScrollBars.Both;
 
             txtIdEscuela.Enabled = false; txtIdEscuela.Text = "";
             txtNombreEscuela.Enabled = true; txtNombreEscuela.Text = "";
@@ -237,6 +239,11 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = true; txtCorreoEscuela.Text = "";
             txtContactoEscuela.Enabled = true; txtContactoEscuela.Text = "";
             txtResponsablePagoEscuela.Enabled = true; txtResponsablePagoEscuela.Text = "";
+
+            checkPrescolar.Enabled = true; 
+            checkPrimaria.Enabled = true;
+            checkSecundaria.Enabled = true;
+
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
@@ -459,6 +466,7 @@ namespace sistema_maestros1
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosEscuela(), typeof(DataTable));
                     dgvEscuela.DataSource = dt;
                     NombresColumnas();
+                    dgvEscuela.ClearSelection();
                 }
                 catch
                 {
@@ -515,10 +523,28 @@ namespace sistema_maestros1
             txtContactoEscuela.Enabled = false; txtContactoEscuela.Text = "";
             txtResponsablePagoEscuela.Enabled = false; txtResponsablePagoEscuela.Text = "";
 
+            checkPrescolar.Enabled = false; checkPrescolar.Checked = false;
+            checkPrimaria.Enabled = true; checkPrimaria.Checked = false; 
+            checkSecundaria.Enabled = true; checkSecundaria.Checked = false;
+
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
         #endregion
 
+        private void checkPrescolar_CheckedChanged(object sender, EventArgs e)
+        {
+            nivelEducativoCheck = "PRESCOLAR";
+        }
+
+        private void checkPrimaria_CheckedChanged(object sender, EventArgs e)
+        {
+            nivelEducativoCheck = "PRIMARIA";
+        }
+
+        private void checkSecundaria_CheckedChanged(object sender, EventArgs e)
+        {
+            nivelEducativoCheck = "SECUNDARIA";
+        }
     }
 }

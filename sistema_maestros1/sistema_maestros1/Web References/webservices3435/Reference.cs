@@ -187,6 +187,8 @@ namespace sistema_maestros1.webservices3435 {
         
         private System.Threading.SendOrPostCallback filtrarAlumnosXnivelYgradoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback consultaNivelesOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -461,6 +463,9 @@ namespace sistema_maestros1.webservices3435 {
         
         /// <remarks/>
         public event filtrarAlumnosXnivelYgradoCompletedEventHandler filtrarAlumnosXnivelYgradoCompleted;
+        
+        /// <remarks/>
+        public event consultaNivelesCompletedEventHandler consultaNivelesCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/login", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
@@ -3149,6 +3154,36 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/consultaNiveles", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string consultaNiveles(string id_esc) {
+            object[] results = this.Invoke("consultaNiveles", new object[] {
+                        id_esc});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void consultaNivelesAsync(string id_esc) {
+            this.consultaNivelesAsync(id_esc, null);
+        }
+        
+        /// <remarks/>
+        public void consultaNivelesAsync(string id_esc, object userState) {
+            if ((this.consultaNivelesOperationCompleted == null)) {
+                this.consultaNivelesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconsultaNivelesOperationCompleted);
+            }
+            this.InvokeAsync("consultaNiveles", new object[] {
+                        id_esc}, this.consultaNivelesOperationCompleted, userState);
+        }
+        
+        private void OnconsultaNivelesOperationCompleted(object arg) {
+            if ((this.consultaNivelesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.consultaNivelesCompleted(this, new consultaNivelesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -5208,6 +5243,32 @@ namespace sistema_maestros1.webservices3435 {
         private object[] results;
         
         internal filtrarAlumnosXnivelYgradoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void consultaNivelesCompletedEventHandler(object sender, consultaNivelesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class consultaNivelesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal consultaNivelesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

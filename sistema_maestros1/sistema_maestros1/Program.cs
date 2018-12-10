@@ -16,7 +16,7 @@ namespace sistema_maestros1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModuloActualizacionMasivaAlumnos());
+            Application.Run(new ModuloMaterial());
         }
     }
 }

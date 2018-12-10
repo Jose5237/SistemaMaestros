@@ -499,6 +499,7 @@ namespace sistema_maestros1
                     dgvPadre.DataSource = dt;
 
                     NombresColumnas();
+                    dgvPadre.ClearSelection();
 
                 }
                 catch

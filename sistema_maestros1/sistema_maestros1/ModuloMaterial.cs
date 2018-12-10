@@ -21,7 +21,11 @@ namespace sistema_maestros1
             InitializeComponent();
         }
 
+        //VARIABLES
         int opcionBotones = 0;
+
+        //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
+        #region
 
         //BOTON DE SALIR
         private void exit_Click(object sender, EventArgs e)
@@ -40,6 +44,7 @@ namespace sistema_maestros1
         {
             WindowState = FormWindowState.Minimized;
         }
+
 
         //BOTON DE MENU PRINCIPAL
         private void btnMenuPrincipal2_Click(object sender, EventArgs e)
@@ -173,6 +178,8 @@ namespace sistema_maestros1
             }
         }
 
+        #endregion
+
 
         //METODOS DE VALIDACIONES
         #region
@@ -204,8 +211,10 @@ namespace sistema_maestros1
         //BOTON AGREGAR MATERIAL
         private void btnAgregarMaterial_Click(object sender, EventArgs e)
         {
+
             opcionBotones = 0;
 
+            dgvMaterial.ClearSelection();
             dgvMaterial.Enabled = false;
 
             cbEscuelaMaterial.Enabled = true; cbEscuelaMaterial.Text = "Seleccionar Escuela";
@@ -227,12 +236,14 @@ namespace sistema_maestros1
         private void btnModificarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 1;
-            
+
+            dgvMaterial.Enabled = true;
+
             cbEscuelaMaterial.Enabled = false;
-            cbTallerMaterial.Enabled = false; 
-            cbDinamicaMaterial.Enabled = false; 
-            txtIdMaterial.Enabled = false; 
-            txtNombreMaterial.Enabled = true; 
+            cbTallerMaterial.Enabled = false;
+            cbDinamicaMaterial.Enabled = false;
+            txtIdMaterial.Enabled = false;
+            txtNombreMaterial.Enabled = true;
             txtCostoMaterial.Enabled = true;
 
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
@@ -243,8 +254,9 @@ namespace sistema_maestros1
         private void btnEliminarMaterial_Click(object sender, EventArgs e)
         {
             opcionBotones = 2;
-            
-            //opcionBotones = 1;
+
+            dgvMaterial.Enabled = true;
+
             cbEscuelaMaterial.Enabled = false;
             cbTallerMaterial.Enabled = false;
             cbDinamicaMaterial.Enabled = false;
@@ -255,11 +267,11 @@ namespace sistema_maestros1
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
 
         }
-        
+
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((cbEscuelaMaterial.Text != "" && txtIdEscuela.Text != "") && (cbTallerMaterial.Text != "" && txtIdTaller.Text != "") && (cbDinamicaMaterial.Text != "" && txtIdDinamica.Text != "")&& (txtNombreMaterial.Text != "") && (txtCostoMaterial.Text != ""))
+            if ((cbEscuelaMaterial.Text != "" && txtIdEscuela.Text != "") && (cbTallerMaterial.Text != "" && txtIdTaller.Text != "") && (cbDinamicaMaterial.Text != "" && txtIdDinamica.Text != "") && (txtNombreMaterial.Text != "") && (txtCostoMaterial.Text != ""))
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -286,7 +298,7 @@ namespace sistema_maestros1
                     {
                         cbEscuelaMaterial.Enabled = false;
                         cbTallerMaterial.Enabled = false;
-                        cbDinamicaMaterial.Enabled = false; 
+                        cbDinamicaMaterial.Enabled = false;
                         ClassMaterial ma = new ClassMaterial();
                         ma.ma_id_escuela = txtIdEscuela.Text;
                         ma.ma_id_taller = txtIdTaller.Text;
@@ -311,7 +323,7 @@ namespace sistema_maestros1
                         ma.ma_id_material = txtIdMaterial.Text;
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-                            string mensaje = wsPHP.eliminarMaterial(ma.ma_id_escuela, ma.ma_id_taller, ma.ma_id_dinamica,ma.ma_id_material);
+                            string mensaje = wsPHP.eliminarMaterial(ma.ma_id_escuela, ma.ma_id_taller, ma.ma_id_dinamica, ma.ma_id_material);
                             MessageBox.Show(mensaje, "¡Material Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
@@ -319,37 +331,35 @@ namespace sistema_maestros1
 
                     cargarDatosTabla();
                     inicializacionCampos();
+                    dgvMaterial.Enabled = true;
 
                 }
             }
-            
+
             else
             {
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
             }
         }
 
+
+        //SELECTEDINDEX DE COMBOBOX
+        #region
+
         private void cbEscuelaMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
-
-
                 String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaMaterial.Text);
                 var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
 
-
-
                 foreach (var nomEsc in respEsc)
                 {
-
                     ComboBoxItem item = new ComboBoxItem();
                     item.Value = Convert.ToString(nomEsc.es_id_escuela);
                     string id = item.Value.ToString();
                     txtIdEscuela.Text = id;
                 }
-
-
 
                 //NUEVO AGREGADO TALLER
                 String respuestaTal = wsPHP.buscarTaller(txtIdEscuela.Text);
@@ -357,7 +367,6 @@ namespace sistema_maestros1
                 cbTallerMaterial.Items.Clear();
                 foreach (var nomtal in resptal)
                 {
-
                     ComboBoxItem item = new ComboBoxItem();
 
                     item.Text = nomtal.ta_nombre_taller;
@@ -369,6 +378,59 @@ namespace sistema_maestros1
             }
         }
 
+        private void cbTallerMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                String respuestaTaller = wsPHP.buscarTaller(cbTallerMaterial.Text);
+                var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
+
+                foreach (var nomTall in respTall)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomTall.ta_id_taller);
+                    string id = item.Value.ToString();
+                    txtIdTaller.Text = id;
+
+                }
+
+                //NUEVO AGREGADO
+                String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdEscuela.Text, txtIdTaller.Text);
+                var respDin = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDin);
+                cbDinamicaMaterial.Items.Clear();
+                foreach (var nomDin in respDin)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+
+                    item.Text = nomDin.di_nombre_dinamica;
+                    item.Value = Convert.ToString(nomDin.di_id_dinamica);
+                    string id = item.Value.ToString();
+                    cbDinamicaMaterial.Items.Add(item);
+                }
+            }
+        }
+
+        private void cbDinamicaMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                String respuestaDinamica = wsPHP.buscarDinamica(cbDinamicaMaterial.Text);
+                var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
+
+                foreach (var nomDina in respDina)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Value = Convert.ToString(nomDina.di_id_dinamica);
+                    string id = item.Value.ToString();
+                    txtIdDinamica.Text = id;
+
+                }
+            }
+        }
+
+        #endregion
+
+        //LOAD
         private void ModuloMaterial_Load(object sender, EventArgs e)
         {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
@@ -376,14 +438,10 @@ namespace sistema_maestros1
 
                 try
                 {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosMaterial(), typeof(DataTable));
-                    dgvMaterial.DataSource = dt;
-                    NombresColumnas();
+                    cargarDatosTabla();
 
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
                     var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
-
 
                     foreach (var nomEsc in respEsc)
                     {
@@ -400,8 +458,6 @@ namespace sistema_maestros1
                     String respuestaTaller = wsPHP.cargarDatosDeTaller();
                     var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
 
-
-
                     foreach (var nomTall in respTall)
                     {
                         ComboBoxItem item = new ComboBoxItem();
@@ -416,8 +472,6 @@ namespace sistema_maestros1
                     String respuestaDinamica = wsPHP.cargarDatosDinamica();
                     var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
 
-
-
                     foreach (var nomDina in respDina)
                     {
                         ComboBoxItem item = new ComboBoxItem();
@@ -427,7 +481,6 @@ namespace sistema_maestros1
                         cbDinamicaMaterial.Items.Add(item);
 
                     }
-
                 }
                 catch
                 {
@@ -436,72 +489,12 @@ namespace sistema_maestros1
             }
         }
 
-        private void cbTallerMaterial_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
 
-
-                String respuestaTaller = wsPHP.buscarTaller(cbTallerMaterial.Text);
-                var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
-
-
-
-                foreach (var nomTall in respTall)
-                {
-
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomTall.ta_id_taller);
-                    string id = item.Value.ToString();
-                    txtIdTaller.Text = id;
-
-
-                }
-
-                //NUEVO AGREGADO
-                String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdEscuela.Text, txtIdTaller.Text);
-                var respDin = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDin);
-                cbDinamicaMaterial.Items.Clear();
-                foreach (var nomDin in respDin)
-                {
-
-                    ComboBoxItem item = new ComboBoxItem();
-
-                    item.Text = nomDin.di_nombre_dinamica;
-                    item.Value = Convert.ToString(nomDin.di_id_dinamica);
-                    string id = item.Value.ToString();
-
-                    cbDinamicaMaterial.Items.Add(item);
-                }
-            }
-        }
-
-        private void cbDinamicaMaterial_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-
-
-                String respuestaDinamica = wsPHP.buscarDinamica(cbDinamicaMaterial.Text);
-                var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
-
-
-
-                foreach (var nomDina in respDina)
-                {
-
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomDina.di_id_dinamica);
-                    string id = item.Value.ToString();
-                    txtIdDinamica.Text = id;
-
-
-                }
-            }
-        }
-
+        //CELLCONTENT (DGV)
         private void dgvMaterial_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            NombresColumnas();
+
             cbEscuelaMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtIdEscuela.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[0].Value.ToString());
 
@@ -516,6 +509,8 @@ namespace sistema_maestros1
             txtCostoMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[5].Value.ToString());
         }
 
+
+        //BUSCADOR DE MATERIAL
         private void txtBuscadorMaterial_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscadorMaterial.Text != "")
@@ -540,6 +535,27 @@ namespace sistema_maestros1
                 cargarDatosTabla();
         }
 
+
+        //METODOS FACILITADORES 'cargarDatosTabla(), generarID(), NombresColumnas(), inicializacionCampos()'
+        #region
+
+        public void cargarDatosTabla()
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                try
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosMaterial(), typeof(DataTable));
+                    dgvMaterial.DataSource = dt;
+                    NombresColumnas();
+                    dgvMaterial.ClearSelection();
+
+                } catch (Exception)
+                {
+                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         public void generarID()
         {
@@ -574,23 +590,6 @@ namespace sistema_maestros1
             dgvMaterial.Columns[5].HeaderText = "Costo Unitario";
         }
 
-        public void cargarDatosTabla()
-        {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                try
-                {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosMaterial(), typeof(DataTable));
-                    dgvMaterial.DataSource = dt;
-                    NombresColumnas();
-
-                } catch (Exception)
-                {
-                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         public void inicializacionCampos()
         {
             cbEscuelaMaterial.Enabled = false; cbEscuelaMaterial.Text = "Seleccionar Escuela";
@@ -608,7 +607,7 @@ namespace sistema_maestros1
 
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
-
-
+        
+        #endregion
     }
 }

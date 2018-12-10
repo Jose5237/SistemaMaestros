@@ -408,6 +408,7 @@ namespace sistema_maestros1
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosProfesor(), typeof(DataTable));
                     dgvProfe.DataSource = dt;
                     NombresColumnas();
+                    dgvProfe.ClearSelection();
                 }
                 catch
                 {

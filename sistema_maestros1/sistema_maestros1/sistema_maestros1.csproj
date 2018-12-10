@@ -75,6 +75,7 @@
     <Compile Include="ClassEscuela.cs" />
     <Compile Include="ClassIncidencia.cs" />
     <Compile Include="ClassMaterial.cs" />
+    <Compile Include="ClassNivelEducativo.cs" />
     <Compile Include="ClassPadres.cs" />
     <Compile Include="ClassPagos.cs" />
     <Compile Include="ClassProfesor.cs" />

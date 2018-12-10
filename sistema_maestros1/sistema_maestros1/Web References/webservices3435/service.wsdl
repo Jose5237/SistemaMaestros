@@ -625,6 +625,12 @@
   <wsdl:message name="filtrarAlumnosXnivelYgradoResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="consultaNivelesRequest">
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="consultaNivelesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:portType name="WSPHPPortType">
     <wsdl:operation name="login">
       <documentation>login </documentation>
@@ -1020,6 +1026,11 @@
       <documentation>borrar los registros de los pagos de los alumnos por ciclo escolar</documentation>
       <wsdl:input message="tns:filtrarAlumnosXnivelYgradoRequest" />
       <wsdl:output message="tns:filtrarAlumnosXnivelYgradoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaNiveles">
+      <documentation>borrar los registros de los pagos de los alumnos por ciclo escolar</documentation>
+      <wsdl:input message="tns:consultaNivelesRequest" />
+      <wsdl:output message="tns:consultaNivelesResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSPHPBinding" type="tns:WSPHPPortType">
@@ -1728,6 +1739,15 @@
     </wsdl:operation>
     <wsdl:operation name="filtrarAlumnosXnivelYgrado">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/filtrarAlumnosXnivelYgrado" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaNiveles">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/consultaNiveles" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

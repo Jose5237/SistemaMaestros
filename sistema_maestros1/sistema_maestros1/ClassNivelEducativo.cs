@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sistema_maestros1
+{
+    class ClassNivelEducativo
+    {
+
+        public string ne_nivel_educativo_niveles_escuela { get; set; }
+
+        public string ne_id_escuela { get; set; }
+
+    }
+}

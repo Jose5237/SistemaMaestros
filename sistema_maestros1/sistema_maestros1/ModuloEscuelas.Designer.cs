@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEscuelas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorEscuela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -73,8 +73,13 @@
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
             this.btnIncidencias2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.checkPrescolar = new System.Windows.Forms.CheckBox();
+            this.checkPrimaria = new System.Windows.Forms.CheckBox();
+            this.checkSecundaria = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBuscadorEscuela
@@ -113,7 +118,7 @@
             // 
             this.txtCorreoEscuela.Enabled = false;
             this.txtCorreoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtCorreoEscuela.Location = new System.Drawing.Point(167, 410);
+            this.txtCorreoEscuela.Location = new System.Drawing.Point(167, 396);
             this.txtCorreoEscuela.MaxLength = 50;
             this.txtCorreoEscuela.Name = "txtCorreoEscuela";
             this.txtCorreoEscuela.Size = new System.Drawing.Size(211, 23);
@@ -123,7 +128,7 @@
             // 
             this.txtTel3Escuela.Enabled = false;
             this.txtTel3Escuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtTel3Escuela.Location = new System.Drawing.Point(167, 363);
+            this.txtTel3Escuela.Location = new System.Drawing.Point(167, 349);
             this.txtTel3Escuela.MaxLength = 10;
             this.txtTel3Escuela.Name = "txtTel3Escuela";
             this.txtTel3Escuela.Size = new System.Drawing.Size(211, 23);
@@ -134,7 +139,7 @@
             // 
             this.txtTel2Escuela.Enabled = false;
             this.txtTel2Escuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtTel2Escuela.Location = new System.Drawing.Point(167, 316);
+            this.txtTel2Escuela.Location = new System.Drawing.Point(167, 302);
             this.txtTel2Escuela.MaxLength = 10;
             this.txtTel2Escuela.Name = "txtTel2Escuela";
             this.txtTel2Escuela.Size = new System.Drawing.Size(211, 23);
@@ -146,7 +151,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label9.Location = new System.Drawing.Point(164, 388);
+            this.label9.Location = new System.Drawing.Point(164, 374);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(154, 20);
             this.label9.TabIndex = 50;
@@ -157,7 +162,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label10.Location = new System.Drawing.Point(164, 341);
+            this.label10.Location = new System.Drawing.Point(164, 327);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 20);
             this.label10.TabIndex = 49;
@@ -168,7 +173,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label11.Location = new System.Drawing.Point(164, 294);
+            this.label11.Location = new System.Drawing.Point(164, 280);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 20);
             this.label11.TabIndex = 48;
@@ -177,12 +182,13 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.Silver;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Enabled = false;
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(167, 550);
+            this.btnAceptar.Location = new System.Drawing.Point(167, 604);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 10;
@@ -195,7 +201,7 @@
             // 
             this.txtTel1Escuela.Enabled = false;
             this.txtTel1Escuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtTel1Escuela.Location = new System.Drawing.Point(167, 269);
+            this.txtTel1Escuela.Location = new System.Drawing.Point(167, 255);
             this.txtTel1Escuela.MaxLength = 10;
             this.txtTel1Escuela.Name = "txtTel1Escuela";
             this.txtTel1Escuela.Size = new System.Drawing.Size(211, 23);
@@ -206,7 +212,7 @@
             // 
             this.txtDireccionEscuela.Enabled = false;
             this.txtDireccionEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtDireccionEscuela.Location = new System.Drawing.Point(167, 222);
+            this.txtDireccionEscuela.Location = new System.Drawing.Point(167, 208);
             this.txtDireccionEscuela.MaxLength = 200;
             this.txtDireccionEscuela.Name = "txtDireccionEscuela";
             this.txtDireccionEscuela.Size = new System.Drawing.Size(211, 23);
@@ -216,7 +222,7 @@
             // 
             this.txtNombreEscuela.Enabled = false;
             this.txtNombreEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtNombreEscuela.Location = new System.Drawing.Point(167, 175);
+            this.txtNombreEscuela.Location = new System.Drawing.Point(167, 161);
             this.txtNombreEscuela.MaxLength = 100;
             this.txtNombreEscuela.Name = "txtNombreEscuela";
             this.txtNombreEscuela.Size = new System.Drawing.Size(211, 23);
@@ -226,7 +232,7 @@
             // 
             this.txtIdEscuela.Enabled = false;
             this.txtIdEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtIdEscuela.Location = new System.Drawing.Point(167, 128);
+            this.txtIdEscuela.Location = new System.Drawing.Point(167, 114);
             this.txtIdEscuela.Name = "txtIdEscuela";
             this.txtIdEscuela.Size = new System.Drawing.Size(211, 23);
             this.txtIdEscuela.TabIndex = 1;
@@ -236,7 +242,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label4.Location = new System.Drawing.Point(167, 106);
+            this.label4.Location = new System.Drawing.Point(167, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 42;
@@ -247,7 +253,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label3.Location = new System.Drawing.Point(164, 247);
+            this.label3.Location = new System.Drawing.Point(164, 233);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 41;
@@ -258,7 +264,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(164, 200);
+            this.label2.Location = new System.Drawing.Point(164, 186);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 40;
@@ -269,7 +275,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label1.Location = new System.Drawing.Point(167, 153);
+            this.label1.Location = new System.Drawing.Point(167, 139);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 39;
@@ -280,6 +286,7 @@
             this.btnEliminarEscuela.BackColor = System.Drawing.Color.IndianRed;
             this.btnEliminarEscuela.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminarEscuela.BackgroundImage")));
             this.btnEliminarEscuela.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarEscuela.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminarEscuela.FlatAppearance.BorderSize = 0;
             this.btnEliminarEscuela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarEscuela.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,6 +303,7 @@
             this.btnModificarEscuela.BackColor = System.Drawing.Color.SteelBlue;
             this.btnModificarEscuela.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnModificarEscuela.BackgroundImage")));
             this.btnModificarEscuela.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnModificarEscuela.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnModificarEscuela.FlatAppearance.BorderSize = 0;
             this.btnModificarEscuela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarEscuela.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,6 +320,7 @@
             this.btnAgregarEscuela.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnAgregarEscuela.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregarEscuela.BackgroundImage")));
             this.btnAgregarEscuela.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarEscuela.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregarEscuela.FlatAppearance.BorderSize = 0;
             this.btnAgregarEscuela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarEscuela.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,23 +343,23 @@
             this.dgvEscuela.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvEscuela.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEscuela.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvEscuela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvEscuela.EnableHeadersVisualStyles = false;
             this.dgvEscuela.GridColor = System.Drawing.Color.Thistle;
             this.dgvEscuela.Location = new System.Drawing.Point(423, 105);
@@ -358,8 +367,8 @@
             this.dgvEscuela.Name = "dgvEscuela";
             this.dgvEscuela.ReadOnly = true;
             this.dgvEscuela.RowHeadersVisible = false;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvEscuela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEscuela.Size = new System.Drawing.Size(704, 513);
             this.dgvEscuela.TabIndex = 35;
@@ -369,7 +378,7 @@
             // 
             this.txtContactoEscuela.Enabled = false;
             this.txtContactoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtContactoEscuela.Location = new System.Drawing.Point(167, 457);
+            this.txtContactoEscuela.Location = new System.Drawing.Point(167, 443);
             this.txtContactoEscuela.MaxLength = 50;
             this.txtContactoEscuela.Name = "txtContactoEscuela";
             this.txtContactoEscuela.Size = new System.Drawing.Size(211, 23);
@@ -381,7 +390,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(164, 435);
+            this.label5.Location = new System.Drawing.Point(164, 421);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(141, 20);
             this.label5.TabIndex = 57;
@@ -568,7 +577,7 @@
             // 
             this.txtResponsablePagoEscuela.Enabled = false;
             this.txtResponsablePagoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtResponsablePagoEscuela.Location = new System.Drawing.Point(167, 504);
+            this.txtResponsablePagoEscuela.Location = new System.Drawing.Point(167, 490);
             this.txtResponsablePagoEscuela.MaxLength = 50;
             this.txtResponsablePagoEscuela.Name = "txtResponsablePagoEscuela";
             this.txtResponsablePagoEscuela.Size = new System.Drawing.Size(211, 23);
@@ -580,7 +589,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label7.Location = new System.Drawing.Point(164, 482);
+            this.label7.Location = new System.Drawing.Point(164, 468);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(173, 20);
             this.label7.TabIndex = 107;
@@ -626,12 +635,69 @@
             this.label8.Text = "label8";
             this.label8.Visible = false;
             // 
+            // checkPrescolar
+            // 
+            this.checkPrescolar.AutoSize = true;
+            this.checkPrescolar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkPrescolar.Enabled = false;
+            this.checkPrescolar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkPrescolar.Location = new System.Drawing.Point(28, 20);
+            this.checkPrescolar.Name = "checkPrescolar";
+            this.checkPrescolar.Size = new System.Drawing.Size(101, 21);
+            this.checkPrescolar.TabIndex = 134;
+            this.checkPrescolar.Text = "PRESCOLAR";
+            this.checkPrescolar.UseVisualStyleBackColor = false;
+            this.checkPrescolar.CheckedChanged += new System.EventHandler(this.checkPrescolar_CheckedChanged);
+            // 
+            // checkPrimaria
+            // 
+            this.checkPrimaria.AutoSize = true;
+            this.checkPrimaria.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkPrimaria.Enabled = false;
+            this.checkPrimaria.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkPrimaria.Location = new System.Drawing.Point(28, 38);
+            this.checkPrimaria.Name = "checkPrimaria";
+            this.checkPrimaria.Size = new System.Drawing.Size(86, 21);
+            this.checkPrimaria.TabIndex = 135;
+            this.checkPrimaria.Text = "PRIMARIA";
+            this.checkPrimaria.UseVisualStyleBackColor = false;
+            this.checkPrimaria.CheckedChanged += new System.EventHandler(this.checkPrimaria_CheckedChanged);
+            // 
+            // checkSecundaria
+            // 
+            this.checkSecundaria.AutoSize = true;
+            this.checkSecundaria.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkSecundaria.Enabled = false;
+            this.checkSecundaria.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkSecundaria.Location = new System.Drawing.Point(28, 56);
+            this.checkSecundaria.Name = "checkSecundaria";
+            this.checkSecundaria.Size = new System.Drawing.Size(108, 21);
+            this.checkSecundaria.TabIndex = 136;
+            this.checkSecundaria.Text = "SECUNDARIA";
+            this.checkSecundaria.UseVisualStyleBackColor = false;
+            this.checkSecundaria.CheckedChanged += new System.EventHandler(this.checkSecundaria_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Controls.Add(this.checkPrescolar);
+            this.groupBox1.Controls.Add(this.checkSecundaria);
+            this.groupBox1.Controls.Add(this.checkPrimaria);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(168, 513);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(210, 80);
+            this.groupBox1.TabIndex = 137;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Nivel Educativo:";
+            // 
             // ModuloEscuelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
@@ -681,6 +747,8 @@
             this.Load += new System.EventHandler(this.ModuloEscuelas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,5 +797,9 @@
         private System.Windows.Forms.Button btnRecomendaciones2;
         private System.Windows.Forms.Button btnIncidencias2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox checkPrescolar;
+        private System.Windows.Forms.CheckBox checkPrimaria;
+        private System.Windows.Forms.CheckBox checkSecundaria;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
