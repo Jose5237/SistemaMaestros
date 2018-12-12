@@ -26,7 +26,8 @@ namespace sistema_maestros1
 
         //VARIABLES
         int opcionBotones = 0;
-        string nivelEducativoCheck;
+        string prescolar, primaria, secundaria;
+        webservices3435.WSPHP ws = new webservices3435.WSPHP();
 
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
         #region
@@ -239,31 +240,30 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = true; txtCorreoEscuela.Text = "";
             txtContactoEscuela.Enabled = true; txtContactoEscuela.Text = "";
             txtResponsablePagoEscuela.Enabled = true; txtResponsablePagoEscuela.Text = "";
-
-            checkPrescolar.Enabled = true; 
+            checkPrescolar.Enabled = true;
             checkPrimaria.Enabled = true;
             checkSecundaria.Enabled = true;
-
+            checkPrescolar.Checked = false;
+            checkPrimaria.Checked = false;
+            checkSecundaria.Checked = false;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
         }
 
         //BOTON MODIFICAR ESCUELA
         private void btnModificarEscuela_Click(object sender, EventArgs e)
         {
-            opcionBotones = 1;
-
             dgvEscuela.Enabled = true;
-
+            opcionBotones = 1;
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = true;
-            txtDireccionEscuela.Enabled = true; 
+            txtDireccionEscuela.Enabled = true;
             txtTel1Escuela.Enabled = true;
-            txtTel2Escuela.Enabled = true; 
+            txtTel2Escuela.Enabled = true;
             txtTel3Escuela.Enabled = true;
             txtCorreoEscuela.Enabled = true;
             txtContactoEscuela.Enabled = true;
             txtResponsablePagoEscuela.Enabled = true;
-
+            btnAceptar.Enabled = true;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
         }
 
@@ -319,6 +319,12 @@ namespace sistema_maestros1
                                 try
                                 {
                                     string mensaje = wsPHP.agregarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela, es.es_responsable_pago_escuela);
+                                    if (checkPrescolar.Checked == true)
+                                        wsPHP.agregarNivel_escuela(prescolar, es.es_id_escuela);
+                                    if (checkPrimaria.Checked == true)
+                                        wsPHP.agregarNivel_escuela(primaria, es.es_id_escuela);
+                                    if (checkSecundaria.Checked == true)
+                                        wsPHP.agregarNivel_escuela(secundaria, es.es_id_escuela);
                                     MessageBox.Show(mensaje, "¡Escuela Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
@@ -352,6 +358,12 @@ namespace sistema_maestros1
                                 try
                                 {
                                     string mensaje = wsPHP.modificarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela, es.es_responsable_pago_escuela);
+                                    if (checkPrescolar.Enabled == true && checkPrescolar.Checked == true)
+                                        wsPHP.agregarNivel_escuela(prescolar, es.es_id_escuela);
+                                    if (checkPrimaria.Enabled == true && checkPrimaria.Checked == true)
+                                        wsPHP.agregarNivel_escuela(primaria, es.es_id_escuela);
+                                    if (checkSecundaria.Enabled == true && checkSecundaria.Checked == true)
+                                        wsPHP.agregarNivel_escuela(secundaria, es.es_id_escuela);
                                     MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     cargarDatosTabla();
                                     inicializacionCampos();
@@ -423,6 +435,33 @@ namespace sistema_maestros1
             txtCorreoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[6].Value.ToString());
             txtContactoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[7].Value.ToString());
             txtResponsablePagoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[8].Value.ToString());
+            String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
+            var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
+            string[] niveles = new string[3];
+            int j = 0;
+            foreach (var nomEsc in respEsc)
+            {
+                niveles[j] = nomEsc.ne_nivel_educativo_niveles_escuela;
+                j++;
+            }
+            for (int i = 0; i <= j; i++)
+            {
+                if (niveles[i] == "SECUNDARIA")
+                {
+                    checkSecundaria.Checked = true;
+                    checkSecundaria.Enabled = false;
+                }
+                if (niveles[i] == "PRIMARIA")
+                {
+                    checkPrimaria.Checked = true;
+                    checkPrimaria.Enabled = false;
+                }
+                if (niveles[i] == "PRESCOLAR")
+                {
+                    checkPrescolar.Checked = true;
+                    checkPrescolar.Enabled = false;
+                }
+            }
         }
 
 
@@ -534,17 +573,20 @@ namespace sistema_maestros1
 
         private void checkPrescolar_CheckedChanged(object sender, EventArgs e)
         {
-            nivelEducativoCheck = "PRESCOLAR";
+            if (checkPrescolar.Checked == true)
+                prescolar = "PRESCOLAR";
         }
 
         private void checkPrimaria_CheckedChanged(object sender, EventArgs e)
         {
-            nivelEducativoCheck = "PRIMARIA";
+            if (checkPrimaria.Checked == true)
+                primaria = "PRIMARIA";
         }
 
         private void checkSecundaria_CheckedChanged(object sender, EventArgs e)
         {
-            nivelEducativoCheck = "SECUNDARIA";
+            if (checkSecundaria.Checked)
+                secundaria = "SECUNDARIA";
         }
     }
 }

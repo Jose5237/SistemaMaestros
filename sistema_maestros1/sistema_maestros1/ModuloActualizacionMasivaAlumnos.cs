@@ -30,7 +30,45 @@ namespace sistema_maestros1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("¿Estas seguro de realizar esta accion?\nSi realiza esta operacion todos los alumnos de la escuela seleccionada subiran de grado o nivel educativo dependiendo el caso\nSi la escuela cuenta con el siguiente nivel educativo de los alumnos de ultimo grado, seran actualizados a ese nivel\nSi la escuela no cuenta con el siguiente nivel educativo, el status de los alumnos de ultimo grado sera INACTIVO", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                webservices3435.WSPHP ws = new webservices3435.WSPHP();
+                String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
+                var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
+                string[] niveles = new string[3];
+                int j = 0;
+                foreach (var nomEsc in respEsc)
+                {
+                    niveles[j] = nomEsc.ne_nivel_educativo_niveles_escuela;
+                    j++;
+                }
 
+                for (int i = 0; i <= j; i++)
+                {
+                    if (niveles[i] == "SECUNDARIA")
+                    {
+                        ws.validarGrado(txtIdEscuela.Text);
+                        ws.actualizarGrupos("3", "2", txtIdEscuela.Text, "SECUNDARIA");
+                        ws.actualizarGrupos("2", "1", txtIdEscuela.Text, "SECUNDARIA");
+                    }
+                    else if (niveles[i] == "PRIMARIA")
+                    {
+                        ws.actualizarNivel("SECUNDARIA", "PRIMARIA", txtIdEscuela.Text, "6");
+                        ws.actualizarGrupos("6", "5", txtIdEscuela.Text, "PRIMARIA");
+                        ws.actualizarGrupos("5", "4", txtIdEscuela.Text, "PRIMARIA");
+                        ws.actualizarGrupos("4", "3", txtIdEscuela.Text, "PRIMARIA");
+                        ws.actualizarGrupos("3", "2", txtIdEscuela.Text, "PRIMARIA");
+                        ws.actualizarGrupos("2", "1", txtIdEscuela.Text, "PRIMARIA");
+                    }
+                    else if (niveles[i] == "PRESCOLAR")
+                    {
+                        ws.actualizarNivel("PRIMARIA", "PRESCOLAR", txtIdEscuela.Text, "3");
+                        ws.actualizarGrupos("3", "2", txtIdEscuela.Text, "PRESCOLAR");
+                        ws.actualizarGrupos("2", "1", txtIdEscuela.Text, "PRESCOLAR");
+                    }
+                }
+                MessageBox.Show("El nivel y grado de todos los alumnos de la escuela " + cbEscuela.Text + " han sido actualizados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void ModuloActualizacionMasivaAlumnos_Load(object sender, EventArgs e)

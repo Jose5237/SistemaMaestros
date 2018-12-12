@@ -148,3 +148,32 @@ C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\si
 C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.tutor_has_alumno.resources
 C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\SIS3435\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.csproj.GenerateResource.Cache
 C:\Users\anell\Desktop\Actializador_Chatbot_S3435_Estadia\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloActualizacionMasivaAlumnos.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\sistema_maestros1.exe.config
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\Interop.WMPNSSCI.dll
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.csproj.ResolveComReference.cache
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.exe
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.pdb
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\sistema_maestros1.exe
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\sistema_maestros1.pdb
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.csprojResolveAssemblyReference.cache
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.Login.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloActualizacionMasivaAlumnos.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloAlumnos.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloDinamicas.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloEscuelas.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloIncidencias.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloMaterial.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloPadre_o_Tutor.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloProfesores.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloRecomendaciones.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloTalleres.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.ModuloPagos.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.principal.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.Properties.Resources.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.Pruebas.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.tutor_has_alumno.resources
+C:\Users\Jose Antonio\Desktop\Estadia\git\Repositorio\Sistema V5\SistemaMaestros\sistema_maestros1\sistema_maestros1\obj\Debug\sistema_maestros1.csproj.GenerateResource.Cache

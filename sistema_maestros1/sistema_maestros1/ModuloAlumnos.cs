@@ -303,7 +303,7 @@ namespace sistema_maestros1
                     if (opcionBotones == 0)
                     {
                         generarID();
-
+                        generarIDPAGO();
                         ClassAlumno al = new ClassAlumno();
                         al.al_id_escuela = txtIdEscuelaAlumno.Text;
                         al.al_id_alumno = label10.Text;
@@ -323,6 +323,7 @@ namespace sistema_maestros1
                             try
                             {
                                 string mensaje = wsPHP.agregarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
+                                wsPHP.agregarPagos(al.al_id_escuela, al.al_id_alumno, label11.Text);
                                 MessageBox.Show(mensaje, "¡Alumno Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 tutor_has_alumno tha = new tutor_has_alumno();
                                 tha.Show();
@@ -614,7 +615,28 @@ namespace sistema_maestros1
             newID = sub1 + "a" + sub2 + Convert.ToString(n);
             label10.Text = newID;
         }
-
+        public void generarIDPAGO()
+        {
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            string sub1, sub2, newID, ultimoID;
+            int n;
+            //guardar tu|ma|pa
+            sub1 = "p";
+            //Obtener el ultimo id de la BDD
+            ultimoID = wsPHP.BuscarMAXIDA(sub1);
+            if (ultimoID == "")
+                n = 0;
+            else
+                //guardar el numero del ultimo ID
+                n = Convert.ToInt32(ultimoID.Substring(1, 3));
+            //incrementar para nuevo ID
+            n++;
+            //Generar los 0 necesarios para el ID
+            sub2 = new string('0', (3 - Convert.ToString(n).Length));
+            //Concatenar el ID
+            newID = sub1 + sub2 + Convert.ToString(n);
+            label11.Text = newID;
+        }
         public void NombresColumnas()
         {
             dgvAlumnos.Columns[0].HeaderText = "Escuela";

@@ -71,8 +71,9 @@
             this.dgvAlumnos = new System.Windows.Forms.DataGridView();
             this.cbStatusAlumno = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtBuscadorAlumno = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
             this.SuspendLayout();
@@ -627,16 +628,6 @@
             this.label9.TabIndex = 135;
             this.label9.Text = "Status:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(47, 529);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 136;
-            this.label10.Text = "label10";
-            this.label10.Visible = false;
-            // 
             // txtBuscadorAlumno
             // 
             this.txtBuscadorAlumno.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -647,12 +638,33 @@
             this.txtBuscadorAlumno.TabIndex = 25;
             this.txtBuscadorAlumno.TextChanged += new System.EventHandler(this.txtBuscadorAlumno_TextChanged);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(47, 529);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 136;
+            this.label10.Text = "label10";
+            this.label10.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(47, 555);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 137;
+            this.label11.Text = "label11";
+            this.label11.Visible = false;
+            // 
             // ModuloAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.txtBuscadorAlumno);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cbStatusAlumno);
@@ -747,7 +759,8 @@
         private System.Windows.Forms.DataGridView dgvAlumnos;
         private System.Windows.Forms.ComboBox cbStatusAlumno;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtBuscadorAlumno;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }
