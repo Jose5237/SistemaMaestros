@@ -51,8 +51,11 @@ namespace sistema_maestros1
             }
         }
 
+        bool bandera = true;
         public void SoloNumerosDecimal(KeyPressEventArgs e)
         {
+            
+
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -65,15 +68,19 @@ namespace sistema_maestros1
             {
                 e.Handled = false;
             }
-            else if(e.KeyChar.ToString().Equals("."))
+            
+            else if(e.KeyChar.ToString().Equals(".") && bandera)
             {
                 e.Handled = false;
+                bandera = false;   
             }
             else
             {
                 e.Handled = true;
-                MessageBox.Show("Solo se aceptan números", "¡Error de caracteres!");
+                MessageBox.Show("Solo se aceptan números decimales y un solo punto", "¡Error de caracteres!");
+                //bandera = false;
             }
+            
         }
 
         public void SoloLetrasYComas(KeyPressEventArgs e)

@@ -276,13 +276,16 @@ namespace sistema_maestros1
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco" && txtCorreoPadre.Text != "" )
+            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && txtTelefonoPadre.TextLength == 10 && cbParentescoPadre.Text != "Seleccionar el parentesco" && txtCorreoPadre.Text != "" )
             {
                 string email = txtCorreoPadre.Text;
                 bool verificar = email.Contains("@"); 
                 bool verificar2 = email.Contains(".com");
+                bool verificar3 = email.Contains(".es");
+                bool verificar4 = email.Contains(".mx");
+                bool verificar5 = email.Contains(".edu");
 
-                if ((verificar == true && verificar2 == true) || (txtCorreoPadre.Text == "No aplica" || txtCorreoPadre.Text == "no aplica" || txtCorreoPadre.Text == "No Aplica") || (txtCorreoPadre.Text == "n/a" || txtCorreoPadre.Text == "N/a" || txtCorreoPadre.Text == "N/A"))
+                if ((verificar == true && verificar2 == true) || (verificar == true && verificar3 == true) || (verificar == true && verificar4 == true) || (verificar == true && verificar5 == true) || (txtCorreoPadre.Text == "No aplica" || txtCorreoPadre.Text == "no aplica" || txtCorreoPadre.Text == "No Aplica") || (txtCorreoPadre.Text == "n/a" || txtCorreoPadre.Text == "N/a" || txtCorreoPadre.Text == "N/A"))
                 {
                     if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
@@ -430,7 +433,7 @@ namespace sistema_maestros1
                 
             }
             else
-                MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
+                MessageBox.Show("Es necesario que llenes correctamente todos los campos", "¡ALERTA!");
             
         }
 

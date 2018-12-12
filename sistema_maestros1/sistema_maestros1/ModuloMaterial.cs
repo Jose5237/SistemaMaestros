@@ -184,9 +184,24 @@ namespace sistema_maestros1
         //METODOS DE VALIDACIONES
         #region
         //METODO DE txtCostoMaterial PARA SOLO ACEPTAR NUMEROS Y NUMEROS CON PUNTO DECIMAL
+
+        //bool bandera = true;
         private void txtCostoMaterial_KeyPress(object sender, KeyPressEventArgs e)
         {
             v.SoloNumerosDecimal(e);
+
+            if (e.KeyChar.ToString().Equals(".") && (txtCostoMaterial.Text.IndexOf(".") == 0))
+            {
+                e.Handled = false;
+                //bandera = false;
+            }
+            else if(e.KeyChar.ToString().Equals(".") && (txtCostoMaterial.Text.IndexOf(".") == 1))
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se aceptan números decimales y un solo punto", "¡Error de caracteres!");
+                //bandera = false;
+            }
+
         }
 
 

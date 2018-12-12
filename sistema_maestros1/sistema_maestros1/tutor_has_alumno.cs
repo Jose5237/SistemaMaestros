@@ -51,7 +51,7 @@ namespace sistema_maestros1
                         }
                         MessageBox.Show("Se ha agregado correctamente la relacion Alumno -> Tutor", "¡Tutor has Alumno Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
+                        DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(Globales.id_alumno), typeof(DataTable));
                         dgvAhasTAll.DataSource = dt;
                         NombresColumnasAhT();
 
@@ -129,17 +129,47 @@ namespace sistema_maestros1
             }
         }
 
+        int fila;
         //BOTON >> PARA ASIGNAR PADRE A ALUMNO
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            dgvAhT.Rows.Add(Globales.id_alumno,Globales.nombre_alumno, dgvTutor.CurrentRow.Cells[0].Value.ToString(),dgvTutor.CurrentRow.Cells[1].Value.ToString(), dgvTutor.CurrentRow.Cells[5].Value.ToString());
+            if (dgvAhT.RowCount == 0)
+            {
+                dgvAhT.Rows.Add(Globales.id_alumno, Globales.nombre_alumno, dgvTutor.CurrentRow.Cells[0].Value.ToString(), dgvTutor.CurrentRow.Cells[1].Value.ToString(), dgvTutor.CurrentRow.Cells[5].Value.ToString());
+                dgvAhT.ClearSelection();
+            }
+            else
+            {
+                for (int i = 0; i <= dgvAhT.RowCount-1; i++)
+                {
+                    if (dgvAhT.Rows[i].Cells[2].Value.ToString() == dgvTutor.CurrentRow.Cells[0].Value.ToString() || dgvAhT.Rows[i].Cells[4].Value.ToString() == dgvTutor.CurrentRow.Cells[5].Value.ToString())
+                    {
+                        fila = 1;
+                        break;
+                    }
+                }
+                if (fila != 1)
+                    dgvAhT.Rows.Add(Globales.id_alumno, Globales.nombre_alumno, dgvTutor.CurrentRow.Cells[0].Value.ToString(), dgvTutor.CurrentRow.Cells[1].Value.ToString(), dgvTutor.CurrentRow.Cells[5].Value.ToString());
+                else
+                    MessageBox.Show("no se puede agregara mas de dos veces");
+
+            }
+            //fila = dgvTutor.CurrentRow.Index;
+            //this.dgvTutor.CurrentCell = null;
+            //this.dgvTutor.Rows[fila].Visible = false;
+
+            fila = 0;
         }
 
+        int fila1;
         //BOTON << PARA QUITAR PADRE A ALUMNO
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            int fila = dgvAhT.CurrentRow.Index;
-            dgvAhT.Rows.RemoveAt(fila);
+            
+            fila1 = dgvAhT.CurrentRow.Index;
+            dgvAhT.Rows.RemoveAt(fila1);
+
+            dgvTutor.Rows[fila].Visible = true;
         }
 
         //CELLCONTENTS (DGV_AHAST)
@@ -156,29 +186,36 @@ namespace sistema_maestros1
         //BOTON ELIMINAR
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            ClassAlumnoHasTutor aht = new ClassAlumnoHasTutor();
-            aht.es_id_escuela = txtIDEscuela2.Text;
-            aht.al_id_alumno = txtIDAlumno2.Text;
-            aht.al_id_tutor = txtIDPadre2.Text;
-
-            if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (txtIDEscuela2.Text != "" && txtIDAlumno2.Text != "" && txtIDPadre2.Text != "")
             {
-                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                {
-                    try
-                    {
-                        string mensaje = wsPHP.eliminarAlumnoTutor(aht.al_id_alumno, aht.al_id_tutor);
-                        MessageBox.Show(mensaje, "¡Relacion Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClassAlumnoHasTutor aht = new ClassAlumnoHasTutor();
+                aht.es_id_escuela = txtIDEscuela2.Text;
+                aht.al_id_alumno = txtIDAlumno2.Text;
+                aht.al_id_tutor = txtIDPadre2.Text;
 
-                    }
-                    catch
+                if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                     {
-                        MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            string mensaje = wsPHP.eliminarAlumnoTutor(aht.al_id_alumno, aht.al_id_tutor);
+                            MessageBox.Show(mensaje, "¡Relacion Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                    cargarDatosTablaAhT();
+                    inicializarTextBox();
                 }
-                cargarDatosTablaAhT();
-                inicializarTextBox();
             }
+            else
+                MessageBox.Show("Los campos estan vacios, es necesario que selecciones un registro a eliminar", "¡ALERTA!");
+
+
         }
         
 
@@ -192,14 +229,15 @@ namespace sistema_maestros1
                     dgvTutor.DataSource = dt;
 
                     NombresColumnasPadres();
+                    dgvTutor.ClearSelection();
 
-                    DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
+                    DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(Globales.id_alumno), typeof(DataTable));
                     dgvAhasTAll.DataSource = dt1;
                     NombresColumnasAhT();
                 }
                 catch
                 {
-                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -221,10 +259,11 @@ namespace sistema_maestros1
             {
                 try
                 {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(), typeof(DataTable));
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(Globales.id_alumno), typeof(DataTable));
                     dgvAhasTAll.DataSource = dt;
 
                     NombresColumnasAhT();
+                    dgvAhasTAll.ClearSelection();
                     
                 }
                 catch
@@ -254,5 +293,14 @@ namespace sistema_maestros1
             txtPadre2.Text = "";
         }
 
+        private void dgvAhT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            label7.Text = Convert.ToString(dgvAhT.Rows[e.RowIndex].Cells[2].Value.ToString());
+        }
+
+        private void dgvTutor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

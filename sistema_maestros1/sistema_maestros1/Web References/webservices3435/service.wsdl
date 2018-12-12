@@ -113,6 +113,13 @@
   <wsdl:message name="BuscarMAXIDEResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="agregarNivel_escuelaRequest">
+    <wsdl:part name="nivel" type="xsd:string" />
+    <wsdl:part name="id_esc" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="agregarNivel_escuelaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosTutorRequest" />
   <wsdl:message name="cargarDatosTutorResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -291,7 +298,9 @@
   <wsdl:message name="validarTallerXgrupoResponse">
     <wsdl:part name="return" type="xsd:int" />
   </wsdl:message>
-  <wsdl:message name="cargarDatosAhasTRequest" />
+  <wsdl:message name="cargarDatosAhasTRequest">
+    <wsdl:part name="id_alumno" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosAhasTResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
@@ -706,6 +715,11 @@
       <documentation>cargar ID MAX</documentation>
       <wsdl:input message="tns:BuscarMAXIDERequest" />
       <wsdl:output message="tns:BuscarMAXIDEResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarNivel_escuela">
+      <documentation>Cargar Nombres Escuela</documentation>
+      <wsdl:input message="tns:agregarNivel_escuelaRequest" />
+      <wsdl:output message="tns:agregarNivel_escuelaResponse" />
     </wsdl:operation>
     <wsdl:operation name="cargarDatosTutor">
       <documentation> Cargar datos tutor</documentation>
@@ -1163,6 +1177,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarMAXIDE">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/BuscarMAXIDE" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarNivel_escuela">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/agregarNivel_escuela" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

@@ -234,6 +234,7 @@ namespace sistema_maestros1
             dgvTaller.ClearSelection();
             
             cbEscuelaTaller.Enabled = true; cbEscuelaTaller.Text = "Seleccionar Escuela";
+            txtIdEscuela.Text = "";
             txtIdTaller.Text = "";
             txtNombreTaller.Enabled = true; txtNombreTaller.Text = "";
             txtDescripcionTaller.Enabled = true; txtDescripcionTaller.Text = "";
@@ -381,50 +382,65 @@ namespace sistema_maestros1
                     }
                     else if (opcionBotones == 1)
                     {
-                        ta.ta_id_taller = txtIdTaller.Text;
-                        for (int i = 0; i < auxgrados.Length; i++)
+                        if (txtIdTaller.Text == "")
                         {
-                            grados[j] = Convert.ToString(auxgrados[i]);
-                            j++;
-                            i++;
-                        }
-                        if (auxgrados.Length < 4)
-                        {
-                            grados[1] = "0";
-                            grados[2] = "0";
-                        }
-                        else if (auxgrados.Length < 6)
-                            grados[2] = "0";
-                        if (txtFechaInicio.Text != dgvTaller.CurrentRow.Cells[5].Value.ToString())
-                            valid = wsPHP.validarTallerXgrupo(txtIdEscuela.Text, cbNivelTaller.Text, grados[0], grados[1], grados[2], Globales.fechaIni_taller);
-                        else
-                            valid = 0;
-                        if (valid == 0)
-                        {
-                            try
-                            {
-                                string mensaje = wsPHP.modificarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
-                                MessageBox.Show(mensaje, "¡Taller Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("No se pudo modificar los datos de este taller", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("Debes seleccionar antes un registro para editar", "ERROR");
                         }
                         else
                         {
-                            a = 1;
-                            MessageBox.Show("No puede asigar dos o mas taller al mismo grupo en el mismo periodo. Por favor seleccione otra fecha inicial", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ta.ta_id_taller = txtIdTaller.Text;
+                            for (int i = 0; i < auxgrados.Length; i++)
+                            {
+                                grados[j] = Convert.ToString(auxgrados[i]);
+                                j++;
+                                i++;
+                            }
+                            if (auxgrados.Length < 4)
+                            {
+                                grados[1] = "0";
+                                grados[2] = "0";
+                            }
+                            else if (auxgrados.Length < 6)
+                                grados[2] = "0";
+                            if (txtFechaInicio.Text != dgvTaller.CurrentRow.Cells[5].Value.ToString())
+                                valid = wsPHP.validarTallerXgrupo(txtIdEscuela.Text, cbNivelTaller.Text, grados[0], grados[1], grados[2], Globales.fechaIni_taller);
+                            else
+                                valid = 0;
+                            if (valid == 0)
+                            {
+                                try
+                                {
+                                    string mensaje = wsPHP.modificarTaller(ta.ta_id_escuela, ta.ta_id_taller, ta.ta_nombre_taller, ta.ta_costo_taller, ta.ta_descripcion_taller, ta.ta_fecha_ini_taller, ta.ta_fecha_fin_taller, ta.ta_nivel_educativo_taller, ta.ta_grados_taller, ta.ta_id_profesor, ta.ta_habilidades_taller, ta.ta_justificacioncosto_taller, ta.ta_herramientas_taller);
+                                    MessageBox.Show(mensaje, "¡Taller Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("No se pudo modificar los datos de este taller", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                a = 1;
+                                MessageBox.Show("No puede asigar dos o mas taller al mismo grupo en el mismo periodo. Por favor seleccione otra fecha inicial", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                     else if (opcionBotones == 2)
                     {
-                        ta.ta_id_taller = txtIdTaller.Text;
-                        ta.ta_id_escuela = txtIdEscuela.Text;
-                        
-                        string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);
-                        MessageBox.Show(mensaje, "¡Taller Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+                        if (txtIdTaller.Text == "")
+                        {
+                            MessageBox.Show("Debes seleccionar antes un registro para Eliminar", "ERROR");
+                        }
+                        else
+                        {
+
+
+                            ta.ta_id_taller = txtIdTaller.Text;
+                            ta.ta_id_escuela = txtIdEscuela.Text;
+
+                            string mensaje = wsPHP.eliminarTaller(ta.ta_id_taller, ta.ta_id_escuela);
+                            MessageBox.Show(mensaje, "¡Taller Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        } 
                     }
                     if (a == 0)
                     {
@@ -462,7 +478,7 @@ namespace sistema_maestros1
 
                 String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
                 var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
-
+                cbNivelTaller.Items.Clear();
                 foreach (var nomNiv in respNiv)
                 {
                     ComboBoxItem item = new ComboBoxItem();
@@ -470,13 +486,33 @@ namespace sistema_maestros1
                     item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
                     item.Value = Convert.ToString(nomNiv.ne_id_escuela);
                     
-                    cbNivelTaller.Items.Add(item.Text);
+                    cbNivelTaller.Items.Add(item);
                 }
             }
         }
 
         private void cbNivelTaller_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            //{
+            //    String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuelaNivel.Text);
+            //    var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+            //    //cbNivelTaller.Items.Clear();
+            //    foreach (var nomNiv in respNiv)
+            //    {
+            //        ComboBoxItem item = new ComboBoxItem();
+            //
+            //        item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+            //        item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+            //        string id = Convert.ToString( item.Value);
+            //        txtIdEscuelaNivel.Text = id;
+            //        cbNivelTaller.Items.Add(item);
+            //    }
+            //}
+            cbGradoTaller.Text = "Seleccionar Grado";
+
+            
+
             if (cbNivelTaller.Text == "PRESCOLAR" || cbNivelTaller.Text == "SECUNDARIA")
             {
                 cbGradoTaller.Items.Clear();
@@ -608,15 +644,32 @@ namespace sistema_maestros1
         {
             NombresColumnas();
 
-            cbEscuelaTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtIdEscuela.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                String resNombreEscuela = wsPHP.buscarEscuela(txtIdEscuela.Text);
+                var nomEscuela = JsonConvert.DeserializeObject<List<ClassEscuela>>(resNombreEscuela);
+
+                foreach (var nombreEscuela in nomEscuela)
+                {
+
+                    cbEscuelaTaller.Text = Convert.ToString(nombreEscuela.es_nombre_escuela);
+
+                }
+            }
+
+            //cbEscuelaTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
+            
             txtIdTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtNombreTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[2].Value.ToString());
             txtCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[3].Value.ToString());
             txtDescripcionTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[4].Value.ToString());
             string fechaI = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
             string fechaF = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[6].Value.ToString());
+            
             cbNivelTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[7].Value.ToString());
+            
             cbGradoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[8].Value.ToString());
             cbProfeTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
             txtIdProfesorTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
@@ -757,8 +810,27 @@ namespace sistema_maestros1
         }
 
 
+
         #endregion
 
+        private void txtIdEscuela_TextChanged(object sender, EventArgs e)
+        {
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
+                var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+                cbNivelTaller.Items.Clear();
+                foreach (var nomNiv in respNiv)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
 
+                    item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+                    item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+
+                    cbNivelTaller.Items.Add(item);
+                }
+            }
+            
+        }
     }
 }

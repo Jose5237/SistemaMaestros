@@ -585,26 +585,41 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV)
         private void dgvDinamica_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            
+
             NombresColumnas();
 
-            cbEscuelaDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuela.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[0].Value.ToString());
+            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
 
-            cbTallerDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtIdTaller.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtIdEscuela.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[0].Value.ToString());
+            String resNombreEscuela = wsPHP.buscarEscuela(txtIdEscuela.Text);
+            var nomEscuela = JsonConvert.DeserializeObject<List<ClassEscuela>>(resNombreEscuela);
             
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            foreach (var nombreEscuela in nomEscuela)
             {
-                String resFechaIniTal = wsPHP.buscarTallerXIDescuela(txtIdEscuela.Text, txtIdTaller.Text);
-                var des_fechaI_ta = JsonConvert.DeserializeObject<List<ClassTaller>>(resFechaIniTal);
+                cbEscuelaDinamicas.Text = Convert.ToString(nombreEscuela.es_nombre_escuela);
+            }
+            
+            txtIdTaller.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[1].Value.ToString());
+            String resNombreTaller = wsPHP.buscarTallerXIDescuela(txtIdEscuela.Text ,txtIdTaller.Text);
+            var nomTaller = JsonConvert.DeserializeObject<List<ClassTaller>>(resNombreTaller);
+            
+            foreach (var nombreTaller in nomTaller)
+            {
+                cbTallerDinamicas.Text = Convert.ToString(nombreTaller.ta_nombre_taller);
+            }
+            
+            
+            String resFechaIniTal = wsPHP.buscarTallerXIDescuela(txtIdEscuela.Text, txtIdTaller.Text);
+            var des_fechaI_ta = JsonConvert.DeserializeObject<List<ClassTaller>>(resFechaIniTal);
+            
+            foreach (var fechIT in des_fechaI_ta)
+            {
                 
-                foreach (var fechIT in des_fechaI_ta)
-                {
-                    
-                    txtFechaIniTaller.Text = Convert.ToString(fechIT.ta_fecha_ini_taller);
-                    txtFechaFinTaller.Text = Convert.ToString(fechIT.ta_fecha_fin_taller);
-                    
-                }
+                txtFechaIniTaller.Text = Convert.ToString(fechIT.ta_fecha_ini_taller);
+                txtFechaFinTaller.Text = Convert.ToString(fechIT.ta_fecha_fin_taller);
+                
             }
             
             txtIdDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[2].Value.ToString());

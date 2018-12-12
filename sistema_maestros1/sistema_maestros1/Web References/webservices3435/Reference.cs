@@ -59,6 +59,8 @@ namespace sistema_maestros1.webservices3435 {
         
         private System.Threading.SendOrPostCallback BuscarMAXIDEOperationCompleted;
         
+        private System.Threading.SendOrPostCallback agregarNivel_escuelaOperationCompleted;
+        
         private System.Threading.SendOrPostCallback cargarDatosTutorOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarTutorOperationCompleted;
@@ -271,6 +273,9 @@ namespace sistema_maestros1.webservices3435 {
         
         /// <remarks/>
         public event BuscarMAXIDECompletedEventHandler BuscarMAXIDECompleted;
+        
+        /// <remarks/>
+        public event agregarNivel_escuelaCompletedEventHandler agregarNivel_escuelaCompleted;
         
         /// <remarks/>
         public event cargarDatosTutorCompletedEventHandler cargarDatosTutorCompleted;
@@ -956,6 +961,38 @@ namespace sistema_maestros1.webservices3435 {
             if ((this.BuscarMAXIDECompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.BuscarMAXIDECompleted(this, new BuscarMAXIDECompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/agregarNivel_escuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string agregarNivel_escuela(string nivel, string id_esc) {
+            object[] results = this.Invoke("agregarNivel_escuela", new object[] {
+                        nivel,
+                        id_esc});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void agregarNivel_escuelaAsync(string nivel, string id_esc) {
+            this.agregarNivel_escuelaAsync(nivel, id_esc, null);
+        }
+        
+        /// <remarks/>
+        public void agregarNivel_escuelaAsync(string nivel, string id_esc, object userState) {
+            if ((this.agregarNivel_escuelaOperationCompleted == null)) {
+                this.agregarNivel_escuelaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnagregarNivel_escuelaOperationCompleted);
+            }
+            this.InvokeAsync("agregarNivel_escuela", new object[] {
+                        nivel,
+                        id_esc}, this.agregarNivel_escuelaOperationCompleted, userState);
+        }
+        
+        private void OnagregarNivel_escuelaOperationCompleted(object arg) {
+            if ((this.agregarNivel_escuelaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.agregarNivel_escuelaCompleted(this, new agregarNivel_escuelaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1702,22 +1739,24 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/cargarDatosAhasT", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string cargarDatosAhasT() {
-            object[] results = this.Invoke("cargarDatosAhasT", new object[0]);
+        public string cargarDatosAhasT(string id_alumno) {
+            object[] results = this.Invoke("cargarDatosAhasT", new object[] {
+                        id_alumno});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void cargarDatosAhasTAsync() {
-            this.cargarDatosAhasTAsync(null);
+        public void cargarDatosAhasTAsync(string id_alumno) {
+            this.cargarDatosAhasTAsync(id_alumno, null);
         }
         
         /// <remarks/>
-        public void cargarDatosAhasTAsync(object userState) {
+        public void cargarDatosAhasTAsync(string id_alumno, object userState) {
             if ((this.cargarDatosAhasTOperationCompleted == null)) {
                 this.cargarDatosAhasTOperationCompleted = new System.Threading.SendOrPostCallback(this.OncargarDatosAhasTOperationCompleted);
             }
-            this.InvokeAsync("cargarDatosAhasT", new object[0], this.cargarDatosAhasTOperationCompleted, userState);
+            this.InvokeAsync("cargarDatosAhasT", new object[] {
+                        id_alumno}, this.cargarDatosAhasTOperationCompleted, userState);
         }
         
         private void OncargarDatosAhasTOperationCompleted(object arg) {
@@ -3579,6 +3618,32 @@ namespace sistema_maestros1.webservices3435 {
         private object[] results;
         
         internal BuscarMAXIDECompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void agregarNivel_escuelaCompletedEventHandler(object sender, agregarNivel_escuelaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class agregarNivel_escuelaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal agregarNivel_escuelaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -239,7 +239,6 @@ namespace sistema_maestros1
         {
             dgvAlumnos.ClearSelection();
             dgvAlumnos.Enabled = false;
-            dgvAlumnos.ScrollBars = ScrollBars.Both;
 
             opcionBotones = 0;
 
@@ -403,8 +402,18 @@ namespace sistema_maestros1
         //BOTON RELACIONAR ALUMNOS CON PADRES
         private void btnAsignarPadre_Click(object sender, EventArgs e)
         {
-            tutor_has_alumno tha = new tutor_has_alumno();
-            tha.Show();
+            if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtNombreAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
+            {
+                tutor_has_alumno tha = new tutor_has_alumno();
+
+                Globales.id_escuela = txtIdEscuelaAlumno.Text;
+                Globales.id_alumno = txtIdAlumno.Text;
+                Globales.nombre_alumno = txtNombreAlumno.Text + " " + txtApellidoPatAlumno.Text + " " + txtApellidoMatAlumno.Text;
+                tha.Show();
+            }
+            else
+                MessageBox.Show("Antes debes seleccionar un registro para poder asignarle un Padre o Tutor","Seleccionar Registro");
+                
         }
 
 
@@ -428,9 +437,12 @@ namespace sistema_maestros1
                     txtIdEscuelaAlumno.Text = id;
                 }
 
+                cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
+                cbGradoAlumno.Text = "Seleccionar Grado";
+
                 String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuelaAlumno.Text);
                 var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
-
+                cbNivelAlumno.Items.Clear();
                 foreach (var nomNiv in respNiv)
                 {
                     ComboBoxItem item = new ComboBoxItem();
@@ -439,7 +451,7 @@ namespace sistema_maestros1
                     item.Value = Convert.ToString(nomNiv.ne_id_escuela);
                     //string id = item.Value.ToString();
 
-                    cbNivelAlumno.Items.Add(item.Text);
+                    cbNivelAlumno.Items.Add(item);
                 }
             }
         }
@@ -464,6 +476,8 @@ namespace sistema_maestros1
                 cbGradoAlumno.Items.Add("5°");
                 cbGradoAlumno.Items.Add("6°");
             }
+
+            
         }
 
         #endregion
@@ -501,10 +515,24 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV)
         private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+
             NombresColumnas();
 
-            cbEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtIdEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            {
+                String resNombreEscuela = wsPHP.buscarEscuela(txtIdEscuelaAlumno.Text);
+                var nomEscuela = JsonConvert.DeserializeObject<List<ClassEscuela>>(resNombreEscuela);
+
+                foreach (var nombreEscuela in nomEscuela)
+                {
+                    cbEscuelaAlumno.Text = Convert.ToString(nombreEscuela.es_nombre_escuela);
+                }
+            }
+
+            //cbEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtIdAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtNombreAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[2].Value.ToString());
             txtApellidoPatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[3].Value.ToString());
@@ -615,6 +643,15 @@ namespace sistema_maestros1
         }
 
         #endregion
-        
+
+        private void cbGradoAlumno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbNivelAlumno_Click(object sender, EventArgs e)
+        {
+            cbGradoAlumno.Text = "Seleccionar Grado";
+        }
     }
 }

@@ -56,6 +56,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAhT)).BeginInit();
@@ -144,6 +145,7 @@
             this.dgvTutor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTutor.Size = new System.Drawing.Size(388, 191);
             this.dgvTutor.TabIndex = 3;
+            this.dgvTutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTutor_CellContentClick);
             // 
             // btnAgregar
             // 
@@ -198,6 +200,7 @@
             this.dgvAhT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAhT.Size = new System.Drawing.Size(390, 191);
             this.dgvAhT.TabIndex = 5;
+            this.dgvAhT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAhT_CellContentClick);
             // 
             // label3
             // 
@@ -385,12 +388,22 @@
             this.label6.TabIndex = 105;
             this.label6.Text = "Padre/Tutor:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(485, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 106;
+            this.label7.Text = "label7";
+            // 
             // tutor_has_alumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(850, 560);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -457,5 +470,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
