@@ -236,7 +236,7 @@ namespace sistema_maestros1
             txtTelefonoPadre.Enabled = true; txtTelefonoPadre.Text = "";
             cbParentescoPadre.Enabled = true; cbParentescoPadre.Text = "Seleccionar el parentesco";
             txtCorreoPadre.Enabled = true; txtCorreoPadre.Text = "";
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON MODIFICAR PADRES
@@ -253,7 +253,7 @@ namespace sistema_maestros1
             txtTelefonoPadre.Enabled = true;
             cbParentescoPadre.Enabled = false;
             txtCorreoPadre.Enabled = true;
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON ELIMINAR PADRES
@@ -270,165 +270,176 @@ namespace sistema_maestros1
             txtTelefonoPadre.Enabled = false;
             cbParentescoPadre.Enabled = false;
             txtCorreoPadre.Enabled = false;
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true; btnAceptar.Text = "Eliminar";
         }
 
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && txtTelefonoPadre.TextLength == 10 && cbParentescoPadre.Text != "Seleccionar el parentesco" && txtCorreoPadre.Text != "" )
+            if (tctNombrePadre.Text != "" && txtApellidoPatPadre.Text != "" && txtApellidoMatPadre.Text != "" && txtTelefonoPadre.Text != "" && cbParentescoPadre.Text != "Seleccionar el parentesco" /*&& txtCorreoPadre.Text != ""*/ )
             {
-                string email = txtCorreoPadre.Text;
-                bool verificar = email.Contains("@"); 
-                bool verificar2 = email.Contains(".com");
-                bool verificar3 = email.Contains(".es");
-                bool verificar4 = email.Contains(".mx");
-                bool verificar5 = email.Contains(".edu");
 
-                if ((verificar == true && verificar2 == true) || (verificar == true && verificar3 == true) || (verificar == true && verificar4 == true) || (verificar == true && verificar5 == true) || (txtCorreoPadre.Text == "No aplica" || txtCorreoPadre.Text == "no aplica" || txtCorreoPadre.Text == "No Aplica") || (txtCorreoPadre.Text == "n/a" || txtCorreoPadre.Text == "N/a" || txtCorreoPadre.Text == "N/A"))
+                if (txtTelefonoPadre.Text.Length == 10)
                 {
-                    if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        
-                        if (opcionBotones == 0)
-                        {
-                            generarID();
-                            ClassPadres tu = new ClassPadres();
-                            tu.tu_id_tutor = label7.Text;
-                            tu.tu_nombre_tutor = tctNombrePadre.Text;
-                            tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
-                            tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
-                            tu.tu_telefono_tutor = txtTelefonoPadre.Text;
-                            tu.tu_parentesco_tutor = cbParentescoPadre.Text;
-                            tu.tu_correo_tutor = txtCorreoPadre.Text;
 
-                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+
+
+                    string email = txtCorreoPadre.Text;
+                    bool verificar = email.Contains("@");
+                    bool verificar2 = email.Contains(".com");
+                    bool verificar3 = email.Contains(".es");
+                    bool verificar4 = email.Contains(".mx");
+                    bool verificar5 = email.Contains(".edu");
+
+                    if ((verificar == true && verificar2 == true) || (verificar == true && verificar3 == true) || (verificar == true && verificar4 == true) || (verificar == true && verificar5 == true) || (txtCorreoPadre.Text == "No aplica" || txtCorreoPadre.Text == "no aplica" || txtCorreoPadre.Text == "No Aplica") || (txtCorreoPadre.Text == "n/a" || txtCorreoPadre.Text == "N/a" || txtCorreoPadre.Text == "N/A") || txtCorreoPadre.Text == "")
+                    {
+                        if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+
+                            if (opcionBotones == 0)
                             {
-                                string mensaje2 = wsPHP.validarNumero(txtTelefonoPadre.Text);
-                                if (mensaje2 != null)
+                                generarID();
+                                ClassPadres tu = new ClassPadres();
+                                tu.tu_id_tutor = label7.Text;
+                                tu.tu_nombre_tutor = tctNombrePadre.Text;
+                                tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
+                                tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
+                                tu.tu_telefono_tutor = txtTelefonoPadre.Text;
+                                tu.tu_parentesco_tutor = cbParentescoPadre.Text;
+                                tu.tu_correo_tutor = txtCorreoPadre.Text;
+
+                                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
-                                    MessageBox.Show("Este numero ya se encuentra registrado y le pertenece a " + mensaje2, "¡Numeros repetidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    string mensaje2 = wsPHP.validarNumero(txtTelefonoPadre.Text);
+                                    if (mensaje2 != null)
+                                    {
+                                        MessageBox.Show("Este numero ya se encuentra registrado y le pertenece a " + mensaje2, "¡Numeros repetidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                    else
+                                    {
+                                        try
+                                        {
+                                            dgvPadre.Enabled = true;
+                                            string mensaje = wsPHP.agregarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
+                                            MessageBox.Show(mensaje, "¡Usuario Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            cargarDatosTabla();
+                                            inicializacionCampos();
+                                            dgvPadre.Enabled = true;
+                                        }
+                                        catch
+                                        {
+                                            MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+
+                                    }
                                 }
-                                else
+                            }
+
+                            else if (opcionBotones == 1)
+                            {
+                                ClassPadres tu = new ClassPadres();
+                                tu.tu_id_tutor = txtIdPadre.Text;
+                                tu.tu_nombre_tutor = tctNombrePadre.Text;
+                                tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
+                                tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
+                                tu.tu_telefono_tutor = txtTelefonoPadre.Text;
+                                tu.tu_parentesco_tutor = cbParentescoPadre.Text;
+                                tu.tu_correo_tutor = txtCorreoPadre.Text;
+                                string mensaje2;
+                                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
+                                    if (txtTelefonoPadre.Text != dgvPadre.CurrentRow.Cells[4].Value.ToString())
+                                    {
+                                        mensaje2 = wsPHP.validarNumero(txtTelefonoPadre.Text);
+                                        if (mensaje2 == null)
+                                        {
+
+                                            try
+                                            {
+                                                string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
+                                                MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                cargarDatosTabla();
+                                                inicializacionCampos();
+                                                dgvPadre.Enabled = true;
+                                            }
+                                            catch
+                                            {
+                                                MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+
+                                        }
+
+                                        else
+                                        {
+                                            MessageBox.Show("Este numero ya se encuentra registrado y le pertenece a " + mensaje2, "¡Numeros repetidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        mensaje2 = null;
+                                        if (mensaje2 == null)
+                                        {
+
+                                            try
+                                            {
+                                                string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
+                                                MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                cargarDatosTabla();
+                                                inicializacionCampos();
+                                                dgvPadre.Enabled = true;
+                                            }
+                                            catch
+                                            {
+                                                MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+
+                                        }
+
+                                        else if (wsPHP.validarNumero(txtTelefonoPadre.Text) != "")
+                                        {
+                                            mensaje2 = wsPHP.validarNumero(txtTelefonoPadre.Text);
+                                            MessageBox.Show("Este numero ya se encuentra registrado y le pertenece a " + mensaje2, "¡Numeros repetidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            else if (opcionBotones == 2)
+                            {
+                                ClassPadres tu = new ClassPadres();
+                                tu.tu_id_tutor = txtIdPadre.Text;
+
+                                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                                {
+
                                     try
                                     {
-                                        dgvPadre.Enabled = true;
-                                        string mensaje = wsPHP.agregarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
-                                        MessageBox.Show(mensaje, "¡Usuario Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                        string mensaje = wsPHP.eliminarTutor(tu.tu_id_tutor);
+                                        MessageBox.Show(mensaje, "¡Tutor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         cargarDatosTabla();
                                         inicializacionCampos();
                                         dgvPadre.Enabled = true;
                                     }
                                     catch
                                     {
-                                        MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                    
-                                }
-                            }
-                        }
-                    
-                    else if (opcionBotones == 1)
-                    {
-                        ClassPadres tu = new ClassPadres();
-                        tu.tu_id_tutor = txtIdPadre.Text;
-                        tu.tu_nombre_tutor = tctNombrePadre.Text;
-                        tu.tu_apellidoPat_tutor = txtApellidoPatPadre.Text;
-                        tu.tu_apellidoMat_tutor = txtApellidoMatPadre.Text;
-                        tu.tu_telefono_tutor = txtTelefonoPadre.Text;
-                        tu.tu_parentesco_tutor = cbParentescoPadre.Text;
-                        tu.tu_correo_tutor = txtCorreoPadre.Text;
-                            string mensaje2;
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        {
-                            if (txtTelefonoPadre.Text != dgvPadre.CurrentRow.Cells[4].Value.ToString())
-                            {
-                                    mensaje2 = wsPHP.validarNumero(txtTelefonoPadre.Text);
-                                    if (mensaje2 == null)
-                                    {
-
-                                        try
-                                        {
-                                            string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
-                                            MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            cargarDatosTabla();
-                                            inicializacionCampos();
-                                            dgvPadre.Enabled = true;
-                                        }
-                                        catch
-                                        {
-                                            MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-
-                                    }
-
-                                    else
-                                    {
-                                        MessageBox.Show("Este numero ya se encuentra registrado y le pertenece a " + mensaje2, "¡Numeros repetidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                                    }
-                                }
-                                else
-                                {
-                                    mensaje2 = null;
-                                    if (mensaje2 == null)
-                                    {
-
-                                        try
-                                        {
-                                            string mensaje = wsPHP.modificarTutor(tu.tu_id_tutor, tu.tu_nombre_tutor, tu.tu_apellidoPat_tutor, tu.tu_apellidoMat_tutor, tu.tu_telefono_tutor, tu.tu_parentesco_tutor, tu.tu_correo_tutor);
-                                            MessageBox.Show(mensaje, "¡tutor modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                            cargarDatosTabla();
-                                            inicializacionCampos();
-                                            dgvPadre.Enabled = true;
-                                        }
-                                        catch
-                                        {
-                                            MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al modificar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        }
-                                        
-                                    }
-                                    
-                                    else if (wsPHP.validarNumero(txtTelefonoPadre.Text) != "")
-                                    {
-                                        mensaje2 = wsPHP.validarNumero(txtTelefonoPadre.Text);
-                                        MessageBox.Show("Este numero ya se encuentra registrado y le pertenece a " + mensaje2, "¡Numeros repetidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                                        MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                             }
-                    }
 
-                    else if (opcionBotones == 2)
-                    {
-                        ClassPadres tu = new ClassPadres();
-                        tu.tu_id_tutor = txtIdPadre.Text;
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                        {
-
-                                try
-                                {
-                                    string mensaje = wsPHP.eliminarTutor(tu.tu_id_tutor);
-                                    MessageBox.Show(mensaje, "¡Tutor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    cargarDatosTabla();
-                                    inicializacionCampos();
-                                    dgvPadre.Enabled = true;
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
                         }
                     }
-                        
+                    else
+                    {
+                        MessageBox.Show("Correo Invalido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Correo Invalido", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Debes llenar correctamente el numero celular. Debe ser de 10 digitos","¡ERROR!");
                 }
                 
             }
@@ -450,7 +461,7 @@ namespace sistema_maestros1
         {
             NombresColumnas();
 
-            txtIdPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdPadre.Text = dgvPadre.CurrentRow.Cells[0].Value.ToString();
             tctNombrePadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[1].Value.ToString());
             txtApellidoPatPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[2].Value.ToString());
             txtApellidoMatPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[3].Value.ToString());

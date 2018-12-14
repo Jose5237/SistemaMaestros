@@ -191,7 +191,15 @@ namespace sistema_maestros1
         //METODO DE txtCostoTaller PARA ACEPTAR SOLO NUMEROS
         private void txtCostoTaller_KeyPress(object sender, KeyPressEventArgs e)
         {
-            v.SoloNumerosDecimal(e);
+            if (e.KeyChar == 46 && txtCostoTaller.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46)
+            {
+                e.Handled = true;
+            }
         }
 
         //METODO PARA NO EDITAR EL TEXTO DE LOS COMBOBOX
@@ -254,7 +262,7 @@ namespace sistema_maestros1
             txtJustificacionCostoTaller.Enabled = true; txtJustificacionCostoTaller.Text = "";
             txtHerramientasTaller.Enabled = true; txtHerramientasTaller.Text = "";
 
-            btnAceptar.Enabled = true;  btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen;
+            btnAceptar.Enabled = true;  btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Text = "GUARDAR ✔";
 
         }
 
@@ -278,7 +286,7 @@ namespace sistema_maestros1
             txtJustificacionCostoTaller.Enabled = true;
             txtHerramientasTaller.Enabled = true;
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON ELIMINAR TALLER
@@ -303,7 +311,7 @@ namespace sistema_maestros1
             txtJustificacionCostoTaller.Enabled = false;
             txtHerramientasTaller.Enabled = false;
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Text = "Eliminar";
         }
 
         //BOTON ACEPTAR (CRUD)
@@ -593,11 +601,12 @@ namespace sistema_maestros1
         //LOAD
         private void ModuloTalleres_Load(object sender, EventArgs e)
         {
+            cargarDatosTabla();
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
                 try
                 {
-                    cargarDatosTabla();
+                    
 
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
                     var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
@@ -642,40 +651,24 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV)
         private void dgvTaller_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            NombresColumnas();
-
-            txtIdEscuela.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                String resNombreEscuela = wsPHP.buscarEscuela(txtIdEscuela.Text);
-                var nomEscuela = JsonConvert.DeserializeObject<List<ClassEscuela>>(resNombreEscuela);
-
-                foreach (var nombreEscuela in nomEscuela)
-                {
-
-                    cbEscuelaTaller.Text = Convert.ToString(nombreEscuela.es_nombre_escuela);
-
-                }
-            }
-
-            //cbEscuelaTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
+            //NombresColumnas();
+            cbEscuelaTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdEscuela.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtIdTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtNombreTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtDescripcionTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
+            string fechaI = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[6].Value.ToString());
+            string fechaF = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[7].Value.ToString());
             
-            txtIdTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtNombreTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtDescripcionTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[4].Value.ToString());
-            string fechaI = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[5].Value.ToString());
-            string fechaF = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[6].Value.ToString());
+            cbNivelTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[8].Value.ToString());
             
-            cbNivelTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[7].Value.ToString());
-            
-            cbGradoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[8].Value.ToString());
-            cbProfeTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
-            txtIdProfesorTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
-            txtHabilidadesTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[10].Value.ToString());
-            txtJustificacionCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[11].Value.ToString());
-            txtHerramientasTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[12].Value.ToString());
+            cbGradoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[9].Value.ToString());
+            cbProfeTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[10].Value.ToString());
+            txtIdProfesorTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[10].Value.ToString());
+            txtHabilidadesTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[11].Value.ToString());
+            txtJustificacionCostoTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[12].Value.ToString());
+            txtHerramientasTaller.Text = Convert.ToString(dgvTaller.Rows[e.RowIndex].Cells[13].Value.ToString());
             
             string newI = fechaI.Replace("-", "/");
             txtFechaInicio.Text = newI;
@@ -766,18 +759,19 @@ namespace sistema_maestros1
         public void NombresColumnas()
         {
             dgvTaller.Columns[0].HeaderText = "Escuela";
-            dgvTaller.Columns[1].HeaderText = "ID Taller";
-            dgvTaller.Columns[2].HeaderText = "Nombre Taller";
-            dgvTaller.Columns[3].HeaderText = "Costo";
-            dgvTaller.Columns[4].HeaderText = "Descripcion del Taller";
-            dgvTaller.Columns[5].HeaderText = "Fecha de Inicio";
-            dgvTaller.Columns[6].HeaderText = "Fecha de Termino";
-            dgvTaller.Columns[7].HeaderText = "Nivel Educativo";
-            dgvTaller.Columns[8].HeaderText = "Grado";
-            dgvTaller.Columns[9].HeaderText = "Profesor";
-            dgvTaller.Columns[10].HeaderText = "Habilidades a desarrollar";
-            dgvTaller.Columns[11].HeaderText = "Justificacion de costo";
-            dgvTaller.Columns[12].HeaderText = "Herramientas";
+            dgvTaller.Columns[1].Visible = false;
+            dgvTaller.Columns[2].HeaderText = "ID Taller";
+            dgvTaller.Columns[3].HeaderText = "Nombre Taller";
+            dgvTaller.Columns[4].HeaderText = "Costo";
+            dgvTaller.Columns[5].HeaderText = "Descripcion del Taller";
+            dgvTaller.Columns[6].HeaderText = "Fecha de Inicio";
+            dgvTaller.Columns[7].HeaderText = "Fecha de Termino";
+            dgvTaller.Columns[8].HeaderText = "Nivel Educativo";
+            dgvTaller.Columns[9].HeaderText = "Grado";
+            dgvTaller.Columns[10].HeaderText = "Profesor";
+            dgvTaller.Columns[11].HeaderText = "Habilidades a desarrollar";
+            dgvTaller.Columns[12].HeaderText = "Justificacion de costo";
+            dgvTaller.Columns[13].HeaderText = "Herramientas";
         }
 
         public void inicializacionCampos()
@@ -831,6 +825,11 @@ namespace sistema_maestros1
                 }
             }
             
+        }
+
+        private void cbEscuelaTaller_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
         }
     }
 }

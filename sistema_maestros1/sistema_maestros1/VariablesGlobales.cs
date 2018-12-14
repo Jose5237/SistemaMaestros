@@ -17,5 +17,7 @@ namespace variablesGlobales
         public static string id_escuela;
 
         public static string fechaIni_taller;
+
+        public static int ventanaAvierta;
     }
 }

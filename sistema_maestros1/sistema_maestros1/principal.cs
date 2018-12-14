@@ -180,6 +180,17 @@ namespace sistema_maestros1
             }
         }
 
+        private void btnActualizador1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de pasar a otra ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+
+                ModuloActualizacionMasivaAlumnos actualizador = new ModuloActualizacionMasivaAlumnos();
+                actualizador.Show();
+            }
+        }
+
         private void btnIncidencias1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -291,5 +302,7 @@ namespace sistema_maestros1
         {
 
         }
+
+
     }
 }

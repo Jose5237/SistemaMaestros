@@ -184,24 +184,17 @@ namespace sistema_maestros1
         //METODOS DE VALIDACIONES
         #region
         //METODO DE txtCostoMaterial PARA SOLO ACEPTAR NUMEROS Y NUMEROS CON PUNTO DECIMAL
-
-        //bool bandera = true;
         private void txtCostoMaterial_KeyPress(object sender, KeyPressEventArgs e)
         {
-            v.SoloNumerosDecimal(e);
-
-            if (e.KeyChar.ToString().Equals(".") && (txtCostoMaterial.Text.IndexOf(".") == 0))
-            {
-                e.Handled = false;
-                //bandera = false;
-            }
-            else if(e.KeyChar.ToString().Equals(".") && (txtCostoMaterial.Text.IndexOf(".") == 1))
+            if(e.KeyChar == 46 && txtCostoMaterial.Text.IndexOf('.') != -1)
             {
                 e.Handled = true;
-                MessageBox.Show("Solo se aceptan números decimales y un solo punto", "¡Error de caracteres!");
-                //bandera = false;
+                return;
             }
-
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46)
+            {
+                e.Handled = true;
+            }
         }
 
 
@@ -244,7 +237,7 @@ namespace sistema_maestros1
             txtNombreMaterial.Enabled = true; txtNombreMaterial.Text = "";
             txtCostoMaterial.Enabled = true; txtCostoMaterial.Text = "";
 
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON MODIFICAR MATERIAL
@@ -261,7 +254,7 @@ namespace sistema_maestros1
             txtNombreMaterial.Enabled = true;
             txtCostoMaterial.Enabled = true;
 
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
 
         }
 
@@ -279,7 +272,7 @@ namespace sistema_maestros1
             txtNombreMaterial.Enabled = false;
             txtCostoMaterial.Enabled = false;
 
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true; btnAceptar.Text = "Eliminar";
 
         }
 
@@ -448,53 +441,67 @@ namespace sistema_maestros1
         //LOAD
         private void ModuloMaterial_Load(object sender, EventArgs e)
         {
+            cargarDatosTabla();
+
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
-
+            
                 try
                 {
-                    cargarDatosTabla();
-
+                    
+            
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
                     var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
+            
                     foreach (var nomEsc in respEsc)
                     {
                         ComboBoxItem item = new ComboBoxItem();
-
+            
                         item.Text = nomEsc.es_nombre_escuela;
                         item.Value = Convert.ToString(nomEsc.es_id_escuela);
                         cbEscuelaMaterial.Items.Add(item);
-
+            
                     }
 
                     //TALLER
 
-                    String respuestaTaller = wsPHP.cargarDatosDeTaller();
-                    var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
-
-                    foreach (var nomTall in respTall)
+                    if (txtIdEscuela.Text != "")
                     {
-                        ComboBoxItem item = new ComboBoxItem();
 
-                        item.Text = nomTall.ta_nombre_taller;
-                        item.Value = Convert.ToString(nomTall.ta_id_taller);
-                        cbTallerMaterial.Items.Add(item);
 
+
+                        String respuestaTaller = wsPHP.cargarDatosDeTaller();
+                        var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
+
+                        foreach (var nomTall in respTall)
+                        {
+                            ComboBoxItem item = new ComboBoxItem();
+
+                            item.Text = nomTall.ta_nombre_taller;
+                            item.Value = Convert.ToString(nomTall.ta_id_taller);
+                            cbTallerMaterial.Items.Add(item);
+
+                        }
                     }
 
                     //DINAMICA
-                    String respuestaDinamica = wsPHP.cargarDatosDinamica();
-                    var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
 
-                    foreach (var nomDina in respDina)
+                    if (txtIdTaller.Text != "")
                     {
-                        ComboBoxItem item = new ComboBoxItem();
 
-                        item.Text = nomDina.di_nombre_dinamica;
-                        item.Value = Convert.ToString(nomDina.di_id_dinamica);
-                        cbDinamicaMaterial.Items.Add(item);
 
+                        String respuestaDinamica = wsPHP.cargarDatosDinamica();
+                        var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
+
+                        foreach (var nomDina in respDina)
+                        {
+                            ComboBoxItem item = new ComboBoxItem();
+
+                            item.Text = nomDina.di_nombre_dinamica;
+                            item.Value = Convert.ToString(nomDina.di_id_dinamica);
+                            cbDinamicaMaterial.Items.Add(item);
+
+                        }
                     }
                 }
                 catch
@@ -511,17 +518,16 @@ namespace sistema_maestros1
             NombresColumnas();
 
             cbEscuelaMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuela.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[0].Value.ToString());
-
             cbTallerMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtIdTaller.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[1].Value.ToString());
-
             cbDinamicaMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtIdDinamica.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[2].Value.ToString());
 
-            txtIdMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtNombreMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtCostoMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txtIdEscuela.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtIdTaller.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtIdDinamica.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[5].Value.ToString());
+
+            txtIdMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[6].Value.ToString());
+            txtNombreMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[7].Value.ToString());
+            txtCostoMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[8].Value.ToString());
         }
 
 
@@ -599,10 +605,13 @@ namespace sistema_maestros1
         {
             dgvMaterial.Columns[0].HeaderText = "Escuela";
             dgvMaterial.Columns[1].HeaderText = "Taller";
-            dgvMaterial.Columns[2].HeaderText = "Dinamica";
-            dgvMaterial.Columns[3].HeaderText = "ID Material";
-            dgvMaterial.Columns[4].HeaderText = "Nombre de Material";
-            dgvMaterial.Columns[5].HeaderText = "Costo Unitario";
+            dgvMaterial.Columns[2].Visible = false;
+            dgvMaterial.Columns[3].Visible = false;
+            dgvMaterial.Columns[4].Visible = false;
+            dgvMaterial.Columns[5].HeaderText = "Dinamica";
+            dgvMaterial.Columns[6].HeaderText = "ID Material";
+            dgvMaterial.Columns[7].HeaderText = "Nombre de Material";
+            dgvMaterial.Columns[8].HeaderText = "Costo Unitario";
         }
 
         public void inicializacionCampos()
@@ -622,7 +631,22 @@ namespace sistema_maestros1
 
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
-        
+
         #endregion
+
+        private void cbEscuelaMaterial_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtIdTaller.Text = "";
+            cbTallerMaterial.Text = "Seleccionar Taller";
+
+            txtIdDinamica.Text = "";
+            cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+        }
+
+        private void cbTallerMaterial_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtIdDinamica.Text = "";
+            cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+        }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEscuelas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorEscuela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -77,9 +77,17 @@
             this.checkPrimaria = new System.Windows.Forms.CheckBox();
             this.checkSecundaria = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPrecioEscuela = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtEstadoEscuela = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBuscadorEscuela
@@ -118,7 +126,7 @@
             // 
             this.txtCorreoEscuela.Enabled = false;
             this.txtCorreoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtCorreoEscuela.Location = new System.Drawing.Point(167, 396);
+            this.txtCorreoEscuela.Location = new System.Drawing.Point(7, 386);
             this.txtCorreoEscuela.MaxLength = 50;
             this.txtCorreoEscuela.Name = "txtCorreoEscuela";
             this.txtCorreoEscuela.Size = new System.Drawing.Size(211, 23);
@@ -128,7 +136,7 @@
             // 
             this.txtTel3Escuela.Enabled = false;
             this.txtTel3Escuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtTel3Escuela.Location = new System.Drawing.Point(167, 349);
+            this.txtTel3Escuela.Location = new System.Drawing.Point(7, 339);
             this.txtTel3Escuela.MaxLength = 10;
             this.txtTel3Escuela.Name = "txtTel3Escuela";
             this.txtTel3Escuela.Size = new System.Drawing.Size(211, 23);
@@ -139,7 +147,7 @@
             // 
             this.txtTel2Escuela.Enabled = false;
             this.txtTel2Escuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtTel2Escuela.Location = new System.Drawing.Point(167, 302);
+            this.txtTel2Escuela.Location = new System.Drawing.Point(7, 292);
             this.txtTel2Escuela.MaxLength = 10;
             this.txtTel2Escuela.Name = "txtTel2Escuela";
             this.txtTel2Escuela.Size = new System.Drawing.Size(211, 23);
@@ -151,7 +159,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label9.Location = new System.Drawing.Point(164, 374);
+            this.label9.Location = new System.Drawing.Point(4, 364);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(154, 20);
             this.label9.TabIndex = 50;
@@ -162,7 +170,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label10.Location = new System.Drawing.Point(164, 327);
+            this.label10.Location = new System.Drawing.Point(4, 317);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 20);
             this.label10.TabIndex = 49;
@@ -173,7 +181,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label11.Location = new System.Drawing.Point(164, 280);
+            this.label11.Location = new System.Drawing.Point(4, 270);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 20);
             this.label11.TabIndex = 48;
@@ -188,7 +196,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(167, 604);
+            this.btnAceptar.Location = new System.Drawing.Point(7, 648);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 10;
@@ -201,7 +209,7 @@
             // 
             this.txtTel1Escuela.Enabled = false;
             this.txtTel1Escuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtTel1Escuela.Location = new System.Drawing.Point(167, 255);
+            this.txtTel1Escuela.Location = new System.Drawing.Point(7, 245);
             this.txtTel1Escuela.MaxLength = 10;
             this.txtTel1Escuela.Name = "txtTel1Escuela";
             this.txtTel1Escuela.Size = new System.Drawing.Size(211, 23);
@@ -212,7 +220,7 @@
             // 
             this.txtDireccionEscuela.Enabled = false;
             this.txtDireccionEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtDireccionEscuela.Location = new System.Drawing.Point(167, 208);
+            this.txtDireccionEscuela.Location = new System.Drawing.Point(4, 45);
             this.txtDireccionEscuela.MaxLength = 200;
             this.txtDireccionEscuela.Name = "txtDireccionEscuela";
             this.txtDireccionEscuela.Size = new System.Drawing.Size(211, 23);
@@ -222,7 +230,7 @@
             // 
             this.txtNombreEscuela.Enabled = false;
             this.txtNombreEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtNombreEscuela.Location = new System.Drawing.Point(167, 161);
+            this.txtNombreEscuela.Location = new System.Drawing.Point(7, 75);
             this.txtNombreEscuela.MaxLength = 100;
             this.txtNombreEscuela.Name = "txtNombreEscuela";
             this.txtNombreEscuela.Size = new System.Drawing.Size(211, 23);
@@ -232,7 +240,7 @@
             // 
             this.txtIdEscuela.Enabled = false;
             this.txtIdEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtIdEscuela.Location = new System.Drawing.Point(167, 114);
+            this.txtIdEscuela.Location = new System.Drawing.Point(7, 28);
             this.txtIdEscuela.Name = "txtIdEscuela";
             this.txtIdEscuela.Size = new System.Drawing.Size(211, 23);
             this.txtIdEscuela.TabIndex = 1;
@@ -242,7 +250,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label4.Location = new System.Drawing.Point(167, 92);
+            this.label4.Location = new System.Drawing.Point(7, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 42;
@@ -253,7 +261,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label3.Location = new System.Drawing.Point(164, 233);
+            this.label3.Location = new System.Drawing.Point(4, 223);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 41;
@@ -264,18 +272,18 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(164, 186);
+            this.label2.Location = new System.Drawing.Point(1, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
+            this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 40;
-            this.label2.Text = "Direccion:";
+            this.label2.Text = "Calle:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label1.Location = new System.Drawing.Point(167, 139);
+            this.label1.Location = new System.Drawing.Point(7, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 39;
@@ -343,23 +351,23 @@
             this.dgvEscuela.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvEscuela.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEscuela.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEscuela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEscuela.EnableHeadersVisualStyles = false;
             this.dgvEscuela.GridColor = System.Drawing.Color.Thistle;
             this.dgvEscuela.Location = new System.Drawing.Point(423, 105);
@@ -367,8 +375,8 @@
             this.dgvEscuela.Name = "dgvEscuela";
             this.dgvEscuela.ReadOnly = true;
             this.dgvEscuela.RowHeadersVisible = false;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEscuela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEscuela.Size = new System.Drawing.Size(704, 513);
             this.dgvEscuela.TabIndex = 35;
@@ -378,7 +386,7 @@
             // 
             this.txtContactoEscuela.Enabled = false;
             this.txtContactoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtContactoEscuela.Location = new System.Drawing.Point(167, 443);
+            this.txtContactoEscuela.Location = new System.Drawing.Point(7, 433);
             this.txtContactoEscuela.MaxLength = 50;
             this.txtContactoEscuela.Name = "txtContactoEscuela";
             this.txtContactoEscuela.Size = new System.Drawing.Size(211, 23);
@@ -390,7 +398,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(164, 421);
+            this.label5.Location = new System.Drawing.Point(4, 411);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(141, 20);
             this.label5.TabIndex = 57;
@@ -577,7 +585,7 @@
             // 
             this.txtResponsablePagoEscuela.Enabled = false;
             this.txtResponsablePagoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtResponsablePagoEscuela.Location = new System.Drawing.Point(167, 490);
+            this.txtResponsablePagoEscuela.Location = new System.Drawing.Point(7, 480);
             this.txtResponsablePagoEscuela.MaxLength = 50;
             this.txtResponsablePagoEscuela.Name = "txtResponsablePagoEscuela";
             this.txtResponsablePagoEscuela.Size = new System.Drawing.Size(211, 23);
@@ -589,7 +597,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label7.Location = new System.Drawing.Point(164, 468);
+            this.label7.Location = new System.Drawing.Point(4, 458);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(173, 20);
             this.label7.TabIndex = 107;
@@ -684,12 +692,99 @@
             this.groupBox1.Controls.Add(this.checkSecundaria);
             this.groupBox1.Controls.Add(this.checkPrimaria);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(168, 513);
+            this.groupBox1.Location = new System.Drawing.Point(8, 503);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(210, 80);
             this.groupBox1.TabIndex = 137;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nivel Educativo:";
+            // 
+            // txtPrecioEscuela
+            // 
+            this.txtPrecioEscuela.Enabled = false;
+            this.txtPrecioEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtPrecioEscuela.Location = new System.Drawing.Point(10, 606);
+            this.txtPrecioEscuela.MaxLength = 50;
+            this.txtPrecioEscuela.Name = "txtPrecioEscuela";
+            this.txtPrecioEscuela.Size = new System.Drawing.Size(143, 23);
+            this.txtPrecioEscuela.TabIndex = 138;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label13.Location = new System.Drawing.Point(7, 584);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 20);
+            this.label13.TabIndex = 139;
+            this.label13.Text = "Precio:";
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtPrecioEscuela);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtIdEscuela);
+            this.panel1.Controls.Add(this.txtNombreEscuela);
+            this.panel1.Controls.Add(this.txtResponsablePagoEscuela);
+            this.panel1.Controls.Add(this.txtTel1Escuela);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.txtTel2Escuela);
+            this.panel1.Controls.Add(this.txtTel3Escuela);
+            this.panel1.Controls.Add(this.txtCorreoEscuela);
+            this.panel1.Controls.Add(this.btnAceptar);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.txtContactoEscuela);
+            this.panel1.Location = new System.Drawing.Point(167, 96);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(250, 533);
+            this.panel1.TabIndex = 140;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label14.Location = new System.Drawing.Point(1, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 20);
+            this.label14.TabIndex = 141;
+            this.label14.Text = "Estado:";
+            // 
+            // txtEstadoEscuela
+            // 
+            this.txtEstadoEscuela.Enabled = false;
+            this.txtEstadoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtEstadoEscuela.Location = new System.Drawing.Point(4, 92);
+            this.txtEstadoEscuela.MaxLength = 200;
+            this.txtEstadoEscuela.Name = "txtEstadoEscuela";
+            this.txtEstadoEscuela.Size = new System.Drawing.Size(211, 23);
+            this.txtEstadoEscuela.TabIndex = 140;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtEstadoEscuela);
+            this.groupBox2.Controls.Add(this.txtDireccionEscuela);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.groupBox2.Location = new System.Drawing.Point(4, 99);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(220, 123);
+            this.groupBox2.TabIndex = 141;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Direccion:";
             // 
             // ModuloEscuelas
             // 
@@ -697,12 +792,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
-            this.Controls.Add(this.txtResponsablePagoEscuela);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnPagos2);
             this.Controls.Add(this.btnMenuPrincipal2);
             this.Controls.Add(this.btnMaterial2);
@@ -715,26 +808,9 @@
             this.Controls.Add(this.esconder_pantalla);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtContactoEscuela);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBuscadorEscuela);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.txtCorreoEscuela);
-            this.Controls.Add(this.txtTel3Escuela);
-            this.Controls.Add(this.txtTel2Escuela);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.txtTel1Escuela);
-            this.Controls.Add(this.txtDireccionEscuela);
-            this.Controls.Add(this.txtNombreEscuela);
-            this.Controls.Add(this.txtIdEscuela);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEliminarEscuela);
             this.Controls.Add(this.btnModificarEscuela);
             this.Controls.Add(this.btnAgregarEscuela);
@@ -749,6 +825,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -801,5 +881,11 @@
         private System.Windows.Forms.CheckBox checkPrimaria;
         private System.Windows.Forms.CheckBox checkSecundaria;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtPrecioEscuela;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtEstadoEscuela;
     }
 }

@@ -81,6 +81,8 @@ namespace sistema_maestros1
                 ModuloEscuelas modescuela = new ModuloEscuelas();
                 modescuela.Show();
 
+                
+
             }
         }
 
@@ -251,7 +253,7 @@ namespace sistema_maestros1
             cbGradoAlumno.Enabled = true; cbGradoAlumno.Text = "Seleccionar Grado";
             cbNivelAlumno.Enabled = true; cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
             cbStatusAlumno.Enabled = true; cbStatusAlumno.Text = "Seleccionar Status";
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
             btnAsignarPadre.Visible = false;
         }
          
@@ -267,7 +269,7 @@ namespace sistema_maestros1
             txtApellidoMatAlumno.Enabled = true;
             cbStatusAlumno.Enabled = true;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
-            btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true;
+            btnAsignarPadre.Visible = true; btnAsignarPadre.Enabled = true; btnAceptar.Text = "GUARDAR ✔";
 
             Globales.id_escuela = txtIdEscuelaAlumno.Text;
             Globales.id_alumno = txtIdAlumno.Text;
@@ -289,7 +291,7 @@ namespace sistema_maestros1
                 cbGradoAlumno.Enabled = false;
                 cbNivelAlumno.Enabled = false;
             cbStatusAlumno.Enabled = false;
-                btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
+                btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true; btnAceptar.Text = "Eliminar";
             btnAsignarPadre.Visible = false;
             }
         
@@ -353,40 +355,51 @@ namespace sistema_maestros1
                         Globales.id_alumno = al.al_id_alumno;
                         Globales.nombre_alumno = al.al_nombre_alumno + " " + al.al_apellidoPat_alumno + " " + al.al_apellidoMat_alumno;
 
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtIdEscuelaAlumno.Text != "") && (txtNombreAlumno.Text != "" && txtIdAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
                         {
-                            try
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                string mensaje = wsPHP.modificarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
-                                MessageBox.Show(mensaje, "¡Alumno Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                if (MessageBox.Show("¿Deseas tambien actualizar las relaciones de Padres con Alumno?", "Cambiar relacion Padres con Alumno", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                try
                                 {
-                                    tutor_has_alumno tha = new tutor_has_alumno();
-                                    tha.Show();
+                                    string mensaje = wsPHP.modificarAlumno(al.al_id_escuela, al.al_id_alumno, al.al_nombre_alumno, al.al_apellidoPat_alumno, al.al_apellidoMat_alumno, al.al_grado_alumno, al.al_nivel_educativo_alumno, al.al_status_alumno);
+                                    MessageBox.Show(mensaje, "¡Alumno Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (MessageBox.Show("¿Deseas tambien actualizar las relaciones de Padres con Alumno?", "Cambiar relacion Padres con Alumno", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                    {
+                                        tutor_has_alumno tha = new tutor_has_alumno();
+                                        tha.Show();
+                                    }
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
-                            catch
-                            {
-                                MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el usuario", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
                         }
+                        else
+                            MessageBox.Show("Debes seleccionar antes un registro para modificar","¡ERROR!");
                     }
                     else if (opcionBotones == 2)
                     {
                         ClassAlumno al = new ClassAlumno();
                         al.al_id_alumno = txtIdAlumno.Text;
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+
+                        if ((cbEscuelaAlumno.Text != "Seleccionar Escuela") && (txtIdEscuelaAlumno.Text != "") && (txtNombreAlumno.Text != "" && txtIdAlumno.Text != "") && (txtApellidoPatAlumno.Text != "") && (txtApellidoMatAlumno.Text != "") && (cbGradoAlumno.Text != "Seleccionar Grado") && (cbStatusAlumno.Text != "Seleccionar Status"))
                         {
-                            try
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                             {
-                                string mensaje = wsPHP.eliminarAlumno(al.al_id_alumno);
-                                MessageBox.Show(mensaje, "¡Usuario Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                try
+                                {
+                                    string mensaje = wsPHP.eliminarAlumno(al.al_id_alumno);
+                                    MessageBox.Show(mensaje, "¡Usuario Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Ha ocurrido un error, no se ha podido eliminar este usuario", "¡Error al eliminar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
+                        else
+                            MessageBox.Show("Debes seleccionar antes un registro para eliminar","¡ERROR!");
                     }
                     cargarDatosTabla();
                     inicializacionCampos();
@@ -426,7 +439,6 @@ namespace sistema_maestros1
         {
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
-
                 String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaAlumno.Text);
                 var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
                 
@@ -450,8 +462,6 @@ namespace sistema_maestros1
 
                     item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
                     item.Value = Convert.ToString(nomNiv.ne_id_escuela);
-                    //string id = item.Value.ToString();
-
                     cbNivelAlumno.Items.Add(item);
                 }
             }
@@ -497,13 +507,12 @@ namespace sistema_maestros1
                     foreach (var nomEsc in respEsc)
                     {
                         ComboBoxItem item = new ComboBoxItem();
-
+            
                         item.Text = nomEsc.es_nombre_escuela;
-                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
                         cbEscuelaAlumno.Items.Add(item);
-
+            
                     }
-
+            
                 }
                 catch
                 {
@@ -520,27 +529,15 @@ namespace sistema_maestros1
 
             NombresColumnas();
 
-            txtIdEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                String resNombreEscuela = wsPHP.buscarEscuela(txtIdEscuelaAlumno.Text);
-                var nomEscuela = JsonConvert.DeserializeObject<List<ClassEscuela>>(resNombreEscuela);
-
-                foreach (var nombreEscuela in nomEscuela)
-                {
-                    cbEscuelaAlumno.Text = Convert.ToString(nombreEscuela.es_nombre_escuela);
-                }
-            }
-
-            //cbEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtNombreAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtApellidoPatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtApellidoMatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[4].Value.ToString());
-            cbGradoAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[5].Value.ToString());
-            cbNivelAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[6].Value.ToString());
-            cbStatusAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[7].Value.ToString());
+            cbEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txtIdEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtIdAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtNombreAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtApellidoPatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtApellidoMatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[5].Value.ToString());
+            cbGradoAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[6].Value.ToString());
+            cbNivelAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[7].Value.ToString());
+            cbStatusAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[8].Value.ToString());
         }
 
 
@@ -615,6 +612,7 @@ namespace sistema_maestros1
             newID = sub1 + "a" + sub2 + Convert.ToString(n);
             label10.Text = newID;
         }
+
         public void generarIDPAGO()
         {
             webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
@@ -637,16 +635,18 @@ namespace sistema_maestros1
             newID = sub1 + sub2 + Convert.ToString(n);
             label11.Text = newID;
         }
+
         public void NombresColumnas()
         {
             dgvAlumnos.Columns[0].HeaderText = "Escuela";
-            dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
-            dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
-            dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
-            dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
-            dgvAlumnos.Columns[5].HeaderText = "Grado";
-            dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
-            dgvAlumnos.Columns[7].HeaderText = "Status";
+            dgvAlumnos.Columns[1].Visible = false;
+            dgvAlumnos.Columns[2].HeaderText = "ID Alumno";
+            dgvAlumnos.Columns[3].HeaderText = "Nombre(s)";
+            dgvAlumnos.Columns[4].HeaderText = "Apellido Paterno";
+            dgvAlumnos.Columns[5].HeaderText = "Apellido Materno";
+            dgvAlumnos.Columns[6].HeaderText = "Grado";
+            dgvAlumnos.Columns[7].HeaderText = "Nivel Escolar";
+            dgvAlumnos.Columns[8].HeaderText = "Status";
         }
 
         public void inicializacionCampos()
@@ -666,14 +666,16 @@ namespace sistema_maestros1
 
         #endregion
 
-        private void cbGradoAlumno_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void cbNivelAlumno_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+            cbGradoAlumno.Text = "Seleccionar Grado";
         }
 
-        private void cbNivelAlumno_Click(object sender, EventArgs e)
+        private void txtIdEscuelaAlumno_TextChanged(object sender, EventArgs e)
         {
-            cbGradoAlumno.Text = "Seleccionar Grado";
+
         }
     }
 }

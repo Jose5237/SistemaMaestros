@@ -72,6 +72,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtIdAlumnoG2 = new System.Windows.Forms.TextBox();
             this.txtIdEscuelaG2 = new System.Windows.Forms.TextBox();
+            this.txtImportePago = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -399,7 +401,7 @@
             this.btnActualizarPagos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizarPagos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarPagos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnActualizarPagos.Location = new System.Drawing.Point(402, 233);
+            this.btnActualizarPagos.Location = new System.Drawing.Point(402, 283);
             this.btnActualizarPagos.Name = "btnActualizarPagos";
             this.btnActualizarPagos.Size = new System.Drawing.Size(192, 32);
             this.btnActualizarPagos.TabIndex = 9;
@@ -598,6 +600,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.txtImportePago);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtIdAlumnoG2);
             this.groupBox2.Controls.Add(this.txtIdEscuelaG2);
             this.groupBox2.Controls.Add(this.dgvPagos);
@@ -640,6 +644,25 @@
             this.txtIdEscuelaG2.Size = new System.Drawing.Size(74, 22);
             this.txtIdEscuelaG2.TabIndex = 165;
             this.txtIdEscuelaG2.Visible = false;
+            // 
+            // txtImportePago
+            // 
+            this.txtImportePago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImportePago.Location = new System.Drawing.Point(355, 240);
+            this.txtImportePago.Name = "txtImportePago";
+            this.txtImportePago.Size = new System.Drawing.Size(239, 23);
+            this.txtImportePago.TabIndex = 166;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(351, 218);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(138, 20);
+            this.label7.TabIndex = 167;
+            this.label7.Text = "Importe de Pago:";
             // 
             // ModuloPagos
             // 
@@ -721,5 +744,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtIdAlumnoG2;
         private System.Windows.Forms.TextBox txtIdEscuelaG2;
+        private System.Windows.Forms.TextBox txtImportePago;
+        private System.Windows.Forms.Label label7;
     }
 }

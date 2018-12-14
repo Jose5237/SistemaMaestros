@@ -68,6 +68,17 @@ namespace sistema_maestros1
                     }
                 }
                 MessageBox.Show("El nivel y grado de todos los alumnos de la escuela " + cbEscuela.Text + " han sido actualizados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                {
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtIdEscuela.Text), typeof(DataTable));
+                    dgvAlumnos.DataSource = dt;
+                    dgvAlumnos.ClearSelection();
+                    NombresColumnas();
+                }
+                btnActualizarGrado.Visible = false;
+                btnCargarTodo.Visible = true;
+                cbEscuela.Text = "Seleccionar Escuela";
+                
             }
         }
 
@@ -122,44 +133,21 @@ namespace sistema_maestros1
                 DataTable dt = new DataTable();
                 dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtIdEscuela.Text), typeof(DataTable));
                 dgvAlumnos.DataSource = dt;
+                if(dgvAlumnos.RowCount != 0)
+                    NombresColumnas();
             }
         }
 
-        private void cbNivelEducativo_SelectedIndexChanged(object sender, EventArgs e)
+        public void NombresColumnas()
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-
-                DataTable dt = new DataTable();
-                dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.filtrarAlumnosXnivel(txtIdEscuela.Text, cbNivelEducativo.Text), typeof(DataTable));
-                dgvAlumnos.DataSource = dt;
-
-            }
-            if (cbNivelEducativo.SelectedIndex == 0 || cbNivelEducativo.SelectedIndex == 2)
-            {
-                cbGrado.Items.Clear();
-                cbGrado.Items.Add("1°");
-                cbGrado.Items.Add("2°");
-                cbGrado.Items.Add("3°");
-                
-            }
-            else if (cbNivelEducativo.SelectedIndex == 1)
-            {
-                cbGrado.Items.Clear();
-                cbGrado.Items.Add("1°");
-                cbGrado.Items.Add("2°");
-                cbGrado.Items.Add("3°");
-                cbGrado.Items.Add("4°");
-                cbGrado.Items.Add("5°");
-                cbGrado.Items.Add("6°");
-                
-            }
-            
-        }
-
-        private void cbGrado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            dgvAlumnos.Columns[0].HeaderText = "Escuela";
+            dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
+            dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
+            dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
+            dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
+            dgvAlumnos.Columns[5].HeaderText = "Grado";
+            dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
+            dgvAlumnos.Columns[7].HeaderText = "Status";
         }
 
         public void cargarDatosTabla()
@@ -171,7 +159,9 @@ namespace sistema_maestros1
                 {
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
                     dgvAlumnos.DataSource = dt;
-                    //NombresColumnas();
+
+                    dgvAlumnos.ClearSelection();
+                    NombresColumnas();
 
                 }
                 catch
@@ -181,6 +171,152 @@ namespace sistema_maestros1
             }
         }
 
+        private void cbEscuela_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
 
+        private void exit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de cerrar ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                this.Hide();
+                principal principal = new principal();
+                principal.Show();
+            }
+        }
+
+            private void esconder_pantalla_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMenuPrincipal2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Menu'?", "¡Ir a Menu!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                principal principal = new principal();
+                principal.Show();
+
+            }
+        }
+
+        private void btnAlumnos2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Alumnos'?", "¡Modulo Alumnos!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloAlumnos modalumno = new ModuloAlumnos();
+                modalumno.Show();
+
+            }
+        }
+
+        private void btnEscuelas2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Escuelas'?", "¡Modulo Escuelas!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloEscuelas modescuela = new ModuloEscuelas();
+                modescuela.Show();
+
+            }
+        }
+
+        private void btnTalleres2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Talleres'?", "¡Modulo Talleres!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloTalleres modtaller = new ModuloTalleres();
+                modtaller.Show();
+            }
+        }
+
+        private void btnPadreOTutor2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Padre o Tutor'?", "¡Modulo Padre o Tutor!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloPadre_o_Tutor modpadre = new ModuloPadre_o_Tutor();
+                modpadre.Show();
+
+            }
+        }
+
+        private void btnProfesores2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Profesores'?", "¡Modulo Profesores!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloProfesores modprofesor = new ModuloProfesores();
+                modprofesor.Show();
+
+            }
+        }
+
+        private void btnDinamicas2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Dinamicas'?", "¡Modulo Dinamicas!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloDinamicas moddinamica = new ModuloDinamicas();
+                moddinamica.Show();
+
+            }
+        }
+
+        private void btnMaterial2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Materiales'?", "¡Modulo Materiales!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                this.Hide();
+                ModuloMaterial modmaterial = new ModuloMaterial();
+                modmaterial.Show();
+
+            }
+        }
+
+        private void btnPagos2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de ir a 'Modulo Materiales'?", "¡Modulo Materiales!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                ModuloPagos pago = new ModuloPagos();
+                pago.Show();
+            }
+        }
+
+        private void btnIncidencias2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de pasar a otra ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+
+                ModuloIncidencias incidencia = new ModuloIncidencias();
+                incidencia.Show();
+            }
+        }
+
+        private void btnRecomendaciones2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estas seguro de pasar a otra ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+
+                ModuloRecomendaciones recomendacion = new ModuloRecomendaciones();
+                recomendacion.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cargarDatosTabla();
+            btnCargarTodo.Visible = false;
+            btnActualizarGrado.Visible = true;
+        }
     }
 }

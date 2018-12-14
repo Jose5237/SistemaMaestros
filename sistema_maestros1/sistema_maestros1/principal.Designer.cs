@@ -61,6 +61,7 @@
             this.btnRecomendaciones1 = new System.Windows.Forms.PictureBox();
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
             this.btnIncidencias2 = new System.Windows.Forms.Button();
+            this.btnActualizador1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnAlumnos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPadreOTutor1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMateriales1)).BeginInit();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnIncidencias1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRecomendaciones1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnActualizador1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -447,6 +449,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.btnActualizador1);
             this.panel1.Controls.Add(this.btnRecomendaciones1);
             this.panel1.Controls.Add(this.btnAlumnos1);
             this.panel1.Controls.Add(this.btnEscuela1);
@@ -507,6 +510,18 @@
             this.btnIncidencias2.Visible = false;
             this.btnIncidencias2.Click += new System.EventHandler(this.btnIncidencias2_Click);
             // 
+            // btnActualizador1
+            // 
+            this.btnActualizador1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActualizador1.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizador1.Image")));
+            this.btnActualizador1.Location = new System.Drawing.Point(493, 351);
+            this.btnActualizador1.Name = "btnActualizador1";
+            this.btnActualizador1.Size = new System.Drawing.Size(194, 136);
+            this.btnActualizador1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnActualizador1.TabIndex = 36;
+            this.btnActualizador1.TabStop = false;
+            this.btnActualizador1.Click += new System.EventHandler(this.btnActualizador1_Click);
+            // 
             // principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,6 +567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnIncidencias1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRecomendaciones1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnActualizador1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,5 +607,6 @@
         private System.Windows.Forms.PictureBox btnRecomendaciones1;
         private System.Windows.Forms.Button btnRecomendaciones2;
         private System.Windows.Forms.Button btnIncidencias2;
+        private System.Windows.Forms.PictureBox btnActualizador1;
     }
 }

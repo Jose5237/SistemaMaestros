@@ -326,6 +326,7 @@
             this.cbEscuelaMaterial.Size = new System.Drawing.Size(211, 25);
             this.cbEscuelaMaterial.TabIndex = 1;
             this.cbEscuelaMaterial.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaMaterial_SelectedIndexChanged);
+            this.cbEscuelaMaterial.SelectionChangeCommitted += new System.EventHandler(this.cbEscuelaMaterial_SelectionChangeCommitted);
             this.cbEscuelaMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaMaterial_KeyPress);
             // 
             // cbTallerMaterial
@@ -338,6 +339,7 @@
             this.cbTallerMaterial.Size = new System.Drawing.Size(211, 25);
             this.cbTallerMaterial.TabIndex = 2;
             this.cbTallerMaterial.SelectedIndexChanged += new System.EventHandler(this.cbTallerMaterial_SelectedIndexChanged);
+            this.cbTallerMaterial.SelectionChangeCommitted += new System.EventHandler(this.cbTallerMaterial_SelectionChangeCommitted);
             this.cbTallerMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTallerMaterial_KeyPress);
             // 
             // cbDinamicaMaterial
@@ -564,7 +566,6 @@
             this.txtIdEscuela.Name = "txtIdEscuela";
             this.txtIdEscuela.Size = new System.Drawing.Size(100, 20);
             this.txtIdEscuela.TabIndex = 140;
-            this.txtIdEscuela.Visible = false;
             // 
             // txtIdTaller
             // 
@@ -573,7 +574,6 @@
             this.txtIdTaller.Name = "txtIdTaller";
             this.txtIdTaller.Size = new System.Drawing.Size(100, 20);
             this.txtIdTaller.TabIndex = 141;
-            this.txtIdTaller.Visible = false;
             // 
             // txtIdDinamica
             // 
@@ -582,7 +582,6 @@
             this.txtIdDinamica.Name = "txtIdDinamica";
             this.txtIdDinamica.Size = new System.Drawing.Size(100, 20);
             this.txtIdDinamica.TabIndex = 142;
-            this.txtIdDinamica.Visible = false;
             // 
             // label8
             // 

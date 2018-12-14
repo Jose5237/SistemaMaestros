@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloProfesores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +65,8 @@
             this.dgvProfe = new System.Windows.Forms.DataGridView();
             this.txtBuscadorProfe = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtNombreUsuarioProfesor = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfe)).BeginInit();
             this.SuspendLayout();
@@ -317,7 +319,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label5.Location = new System.Drawing.Point(167, 294);
+            this.label5.Location = new System.Drawing.Point(167, 341);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 20);
             this.label5.TabIndex = 114;
@@ -450,7 +452,7 @@
             // 
             this.txtPasswordProfe.Enabled = false;
             this.txtPasswordProfe.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtPasswordProfe.Location = new System.Drawing.Point(170, 316);
+            this.txtPasswordProfe.Location = new System.Drawing.Point(170, 363);
             this.txtPasswordProfe.MaxLength = 20;
             this.txtPasswordProfe.Name = "txtPasswordProfe";
             this.txtPasswordProfe.PasswordChar = '•';
@@ -466,7 +468,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(170, 362);
+            this.btnAceptar.Location = new System.Drawing.Point(170, 409);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 6;
@@ -486,23 +488,23 @@
             this.dgvProfe.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvProfe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProfe.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Plum;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Plum;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProfe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProfe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProfe.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProfe.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProfe.EnableHeadersVisualStyles = false;
             this.dgvProfe.GridColor = System.Drawing.Color.Plum;
             this.dgvProfe.Location = new System.Drawing.Point(423, 105);
@@ -510,8 +512,8 @@
             this.dgvProfe.Name = "dgvProfe";
             this.dgvProfe.ReadOnly = true;
             this.dgvProfe.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvProfe.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvProfe.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProfe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfe.Size = new System.Drawing.Size(690, 513);
             this.dgvProfe.TabIndex = 140;
@@ -538,12 +540,35 @@
             this.label7.Text = "label7";
             this.label7.Visible = false;
             // 
+            // txtNombreUsuarioProfesor
+            // 
+            this.txtNombreUsuarioProfesor.Enabled = false;
+            this.txtNombreUsuarioProfesor.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtNombreUsuarioProfesor.Location = new System.Drawing.Point(170, 316);
+            this.txtNombreUsuarioProfesor.MaxLength = 20;
+            this.txtNombreUsuarioProfesor.Name = "txtNombreUsuarioProfesor";
+            this.txtNombreUsuarioProfesor.Size = new System.Drawing.Size(211, 23);
+            this.txtNombreUsuarioProfesor.TabIndex = 143;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label8.Location = new System.Drawing.Point(167, 294);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 20);
+            this.label8.TabIndex = 144;
+            this.label8.Text = "Nombre de Usuario:";
+            // 
             // ModuloProfesores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.txtNombreUsuarioProfesor);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBuscadorProfe);
             this.Controls.Add(this.dgvProfe);
@@ -624,5 +649,7 @@
         private System.Windows.Forms.DataGridView dgvProfe;
         private System.Windows.Forms.TextBox txtBuscadorProfe;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtNombreUsuarioProfesor;
+        private System.Windows.Forms.Label label8;
     }
 }

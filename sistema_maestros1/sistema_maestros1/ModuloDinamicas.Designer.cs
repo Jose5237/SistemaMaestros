@@ -476,6 +476,7 @@
             this.cbEscuelaDinamicas.Size = new System.Drawing.Size(211, 25);
             this.cbEscuelaDinamicas.TabIndex = 1;
             this.cbEscuelaDinamicas.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaDinamicas_SelectedIndexChanged);
+            this.cbEscuelaDinamicas.SelectionChangeCommitted += new System.EventHandler(this.cbEscuelaDinamicas_SelectionChangeCommitted);
             this.cbEscuelaDinamicas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaDinamicas_KeyPress);
             // 
             // label8

@@ -431,9 +431,9 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label2.Location = new System.Drawing.Point(167, 202);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 20);
+            this.label2.Size = new System.Drawing.Size(155, 20);
             this.label2.TabIndex = 128;
-            this.label2.Text = "Nombre:";
+            this.label2.Text = "Nombre Incidencia:";
             // 
             // label1
             // 
@@ -545,7 +545,8 @@
             this.cbTipoIncidencias.FormattingEnabled = true;
             this.cbTipoIncidencias.Items.AddRange(new object[] {
             "Clases_Perdidas",
-            "Otros"});
+            "Semana_Santa",
+            "Otro"});
             this.cbTipoIncidencias.Location = new System.Drawing.Point(170, 352);
             this.cbTipoIncidencias.Name = "cbTipoIncidencias";
             this.cbTipoIncidencias.Size = new System.Drawing.Size(211, 25);

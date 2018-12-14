@@ -53,7 +53,9 @@ namespace sistema_maestros1
 
                         DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(Globales.id_alumno), typeof(DataTable));
                         dgvAhasTAll.DataSource = dt;
+                        dgvAhasTAll.ClearSelection();
                         NombresColumnasAhT();
+                        dgvAhT.RowCount = 0;
 
                     }
                 }
@@ -227,12 +229,12 @@ namespace sistema_maestros1
                 {
                     DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosTutor(), typeof(DataTable));
                     dgvTutor.DataSource = dt;
-
                     NombresColumnasPadres();
                     dgvTutor.ClearSelection();
 
                     DataTable dt1 = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAhasT(Globales.id_alumno), typeof(DataTable));
                     dgvAhasTAll.DataSource = dt1;
+                    dgvAhasTAll.ClearSelection();
                     NombresColumnasAhT();
                 }
                 catch

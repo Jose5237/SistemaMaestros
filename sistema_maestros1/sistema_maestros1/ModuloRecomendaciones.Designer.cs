@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloRecomendaciones));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPagos2 = new System.Windows.Forms.Button();
             this.btnMenuPrincipal2 = new System.Windows.Forms.Button();
             this.btnMaterial2 = new System.Windows.Forms.Button();
@@ -55,7 +55,6 @@
             this.dgvRecomendacion = new System.Windows.Forms.DataGridView();
             this.txtIdEscuelaRec = new System.Windows.Forms.TextBox();
             this.cbEscuelaRec = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,7 +67,6 @@
             this.cbMaterialRec = new System.Windows.Forms.ComboBox();
             this.txtIdRecomendacion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEspecificacionesRec = new System.Windows.Forms.TextBox();
             this.txtRecomendacionUsoRec = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -378,23 +376,23 @@
             this.dgvRecomendacion.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvRecomendacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRecomendacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecomendacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecomendacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvRecomendacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecomendacion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecomendacion.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvRecomendacion.EnableHeadersVisualStyles = false;
             this.dgvRecomendacion.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgvRecomendacion.Location = new System.Drawing.Point(423, 105);
@@ -402,8 +400,8 @@
             this.dgvRecomendacion.Name = "dgvRecomendacion";
             this.dgvRecomendacion.ReadOnly = true;
             this.dgvRecomendacion.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvRecomendacion.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvRecomendacion.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRecomendacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecomendacion.Size = new System.Drawing.Size(690, 513);
             this.dgvRecomendacion.TabIndex = 142;
@@ -428,18 +426,8 @@
             this.cbEscuelaRec.TabIndex = 1;
             this.cbEscuelaRec.Text = "Seleccionar Escuela";
             this.cbEscuelaRec.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaRec_SelectedIndexChanged);
+            this.cbEscuelaRec.SelectionChangeCommitted += new System.EventHandler(this.cbEscuelaRec_SelectionChangeCommitted);
             this.cbEscuelaRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaRec_KeyPress);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label11.Location = new System.Drawing.Point(167, 362);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(203, 20);
-            this.label11.TabIndex = 150;
-            this.label11.Text = "Especificaciones Tecnicas:";
             // 
             // label4
             // 
@@ -504,6 +492,7 @@
             this.cbTallerRec.TabIndex = 2;
             this.cbTallerRec.Text = "Seleccionar Taller";
             this.cbTallerRec.SelectedIndexChanged += new System.EventHandler(this.cbTallerRec_SelectedIndexChanged);
+            this.cbTallerRec.SelectionChangeCommitted += new System.EventHandler(this.cbTallerRec_SelectionChangeCommitted);
             this.cbTallerRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTallerRec_KeyPress);
             // 
             // txtIdDinamicaRec
@@ -525,6 +514,7 @@
             this.cbDinamicaRec.TabIndex = 3;
             this.cbDinamicaRec.Text = "Seleccionar Dinamica";
             this.cbDinamicaRec.SelectedIndexChanged += new System.EventHandler(this.cbDinamicaRec_SelectedIndexChanged);
+            this.cbDinamicaRec.SelectionChangeCommitted += new System.EventHandler(this.cbDinamicaRec_SelectionChangeCommitted);
             this.cbDinamicaRec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbDinamicaRec_KeyPress);
             // 
             // txtIdMaterialRec
@@ -568,23 +558,11 @@
             this.label5.TabIndex = 160;
             this.label5.Text = "ID Recomendacion:";
             // 
-            // txtEspecificacionesRec
-            // 
-            this.txtEspecificacionesRec.Enabled = false;
-            this.txtEspecificacionesRec.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtEspecificacionesRec.Location = new System.Drawing.Point(170, 380);
-            this.txtEspecificacionesRec.MaxLength = 300;
-            this.txtEspecificacionesRec.Multiline = true;
-            this.txtEspecificacionesRec.Name = "txtEspecificacionesRec";
-            this.txtEspecificacionesRec.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtEspecificacionesRec.Size = new System.Drawing.Size(211, 60);
-            this.txtEspecificacionesRec.TabIndex = 6;
-            // 
             // txtRecomendacionUsoRec
             // 
             this.txtRecomendacionUsoRec.Enabled = false;
             this.txtRecomendacionUsoRec.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtRecomendacionUsoRec.Location = new System.Drawing.Point(170, 466);
+            this.txtRecomendacionUsoRec.Location = new System.Drawing.Point(170, 377);
             this.txtRecomendacionUsoRec.MaxLength = 300;
             this.txtRecomendacionUsoRec.Multiline = true;
             this.txtRecomendacionUsoRec.Name = "txtRecomendacionUsoRec";
@@ -597,7 +575,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label7.Location = new System.Drawing.Point(167, 448);
+            this.label7.Location = new System.Drawing.Point(167, 359);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(207, 20);
             this.label7.TabIndex = 163;
@@ -612,7 +590,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(170, 550);
+            this.btnAceptar.Location = new System.Drawing.Point(170, 466);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 8;
@@ -641,7 +619,6 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtRecomendacionUsoRec);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtEspecificacionesRec);
             this.Controls.Add(this.txtIdRecomendacion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtIdMaterialRec);
@@ -652,7 +629,6 @@
             this.Controls.Add(this.cbTallerRec);
             this.Controls.Add(this.txtIdEscuelaRec);
             this.Controls.Add(this.cbEscuelaRec);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -716,7 +692,6 @@
         private System.Windows.Forms.DataGridView dgvRecomendacion;
         private System.Windows.Forms.TextBox txtIdEscuelaRec;
         private System.Windows.Forms.ComboBox cbEscuelaRec;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -729,7 +704,6 @@
         private System.Windows.Forms.ComboBox cbMaterialRec;
         private System.Windows.Forms.TextBox txtIdRecomendacion;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtEspecificacionesRec;
         private System.Windows.Forms.TextBox txtRecomendacionUsoRec;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAceptar;

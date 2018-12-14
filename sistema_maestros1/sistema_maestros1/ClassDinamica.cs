@@ -8,6 +8,11 @@ namespace sistema_maestros1
 {
     class ClassDinamica
     {
+
+        public string di_nombre_escuela { get; set; }
+
+        public string di_nombre_taller { get; set; }
+
         public string di_id_escuela { get; set; }
 
         public string di_id_taller { get; set; }

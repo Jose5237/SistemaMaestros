@@ -10,6 +10,8 @@ namespace sistema_maestros1
     {
         public string pr_id_profesor { get; set; }
 
+        public string pr_usuario_profesor { get; set; }
+
         public string pr_nombre_profesor { get; set; }
 
         public string pr_apellidoPat_profesor { get; set; }
@@ -17,5 +19,8 @@ namespace sistema_maestros1
         public string pr_apellidoMat_profesor { get; set; }
 
         public string pr_contrasena_profesor { get; set; }
+
+        
+
     }
 }

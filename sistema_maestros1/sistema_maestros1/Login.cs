@@ -45,13 +45,13 @@ namespace sistema_maestros1
             {
                 
                 ClassProfesor login = new ClassProfesor();
-                login.pr_nombre_profesor = txtLogin_User.Text;
+                login.pr_usuario_profesor = txtLogin_User.Text;
                 Globales.usuario = txtLogin_User.Text;
                 login.pr_contrasena_profesor = txtLogin_Password.Text;
 
                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    int buscar = wsPHP.login(login.pr_nombre_profesor, login.pr_contrasena_profesor);
+                    int buscar = wsPHP.login(login.pr_usuario_profesor, login.pr_contrasena_profesor);
 
                     if(buscar == 1)
                     {

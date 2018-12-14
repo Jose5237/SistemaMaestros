@@ -7,7 +7,7 @@
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="loginRequest">
-    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
     <wsdl:part name="contrasena" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="loginResponse">
@@ -25,6 +25,7 @@
   </wsdl:message>
   <wsdl:message name="agregardatosprofesorRequest">
     <wsdl:part name="id" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
     <wsdl:part name="nombre" type="xsd:string" />
     <wsdl:part name="apellidopat" type="xsd:string" />
     <wsdl:part name="apellidomat" type="xsd:string" />
@@ -59,6 +60,12 @@
   <wsdl:message name="BuscarMAXIDPResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="validarUsuarioRequest">
+    <wsdl:part name="usuario" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="validarUsuarioResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
   <wsdl:message name="cargarDatosEscuelaRequest" />
   <wsdl:message name="cargarDatosEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -79,6 +86,7 @@
     <wsdl:part name="correo_esc" type="xsd:string" />
     <wsdl:part name="contacto_esc" type="xsd:string" />
     <wsdl:part name="responsable_esc" type="xsd:string" />
+    <wsdl:part name="costo" type="xsd:double" />
   </wsdl:message>
   <wsdl:message name="agregarEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -467,7 +475,7 @@
   <wsdl:message name="modificarPagosRequest">
     <wsdl:part name="id_pago" type="xsd:string" />
     <wsdl:part name="mes" type="xsd:string" />
-    <wsdl:part name="fecha" type="xsd:string" />
+    <wsdl:part name="cantidad" type="xsd:double" />
   </wsdl:message>
   <wsdl:message name="modificarPagosResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -501,7 +509,6 @@
     <wsdl:part name="id_din" type="xsd:string" />
     <wsdl:part name="id_mat" type="xsd:string" />
     <wsdl:part name="id_rec" type="xsd:string" />
-    <wsdl:part name="especificacion" type="xsd:string" />
     <wsdl:part name="recom" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="AgregarRecomendacionesResponse">
@@ -680,6 +687,11 @@
       <documentation>cargar ID MAX</documentation>
       <wsdl:input message="tns:BuscarMAXIDPRequest" />
       <wsdl:output message="tns:BuscarMAXIDPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validarUsuario">
+      <documentation>Validar Usuario</documentation>
+      <wsdl:input message="tns:validarUsuarioRequest" />
+      <wsdl:output message="tns:validarUsuarioResponse" />
     </wsdl:operation>
     <wsdl:operation name="cargarDatosEscuela">
       <documentation>cargar datos escuela</documentation>
@@ -1114,6 +1126,15 @@
     </wsdl:operation>
     <wsdl:operation name="BuscarMAXIDP">
       <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/BuscarMAXIDP" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarUsuario">
+      <soap:operation soapAction="https://webservicechatbot.s3435.com/service.php/validarUsuario" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="https://webservicechatbot.s3435.com/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

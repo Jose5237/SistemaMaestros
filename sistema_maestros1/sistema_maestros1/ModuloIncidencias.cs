@@ -209,7 +209,7 @@ namespace sistema_maestros1
             txtDescripcionIncidencia.Enabled = true; txtDescripcionIncidencia.Text = "";
             cbTipoIncidencias.Enabled = true; cbTipoIncidencias.Text = "Seleccionar Tipo de Incidencia";
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Text = "GUARDAR ✔";
 
         }
 
@@ -227,7 +227,7 @@ namespace sistema_maestros1
             txtDescripcionIncidencia.Enabled = true; 
             cbTipoIncidencias.Enabled = true;
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON DE ELIMINAR INCIDENCIA
@@ -244,7 +244,7 @@ namespace sistema_maestros1
             txtDescripcionIncidencia.Enabled = false;
             cbTipoIncidencias.Enabled = false;
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Text = "Eliminar";
         }
 
         //BOTON DE ACEPTAR (CRUD)
@@ -284,12 +284,17 @@ namespace sistema_maestros1
                         ins.in_descripcion_incidencias = txtDescripcionIncidencia.Text;
                         ins.in_tipo_incidencia = cbTipoIncidencias.Text;
 
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        if ((cbEscuelaIncidencia.Text != "Seleccionar Escuela" && txtIdEscuelaIncidencia.Text != "") && (txtNombreIncidencia.Text != "" && txtIdIncidencia.Text != "") && (txtDescripcionIncidencia.Text != "") && (cbTipoIncidencias.Text != "Seleccionar Tipo de Incidencia"))
                         {
-                            string mensaje = wsPHP.modificarIncidencias(ins.in_id_escuela, ins.in_id_incidencias, ins.in_nombre_incidencias, ins.in_descripcion_incidencias, ins.in_tipo_incidencia);
-                            MessageBox.Show(mensaje, "¡Incidencia Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            {
+                                string mensaje = wsPHP.modificarIncidencias(ins.in_id_escuela, ins.in_id_incidencias, ins.in_nombre_incidencias, ins.in_descripcion_incidencias, ins.in_tipo_incidencia);
+                                MessageBox.Show(mensaje, "¡Incidencia Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            }
                         }
+                        else
+                            MessageBox.Show("Debes seleccionar un registro para poder modificar","¡ERROR!");
                     }
                     else if (opcionBotones == 2)
                     {
@@ -297,12 +302,17 @@ namespace sistema_maestros1
                         ins.in_id_escuela = txtIdEscuelaIncidencia.Text;
                         ins.in_id_incidencias = txtIdIncidencia.Text;
 
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        if ((cbEscuelaIncidencia.Text != "Seleccionar Escuela" && txtIdEscuelaIncidencia.Text != "") && (txtNombreIncidencia.Text != "" && txtIdIncidencia.Text != "") && (txtDescripcionIncidencia.Text != "") && (cbTipoIncidencias.Text != "Seleccionar Tipo de Incidencia"))
                         {
-                            string mensaje = wsPHP.eliminarIncidencias(ins.in_id_escuela, ins.in_id_incidencias);
-                            MessageBox.Show(mensaje, "¡Incidencia Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        }
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            {
+                                string mensaje = wsPHP.eliminarIncidencias(ins.in_id_escuela, ins.in_id_incidencias);
+                                MessageBox.Show(mensaje, "¡Incidencia Eliminada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+                        } else
+                            MessageBox.Show("Debes seleccionar un registro para poder eliminar", "¡ERROR!");
                     }
 
                     cargarDatosTabla();

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloAlumnos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAgregarAlumno = new System.Windows.Forms.Button();
             this.btnModificarAlumno = new System.Windows.Forms.Button();
             this.btnEliminarAlumno = new System.Windows.Forms.Button();
@@ -258,7 +258,6 @@
             this.cbGradoAlumno.Size = new System.Drawing.Size(211, 25);
             this.cbGradoAlumno.TabIndex = 7;
             this.cbGradoAlumno.Text = "Seleccionar Grado";
-            this.cbGradoAlumno.SelectedIndexChanged += new System.EventHandler(this.cbGradoAlumno_SelectedIndexChanged);
             this.cbGradoAlumno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGradoAlumno_KeyPress);
             // 
             // cbNivelAlumno
@@ -272,7 +271,7 @@
             this.cbNivelAlumno.TabIndex = 6;
             this.cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
             this.cbNivelAlumno.SelectedIndexChanged += new System.EventHandler(this.cbNivelAlumno_SelectedIndexChanged);
-            this.cbNivelAlumno.Click += new System.EventHandler(this.cbNivelAlumno_Click);
+            this.cbNivelAlumno.SelectionChangeCommitted += new System.EventHandler(this.cbNivelAlumno_SelectionChangeCommitted);
             this.cbNivelAlumno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNivelAlumno_KeyPress);
             // 
             // cbEscuelaAlumno
@@ -524,11 +523,13 @@
             // 
             // txtIdEscuelaAlumno
             // 
+            this.txtIdEscuelaAlumno.Enabled = false;
             this.txtIdEscuelaAlumno.Location = new System.Drawing.Point(246, 107);
             this.txtIdEscuelaAlumno.Name = "txtIdEscuelaAlumno";
             this.txtIdEscuelaAlumno.Size = new System.Drawing.Size(56, 20);
             this.txtIdEscuelaAlumno.TabIndex = 108;
             this.txtIdEscuelaAlumno.Visible = false;
+            this.txtIdEscuelaAlumno.TextChanged += new System.EventHandler(this.txtIdEscuelaAlumno_TextChanged);
             // 
             // btnRecomendaciones2
             // 
@@ -571,23 +572,23 @@
             this.dgvAlumnos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvAlumnos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAlumnos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlumnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlumnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAlumnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlumnos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlumnos.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvAlumnos.EnableHeadersVisualStyles = false;
             this.dgvAlumnos.GridColor = System.Drawing.Color.PowderBlue;
             this.dgvAlumnos.Location = new System.Drawing.Point(423, 105);
@@ -595,8 +596,8 @@
             this.dgvAlumnos.Name = "dgvAlumnos";
             this.dgvAlumnos.ReadOnly = true;
             this.dgvAlumnos.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvAlumnos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvAlumnos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAlumnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlumnos.Size = new System.Drawing.Size(704, 513);
             this.dgvAlumnos.TabIndex = 133;

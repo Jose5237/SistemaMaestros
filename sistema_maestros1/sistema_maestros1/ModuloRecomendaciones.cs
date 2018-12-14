@@ -225,10 +225,9 @@ namespace sistema_maestros1
             txtIdMaterialRec.Text = "";
 
             txtIdRecomendacion.Enabled = false; txtIdRecomendacion.Text = "";
-            txtEspecificacionesRec.Enabled = true; txtEspecificacionesRec.Text = "";
             txtRecomendacionUsoRec.Enabled = true; txtRecomendacionUsoRec.Text = "";
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON MODIFICAR RECOMENDACION
@@ -244,10 +243,9 @@ namespace sistema_maestros1
             cbMaterialRec.Enabled = false;
 
             txtIdRecomendacion.Enabled = false;
-            txtEspecificacionesRec.Enabled = true;
             txtRecomendacionUsoRec.Enabled = true;
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON ELIMINAR RECOMENDACION
@@ -263,16 +261,15 @@ namespace sistema_maestros1
             cbMaterialRec.Enabled = false;
 
             txtIdRecomendacion.Enabled = false;
-            txtEspecificacionesRec.Enabled = false;
             txtRecomendacionUsoRec.Enabled = false;
 
-            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed;
+            btnAceptar.Enabled = true; btnAceptar.Visible = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Text = "Eliminar";
         }
 
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cbEscuelaRec.Text != "" && cbTallerRec.Text != "" && cbDinamicaRec.Text != "" && cbMaterialRec.Text != "" && txtEspecificacionesRec.Text != "" && txtRecomendacionUsoRec.Text != "")
+            if (cbEscuelaRec.Text != "" && cbTallerRec.Text != "" && cbDinamicaRec.Text != "" && cbMaterialRec.Text != "" && txtRecomendacionUsoRec.Text != "")
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -287,12 +284,11 @@ namespace sistema_maestros1
                         re.re_id_dinamica = txtIdDinamicaRec.Text;
                         re.re_id_material = txtIdMaterialRec.Text;
                         re.re_id_recomendaciones = label8.Text;
-                        re.re_especificaciones_recomendaciones = txtEspecificacionesRec.Text;
                         re.re_recomendaciones_recomendaciones = txtRecomendacionUsoRec.Text;
                         
                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                         {
-                            string mensaje = wsPHP.AgregarRecomendaciones(re.re_id_escuela, re.re_id_taller, re.re_id_dinamica, re.re_id_material, re.re_id_recomendaciones, re.re_especificaciones_recomendaciones, re.re_recomendaciones_recomendaciones);
+                            string mensaje = wsPHP.AgregarRecomendaciones(re.re_id_escuela, re.re_id_taller, re.re_id_dinamica, re.re_id_material, re.re_id_recomendaciones, re.re_recomendaciones_recomendaciones);
                             MessageBox.Show(mensaje, "¡Recomendacion Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         }
@@ -306,7 +302,6 @@ namespace sistema_maestros1
                         re.re_id_dinamica = txtIdDinamicaRec.Text;
                         re.re_id_material = txtIdMaterialRec.Text;
                         re.re_id_recomendaciones = txtIdRecomendacion.Text;
-                        re.re_especificaciones_recomendaciones = txtEspecificacionesRec.Text;
                         re.re_recomendaciones_recomendaciones = txtRecomendacionUsoRec.Text;
 
 
@@ -480,7 +475,7 @@ namespace sistema_maestros1
 
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
-
+            
                 try
                 {
                     String respuestaEscuela = wsPHP.cargarDatosEscuela();
@@ -489,40 +484,52 @@ namespace sistema_maestros1
                     foreach (var nomEsc in respEsc)
                     {
                         ComboBoxItem item = new ComboBoxItem();
-
+            
                         item.Text = nomEsc.es_nombre_escuela;
                         item.Value = Convert.ToString(nomEsc.es_id_escuela);
                         cbEscuelaRec.Items.Add(item);
-
+            
                     }
 
                     //TALLER
-                    String respuestaTaller = wsPHP.cargarDatosDeTaller();
-                    var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
-                    
-                    foreach (var nomTall in respTall)
-                    {
-                        ComboBoxItem item = new ComboBoxItem();
 
-                        item.Text = nomTall.ta_nombre_taller;
-                        item.Value = Convert.ToString(nomTall.ta_id_taller);
-                        cbTallerRec.Items.Add(item);
+                    if (txtIdEscuelaRec.Text != "")
+                    {
+
+
+                        String respuestaTaller = wsPHP.cargarDatosDeTaller();
+                        var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
+
+                        foreach (var nomTall in respTall)
+                        {
+                            ComboBoxItem item = new ComboBoxItem();
+
+                            item.Text = nomTall.ta_nombre_taller;
+                            item.Value = Convert.ToString(nomTall.ta_id_taller);
+                            cbTallerRec.Items.Add(item);
+                        }
                     }
 
                     //DINAMICA
-                    String respuestaDinamica = wsPHP.cargarDatosDinamica();
-                    var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
-                    
-                    foreach (var nomDina in respDina)
+
+                    if (txtIdTallerRec.Text != "")
                     {
-                        ComboBoxItem item = new ComboBoxItem();
 
-                        item.Text = nomDina.di_nombre_dinamica;
-                        item.Value = Convert.ToString(nomDina.di_id_dinamica);
-                        cbDinamicaRec.Items.Add(item);
 
+                        String respuestaDinamica = wsPHP.cargarDatosDinamica();
+                        var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
+
+                        foreach (var nomDina in respDina)
+                        {
+                            ComboBoxItem item = new ComboBoxItem();
+
+                            item.Text = nomDina.di_nombre_dinamica;
+                            item.Value = Convert.ToString(nomDina.di_id_dinamica);
+                            cbDinamicaRec.Items.Add(item);
+
+                        }
                     }
-
+            
                 }
                 catch
                 {
@@ -539,20 +546,17 @@ namespace sistema_maestros1
             NombresColumnas();
 
             cbEscuelaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuelaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[0].Value.ToString());
-
             cbTallerRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtIdTallerRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[1].Value.ToString());
-
             cbDinamicaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtIdDinamicaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[2].Value.ToString());
-
             cbMaterialRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtIdMaterialRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[3].Value.ToString());
+            
+            txtIdEscuelaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtIdTallerRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txtIdDinamicaRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[6].Value.ToString());
+            txtIdMaterialRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[7].Value.ToString());
 
-            txtIdRecomendacion.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtEspecificacionesRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[5].Value.ToString());
-            txtRecomendacionUsoRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[6].Value.ToString());
+            txtIdRecomendacion.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[8].Value.ToString());
+            txtRecomendacionUsoRec.Text = Convert.ToString(dgvRecomendacion.Rows[e.RowIndex].Cells[9].Value.ToString());
         }
 
 
@@ -635,9 +639,12 @@ namespace sistema_maestros1
             dgvRecomendacion.Columns[1].HeaderText = "Taller";
             dgvRecomendacion.Columns[2].HeaderText = "Dinamica";
             dgvRecomendacion.Columns[3].HeaderText = "Material";
-            dgvRecomendacion.Columns[4].HeaderText = "ID Recomendacion";
-            dgvRecomendacion.Columns[5].HeaderText = "Especificaciones Tecnicas";
-            dgvRecomendacion.Columns[6].HeaderText = "Recomendaciones de Uso";
+            dgvRecomendacion.Columns[4].Visible = false;
+            dgvRecomendacion.Columns[5].Visible = false;
+            dgvRecomendacion.Columns[6].Visible = false;
+            dgvRecomendacion.Columns[7].Visible = false;
+            dgvRecomendacion.Columns[8].HeaderText = "ID Recomendacion";
+            dgvRecomendacion.Columns[9].HeaderText = "Recomendaciones de Uso";
         }
 
         public void inicializacionCampos()
@@ -655,13 +662,38 @@ namespace sistema_maestros1
             txtIdMaterialRec.Text = "";
 
             txtIdRecomendacion.Enabled = false; txtIdRecomendacion.Text = "";
-            txtEspecificacionesRec.Enabled = false; txtEspecificacionesRec.Text = "";
             txtRecomendacionUsoRec.Enabled = false; txtRecomendacionUsoRec.Text = "";
 
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
         #endregion
-        
+
+        private void cbEscuelaRec_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtIdTallerRec.Text = "";
+            cbTallerRec.Text = "Seleccionar Taller";
+
+            txtIdDinamicaRec.Text = "";
+            cbDinamicaRec.Text = "Seleccionar Dinamica";
+
+            txtIdMaterialRec.Text = "";
+            cbMaterialRec.Text = "Seleccionar Material";
+        }
+
+        private void cbTallerRec_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtIdDinamicaRec.Text = "";
+            cbDinamicaRec.Text = "Seleccionar Dinamica";
+
+            txtIdMaterialRec.Text = "";
+            cbMaterialRec.Text = "Seleccionar Material";
+        }
+
+        private void cbDinamicaRec_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtIdMaterialRec.Text = "";
+            cbMaterialRec.Text = "Seleccionar Material";
+        }
     }
 }

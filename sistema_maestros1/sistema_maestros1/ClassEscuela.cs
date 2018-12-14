@@ -22,6 +22,8 @@ namespace sistema_maestros1
 
         public string es_correo_escuela { get; set; }
 
+        public double es_precio_escuela { get; set; }
+
         public string es_contacto_escuela { get; set; }
 
         public string es_responsable_pago_escuela { get; set; }

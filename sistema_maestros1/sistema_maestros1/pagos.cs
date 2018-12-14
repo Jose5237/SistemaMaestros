@@ -231,7 +231,7 @@ namespace sistema_maestros1
                     try
                     {
                         string mes = "pa_fecha_" + cbMesPagos.Text + "_pago";
-                        string mensaje = wsPHP.modificarPagos(txtIdPagos.Text, mes, Convert.ToString(dtFechaPagos.Value.ToString("yyyy-MM-dd")));
+                        string mensaje = wsPHP.modificarPagos(txtIdPagos.Text, mes, /*Convert.ToString(dtFechaPagos.Value.ToString("yyyy-MM-dd")),*/ Convert.ToDouble(txtImportePago.Text));
                         MessageBox.Show(mensaje, "¡Pago Actualizado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
@@ -291,6 +291,7 @@ namespace sistema_maestros1
 
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtIdEscuela1.Text), typeof(DataTable));
                 dgvAlumnoPagos.DataSource = dt;
+            //    NombresColumnasAlumno();
             }
         }
 
@@ -309,7 +310,7 @@ namespace sistema_maestros1
                     {
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumnosPagos(txtIdEscuela1.Text,txtAlumnoPagos.Text), typeof(DataTable));
                         dgvAlumnoPagos.DataSource = dt;
-                        NombresColumnasAlumno();
+                        //NombresColumnasAlumno();
                     }
                     catch (Exception)
                     {
@@ -326,9 +327,9 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV_ALUMNOS)
         private void dgvAlumnoPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtIdAlumnoPagos.Text = Convert.ToString(dgvAlumnoPagos.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtAlumnoPagos.Text = Convert.ToString(dgvAlumnoPagos.Rows[e.RowIndex].Cells[2].Value.ToString());
-            cargarDatosTablaAlumnosTodos();
+            txtIdAlumnoPagos.Text = Convert.ToString(dgvAlumnoPagos.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtAlumnoPagos.Text = Convert.ToString(dgvAlumnoPagos.Rows[e.RowIndex].Cells[3].Value.ToString());
+            //cargarDatosTablaAlumnosTodos();
             
         }
 
@@ -336,7 +337,7 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV_PAGOS)
         private void dgvPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            NombresColumnasPagos();
+            //NombresColumnasPagos();
             txtIdPagos.Text = Convert.ToString(dgvPagos.Rows[e.RowIndex].Cells[2].Value.ToString());
             txtEscuelaPagos.Text = Convert.ToString(dgvPagos.Rows[e.RowIndex].Cells[0].Value.ToString());
             txtNomAlumnoPagos.Text = Convert.ToString(dgvPagos.Rows[e.RowIndex].Cells[1].Value.ToString());
@@ -404,13 +405,14 @@ namespace sistema_maestros1
         public void NombresColumnasAlumno()
         {
             dgvAlumnoPagos.Columns[0].HeaderText = "Escuela";
-            dgvAlumnoPagos.Columns[1].HeaderText = "ID Alumno";
-            dgvAlumnoPagos.Columns[2].HeaderText = "Nombre(s)";
-            dgvAlumnoPagos.Columns[3].HeaderText = "Apellido Paterno";
-            dgvAlumnoPagos.Columns[4].HeaderText = "Apellido Materno";
-            dgvAlumnoPagos.Columns[5].HeaderText = "Grado";
-            dgvAlumnoPagos.Columns[6].HeaderText = "Nivel Educativo";
-            dgvAlumnoPagos.Columns[7].HeaderText = "Status";
+            dgvAlumnoPagos.Columns[1].Visible = false;
+            dgvAlumnoPagos.Columns[2].HeaderText = "ID Alumno";
+            dgvAlumnoPagos.Columns[3].HeaderText = "Nombre(s)";
+            dgvAlumnoPagos.Columns[4].HeaderText = "Apellido Paterno";
+            dgvAlumnoPagos.Columns[5].HeaderText = "Apellido Materno";
+            dgvAlumnoPagos.Columns[6].HeaderText = "Grado";
+            dgvAlumnoPagos.Columns[7].HeaderText = "Nivel Educativo";
+            dgvAlumnoPagos.Columns[8].HeaderText = "Status";
         }
 
         public void NombresColumnasPagos()

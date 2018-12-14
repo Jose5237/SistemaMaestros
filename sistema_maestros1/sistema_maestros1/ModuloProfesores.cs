@@ -228,8 +228,9 @@ namespace sistema_maestros1
             txtNombreProfe.Enabled = true; txtNombreProfe.Text = "";
             txtApellidoPatProfe.Enabled = true; txtApellidoPatProfe.Text = "";
             txtApellidoMatProfe.Enabled = true; txtApellidoMatProfe.Text = "";
+            txtNombreUsuarioProfesor.Enabled = true; txtNombreUsuarioProfesor.Text = "";
             txtPasswordProfe.Enabled = true; txtPasswordProfe.Text = "";
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON MODIFICAR PROFESOR
@@ -242,8 +243,9 @@ namespace sistema_maestros1
             txtNombreProfe.Enabled = true;
             txtApellidoPatProfe.Enabled = true;
             txtApellidoMatProfe.Enabled = true;
+            txtNombreUsuarioProfesor.Enabled = false;
             txtPasswordProfe.Enabled = true;
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
         //BOTON ELIMINAR PROFESOR
@@ -256,8 +258,9 @@ namespace sistema_maestros1
             txtNombreProfe.Enabled = false;
             txtApellidoPatProfe.Enabled = false;
             txtApellidoMatProfe.Enabled = false;
+            txtNombreUsuarioProfesor.Enabled = false;
             txtPasswordProfe.Enabled = false;
-            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true;
+            btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true; btnAceptar.Text = "Eliminar";
         }
         
         //BOTON DE ACEPTAR (CRUD)
@@ -267,77 +270,101 @@ namespace sistema_maestros1
             {
                 if (txtPasswordProfe.Text.Length > 5)
                 {
-                    if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        if (opcionBotones == 0)
-                        {
-                            generarID();
-                            ClassProfesor pr = new ClassProfesor();
-                            pr.pr_id_profesor = label7.Text;
-                            pr.pr_nombre_profesor = txtNombreProfe.Text;
-                            pr.pr_apellidoPat_profesor = txtApellidoPatProfe.Text;
-                            pr.pr_apellidoMat_profesor = txtApellidoMatProfe.Text;
-                            pr.pr_contrasena_profesor = txtPasswordProfe.Text;
-                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-                            {
-                                try
-                                {
-                                    string mensaje = wsPHP.agregardatosprofesor(pr.pr_id_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
-                                    MessageBox.Show(mensaje, "¡Profesor Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    dgvProfe.Enabled = true;
-                                    btnAceptar.BackColor = Color.Silver;
-                                }
-                                catch
-                                {
-                                    MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
 
-                        }
-                        else if (opcionBotones == 1)
+                    
+
+                        if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            ClassProfesor pr = new ClassProfesor();
-                            pr.pr_id_profesor = txtIdProfe.Text;
-                            pr.pr_nombre_profesor = txtNombreProfe.Text;
-                            pr.pr_apellidoPat_profesor = txtApellidoPatProfe.Text;
-                            pr.pr_apellidoMat_profesor = txtApellidoMatProfe.Text;
-                            pr.pr_contrasena_profesor = txtPasswordProfe.Text;
-                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            if (opcionBotones == 0)
                             {
-                                try
+                                generarID();
+                                ClassProfesor pr = new ClassProfesor();
+                                pr.pr_id_profesor = label7.Text;
+                                pr.pr_usuario_profesor = txtNombreUsuarioProfesor.Text;
+                                pr.pr_nombre_profesor = txtNombreProfe.Text;
+                                pr.pr_apellidoPat_profesor = txtApellidoPatProfe.Text;
+                                pr.pr_apellidoMat_profesor = txtApellidoMatProfe.Text;
+                                pr.pr_contrasena_profesor = txtPasswordProfe.Text;
+
+                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
-                                    string mensaje = wsPHP.modificardatosprofesor(pr.pr_id_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
-                                    MessageBox.Show(mensaje, "¡Profesor Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    btnAceptar.BackColor = Color.Silver;
+
+                                int validar = wsPHP.validarUsuario(txtNombreUsuarioProfesor.Text);
+                                if (validar == 0)
+                                {
+
+                                    try
+                                    {
+                                        string mensaje = wsPHP.agregardatosprofesor(pr.pr_id_profesor, pr.pr_usuario_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
+                                        MessageBox.Show(mensaje, "¡Profesor Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dgvProfe.Enabled = true;
+                                        cargarDatosTabla();
+                                        inicializacionCampos();
+                                        dgvProfe.Enabled = true;
+                                    }
+                                    catch
+                                    {
+                                        MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
-                                catch
+                                else
+                                    MessageBox.Show("Ya se encuentra un Profesor con este nombre de usuario, debes cambiarlo","¡ERROR!");
+                                }
+
+                            }
+                            else if (opcionBotones == 1)
+                            {
+                                ClassProfesor pr = new ClassProfesor();
+                                pr.pr_id_profesor = txtIdProfe.Text;
+                                pr.pr_nombre_profesor = txtNombreProfe.Text;
+                                pr.pr_apellidoPat_profesor = txtApellidoPatProfe.Text;
+                                pr.pr_apellidoMat_profesor = txtApellidoMatProfe.Text;
+                                pr.pr_contrasena_profesor = txtPasswordProfe.Text;
+                                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
-                                    MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                
+                                    try
+                                    {
+                                        string mensaje = wsPHP.modificardatosprofesor(pr.pr_id_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
+                                        MessageBox.Show(mensaje, "¡Profesor Modificado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        btnAceptar.BackColor = Color.Silver;
+                                        cargarDatosTabla();
+                                        inicializacionCampos();
+                                        dgvProfe.Enabled = true;
+                                }
+                                    catch
+                                    {
+                                        MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
-                        }
-                        else if (opcionBotones == 2)
-                        {
-                            ClassProfesor pr = new ClassProfesor();
-                            pr.pr_id_profesor = txtIdProfe.Text;
-                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            else if (opcionBotones == 2)
                             {
-                                try
+                                ClassProfesor pr = new ClassProfesor();
+                                pr.pr_id_profesor = txtIdProfe.Text;
+                                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
-                                    string mensaje = wsPHP.eliminardatosprofesor(pr.pr_id_profesor);
-                                    MessageBox.Show(mensaje, "¡Profesor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    btnAceptar.BackColor = Color.Silver;
+
+                                
+                                    try
+                                    {
+                                        string mensaje = wsPHP.eliminardatosprofesor(pr.pr_id_profesor);
+                                        MessageBox.Show(mensaje, "¡Profesor Eliminado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        btnAceptar.BackColor = Color.Silver;
+                                        cargarDatosTabla();
+                                        inicializacionCampos();
+                                        dgvProfe.Enabled = true;
+
                                 }
-                                catch
-                                {
-                                    MessageBox.Show("Ha ocurrido un error, no se ha podido Eliminar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    catch
+                                    {
+                                        MessageBox.Show("Ha ocurrido un error, no se ha podido Eliminar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
+                            
                         }
-                        cargarDatosTabla();
-                        inicializacionCampos();
-                        dgvProfe.Enabled = true;
-                    }
             }
                 else
                     MessageBox.Show("La contraseña debe tener almenos 6 caracteres", "¡Contraseña Insegura!");
@@ -360,10 +387,11 @@ namespace sistema_maestros1
             NombresColumnas();
 
             txtIdProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtNombreProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtApellidoPatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtApellidoMatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtPasswordProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtNombreUsuarioProfesor.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[1].Value.ToString());
+            txtNombreProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[2].Value.ToString());
+            txtApellidoPatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[3].Value.ToString());
+            txtApellidoMatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[4].Value.ToString());
+            txtPasswordProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[5].Value.ToString());
         }
 
 
@@ -444,10 +472,11 @@ namespace sistema_maestros1
         public void NombresColumnas()
         {
             dgvProfe.Columns[0].HeaderText = "ID Profesor";
-            dgvProfe.Columns[1].HeaderText = "Nombre";
-            dgvProfe.Columns[2].HeaderText = "Apellido Paterno";
-            dgvProfe.Columns[3].HeaderText = "Apellido Materno";
-            dgvProfe.Columns[4].HeaderText = "Contraseña";
+            dgvProfe.Columns[1].HeaderText = "Usuario";
+            dgvProfe.Columns[2].HeaderText = "Nombre";
+            dgvProfe.Columns[3].HeaderText = "Apellido Paterno";
+            dgvProfe.Columns[4].HeaderText = "Apellido Materno";
+            dgvProfe.Columns[5].HeaderText = "Contraseña";
         }
 
         public void inicializacionCampos()
@@ -456,6 +485,7 @@ namespace sistema_maestros1
             txtNombreProfe.Enabled = false; txtNombreProfe.Text = "";
             txtApellidoPatProfe.Enabled = false; txtApellidoPatProfe.Text = "";
             txtApellidoMatProfe.Enabled = false; txtApellidoMatProfe.Text = "";
+            txtNombreUsuarioProfesor.Enabled = false; txtNombreUsuarioProfesor.Text = "";
             txtPasswordProfe.Enabled = false; txtPasswordProfe.Text = "";
 
             btnAceptar.Enabled = false; btnAceptar.Visible = false;

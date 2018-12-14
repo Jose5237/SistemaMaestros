@@ -45,6 +45,8 @@ namespace sistema_maestros1.webservices3435 {
         
         private System.Threading.SendOrPostCallback BuscarMAXIDPOperationCompleted;
         
+        private System.Threading.SendOrPostCallback validarUsuarioOperationCompleted;
+        
         private System.Threading.SendOrPostCallback cargarDatosEscuelaOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarEscuelaOperationCompleted;
@@ -252,6 +254,9 @@ namespace sistema_maestros1.webservices3435 {
         
         /// <remarks/>
         public event BuscarMAXIDPCompletedEventHandler BuscarMAXIDPCompleted;
+        
+        /// <remarks/>
+        public event validarUsuarioCompletedEventHandler validarUsuarioCompleted;
         
         /// <remarks/>
         public event cargarDatosEscuelaCompletedEventHandler cargarDatosEscuelaCompleted;
@@ -475,25 +480,25 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/login", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public int login(string nombre, string contrasena) {
+        public int login(string usuario, string contrasena) {
             object[] results = this.Invoke("login", new object[] {
-                        nombre,
+                        usuario,
                         contrasena});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void loginAsync(string nombre, string contrasena) {
-            this.loginAsync(nombre, contrasena, null);
+        public void loginAsync(string usuario, string contrasena) {
+            this.loginAsync(usuario, contrasena, null);
         }
         
         /// <remarks/>
-        public void loginAsync(string nombre, string contrasena, object userState) {
+        public void loginAsync(string usuario, string contrasena, object userState) {
             if ((this.loginOperationCompleted == null)) {
                 this.loginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnloginOperationCompleted);
             }
             this.InvokeAsync("login", new object[] {
-                        nombre,
+                        usuario,
                         contrasena}, this.loginOperationCompleted, userState);
         }
         
@@ -565,9 +570,10 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/agregardatosprofesor", RequestNamespace="https://webservicestadia.000webhostapp.com/service.php", ResponseNamespace="https://webservicestadia.000webhostapp.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string agregardatosprofesor(string id, string nombre, string apellidopat, string apellidomat, string contrasena) {
+        public string agregardatosprofesor(string id, string usuario, string nombre, string apellidopat, string apellidomat, string contrasena) {
             object[] results = this.Invoke("agregardatosprofesor", new object[] {
                         id,
+                        usuario,
                         nombre,
                         apellidopat,
                         apellidomat,
@@ -576,17 +582,18 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
-        public void agregardatosprofesorAsync(string id, string nombre, string apellidopat, string apellidomat, string contrasena) {
-            this.agregardatosprofesorAsync(id, nombre, apellidopat, apellidomat, contrasena, null);
+        public void agregardatosprofesorAsync(string id, string usuario, string nombre, string apellidopat, string apellidomat, string contrasena) {
+            this.agregardatosprofesorAsync(id, usuario, nombre, apellidopat, apellidomat, contrasena, null);
         }
         
         /// <remarks/>
-        public void agregardatosprofesorAsync(string id, string nombre, string apellidopat, string apellidomat, string contrasena, object userState) {
+        public void agregardatosprofesorAsync(string id, string usuario, string nombre, string apellidopat, string apellidomat, string contrasena, object userState) {
             if ((this.agregardatosprofesorOperationCompleted == null)) {
                 this.agregardatosprofesorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnagregardatosprofesorOperationCompleted);
             }
             this.InvokeAsync("agregardatosprofesor", new object[] {
                         id,
+                        usuario,
                         nombre,
                         apellidopat,
                         apellidomat,
@@ -727,6 +734,36 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/validarUsuario", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public int validarUsuario(string usuario) {
+            object[] results = this.Invoke("validarUsuario", new object[] {
+                        usuario});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void validarUsuarioAsync(string usuario) {
+            this.validarUsuarioAsync(usuario, null);
+        }
+        
+        /// <remarks/>
+        public void validarUsuarioAsync(string usuario, object userState) {
+            if ((this.validarUsuarioOperationCompleted == null)) {
+                this.validarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnvalidarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("validarUsuario", new object[] {
+                        usuario}, this.validarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnvalidarUsuarioOperationCompleted(object arg) {
+            if ((this.validarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.validarUsuarioCompleted(this, new validarUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/cargarDatosEscuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public string cargarDatosEscuela() {
@@ -787,7 +824,7 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/agregarEscuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string agregarEscuela(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc) {
+        public string agregarEscuela(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, double costo) {
             object[] results = this.Invoke("agregarEscuela", new object[] {
                         id_esc,
                         nombre_esc,
@@ -797,17 +834,18 @@ namespace sistema_maestros1.webservices3435 {
                         tel3_esc,
                         correo_esc,
                         contacto_esc,
-                        responsable_esc});
+                        responsable_esc,
+                        costo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void agregarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc) {
-            this.agregarEscuelaAsync(id_esc, nombre_esc, direccion_esc, tel1_Esc, tel2_esc, tel3_esc, correo_esc, contacto_esc, responsable_esc, null);
+        public void agregarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, double costo) {
+            this.agregarEscuelaAsync(id_esc, nombre_esc, direccion_esc, tel1_Esc, tel2_esc, tel3_esc, correo_esc, contacto_esc, responsable_esc, costo, null);
         }
         
         /// <remarks/>
-        public void agregarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, object userState) {
+        public void agregarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, double costo, object userState) {
             if ((this.agregarEscuelaOperationCompleted == null)) {
                 this.agregarEscuelaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnagregarEscuelaOperationCompleted);
             }
@@ -820,7 +858,8 @@ namespace sistema_maestros1.webservices3435 {
                         tel3_esc,
                         correo_esc,
                         contacto_esc,
-                        responsable_esc}, this.agregarEscuelaOperationCompleted, userState);
+                        responsable_esc,
+                        costo}, this.agregarEscuelaOperationCompleted, userState);
         }
         
         private void OnagregarEscuelaOperationCompleted(object arg) {
@@ -2455,28 +2494,28 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/modificarPagos", RequestNamespace="https://webservicestadia.000webhostapp.com/service.php", ResponseNamespace="https://webservicestadia.000webhostapp.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string modificarPagos(string id_pago, string mes, string fecha) {
+        public string modificarPagos(string id_pago, string mes, double cantidad) {
             object[] results = this.Invoke("modificarPagos", new object[] {
                         id_pago,
                         mes,
-                        fecha});
+                        cantidad});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void modificarPagosAsync(string id_pago, string mes, string fecha) {
-            this.modificarPagosAsync(id_pago, mes, fecha, null);
+        public void modificarPagosAsync(string id_pago, string mes, double cantidad) {
+            this.modificarPagosAsync(id_pago, mes, cantidad, null);
         }
         
         /// <remarks/>
-        public void modificarPagosAsync(string id_pago, string mes, string fecha, object userState) {
+        public void modificarPagosAsync(string id_pago, string mes, double cantidad, object userState) {
             if ((this.modificarPagosOperationCompleted == null)) {
                 this.modificarPagosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificarPagosOperationCompleted);
             }
             this.InvokeAsync("modificarPagos", new object[] {
                         id_pago,
                         mes,
-                        fecha}, this.modificarPagosOperationCompleted, userState);
+                        cantidad}, this.modificarPagosOperationCompleted, userState);
         }
         
         private void OnmodificarPagosOperationCompleted(object arg) {
@@ -2609,25 +2648,24 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/AgregarRecomendaciones", RequestNamespace="https://webservicestadia.000webhostapp.com/service.php", ResponseNamespace="https://webservicestadia.000webhostapp.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string AgregarRecomendaciones(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string especificacion, string recom) {
+        public string AgregarRecomendaciones(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string recom) {
             object[] results = this.Invoke("AgregarRecomendaciones", new object[] {
                         id_esc,
                         id_tal,
                         id_din,
                         id_mat,
                         id_rec,
-                        especificacion,
                         recom});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void AgregarRecomendacionesAsync(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string especificacion, string recom) {
-            this.AgregarRecomendacionesAsync(id_esc, id_tal, id_din, id_mat, id_rec, especificacion, recom, null);
+        public void AgregarRecomendacionesAsync(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string recom) {
+            this.AgregarRecomendacionesAsync(id_esc, id_tal, id_din, id_mat, id_rec, recom, null);
         }
         
         /// <remarks/>
-        public void AgregarRecomendacionesAsync(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string especificacion, string recom, object userState) {
+        public void AgregarRecomendacionesAsync(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string recom, object userState) {
             if ((this.AgregarRecomendacionesOperationCompleted == null)) {
                 this.AgregarRecomendacionesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAgregarRecomendacionesOperationCompleted);
             }
@@ -2637,7 +2675,6 @@ namespace sistema_maestros1.webservices3435 {
                         id_din,
                         id_mat,
                         id_rec,
-                        especificacion,
                         recom}, this.AgregarRecomendacionesOperationCompleted, userState);
         }
         
@@ -3445,6 +3482,32 @@ namespace sistema_maestros1.webservices3435 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void validarUsuarioCompletedEventHandler(object sender, validarUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class validarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal validarUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
