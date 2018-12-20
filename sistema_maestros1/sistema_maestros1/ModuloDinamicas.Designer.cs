@@ -656,7 +656,7 @@
             this.dgvDinamica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDinamica.Size = new System.Drawing.Size(704, 513);
             this.dgvDinamica.TabIndex = 138;
-            this.dgvDinamica.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDinamica_CellContentClick);
+            this.dgvDinamica.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvDinamica_MouseClick);
             // 
             // txtFechaInicio
             // 

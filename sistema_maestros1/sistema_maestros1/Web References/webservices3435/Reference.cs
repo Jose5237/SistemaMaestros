@@ -872,7 +872,7 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/modificarEscuela", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string modificarEscuela(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc) {
+        public string modificarEscuela(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, double precio) {
             object[] results = this.Invoke("modificarEscuela", new object[] {
                         id_esc,
                         nombre_esc,
@@ -882,17 +882,18 @@ namespace sistema_maestros1.webservices3435 {
                         tel3_esc,
                         correo_esc,
                         contacto_esc,
-                        responsable_esc});
+                        responsable_esc,
+                        precio});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void modificarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc) {
-            this.modificarEscuelaAsync(id_esc, nombre_esc, direccion_esc, tel1_Esc, tel2_esc, tel3_esc, correo_esc, contacto_esc, responsable_esc, null);
+        public void modificarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, double precio) {
+            this.modificarEscuelaAsync(id_esc, nombre_esc, direccion_esc, tel1_Esc, tel2_esc, tel3_esc, correo_esc, contacto_esc, responsable_esc, precio, null);
         }
         
         /// <remarks/>
-        public void modificarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, object userState) {
+        public void modificarEscuelaAsync(string id_esc, string nombre_esc, string direccion_esc, string tel1_Esc, string tel2_esc, string tel3_esc, string correo_esc, string contacto_esc, string responsable_esc, double precio, object userState) {
             if ((this.modificarEscuelaOperationCompleted == null)) {
                 this.modificarEscuelaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificarEscuelaOperationCompleted);
             }
@@ -905,7 +906,8 @@ namespace sistema_maestros1.webservices3435 {
                         tel3_esc,
                         correo_esc,
                         contacto_esc,
-                        responsable_esc}, this.modificarEscuelaOperationCompleted, userState);
+                        responsable_esc,
+                        precio}, this.modificarEscuelaOperationCompleted, userState);
         }
         
         private void OnmodificarEscuelaOperationCompleted(object arg) {
@@ -978,22 +980,24 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/BuscarMAXIDE", RequestNamespace="https://webservicechatbot.s3435.com/service.php", ResponseNamespace="https://webservicechatbot.s3435.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string BuscarMAXIDE() {
-            object[] results = this.Invoke("BuscarMAXIDE", new object[0]);
+        public string BuscarMAXIDE(string sub) {
+            object[] results = this.Invoke("BuscarMAXIDE", new object[] {
+                        sub});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void BuscarMAXIDEAsync() {
-            this.BuscarMAXIDEAsync(null);
+        public void BuscarMAXIDEAsync(string sub) {
+            this.BuscarMAXIDEAsync(sub, null);
         }
         
         /// <remarks/>
-        public void BuscarMAXIDEAsync(object userState) {
+        public void BuscarMAXIDEAsync(string sub, object userState) {
             if ((this.BuscarMAXIDEOperationCompleted == null)) {
                 this.BuscarMAXIDEOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBuscarMAXIDEOperationCompleted);
             }
-            this.InvokeAsync("BuscarMAXIDE", new object[0], this.BuscarMAXIDEOperationCompleted, userState);
+            this.InvokeAsync("BuscarMAXIDE", new object[] {
+                        sub}, this.BuscarMAXIDEOperationCompleted, userState);
         }
         
         private void OnBuscarMAXIDEOperationCompleted(object arg) {
@@ -2494,26 +2498,26 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/modificarPagos", RequestNamespace="https://webservicestadia.000webhostapp.com/service.php", ResponseNamespace="https://webservicestadia.000webhostapp.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string modificarPagos(string id_pago, string mes, double cantidad) {
+        public string modificarPagos(string id_alumno, string mes, double cantidad) {
             object[] results = this.Invoke("modificarPagos", new object[] {
-                        id_pago,
+                        id_alumno,
                         mes,
                         cantidad});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void modificarPagosAsync(string id_pago, string mes, double cantidad) {
-            this.modificarPagosAsync(id_pago, mes, cantidad, null);
+        public void modificarPagosAsync(string id_alumno, string mes, double cantidad) {
+            this.modificarPagosAsync(id_alumno, mes, cantidad, null);
         }
         
         /// <remarks/>
-        public void modificarPagosAsync(string id_pago, string mes, double cantidad, object userState) {
+        public void modificarPagosAsync(string id_alumno, string mes, double cantidad, object userState) {
             if ((this.modificarPagosOperationCompleted == null)) {
                 this.modificarPagosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificarPagosOperationCompleted);
             }
             this.InvokeAsync("modificarPagos", new object[] {
-                        id_pago,
+                        id_alumno,
                         mes,
                         cantidad}, this.modificarPagosOperationCompleted, userState);
         }

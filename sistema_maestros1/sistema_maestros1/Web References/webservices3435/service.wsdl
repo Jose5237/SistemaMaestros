@@ -101,6 +101,7 @@
     <wsdl:part name="correo_esc" type="xsd:string" />
     <wsdl:part name="contacto_esc" type="xsd:string" />
     <wsdl:part name="responsable_esc" type="xsd:string" />
+    <wsdl:part name="precio" type="xsd:double" />
   </wsdl:message>
   <wsdl:message name="modificarEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -117,7 +118,9 @@
   <wsdl:message name="cargarNombresEscuelaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="BuscarMAXIDERequest" />
+  <wsdl:message name="BuscarMAXIDERequest">
+    <wsdl:part name="sub" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="BuscarMAXIDEResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
@@ -473,7 +476,7 @@
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="modificarPagosRequest">
-    <wsdl:part name="id_pago" type="xsd:string" />
+    <wsdl:part name="id_alumno" type="xsd:string" />
     <wsdl:part name="mes" type="xsd:string" />
     <wsdl:part name="cantidad" type="xsd:double" />
   </wsdl:message>

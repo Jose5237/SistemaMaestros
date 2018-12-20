@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloPagos));
             this.btnMenuPrincipal2 = new System.Windows.Forms.Button();
             this.btnMaterial2 = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbEscuelaPagos = new System.Windows.Forms.ComboBox();
             this.txtAlumnoPagos = new System.Windows.Forms.TextBox();
-            this.dgvAlumnoPagos = new System.Windows.Forms.DataGridView();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,7 +61,6 @@
             this.txtEscuelaPagos = new System.Windows.Forms.TextBox();
             this.txtNomAlumnoPagos = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dtFechaPagos = new System.Windows.Forms.DateTimePicker();
             this.cbMesPagos = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnRecomendaciones2 = new System.Windows.Forms.Button();
@@ -70,14 +69,21 @@
             this.txtIdAlumnoPagos = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtIdAlumnoG2 = new System.Windows.Forms.TextBox();
-            this.txtIdEscuelaG2 = new System.Windows.Forms.TextBox();
+            this.txtPrecioTaller = new System.Windows.Forms.TextBox();
             this.txtImportePago = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).BeginInit();
+            this.txtIdAlumnoG2 = new System.Windows.Forms.TextBox();
+            this.txtIdEscuelaG2 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblmsg = new System.Windows.Forms.Label();
+            this.dgvAlumnoPagos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMenuPrincipal2
@@ -219,12 +225,12 @@
             this.esconder_pantalla.BackColor = System.Drawing.Color.Transparent;
             this.esconder_pantalla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.esconder_pantalla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.esconder_pantalla.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esconder_pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.esconder_pantalla.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.esconder_pantalla.Location = new System.Drawing.Point(1078, -7);
             this.esconder_pantalla.Margin = new System.Windows.Forms.Padding(0);
             this.esconder_pantalla.Name = "esconder_pantalla";
-            this.esconder_pantalla.Size = new System.Drawing.Size(33, 40);
+            this.esconder_pantalla.Size = new System.Drawing.Size(37, 39);
             this.esconder_pantalla.TabIndex = 108;
             this.esconder_pantalla.Text = "_";
             this.esconder_pantalla.Click += new System.EventHandler(this.esconder_pantalla_Click);
@@ -235,12 +241,12 @@
             this.exit.BackColor = System.Drawing.Color.Transparent;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exit.Location = new System.Drawing.Point(1115, -2);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(33, 40);
+            this.exit.Size = new System.Drawing.Size(36, 39);
             this.exit.TabIndex = 107;
             this.exit.Text = "x";
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -294,60 +300,19 @@
             // 
             // txtAlumnoPagos
             // 
+            this.txtAlumnoPagos.Enabled = false;
             this.txtAlumnoPagos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlumnoPagos.Location = new System.Drawing.Point(34, 107);
             this.txtAlumnoPagos.MaxLength = 70;
             this.txtAlumnoPagos.Name = "txtAlumnoPagos";
             this.txtAlumnoPagos.Size = new System.Drawing.Size(211, 23);
             this.txtAlumnoPagos.TabIndex = 2;
-            this.txtAlumnoPagos.TextChanged += new System.EventHandler(this.txtAlumnoPagos_TextChanged);
-            // 
-            // dgvAlumnoPagos
-            // 
-            this.dgvAlumnoPagos.AllowUserToAddRows = false;
-            this.dgvAlumnoPagos.AllowUserToDeleteRows = false;
-            this.dgvAlumnoPagos.AllowUserToOrderColumns = true;
-            this.dgvAlumnoPagos.AllowUserToResizeColumns = false;
-            this.dgvAlumnoPagos.AllowUserToResizeRows = false;
-            this.dgvAlumnoPagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAlumnoPagos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvAlumnoPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAlumnoPagos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlumnoPagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAlumnoPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlumnoPagos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAlumnoPagos.EnableHeadersVisualStyles = false;
-            this.dgvAlumnoPagos.GridColor = System.Drawing.Color.CornflowerBlue;
-            this.dgvAlumnoPagos.Location = new System.Drawing.Point(454, 58);
-            this.dgvAlumnoPagos.MultiSelect = false;
-            this.dgvAlumnoPagos.Name = "dgvAlumnoPagos";
-            this.dgvAlumnoPagos.ReadOnly = true;
-            this.dgvAlumnoPagos.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvAlumnoPagos.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvAlumnoPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlumnoPagos.Size = new System.Drawing.Size(667, 242);
-            this.dgvAlumnoPagos.TabIndex = 114;
-            this.dgvAlumnoPagos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlumnoPagos_CellContentClick);
             // 
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.Gainsboro;
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -420,15 +385,23 @@
             this.dgvPagos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPagos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPagos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPagos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPagos.EnableHeadersVisualStyles = false;
             this.dgvPagos.GridColor = System.Drawing.Color.CornflowerBlue;
             this.dgvPagos.Location = new System.Drawing.Point(8, 24);
@@ -436,12 +409,11 @@
             this.dgvPagos.Name = "dgvPagos";
             this.dgvPagos.ReadOnly = true;
             this.dgvPagos.RowHeadersVisible = false;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvPagos.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvPagos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPagos.Size = new System.Drawing.Size(960, 64);
             this.dgvPagos.TabIndex = 156;
-            this.dgvPagos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPagos_CellContentClick);
             // 
             // txtIdPagos
             // 
@@ -475,23 +447,11 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(351, 165);
+            this.label9.Location = new System.Drawing.Point(351, 108);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 20);
+            this.label9.Size = new System.Drawing.Size(193, 20);
             this.label9.TabIndex = 122;
-            this.label9.Text = "Fecha de Pago:";
-            // 
-            // dtFechaPagos
-            // 
-            this.dtFechaPagos.CalendarFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtFechaPagos.CustomFormat = "yyyy-MM-dd";
-            this.dtFechaPagos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtFechaPagos.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaPagos.Location = new System.Drawing.Point(355, 187);
-            this.dtFechaPagos.Name = "dtFechaPagos";
-            this.dtFechaPagos.Size = new System.Drawing.Size(239, 23);
-            this.dtFechaPagos.TabIndex = 8;
-            this.dtFechaPagos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtFechaPagos_KeyPress);
+            this.label9.Text = "Precio Mensual del taller:";
             // 
             // cbMesPagos
             // 
@@ -510,11 +470,12 @@
             "octubre",
             "noviembre",
             "diciembre"});
-            this.cbMesPagos.Location = new System.Drawing.Point(355, 130);
+            this.cbMesPagos.Location = new System.Drawing.Point(355, 183);
             this.cbMesPagos.Name = "cbMesPagos";
             this.cbMesPagos.Size = new System.Drawing.Size(239, 25);
             this.cbMesPagos.TabIndex = 7;
             this.cbMesPagos.Text = "Seleccionar Mes";
+            this.cbMesPagos.SelectedIndexChanged += new System.EventHandler(this.cbMesPagos_SelectedIndexChanged);
             this.cbMesPagos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMesPagos_KeyPress);
             // 
             // label5
@@ -522,7 +483,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(351, 108);
+            this.label5.Location = new System.Drawing.Point(351, 161);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 120;
@@ -592,7 +553,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(161, 58);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(276, 242);
+            this.groupBox1.Size = new System.Drawing.Size(276, 253);
             this.groupBox1.TabIndex = 164;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DE ALUMNO";
@@ -600,6 +561,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.txtPrecioTaller);
             this.groupBox2.Controls.Add(this.txtImportePago);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtIdAlumnoG2);
@@ -610,7 +572,6 @@
             this.groupBox2.Controls.Add(this.txtEscuelaPagos);
             this.groupBox2.Controls.Add(this.btnActualizarPagos);
             this.groupBox2.Controls.Add(this.txtNomAlumnoPagos);
-            this.groupBox2.Controls.Add(this.dtFechaPagos);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cbMesPagos);
@@ -625,25 +586,14 @@
             this.groupBox2.Text = "PAGOS REALIZADOS";
             this.groupBox2.Visible = false;
             // 
-            // txtIdAlumnoG2
+            // txtPrecioTaller
             // 
-            this.txtIdAlumnoG2.Enabled = false;
-            this.txtIdAlumnoG2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdAlumnoG2.Location = new System.Drawing.Point(112, 215);
-            this.txtIdAlumnoG2.Name = "txtIdAlumnoG2";
-            this.txtIdAlumnoG2.Size = new System.Drawing.Size(74, 22);
-            this.txtIdAlumnoG2.TabIndex = 164;
-            this.txtIdAlumnoG2.Visible = false;
-            // 
-            // txtIdEscuelaG2
-            // 
-            this.txtIdEscuelaG2.Enabled = false;
-            this.txtIdEscuelaG2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEscuelaG2.Location = new System.Drawing.Point(112, 162);
-            this.txtIdEscuelaG2.Name = "txtIdEscuelaG2";
-            this.txtIdEscuelaG2.Size = new System.Drawing.Size(74, 22);
-            this.txtIdEscuelaG2.TabIndex = 165;
-            this.txtIdEscuelaG2.Visible = false;
+            this.txtPrecioTaller.Enabled = false;
+            this.txtPrecioTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioTaller.Location = new System.Drawing.Point(355, 130);
+            this.txtPrecioTaller.Name = "txtPrecioTaller";
+            this.txtPrecioTaller.Size = new System.Drawing.Size(239, 23);
+            this.txtPrecioTaller.TabIndex = 168;
             // 
             // txtImportePago
             // 
@@ -664,17 +614,127 @@
             this.label7.TabIndex = 167;
             this.label7.Text = "Importe de Pago:";
             // 
+            // txtIdAlumnoG2
+            // 
+            this.txtIdAlumnoG2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdAlumnoG2.Location = new System.Drawing.Point(112, 215);
+            this.txtIdAlumnoG2.Name = "txtIdAlumnoG2";
+            this.txtIdAlumnoG2.Size = new System.Drawing.Size(74, 22);
+            this.txtIdAlumnoG2.TabIndex = 164;
+            this.txtIdAlumnoG2.Visible = false;
+            // 
+            // txtIdEscuelaG2
+            // 
+            this.txtIdEscuelaG2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdEscuelaG2.Location = new System.Drawing.Point(112, 162);
+            this.txtIdEscuelaG2.Name = "txtIdEscuelaG2";
+            this.txtIdEscuelaG2.Size = new System.Drawing.Size(74, 22);
+            this.txtIdEscuelaG2.TabIndex = 165;
+            this.txtIdEscuelaG2.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.txtbuscar);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.lblmsg);
+            this.groupBox3.Controls.Add(this.dgvAlumnoPagos);
+            this.groupBox3.Location = new System.Drawing.Point(452, 58);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(686, 253);
+            this.groupBox3.TabIndex = 166;
+            this.groupBox3.TabStop = false;
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbuscar.Location = new System.Drawing.Point(128, 13);
+            this.txtbuscar.MaxLength = 70;
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(211, 23);
+            this.txtbuscar.TabIndex = 168;
+            this.txtbuscar.Visible = false;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(6, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 20);
+            this.label8.TabIndex = 169;
+            this.label8.Text = "Buscar Alumno:";
+            this.label8.Visible = false;
+            // 
+            // lblmsg
+            // 
+            this.lblmsg.AutoSize = true;
+            this.lblmsg.BackColor = System.Drawing.Color.Transparent;
+            this.lblmsg.Font = new System.Drawing.Font("Century Gothic", 26.25F);
+            this.lblmsg.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblmsg.Location = new System.Drawing.Point(71, 79);
+            this.lblmsg.Name = "lblmsg";
+            this.lblmsg.Size = new System.Drawing.Size(566, 84);
+            this.lblmsg.TabIndex = 170;
+            this.lblmsg.Text = "Seleccione una escuela para\r\nmostrar los datos de los alumnos";
+            this.lblmsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvAlumnoPagos
+            // 
+            this.dgvAlumnoPagos.AllowUserToAddRows = false;
+            this.dgvAlumnoPagos.AllowUserToDeleteRows = false;
+            this.dgvAlumnoPagos.AllowUserToOrderColumns = true;
+            this.dgvAlumnoPagos.AllowUserToResizeColumns = false;
+            this.dgvAlumnoPagos.AllowUserToResizeRows = false;
+            this.dgvAlumnoPagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAlumnoPagos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvAlumnoPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAlumnoPagos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlumnoPagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvAlumnoPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlumnoPagos.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvAlumnoPagos.EnableHeadersVisualStyles = false;
+            this.dgvAlumnoPagos.GridColor = System.Drawing.Color.CornflowerBlue;
+            this.dgvAlumnoPagos.Location = new System.Drawing.Point(10, 40);
+            this.dgvAlumnoPagos.MultiSelect = false;
+            this.dgvAlumnoPagos.Name = "dgvAlumnoPagos";
+            this.dgvAlumnoPagos.ReadOnly = true;
+            this.dgvAlumnoPagos.RowHeadersVisible = false;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvAlumnoPagos.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvAlumnoPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlumnoPagos.Size = new System.Drawing.Size(667, 206);
+            this.dgvAlumnoPagos.TabIndex = 167;
+            this.dgvAlumnoPagos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvAlumnoPagos_MouseClick);
+            // 
             // ModuloPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
-            this.Controls.Add(this.dgvAlumnoPagos);
             this.Controls.Add(this.esconder_pantalla);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.label12);
@@ -693,12 +753,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "pagos";
             this.Load += new System.EventHandler(this.ModuloPagos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnoPagos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -722,7 +784,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbEscuelaPagos;
         private System.Windows.Forms.TextBox txtAlumnoPagos;
-        private System.Windows.Forms.DataGridView dgvAlumnoPagos;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -733,7 +794,6 @@
         private System.Windows.Forms.TextBox txtEscuelaPagos;
         private System.Windows.Forms.TextBox txtNomAlumnoPagos;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtFechaPagos;
         private System.Windows.Forms.ComboBox cbMesPagos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRecomendaciones2;
@@ -746,5 +806,11 @@
         private System.Windows.Forms.TextBox txtIdEscuelaG2;
         private System.Windows.Forms.TextBox txtImportePago;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtbuscar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblmsg;
+        private System.Windows.Forms.DataGridView dgvAlumnoPagos;
+        private System.Windows.Forms.TextBox txtPrecioTaller;
     }
 }

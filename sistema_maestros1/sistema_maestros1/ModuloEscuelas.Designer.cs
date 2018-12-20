@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEscuelas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscadorEscuela = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -80,9 +80,9 @@
             this.txtPrecioEscuela = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtEstadoEscuela = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEscuela)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -196,7 +196,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(7, 648);
+            this.btnAceptar.Location = new System.Drawing.Point(8, 632);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 10;
@@ -213,18 +213,18 @@
             this.txtTel1Escuela.MaxLength = 10;
             this.txtTel1Escuela.Name = "txtTel1Escuela";
             this.txtTel1Escuela.Size = new System.Drawing.Size(211, 23);
-            this.txtTel1Escuela.TabIndex = 4;
+            this.txtTel1Escuela.TabIndex = 5;
             this.txtTel1Escuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel1Escuela_KeyPress);
             // 
             // txtDireccionEscuela
             // 
             this.txtDireccionEscuela.Enabled = false;
             this.txtDireccionEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtDireccionEscuela.Location = new System.Drawing.Point(4, 45);
+            this.txtDireccionEscuela.Location = new System.Drawing.Point(4, 94);
             this.txtDireccionEscuela.MaxLength = 200;
             this.txtDireccionEscuela.Name = "txtDireccionEscuela";
             this.txtDireccionEscuela.Size = new System.Drawing.Size(211, 23);
-            this.txtDireccionEscuela.TabIndex = 3;
+            this.txtDireccionEscuela.TabIndex = 4;
             // 
             // txtNombreEscuela
             // 
@@ -272,7 +272,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(1, 23);
+            this.label2.Location = new System.Drawing.Point(1, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 40;
@@ -351,23 +351,23 @@
             this.dgvEscuela.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvEscuela.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEscuela.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Thistle;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEscuela.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvEscuela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEscuela.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvEscuela.EnableHeadersVisualStyles = false;
             this.dgvEscuela.GridColor = System.Drawing.Color.Thistle;
             this.dgvEscuela.Location = new System.Drawing.Point(423, 105);
@@ -375,12 +375,13 @@
             this.dgvEscuela.Name = "dgvEscuela";
             this.dgvEscuela.ReadOnly = true;
             this.dgvEscuela.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvEscuela.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvEscuela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEscuela.Size = new System.Drawing.Size(704, 513);
             this.dgvEscuela.TabIndex = 35;
             this.dgvEscuela.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEscuela_CellContentClick);
+            this.dgvEscuela.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvEscuela_MouseClick);
             // 
             // txtContactoEscuela
             // 
@@ -641,7 +642,6 @@
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 133;
             this.label8.Text = "label8";
-            this.label8.Visible = false;
             // 
             // checkPrescolar
             // 
@@ -706,8 +706,10 @@
             this.txtPrecioEscuela.Location = new System.Drawing.Point(10, 606);
             this.txtPrecioEscuela.MaxLength = 50;
             this.txtPrecioEscuela.Name = "txtPrecioEscuela";
-            this.txtPrecioEscuela.Size = new System.Drawing.Size(143, 23);
-            this.txtPrecioEscuela.TabIndex = 138;
+            this.txtPrecioEscuela.Size = new System.Drawing.Size(208, 23);
+            this.txtPrecioEscuela.TabIndex = 10;
+            this.txtPrecioEscuela.TextChanged += new System.EventHandler(this.txtPrecioEscuela_TextChanged);
+            this.txtPrecioEscuela.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioEscuela_KeyPress);
             // 
             // label13
             // 
@@ -716,9 +718,9 @@
             this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label13.Location = new System.Drawing.Point(7, 584);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 20);
+            this.label13.Size = new System.Drawing.Size(140, 20);
             this.label13.TabIndex = 139;
-            this.label13.Text = "Precio:";
+            this.label13.Text = "Precio de Talleres:";
             // 
             // panel1
             // 
@@ -747,36 +749,15 @@
             this.panel1.Controls.Add(this.txtContactoEscuela);
             this.panel1.Location = new System.Drawing.Point(167, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 533);
+            this.panel1.Size = new System.Drawing.Size(250, 542);
             this.panel1.TabIndex = 140;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label14.Location = new System.Drawing.Point(1, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(62, 20);
-            this.label14.TabIndex = 141;
-            this.label14.Text = "Estado:";
-            // 
-            // txtEstadoEscuela
-            // 
-            this.txtEstadoEscuela.Enabled = false;
-            this.txtEstadoEscuela.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtEstadoEscuela.Location = new System.Drawing.Point(4, 92);
-            this.txtEstadoEscuela.MaxLength = 200;
-            this.txtEstadoEscuela.Name = "txtEstadoEscuela";
-            this.txtEstadoEscuela.Size = new System.Drawing.Size(211, 23);
-            this.txtEstadoEscuela.TabIndex = 140;
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtEstadoEscuela);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtDireccionEscuela);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.groupBox2.Location = new System.Drawing.Point(4, 99);
@@ -785,6 +766,63 @@
             this.groupBox2.TabIndex = 141;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Direccion:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownHeight = 80;
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.IntegralHeight = false;
+            this.comboBox1.Items.AddRange(new object[] {
+            "HGO - Hidalgo",
+            "AGS - Aguascalientes",
+            "BCN - Baja California",
+            "BCS - Baja California Sur",
+            "CAM - Campeche",
+            "CHP  - Chiapas",
+            "CHH - Chihuahua",
+            "CMX   - Ciudad de México",
+            "COA - Coahuila",
+            "COL - Colima",
+            "DGO - Durango",
+            "GTO - Guanajuato",
+            "GRO - Guerrero",
+            "JAL - Jalisco",
+            "MIC - Michoacán ",
+            "MOR - Morelos",
+            "NAY - Nayarit",
+            "NVL - Nuevo León",
+            "OAX - Oaxaca",
+            "PUE - Puebla",
+            "QRO - Queretaro",
+            "QUR - Quintana Roo",
+            "SLP - San Luis Potosi",
+            "SIN - Sinaloa",
+            "SON - Sonora ",
+            "TAB - Tabasco",
+            "TAM - Tamaulipas",
+            "TLA - Tlaxcala",
+            "VER - Veracruz",
+            "YUC - Yucatan",
+            "ZAC - Zacatecas"});
+            this.comboBox1.Location = new System.Drawing.Point(5, 41);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(211, 28);
+            this.comboBox1.TabIndex = 3;
+            this.comboBox1.Text = "Estado";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label14.Location = new System.Drawing.Point(3, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 20);
+            this.label14.TabIndex = 141;
+            this.label14.Text = "Estado:";
             // 
             // ModuloEscuelas
             // 
@@ -886,6 +924,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtEstadoEscuela;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

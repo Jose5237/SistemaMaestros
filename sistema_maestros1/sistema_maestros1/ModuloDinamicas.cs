@@ -26,7 +26,7 @@ namespace sistema_maestros1
 
         //VARIABLES
         int opcionBotones = 0;
-
+        webservices3435.WSPHP validaciones = new webservices3435.WSPHP();
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
         #region
 
@@ -237,7 +237,7 @@ namespace sistema_maestros1
 
             dtFechaIniDinamicas.Enabled = true;
             dtFechaFinDinamicas.Enabled = true;
-            dtFechaFinDinamicas.Value = dtFechaIniDinamicas.Value.AddDays(1);
+            //dtFechaFinDinamicas.Value = dtFechaIniDinamicas.Value.AddDays(1);
             txtFechaInicio.Text = "";
             txtFechaFin.Text = "";
             
@@ -302,7 +302,7 @@ namespace sistema_maestros1
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((cbEscuelaDinamicas.Text != "" && txtIdEscuela.Text != "") && (cbTallerDinamicas.Text != "" && txtIdTaller.Text != "") && (txtNombreDinamicas.Text != "") && (txtDescripcionDinamicas.Text != "") && (dtFechaIniDinamicas.Text != "") && (dtFechaFinDinamicas.Text != "") && (txtHabilidadesDinamicas.Text != "") && (txtJustificacionCostoDinamicas.Text != "") && (txtHerramientasDinamicas.Text != ""))
+            if ((cbEscuelaDinamicas.Text != "" && txtIdEscuela.Text != "") && (cbTallerDinamicas.Text != "" && txtIdTaller.Text != "") && (txtNombreDinamicas.Text != "") && (txtDescripcionDinamicas.Text != "") && (txtFechaInicio.Text != "") && (txtFechaFin.Text != "") && (txtHabilidadesDinamicas.Text != "") && (txtJustificacionCostoDinamicas.Text != "") && (txtHerramientasDinamicas.Text != ""))
             {
                 if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -323,24 +323,18 @@ namespace sistema_maestros1
                         di.di_habilidades_dinamica = txtHabilidadesDinamicas.Text;
                         di.di_justificacioncosto_dinamica = txtJustificacionCostoDinamicas.Text;
                         di.di_herramientas_dinamica = txtHerramientasDinamicas.Text;
-
-
-                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                        
+                        int val = validarfechas(1,1,'a');           
+                        if (val == 0)
                         {
 
-                            int validarfechasiguales = wsPHP.validarDinamicaXtaller(di.di_id_escuela, di.di_id_taller, di.di_fecha_ini_dinamica);
-                            if (validarfechasiguales > 0)
-                            {
-                                MessageBox.Show("Ya existe una dinamica de este taller en este mismo periodo de tiempo, favor de seleccionar una fecha diferente", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                string mensaje = wsPHP.agregarDinamica(di.di_id_escuela, di.di_id_taller, di.di_id_dinamica, di.di_nombre_dinamica, di.di_descripcion_dinamica, di.di_fecha_ini_dinamica, di.di_fecha_fin_dinamica, di.di_habilidades_dinamica, di.di_justificacioncosto_dinamica, di.di_herramientas_dinamica);
-                                MessageBox.Show(mensaje, "¡Dinamica Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                cargarDatosTabla();
-                                inicializacionCampos();
-
-                            }
+                        }
+                        else
+                        {
+                            string mensaje = validaciones.agregarDinamica(di.di_id_escuela, di.di_id_taller, di.di_id_dinamica, di.di_nombre_dinamica, di.di_descripcion_dinamica, di.di_fecha_ini_dinamica, di.di_fecha_fin_dinamica, di.di_habilidades_dinamica, di.di_justificacioncosto_dinamica, di.di_herramientas_dinamica);
+                            MessageBox.Show(mensaje, "¡Dinamica Agregada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cargarDatosTabla();
+                            inicializacionCampos();
                         }
 
                     }
@@ -349,7 +343,7 @@ namespace sistema_maestros1
                         if ((cbEscuelaDinamicas.Text != "" && txtIdEscuela.Text != "") && (cbTallerDinamicas.Text != "" && txtIdTaller.Text != "") && (txtNombreDinamicas.Text != "" && txtIdDinamicas.Text != "") && (txtDescripcionDinamicas.Text != "") && (dtFechaIniDinamicas.Text != "") && (dtFechaFinDinamicas.Text != "") && (txtHabilidadesDinamicas.Text != "") && (txtJustificacionCostoDinamicas.Text != "") && (txtHerramientasDinamicas.Text != ""))
                         {
 
-
+                            int val =0;
                             ClassDinamica di = new ClassDinamica();
                             di.di_id_escuela = txtIdEscuela.Text;
                             di.di_id_taller = txtIdTaller.Text;
@@ -361,50 +355,26 @@ namespace sistema_maestros1
                             di.di_habilidades_dinamica = txtHabilidadesDinamicas.Text;
                             di.di_justificacioncosto_dinamica = txtJustificacionCostoDinamicas.Text;
                             di.di_herramientas_dinamica = txtHerramientasDinamicas.Text;
-
-
-                            int validarfechasiguales;
-                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                            if(dgvDinamica.CurrentRow.Cells[9].Value.ToString() != txtFechaInicio.Text && dgvDinamica.CurrentRow.Cells[10].Value.ToString() != txtFechaFin.Text)
+                                val = validarfechas(1,1,'m');
+                            else if (dgvDinamica.CurrentRow.Cells[9].Value.ToString() != txtFechaInicio.Text && dgvDinamica.CurrentRow.Cells[10].Value.ToString() == txtFechaFin.Text)
+                                val = validarfechas(1,0, 'm');
+                            else if(dgvDinamica.CurrentRow.Cells[9].Value.ToString() == txtFechaInicio.Text && dgvDinamica.CurrentRow.Cells[10].Value.ToString() != txtFechaFin.Text)
+                                val = validarfechas(0,1,'m');
+                            else
+                                val = 1;
+                            if (val != 0)
                             {
-
-
-                                if (txtFechaInicio.Text != dgvDinamica.CurrentRow.Cells[7].Value.ToString())
-                                {
-                                    validarfechasiguales = wsPHP.validarDinamicaXtaller(di.di_id_escuela, di.di_id_taller, di.di_fecha_ini_dinamica);
-                                    if (validarfechasiguales == 0)
-                                    {
-                                        string mensaje = wsPHP.modificarDinamica(di.di_id_escuela, di.di_id_taller, di.di_id_dinamica, di.di_nombre_dinamica, di.di_descripcion_dinamica, di.di_fecha_ini_dinamica, di.di_fecha_fin_dinamica, di.di_habilidades_dinamica, di.di_justificacioncosto_dinamica, di.di_herramientas_dinamica);
-                                        MessageBox.Show(mensaje, "¡Dinamica Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        cargarDatosTabla();
-                                        inicializacionCampos();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Ya existe una dinamica de este taller en este mismo periodo de tiempo, favor de seleccionar una fecha diferente", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                                else
-                                {
-                                    validarfechasiguales = 0;
-                                    if (validarfechasiguales == 0)
-                                    {
-                                        string mensaje = wsPHP.modificarDinamica(di.di_id_escuela, di.di_id_taller, di.di_id_dinamica, di.di_nombre_dinamica, di.di_descripcion_dinamica, di.di_fecha_ini_dinamica, di.di_fecha_fin_dinamica, di.di_habilidades_dinamica, di.di_justificacioncosto_dinamica, di.di_herramientas_dinamica);
-                                        MessageBox.Show(mensaje, "¡Dinamica Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        cargarDatosTabla();
-                                        inicializacionCampos();
-                                    }
-                                    else if (validarfechasiguales > 0)
-                                    {
-                                        MessageBox.Show("Ya existe una dinamica de este taller en este mismo periodo de tiempo, favor de seleccionar una fecha diferente", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-
-
+                                string mensaje = validaciones.modificarDinamica(di.di_id_escuela, di.di_id_taller, di.di_id_dinamica, di.di_nombre_dinamica, di.di_descripcion_dinamica, di.di_fecha_ini_dinamica, di.di_fecha_fin_dinamica, di.di_habilidades_dinamica, di.di_justificacioncosto_dinamica, di.di_herramientas_dinamica);
+                                MessageBox.Show(mensaje, "¡Dinamica Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                cargarDatosTabla();
+                                inicializacionCampos();
                             }
                         }
+                        
                         else
                             MessageBox.Show("Debes seleccionar antes un registro para modificar","¡ERROR!");
-
+                        
                     }
                     else if (opcionBotones == 2)
                     {
@@ -512,57 +482,108 @@ namespace sistema_maestros1
 
         //EVENTO_VALUE DATETIME FECHAS
         #region
-
+        public int validarfechas(int valini, int valfin,char op)
+        {
+            if (valini == 1)
+            {
+                if (op == 'm')
+                {
+                    if (Convert.ToDateTime(txtFechaInicio.Text).Date > Convert.ToDateTime(dgvDinamica.CurrentRow.Cells[9].Value.ToString()).Date)
+                    {
+                        if (Convert.ToDateTime(txtFechaInicio.Text).Date > Convert.ToDateTime(dgvDinamica.CurrentRow.Cells[10].Value.ToString()).Date)
+                            MessageBox.Show("La fecha inicial de la dinamica no puede ser mayor que la fecha final.\nPor favor seleccione una distinta", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        else
+                        {
+                            if (valini == 1 && valfin == 1)
+                            {
+                            }
+                            if (valini == 1 && valfin != 1 || valini != 1 && valfin == 1)
+                                return 1;
+                        }
+                    }
+                }
+                int x = validaciones.validarDinamicaXtaller(txtIdEscuela.Text, txtIdTaller.Text, txtFechaInicio.Text);
+                if (x >= 1)
+                {
+                    MessageBox.Show("Ya exite una dinamica con la fecha de inicio seleccionada\nNo puede haber dos dinamicas en la misma fecha. Por favor seleccione una distinta", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtFechaInicio.Text = "";
+                    if (valini == 1 && valfin == 1)
+                    { }
+                    if (valini == 1 && valfin != 1 || valini != 1 && valfin == 1)
+                        return 1;
+                }
+                else
+                {
+                    if (dtFechaIniDinamicas.Value.Date < Convert.ToDateTime(txtFechaIniTaller.Text))
+                    {
+                        MessageBox.Show("¡ERROR! la fecha inicial de la dinamica no puede ser menor a la fecha inicial del taller\nPor favor seleccione otra fecha", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text).AddDays(1);
+                        txtFechaInicio.Text = "";
+                        if (valini == 1 && valfin == 1)
+                        { }
+                        if (valini == 1 && valfin != 1 || valini != 1 && valfin == 1)
+                            return 1;
+                    }
+                    if (dtFechaIniDinamicas.Value.Date > Convert.ToDateTime(txtFechaFinTaller.Text))
+                    {
+                        MessageBox.Show("¡ERROR! La fecha inicial de la dinamica no puede ser mayor a la fecha final del taller.Por favor seleccione una distinta", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaFinTaller.Text).AddDays(-1);
+                        txtFechaInicio.Text = "";
+                        if (valini == 1 && valfin == 1)
+                        { }
+                        if (valini == 1 && valfin != 1 || valini != 1 && valfin == 1)
+                            return 1;
+                    }
+                }
+            }
+            if (valfin == 1)
+            {
+                if(op == 'm')
+                {
+                    if (Convert.ToDateTime(txtFechaFin.Text).Date < Convert.ToDateTime(dgvDinamica.CurrentRow.Cells[10].Value.ToString()).Date)
+                    {
+                        if(dtFechaFinDinamicas.Value.Date < dtFechaIniDinamicas.Value.Date)
+                        {
+                            MessageBox.Show("La fecha final de la dinamica no puede ser menor a la fecha inicial.\nPor favor seleccione una distinta", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtFechaFin.Text = "";
+                            return 0;
+                        }
+                        return 1;
+                    }
+                }
+                if (dtFechaFinDinamicas.Value.Date < dtFechaIniDinamicas.Value.Date)
+                {
+                    MessageBox.Show("La fecha final de la dinamica no puede ser menor a la fecha inicial.\nPor favor seleccione una distinta", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtFechaFin.Text = "";
+                    return 0;
+                }
+                else
+                {
+                    if (validaciones.validarDinamicaXtaller(txtIdEscuela.Text, txtIdTaller.Text, txtFechaFin.Text) >= 1)
+                    {
+                        MessageBox.Show("La fecha final de esta dinamica interfiere con la fecha inicial de otra dinamica\nPor favor verifique las fechas de los demas talleres y seleccione una distinta", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtFechaFin.Text = "";
+                        return 0;
+                    }
+                    else if (dtFechaFinDinamicas.Value.Date > Convert.ToDateTime(txtFechaFinTaller.Text))
+                    {
+                        MessageBox.Show("La fecha final de la dinamica no puede ser mayor a la fecha final del taller.\nPor favor seleccione una distinta", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtFechaFin.Text = "";
+                        return 0;
+                    }
+                }
+            }
+            return 1;
+        }
         private void dtFechaIniDinamicas_ValueChanged(object sender, EventArgs e)
         {
 
             txtFechaInicio.Text = Convert.ToString(dtFechaIniDinamicas.Value.ToString("yyyy-MM-dd"));
-
-            //if((dtFechaIniDinamicas.Value.Month == Convert.ToDateTime(txtFechaIniTaller.Text).Month) && (dtFechaIniDinamicas.Value.Day == Convert.ToDateTime(txtFechaIniTaller.Text).Day) && (dtFechaIniDinamicas.Value.Year == Convert.ToDateTime(txtFechaIniTaller.Text).Year))
-            //{}
-            //else if ((dtFechaIniDinamicas.Value.Day < Convert.ToDateTime(txtFechaIniTaller.Text).Day) || ((dtFechaIniDinamicas.Value.Month < Convert.ToDateTime(txtFechaIniTaller.Text).Month) && (dtFechaIniDinamicas.Value.Year <= Convert.ToDateTime(txtFechaIniTaller.Text).Year) && (dtFechaIniDinamicas.Value.Day < Convert.ToDateTime(txtFechaIniTaller.Text).Day)) || ((dtFechaIniDinamicas.Value.Month == Convert.ToDateTime(txtFechaIniTaller.Text).Month) && (dtFechaIniDinamicas.Value.Day < Convert.ToDateTime(txtFechaIniTaller.Text).Day)) || (dtFechaIniDinamicas.Value.Year < Convert.ToDateTime(txtFechaIniTaller.Text).Year))
-            //{
-            //    MessageBox.Show("¡ERROR! No puedes asignarle una fecha menor a la dinamica de la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text);
-            //}
-            if (dtFechaIniDinamicas.Value.Date < Convert.ToDateTime(txtFechaIniTaller.Text))
-            {
-                MessageBox.Show("¡ERROR! No puedes asignarle una fecha menor a la dinamica de la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text);
-            }
-
-            //if ((dtFechaIniDinamicas.Value.Year > Convert.ToDateTime(txtFechaFinTaller.Text).Year) || ((dtFechaIniDinamicas.Value.Month > Convert.ToDateTime(txtFechaFinTaller.Text).Month) && (dtFechaIniDinamicas.Value.Year >= Convert.ToDateTime(txtFechaFinTaller.Text).Year)) || ((dtFechaIniDinamicas.Value.Month == Convert.ToDateTime(txtFechaFinTaller.Text).Month) && (dtFechaIniDinamicas.Value.Day > Convert.ToDateTime(txtFechaFinTaller.Text).Day)))
-            //{
-            //    MessageBox.Show("¡ERROR! No puedes asignarle una fecha de termino de dinamica 'MAYOR' a la de fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text);
-            //}
-            if (dtFechaIniDinamicas.Value.Date > Convert.ToDateTime(txtFechaFinTaller.Text))
-            {
-                MessageBox.Show("¡ERROR! No puedes asignarle una fecha de termino de dinamica 'MAYOR' a la de fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtFechaIniDinamicas.Value = Convert.ToDateTime(txtFechaIniTaller.Text);
-            }
         }
 
         private void dtFechaFinDinamicas_ValueChanged(object sender, EventArgs e)
         {
-
             txtFechaFin.Text = Convert.ToString(dtFechaFinDinamicas.Value.ToString("yyyy-MM-dd"));
-
-            if (((dtFechaFinDinamicas.Value.Month == dtFechaIniDinamicas.Value.Month) && (dtFechaFinDinamicas.Value.Day >= dtFechaIniDinamicas.Value.Day)) || ((dtFechaFinDinamicas.Value.Month <= Convert.ToDateTime( txtFechaFinTaller.Text).Month) && (dtFechaFinDinamicas.Value.Day <= Convert.ToDateTime(txtFechaFinTaller.Text).Day)))
-            { }
-            else if ((dtFechaFinDinamicas.Value.Year < dtFechaIniDinamicas.Value.Year) || (dtFechaFinDinamicas.Value.Month < dtFechaIniDinamicas.Value.Month) || ((dtFechaFinDinamicas.Value.Month == dtFechaIniDinamicas.Value.Month) && (dtFechaFinDinamicas.Value.Day < dtFechaIniDinamicas.Value.Day)))
-            {
-                MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino menor a la fecha de inicio de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtFechaFinDinamicas.Value = dtFechaIniDinamicas.Value.AddDays(1);
-            }
-            if (txtFechaFinTaller.Text != "" && txtFechaFin.Text != "")
-            {
-                if (dtFechaFinDinamicas.Value > Convert.ToDateTime(txtFechaFinTaller.Text))
-                {
-                    MessageBox.Show("¡ERROR! No puedes ingresar una fecha de termino mayor a la fecha de termino de un taller", "¡ERROR EN LAS FECHAS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dtFechaFinDinamicas.Value = Convert.ToDateTime(txtFechaFinTaller.Text);
-                }
-            }
         }
 
         #endregion
@@ -615,43 +636,6 @@ namespace sistema_maestros1
             }
         }
         
-
-        //CELLCONTENT (DGV)
-        private void dgvDinamica_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            
-
-            NombresColumnas();
-
-            webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
-
-            cbEscuelaDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[0].Value.ToString());
-            cbTallerDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[1].Value.ToString());
-
-            txtFechaIniTaller.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtFechaFinTaller.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-            txtIdEscuela.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtIdTaller.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[5].Value.ToString());
-            
-            txtIdDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[6].Value.ToString());
-            txtNombreDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[7].Value.ToString());
-            txtDescripcionDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[8].Value.ToString());
-            string fechaI = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[9].Value.ToString());
-            string fechaF = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[10].Value.ToString());
-            txtHabilidadesDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[11].Value.ToString());
-            txtJustificacionCostoDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[12].Value.ToString());
-            txtHerramientasDinamicas.Text = Convert.ToString(dgvDinamica.Rows[e.RowIndex].Cells[13].Value.ToString());
-            
-            string newI = fechaI.Replace("-", "/");
-            txtFechaInicio.Text = newI;
-            dtFechaIniDinamicas.Value = DateTime.ParseExact(newI, "yyyy/MM/dd", CultureInfo.InvariantCulture);
-
-            string newF = fechaF.Replace("-", "/");
-            txtFechaFin.Text = newF;
-            dtFechaFinDinamicas.Value = DateTime.ParseExact(newF, "yyyy/MM/dd", CultureInfo.InvariantCulture);
-        }
 
         
         //BUSCADOR DE DINAMICAS
@@ -778,6 +762,31 @@ namespace sistema_maestros1
             txtFechaIniTaller.Text = "";
             txtFechaFinTaller.Text = "";
             cbTallerDinamicas.Text = "Seleccionar Taller";
+        }
+        private void dgvDinamica_MouseClick(object sender, MouseEventArgs e)
+        {
+            NombresColumnas();
+           // webservices3435.WSPHP wsPHP = new webservices3435.WSPHP();
+            cbEscuelaDinamicas.Text = dgvDinamica.CurrentRow.Cells[0].Value.ToString();
+            cbTallerDinamicas.Text = dgvDinamica.CurrentRow.Cells[1].Value.ToString();
+            txtFechaIniTaller.Text = dgvDinamica.CurrentRow.Cells[2].Value.ToString();
+            txtFechaFinTaller.Text = dgvDinamica.CurrentRow.Cells[3].Value.ToString();
+            txtIdEscuela.Text = dgvDinamica.CurrentRow.Cells[4].Value.ToString();
+            txtIdTaller.Text = dgvDinamica.CurrentRow.Cells[5].Value.ToString();
+            txtIdDinamicas.Text = dgvDinamica.CurrentRow.Cells[6].Value.ToString();
+            txtNombreDinamicas.Text = dgvDinamica.CurrentRow.Cells[7].Value.ToString();
+            txtDescripcionDinamicas.Text = dgvDinamica.CurrentRow.Cells[8].Value.ToString();
+            string fechaI = dgvDinamica.CurrentRow.Cells[9].Value.ToString();
+            string fechaF = dgvDinamica.CurrentRow.Cells[10].Value.ToString();
+            txtHabilidadesDinamicas.Text = dgvDinamica.CurrentRow.Cells[11].Value.ToString();
+            txtJustificacionCostoDinamicas.Text = dgvDinamica.CurrentRow.Cells[12].Value.ToString();
+            txtHerramientasDinamicas.Text = dgvDinamica.CurrentRow.Cells[13].Value.ToString();
+            string newI = fechaI.Replace("-", "/");
+            txtFechaInicio.Text = newI;
+            dtFechaIniDinamicas.Value = DateTime.ParseExact(newI, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+            string newF = fechaF.Replace("-", "/");
+            txtFechaFin.Text = newF;
+            dtFechaFinDinamicas.Value = DateTime.ParseExact(newF, "yyyy/MM/dd", CultureInfo.InvariantCulture);
         }
     }
 }

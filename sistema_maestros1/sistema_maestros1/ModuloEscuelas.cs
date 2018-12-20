@@ -25,8 +25,11 @@ namespace sistema_maestros1
         }
 
         //VARIABLES
+        string aux = "", aux2 = "";
+        int i;
         int opcionBotones = 0;
-        string prescolar, primaria, secundaria;
+        object obj = new object();
+        string prescolar, primaria, secundaria, sub = "", estado = "";
         webservices3435.WSPHP ws = new webservices3435.WSPHP();
 
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
@@ -184,14 +187,14 @@ namespace sistema_maestros1
 
         #endregion
 
-        
+
         //METODOS DE VALIDACIONES
         #region
 
         //METODO DEL txtTel1Escuela PARA ACEPTAR SOLO NUMEROS
         private void txtTel1Escuela_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
             v.SoloNumeros(e);
         }
 
@@ -230,7 +233,7 @@ namespace sistema_maestros1
             dgvEscuela.ClearSelection();
             dgvEscuela.Enabled = false;
             dgvEscuela.ScrollBars = ScrollBars.Both;
-
+            comboBox1.Enabled = true;
             txtIdEscuela.Enabled = false; txtIdEscuela.Text = "";
             txtNombreEscuela.Enabled = true; txtNombreEscuela.Text = "";
             txtDireccionEscuela.Enabled = true; txtDireccionEscuela.Text = "";
@@ -264,7 +267,7 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = true;
             txtContactoEscuela.Enabled = true;
             txtResponsablePagoEscuela.Enabled = true;
-            txtPrecioEscuela.Enabled = false;
+            txtPrecioEscuela.Enabled = true;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
 
             //checkPrescolar.Enabled = true;
@@ -299,13 +302,10 @@ namespace sistema_maestros1
         //BOTON ACEPTAR (CRUD)
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((txtNombreEscuela.Text != "") && (txtDireccionEscuela.Text != "") && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != ""))
+            if ((txtNombreEscuela.Text != "") && (txtDireccionEscuela.Text != "") && comboBox1.Text != "Estado" && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != "") && txtPrecioEscuela.Text != "")
             {
-                if ((txtTel1Escuela.Text.Length == 7 || txtTel1Escuela.Text.Length == 10) && (txtTel2Escuela.Text.Length == 7 || txtTel2Escuela.Text.Length == 10 || txtTel2Escuela.Text == "" ) && (txtTel3Escuela.Text.Length == 7 || txtTel3Escuela.Text.Length == 10 || txtTel3Escuela.Text == ""))
+                if ((txtTel1Escuela.Text.Length == 7 || txtTel1Escuela.Text.Length == 10) && (txtTel2Escuela.Text.Length == 7 || txtTel2Escuela.Text.Length == 10 || txtTel2Escuela.Text == "") && (txtTel3Escuela.Text.Length == 7 || txtTel3Escuela.Text.Length == 10 || txtTel3Escuela.Text == ""))
                 {
-
-
-
                     string email = txtCorreoEscuela.Text;
                     bool verificar = email.Contains("@");
                     bool verificar2 = email.Contains(".com");
@@ -320,7 +320,7 @@ namespace sistema_maestros1
                                 ClassEscuela es = new ClassEscuela();
                                 es.es_id_escuela = label8.Text;
                                 es.es_nombre_escuela = txtNombreEscuela.Text;
-                                es.es_direccion_escuela = txtDireccionEscuela.Text;
+                                es.es_direccion_escuela = estado + "," + txtDireccionEscuela.Text;
                                 es.es_telefono1_escuela = txtTel1Escuela.Text;
                                 es.es_telefono2_escuela = txtTel2Escuela.Text;
                                 es.es_telefono3_escuela = txtTel3Escuela.Text;
@@ -354,7 +354,7 @@ namespace sistema_maestros1
                         }
                         else if (opcionBotones == 1)
                         {
-                            if ((txtNombreEscuela.Text != "" && txtIdEscuela.Text != "") && (txtDireccionEscuela.Text != "") && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != ""))
+                            if ((txtNombreEscuela.Text != "" && txtIdEscuela.Text != "") && (txtDireccionEscuela.Text != "") && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != "" ) && (txtPrecioEscuela.Text != ""))
                             {
 
 
@@ -365,41 +365,41 @@ namespace sistema_maestros1
                                     ClassEscuela es = new ClassEscuela();
                                     es.es_id_escuela = txtIdEscuela.Text;
                                     es.es_nombre_escuela = txtNombreEscuela.Text;
-                                    es.es_direccion_escuela = txtDireccionEscuela.Text;
+                                    es.es_direccion_escuela = estado + "," + txtDireccionEscuela.Text;
                                     es.es_telefono1_escuela = txtTel1Escuela.Text;
                                     es.es_telefono2_escuela = txtTel2Escuela.Text;
                                     es.es_telefono3_escuela = txtTel3Escuela.Text;
                                     es.es_correo_escuela = txtCorreoEscuela.Text;
                                     es.es_contacto_escuela = txtContactoEscuela.Text;
                                     es.es_responsable_pago_escuela = txtResponsablePagoEscuela.Text;
+                                    es.es_precio_escuela = Convert.ToDouble(txtPrecioEscuela.Text);
 
-                                    
-                                    
-                                    
-                                        using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+
+
+                                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                                    {
+
+                                        try
                                         {
-
-                                            try
-                                            {
-                                                string mensaje = wsPHP.modificarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela, es.es_responsable_pago_escuela);
-                                                if (checkPrescolar.Enabled == true && checkPrescolar.Checked == true)
-                                                    wsPHP.agregarNivel_escuela(prescolar, es.es_id_escuela);
-                                                if (checkPrimaria.Enabled == true && checkPrimaria.Checked == true)
-                                                    wsPHP.agregarNivel_escuela(primaria, es.es_id_escuela);
-                                                if (checkSecundaria.Enabled == true && checkSecundaria.Checked == true)
-                                                    wsPHP.agregarNivel_escuela(secundaria, es.es_id_escuela);
-                                                MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                                cargarDatosTabla();
-                                                inicializacionCampos();
-                                                dgvEscuela.Enabled = true;
-                                            }
-                                            catch
-                                            {
-                                                MessageBox.Show("Ha ocurrido un error, no se ha podido modificar la escuela", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
+                                            string mensaje = wsPHP.modificarEscuela(es.es_id_escuela, es.es_nombre_escuela, es.es_direccion_escuela, es.es_telefono1_escuela, es.es_telefono2_escuela, es.es_telefono3_escuela, es.es_correo_escuela, es.es_contacto_escuela, es.es_responsable_pago_escuela,es.es_precio_escuela);
+                                            if (checkPrescolar.Enabled == true && checkPrescolar.Checked == true)
+                                                wsPHP.agregarNivel_escuela(prescolar, es.es_id_escuela);
+                                            if (checkPrimaria.Enabled == true && checkPrimaria.Checked == true)
+                                                wsPHP.agregarNivel_escuela(primaria, es.es_id_escuela);
+                                            if (checkSecundaria.Enabled == true && checkSecundaria.Checked == true)
+                                                wsPHP.agregarNivel_escuela(secundaria, es.es_id_escuela);
+                                            MessageBox.Show(mensaje, "¡Escuela Modificada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            cargarDatosTabla();
+                                            inicializacionCampos();
+                                            dgvEscuela.Enabled = true;
                                         }
-                                    
-                                    
+                                        catch
+                                        {
+                                            MessageBox.Show("Ha ocurrido un error, no se ha podido modificar la escuela", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+
+
                                 }
                             }
                             else
@@ -409,21 +409,12 @@ namespace sistema_maestros1
                         {
                             if ((txtNombreEscuela.Text != "" && txtIdEscuela.Text != "") && (txtDireccionEscuela.Text != "") && (txtTel1Escuela.Text != "") && (txtCorreoEscuela.Text != "") && (txtContactoEscuela.Text != "") && (txtResponsablePagoEscuela.Text != ""))
                             {
-
-
-
-                                if (MessageBox.Show("¿Estas seguro de eliminar los datos de " + txtNombreEscuela.Text + "? Si eliminas una escuela tambien se eliminaran los taller, dinamicas, materiales y alumnos de esta escuela ", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                if (verificarContrasena() == true)
                                 {
-                                    ClassEscuela es = new ClassEscuela();
-                                    es.es_id_escuela = txtIdEscuela.Text;
-
-                                    string passAdmin;
-                                    passAdmin = Microsoft.VisualBasic.Interaction.InputBox("Ingresa la Contraseña de Administrador: ", "Contraseña para dar permiso para realizar esta accion", "", 100, 0);
-                                    if (passAdmin == "IGIWBnvMK$w2Gy?")
+                                    if (MessageBox.Show("¿Estas seguro de eliminar los datos de " + txtNombreEscuela.Text + "? Si eliminas una escuela tambien se eliminaran los taller, dinamicas, materiales y alumnos de esta escuela ", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                                     {
-
-
-
+                                        ClassEscuela es = new ClassEscuela();
+                                        es.es_id_escuela = txtIdEscuela.Text;
                                         using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                         {
                                             try
@@ -440,8 +431,6 @@ namespace sistema_maestros1
                                             }
                                         }
                                     }
-                                    else
-                                        MessageBox.Show("La contraseña del administrador es incorrecta, para eliminar debes ingresar la contraseña del administrador", "Permisos denegados");
                                 }
                             }
                             else
@@ -457,13 +446,31 @@ namespace sistema_maestros1
                 else
                 {
                     MessageBox.Show("El numero telefonico debe tener 7 digitos si es numero local o 10 digitos si es numero celular", "¡ERROR!");
-                    
+
                 }
             }
             else
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
         }
-
+        //VERIFICAR CONTRASEÑA PARA ELIMINAR
+        public bool verificarContrasena()
+        {
+            string passAdmin = Microsoft.VisualBasic.Interaction.InputBox("Ingresa la Contraseña de Administrador: ", "Contraseña para dar permiso para realizar esta accion", "", this.Size.Width / 2 - 100, this.Size.Height / 2);
+            if (passAdmin == "")
+            {
+                return false;
+            }
+            else if (passAdmin == "IGIWBnvMK$w2Gy?")
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("La contraseña del administrador es incorrecta, para eliminar debes ingresar la contraseña del administrador", "Permisos denegados");
+                verificarContrasena();
+            }
+            return false;
+        }
 
         //LOAD
         private void ModuloEscuelas_Load(object sender, EventArgs e)
@@ -475,46 +482,7 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV)
         private void dgvEscuela_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            NombresColumnas();
-            checkPrescolar.Checked =false ;checkPrescolar.Enabled = true;
-            checkPrimaria.Checked = false; checkPrimaria.Enabled = true;
-            checkSecundaria.Checked = false; checkSecundaria.Enabled = true;
-            txtIdEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtNombreEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtDireccionEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtTel1Escuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtTel2Escuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtTel3Escuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[5].Value.ToString());
-            txtCorreoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[6].Value.ToString());
-            txtContactoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[7].Value.ToString());
-            txtResponsablePagoEscuela.Text = Convert.ToString(dgvEscuela.Rows[e.RowIndex].Cells[8].Value.ToString());
-            String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
-            var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
-            string[] niveles = new string[4];
-            int j = 0;
-            foreach (var nomEsc in respEsc)
-            {
-                niveles[j] = nomEsc.ne_nivel_educativo_niveles_escuela;
-                j++;
-            }
-            for (int i = 0; i <= j; i++)
-            {
-                if (niveles[i] == "SECUNDARIA")
-                {
-                    checkSecundaria.Checked = true;
-                    checkSecundaria.Enabled = false;
-                }
-                if (niveles[i] == "PRIMARIA")
-                {
-                    checkPrimaria.Checked = true;
-                    checkPrimaria.Enabled = false;
-                }
-                if (niveles[i] == "PRESCOLAR")
-                {
-                    checkPrescolar.Checked = true;
-                    checkPrescolar.Enabled = false;
-                }
-            }
+           
         }
 
 
@@ -573,14 +541,14 @@ namespace sistema_maestros1
             string sub1, sub2, newID, ultimoID;
             int n;
             //Obtener el ultimo id de la BDD
-            ultimoID = wsPHP.BuscarMAXIDE();
+            ultimoID = wsPHP.BuscarMAXIDE(sub);
             if (ultimoID == "")
                 n = 0;
             else
                 //guardar el numero del ultimo ID
                 n = Convert.ToInt32(ultimoID.Substring(3, 4));
             //guardar hgo
-            sub1 = ultimoID.Substring(0, 3);
+            sub1 = sub;
             //incrementar para nuevo ID
             n++;
             //Generar los 0 necesarios para el ID
@@ -601,6 +569,7 @@ namespace sistema_maestros1
             dgvEscuela.Columns[6].HeaderText = "Correo Electronico";
             dgvEscuela.Columns[7].HeaderText = "Contacto Directo";
             dgvEscuela.Columns[8].HeaderText = "Responsable de Pago";
+            dgvEscuela.Columns[9].HeaderText = "Precio Talleres";
         }
 
         public void inicializacionCampos()
@@ -614,11 +583,11 @@ namespace sistema_maestros1
             txtCorreoEscuela.Enabled = false; txtCorreoEscuela.Text = "";
             txtContactoEscuela.Enabled = false; txtContactoEscuela.Text = "";
             txtResponsablePagoEscuela.Enabled = false; txtResponsablePagoEscuela.Text = "";
-
+            comboBox1.Enabled = false; comboBox1.Text = "Estado";
+            txtPrecioEscuela.Enabled = false; txtPrecioEscuela.Text = "";
             checkPrescolar.Enabled = false; checkPrescolar.Checked = false;
             checkPrimaria.Enabled = false; checkPrimaria.Checked = false; 
             checkSecundaria.Enabled = false; checkSecundaria.Checked = false;
-
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
@@ -628,6 +597,94 @@ namespace sistema_maestros1
         {
             if (checkPrescolar.Checked == true)
                 prescolar = "PRESCOLAR";
+        }
+
+        private void txtPrecioEscuela_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrecioEscuela_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46 && txtPrecioEscuela.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dgvEscuela_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtIdEscuela.Text = dgvEscuela.CurrentRow.Cells[0].Value.ToString();
+            txtNombreEscuela.Text = dgvEscuela.CurrentRow.Cells[1].Value.ToString();
+            txtTel1Escuela.Text = dgvEscuela.CurrentRow.Cells[3].Value.ToString();
+            txtTel2Escuela.Text = dgvEscuela.CurrentRow.Cells[4].Value.ToString();
+            txtTel3Escuela.Text = dgvEscuela.CurrentRow.Cells[5].Value.ToString();
+            txtCorreoEscuela.Text = dgvEscuela.CurrentRow.Cells[6].Value.ToString();
+            txtContactoEscuela.Text = dgvEscuela.CurrentRow.Cells[7].Value.ToString();
+            txtResponsablePagoEscuela.Text = dgvEscuela.CurrentRow.Cells[8].Value.ToString();
+            txtPrecioEscuela.Text = dgvEscuela.CurrentRow.Cells[9].Value.ToString();
+            checkPrescolar.Checked = false; checkPrescolar.Enabled = true;
+            checkPrimaria.Checked = false; checkPrimaria.Enabled = true;
+            checkSecundaria.Checked = false; checkSecundaria.Enabled = true;
+            string x = dgvEscuela.CurrentRow.Cells[2].Value.ToString();
+            for ( i = 0; i < x.Length; i++)
+            {
+                if (x[i] == ',')
+                    break;
+                else
+                    aux += x[i];
+            }
+            for(int k = i+1; k<x.Length; k++)
+            {
+                aux2 += x[k];
+            }
+            txtDireccionEscuela.Text = aux2;
+            comboBox1.Text = dgvEscuela.CurrentRow.Cells[0].Value.ToString().Substring(0, 3) + " - " + aux;
+            String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
+            var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
+            string[] niveles = new string[4];
+            int j = 0;
+            foreach (var nomEsc in respEsc)
+            {
+                niveles[j] = nomEsc.ne_nivel_educativo_niveles_escuela;
+                j++;
+            }
+            for (i = 0; i <= j; i++)
+            {
+                if (niveles[i] == "SECUNDARIA")
+                {
+                    checkSecundaria.Checked = true;
+                    checkSecundaria.Enabled = false;
+                }
+                if (niveles[i] == "PRIMARIA")
+                {
+                    checkPrimaria.Checked = true;
+                    checkPrimaria.Enabled = false;
+                }
+                if (niveles[i] == "PRESCOLAR")
+                {
+                    checkPrescolar.Checked = true;
+                    checkPrescolar.Enabled = false;
+                }
+            }
+            aux = aux2 = "";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sub = comboBox1.Text.Substring(0, 3);
+            estado = comboBox1.Text.Substring(6, comboBox1.Text.Length-6);
+            //label8.Text = sub+ " | " + estado;
+        }
+
+        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         private void checkPrimaria_CheckedChanged(object sender, EventArgs e)

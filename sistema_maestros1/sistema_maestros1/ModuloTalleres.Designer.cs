@@ -765,7 +765,7 @@
             this.dgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTaller.Size = new System.Drawing.Size(704, 513);
             this.dgvTaller.TabIndex = 138;
-            this.dgvTaller.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaller_CellContentClick);
+            this.dgvTaller.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvTaller_MouseClick);
             // 
             // cbProfeTaller
             // 

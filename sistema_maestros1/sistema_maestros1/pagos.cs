@@ -18,8 +18,11 @@ namespace sistema_maestros1
         {
             InitializeComponent();
         }
-
-
+        
+        string añoactual = Convert.ToString(DateTime.Now.Year);
+        string añosiguiente = Convert.ToString(DateTime.Now.Year+1);
+        int selectedMex;
+        double suma;
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
         #region
 
@@ -199,18 +202,29 @@ namespace sistema_maestros1
             {
                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    groupBox2.Visible = true;
-                    DataTable dt = new DataTable();
                     try
                     {
+                        DataTable dt = new DataTable();
                         dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarPagos(txtIdAlumnoPagos.Text), typeof(DataTable));
                         dgvPagos.DataSource = dt;
                         NombresColumnasPagos();
+                        txtIdEscuelaG2.Text = dgvPagos.Rows[0].Cells[0].Value.ToString();
+                        txtEscuelaPagos.Text = cbEscuelaPagos.Text;
+                        txtIdAlumnoG2.Text = dgvPagos.Rows[0].Cells[1].Value.ToString();
+                        txtNomAlumnoPagos.Text = txtAlumnoPagos.Text;
+                        txtIdPagos.Text = dgvPagos.Rows[0].Cells[2].Value.ToString();
+                        groupBox2.Visible = true;
+                        String respuestaEscuela = wsPHP.buscarEscuela(txtEscuelaPagos.Text);
+                        var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+                        foreach (var nomEsc in respEsc)
+                        {
+                            txtPrecioTaller.Text = Convert.ToString(nomEsc.es_precio_escuela);
+                        }
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("No se encontro ningun pago con el nombre del alumno que indicaste, Por favor ingrese un nombre de alumno orrecto", "No existe este tutor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        cargarDatosTablaAlumnosTodos();
+                        MessageBox.Show("No se encontro ningun pago con el nombre del alumno que indicaste, Por favor ingrese un nombre de alumno correcto", "No existe este tutor", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        
                     }
                 }
             }
@@ -224,31 +238,51 @@ namespace sistema_maestros1
         //BOTON DE ACTUALIZAR PAGO
         private void btnActualizarPagos_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (cbMesPagos.Text != "Seleccionar mes" && txtImportePago.Text != "")
             {
-                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    try
+                    using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                     {
-                        string mes = "pa_fecha_" + cbMesPagos.Text + "_pago";
-                        string mensaje = wsPHP.modificarPagos(txtIdPagos.Text, mes, /*Convert.ToString(dtFechaPagos.Value.ToString("yyyy-MM-dd")),*/ Convert.ToDouble(txtImportePago.Text));
-                        MessageBox.Show(mensaje, "¡Pago Actualizado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+                            suma = Convert.ToDouble(dgvPagos.Rows[0].Cells[selectedMex].Value.ToString()) + Convert.ToDouble(txtImportePago.Text);
+                            if (suma > Convert.ToDouble(txtPrecioTaller.Text))
+                            {
+                                if (MessageBox.Show("La suma del importe ya registrado y de la cantidad ingresada (" + Convert.ToString(suma) + ") superan la mensualidad del mes (" + txtPrecioTaller.Text + ")\n¿Esta seguro de guardar esa cantidad de dinero?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                                {
+                                    string mes = "pa_" + cbMesPagos.Text + "_pago";
+                                    string mensaje = wsPHP.modificarPagos(txtIdAlumnoG2.Text, mes, suma);
+                                    MessageBox.Show(mensaje, "¡Pago Actualizado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                string mes2 = "pa_" + cbMesPagos.Text + "_pago";
+                                string mensaje2 = wsPHP.modificarPagos(txtIdAlumnoG2.Text, mes2, suma);
+                                MessageBox.Show(mensaje2, "¡Pago Actualizado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Ha ocurrido un error, no se ha podido actualizar los datos", "¡Error al registrar el pago!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    cargarDatosTablaPagos();
+                    vaciar();
 
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Ha ocurrido un error, no se ha podido actualizar los datos", "¡Error al registrar el pago!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
                 }
-                cargarDatosTablaPagos();
             }
+            else
+                MessageBox.Show("Primero debe seleccionar el mes y el monto a sumar", "¡Pago Actualizado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
 
         //LOAD
         private void ModuloPagos_Load(object sender, EventArgs e)
         {
-            cargarDatosTablaAlumnos();
             using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
             {
                 try
@@ -288,62 +322,30 @@ namespace sistema_maestros1
                     string id = item.Value.ToString();
                     txtIdEscuela1.Text = id;
                 }
-
                 DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumno(txtIdEscuela1.Text), typeof(DataTable));
                 dgvAlumnoPagos.DataSource = dt;
-            //    NombresColumnasAlumno();
-            }
-        }
-
-
-
-
-        //BUSCADOR DE ALUMNOS
-        private void txtAlumnoPagos_TextChanged(object sender, EventArgs e)
-        {
-            if (txtAlumnoPagos.Text != "")
-            {
-                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                dgvAlumnoPagos.BringToFront();
+                label8.Visible = true;
+                txtbuscar.Visible = true;
+                lblmsg.Visible = false;
+                if(dgvAlumnoPagos.RowCount == 0)
                 {
-                    DataTable dt = new DataTable();
-                    try
-                    {
-                        dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumnosPagos(txtIdEscuela1.Text,txtAlumnoPagos.Text), typeof(DataTable));
-                        dgvAlumnoPagos.DataSource = dt;
-                        //NombresColumnasAlumno();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre o ID Alumno correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        cargarDatosTablaAlumnos();
-                    }
+                    label8.Visible = false;
+                    txtbuscar.Visible = false;
+                    MessageBox.Show("Esta escuela aun no tiene alumnos registrados\nPor favor vaya al modulo de Alumnos para agregar alumnos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    lblmsg.BringToFront();
+                    lblmsg.Visible = true;
                 }
+                else
+                    NombresColumnasAlumno();
+
             }
-            else
-                cargarDatosTablaAlumnos();
         }
 
-
-        //CELLCONTENT (DGV_ALUMNOS)
-        private void dgvAlumnoPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtIdAlumnoPagos.Text = Convert.ToString(dgvAlumnoPagos.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtAlumnoPagos.Text = Convert.ToString(dgvAlumnoPagos.Rows[e.RowIndex].Cells[3].Value.ToString());
-            //cargarDatosTablaAlumnosTodos();
-            
-        }
+       
 
 
-        //CELLCONTENT (DGV_PAGOS)
-        private void dgvPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //NombresColumnasPagos();
-            txtIdPagos.Text = Convert.ToString(dgvPagos.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtEscuelaPagos.Text = Convert.ToString(dgvPagos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtNomAlumnoPagos.Text = Convert.ToString(dgvPagos.Rows[e.RowIndex].Cells[1].Value.ToString());
-
-        }
-
+      
 
         //cargar datos de alumno dependiendo de la escuela
         public void cargarDatosTablaAlumnos()
@@ -362,26 +364,6 @@ namespace sistema_maestros1
                 }
             }
         }
-
-        //Cargar todos los alumnos en la tabla
-        public void cargarDatosTablaAlumnosTodos()
-        {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
-            {
-                try
-                {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.cargarDatosAlumno(), typeof(DataTable));
-                    dgvAlumnoPagos.DataSource = dt;
-                    NombresColumnasAlumno();
-                    dgvAlumnoPagos.ClearSelection();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Error en cargar los datos", "¡Error en los Datos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         //Cargar tabla de pagos del alumno
         public void cargarDatosTablaPagos()
         {
@@ -390,7 +372,7 @@ namespace sistema_maestros1
 
                 try
                 {
-                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarPagos(txtNomAlumnoPagos.Text), typeof(DataTable));
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarPagos(txtIdAlumnoG2.Text), typeof(DataTable));
                     dgvPagos.DataSource = dt;
                     NombresColumnasPagos();
                     dgvPagos.ClearSelection();
@@ -417,23 +399,99 @@ namespace sistema_maestros1
 
         public void NombresColumnasPagos()
         {
-            dgvPagos.Columns[0].HeaderText = "Escuela";
-            dgvPagos.Columns[1].HeaderText = "Alumno";
+            dgvPagos.Columns[0].Visible = false;
+            dgvPagos.Columns[1].Visible = false;
             dgvPagos.Columns[2].Visible = false;
-            dgvPagos.Columns[3].HeaderText = "Enero";
-            dgvPagos.Columns[4].HeaderText = "Febrero";
-            dgvPagos.Columns[5].HeaderText = "Marzo";
-            dgvPagos.Columns[6].HeaderText = "Abril";
-            dgvPagos.Columns[7].HeaderText = "Mayo";
-            dgvPagos.Columns[8].HeaderText = "Junio";
-            dgvPagos.Columns[9].HeaderText = "Julio";
-            dgvPagos.Columns[10].HeaderText = "Agosto";
-            dgvPagos.Columns[11].HeaderText = "Septiembre";
-            dgvPagos.Columns[12].HeaderText = "Octubre";
-            dgvPagos.Columns[13].HeaderText = "Noviembre";
-            dgvPagos.Columns[14].HeaderText = "Diciembre";
+
+            dgvPagos.Columns[3].HeaderText = "AGO "+ añoactual;
+            dgvPagos.Columns[4].HeaderText = "SEP " + añoactual;
+            dgvPagos.Columns[5].HeaderText = "OCT " + añoactual;
+            dgvPagos.Columns[6].HeaderText = "NOV " + añoactual;
+            dgvPagos.Columns[7].HeaderText = "DIC " + añoactual;
+            dgvPagos.Columns[8].HeaderText = "ENE " + añosiguiente;
+            dgvPagos.Columns[9].HeaderText = "FEB " + añosiguiente;
+            dgvPagos.Columns[10].HeaderText = "MAR " + añosiguiente;
+            dgvPagos.Columns[11].HeaderText = "ABR " + añosiguiente;
+            dgvPagos.Columns[12].HeaderText = "MAY " + añosiguiente;
+            dgvPagos.Columns[13].HeaderText = "JUN " + añosiguiente;
+            dgvPagos.Columns[14].HeaderText = "JUL " + añosiguiente;
+            
+        }
+        public void vaciar()
+        {
+            txtIdPagos.Text = "";
+            txtIdEscuelaG2.Text = "";
+            txtEscuelaPagos.Text = "";
+            txtIdAlumnoG2.Text = "";
+            txtNomAlumnoPagos.Text = "";
+            txtAlumnoPagos.Text = "";
+            txtPrecioTaller.Text = "";
+            cbMesPagos.Text = "Seleccionar mes";
+            txtImportePago.Text = "";
+            btnBuscar.Enabled = false;
+            btnBuscar.BackColor = Color.Gainsboro;
+
         }
 
+        private void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtbuscar.Text != "")
+            {
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                {
+                    DataTable dt = new DataTable();
+                    dt = (DataTable)JsonConvert.DeserializeObject(wsPHP.buscarAlumnosPagos(txtIdEscuela1.Text, txtbuscar.Text), typeof(DataTable));
+                    dgvAlumnoPagos.DataSource = dt;
+                    if (dgvAlumnoPagos.RowCount < 1)
+                    {
+                        MessageBox.Show("No se encuentra ningun alumno con estos datos, Por favor ingrese un nombre o ID Alumno correcto", "No existe este alumno", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        cargarDatosTablaAlumnos();
+                        NombresColumnasAlumno();
+                    }
+                }
+            }
+            else
+            {
+                cargarDatosTablaAlumnos();
+                NombresColumnasAlumno();
+            }
+        }
 
+        private void dgvAlumnoPagos_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtIdAlumnoPagos.Text =dgvAlumnoPagos.CurrentRow.Cells[2].Value.ToString();
+            txtAlumnoPagos.Text = dgvAlumnoPagos.CurrentRow.Cells[3].Value.ToString();
+            btnBuscar.BackColor = Color.SkyBlue;
+            btnBuscar.Enabled = true;
+
+        }
+
+        private void cbMesPagos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbMesPagos.Text == "agosto")
+                selectedMex = 3;
+            if (cbMesPagos.Text == "septiembre")
+                selectedMex = 4;
+            if (cbMesPagos.Text == "octubre")
+                selectedMex = 5;
+            if (cbMesPagos.Text == "noviembre")
+                selectedMex = 6;
+            if (cbMesPagos.Text == "diciembre")
+                selectedMex = 7;
+            if (cbMesPagos.Text == "enero")
+                selectedMex = 8;
+            if (cbMesPagos.Text == "febrero")
+                selectedMex = 9;
+            if (cbMesPagos.Text == "marzo")
+                selectedMex = 10;
+            if (cbMesPagos.Text == "abril")
+                selectedMex = 11;
+            if (cbMesPagos.Text == "mayo")
+                selectedMex = 12;
+            if (cbMesPagos.Text == "junio")
+                selectedMex = 13;
+            if (cbMesPagos.Text == "julio")
+                selectedMex = 14;
+        }
     }
 }

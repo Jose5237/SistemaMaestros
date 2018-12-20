@@ -30,12 +30,12 @@ namespace sistema_maestros1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Estas seguro de realizar esta accion?\nSi realiza esta operacion todos los alumnos de la escuela seleccionada subiran de grado o nivel educativo dependiendo el caso\nSi la escuela cuenta con el siguiente nivel educativo de los alumnos de ultimo grado, seran actualizados a ese nivel\nSi la escuela no cuenta con el siguiente nivel educativo, el status de los alumnos de ultimo grado sera INACTIVO", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("¿Estas seguro de realizar esta accion?\n Una vez hecho los cambios no podra revertirlos", "¡Advertencia!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 webservices3435.WSPHP ws = new webservices3435.WSPHP();
                 String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
                 var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
-                string[] niveles = new string[3];
+                string[] niveles = new string[4];
                 int j = 0;
                 foreach (var nomEsc in respEsc)
                 {
