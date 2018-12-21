@@ -557,7 +557,7 @@
             this.dgvMaterial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMaterial.Size = new System.Drawing.Size(690, 513);
             this.dgvMaterial.TabIndex = 139;
-            this.dgvMaterial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterial_CellContentClick);
+            this.dgvMaterial.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvMaterial_MouseClick);
             // 
             // txtIdEscuela
             // 

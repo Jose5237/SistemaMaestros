@@ -24,7 +24,7 @@ namespace sistema_maestros1
         }
 
         //VARIABLES
-        int opcionBotones = 0;
+        int opcionBotones = 3;
 
 
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
@@ -437,32 +437,35 @@ namespace sistema_maestros1
         //selectComboEscuela
         private void cbEscuelaAlumno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaAlumno.Text);
-                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-                
-                foreach (var nomEsc in respEsc)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
-                    string id = item.Value.ToString();
-                    txtIdEscuelaAlumno.Text = id;
-                }
+                    String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaAlumno.Text);
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
 
-                cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
-                cbGradoAlumno.Text = "Seleccionar Grado";
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        string id = item.Value.ToString();
+                        txtIdEscuelaAlumno.Text = id;
+                    }
 
-                String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuelaAlumno.Text);
-                var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
-                cbNivelAlumno.Items.Clear();
-                foreach (var nomNiv in respNiv)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
+                    cbNivelAlumno.Text = "Seleccionar Nivel Educativo";
+                    cbGradoAlumno.Text = "Seleccionar Grado";
 
-                    item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
-                    item.Value = Convert.ToString(nomNiv.ne_id_escuela);
-                    cbNivelAlumno.Items.Add(item);
+                    String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuelaAlumno.Text);
+                    var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+                    cbNivelAlumno.Items.Clear();
+                    foreach (var nomNiv in respNiv)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+                        item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+                        cbNivelAlumno.Items.Add(item);
+                    }
                 }
             }
         }
@@ -520,25 +523,23 @@ namespace sistema_maestros1
                 }
             }
         }
-        
+
 
         //CELLCONTENT (DGV)
-        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAlumnos_MouseClick(object sender, MouseEventArgs e)
         {
-            
-
             NombresColumnas();
-
-            cbEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuelaAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtIdAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtNombreAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtApellidoPatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtApellidoMatAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[5].Value.ToString());
-            cbGradoAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[6].Value.ToString());
-            cbNivelAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[7].Value.ToString());
-            cbStatusAlumno.Text = Convert.ToString(dgvAlumnos.Rows[e.RowIndex].Cells[8].Value.ToString());
+            cbEscuelaAlumno.Text = dgvAlumnos.CurrentRow.Cells[0].Value.ToString();
+            txtIdEscuelaAlumno.Text = dgvAlumnos.CurrentRow.Cells[1].Value.ToString();
+            txtIdAlumno.Text = dgvAlumnos.CurrentRow.Cells[2].Value.ToString();
+            txtNombreAlumno.Text = dgvAlumnos.CurrentRow.Cells[3].Value.ToString();
+            txtApellidoPatAlumno.Text = dgvAlumnos.CurrentRow.Cells[4].Value.ToString();
+            txtApellidoMatAlumno.Text = dgvAlumnos.CurrentRow.Cells[5].Value.ToString();
+            cbGradoAlumno.Text = dgvAlumnos.CurrentRow.Cells[6].Value.ToString();
+            cbNivelAlumno.Text = dgvAlumnos.CurrentRow.Cells[7].Value.ToString();
+            cbStatusAlumno.Text = dgvAlumnos.CurrentRow.Cells[8].Value.ToString();
         }
+      
 
 
         //BUSCADOR DE ALUMNOS
@@ -672,10 +673,8 @@ namespace sistema_maestros1
             
             cbGradoAlumno.Text = "Seleccionar Grado";
         }
+        
 
-        private void txtIdEscuelaAlumno_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

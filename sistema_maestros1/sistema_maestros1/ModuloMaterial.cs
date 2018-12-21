@@ -22,7 +22,7 @@ namespace sistema_maestros1
         }
 
         //VARIABLES
-        int opcionBotones = 0;
+        int opcionBotones = 3;
 
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
         #region
@@ -356,82 +356,91 @@ namespace sistema_maestros1
 
         private void cbEscuelaMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaMaterial.Text);
-                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
-                foreach (var nomEsc in respEsc)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
-                    string id = item.Value.ToString();
-                    txtIdEscuela.Text = id;
-                }
+                    String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaMaterial.Text);
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
 
-                //NUEVO AGREGADO TALLER
-                String respuestaTal = wsPHP.buscarTaller(txtIdEscuela.Text);
-                var resptal = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTal);
-                cbTallerMaterial.Items.Clear();
-                foreach (var nomtal in resptal)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        string id = item.Value.ToString();
+                        txtIdEscuela.Text = id;
+                    }
 
-                    item.Text = nomtal.ta_nombre_taller;
-                    item.Value = Convert.ToString(nomtal.ta_id_taller);
-                    string id = item.Value.ToString();
+                    //NUEVO AGREGADO TALLER
+                    String respuestaTal = wsPHP.buscarTaller(txtIdEscuela.Text);
+                    var resptal = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTal);
+                    cbTallerMaterial.Items.Clear();
+                    foreach (var nomtal in resptal)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
 
-                    cbTallerMaterial.Items.Add(item);
+                        item.Text = nomtal.ta_nombre_taller;
+                        item.Value = Convert.ToString(nomtal.ta_id_taller);
+                        string id = item.Value.ToString();
+
+                        cbTallerMaterial.Items.Add(item);
+                    }
                 }
             }
         }
 
         private void cbTallerMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaTaller = wsPHP.buscarTaller(cbTallerMaterial.Text);
-                var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
-
-                foreach (var nomTall in respTall)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomTall.ta_id_taller);
-                    string id = item.Value.ToString();
-                    txtIdTaller.Text = id;
+                    String respuestaTaller = wsPHP.buscarTaller(cbTallerMaterial.Text);
+                    var respTall = JsonConvert.DeserializeObject<List<ClassTaller>>(respuestaTaller);
 
-                }
+                    foreach (var nomTall in respTall)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomTall.ta_id_taller);
+                        string id = item.Value.ToString();
+                        txtIdTaller.Text = id;
 
-                //NUEVO AGREGADO
-                String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdEscuela.Text, txtIdTaller.Text);
-                var respDin = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDin);
-                cbDinamicaMaterial.Items.Clear();
-                foreach (var nomDin in respDin)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
+                    }
 
-                    item.Text = nomDin.di_nombre_dinamica;
-                    item.Value = Convert.ToString(nomDin.di_id_dinamica);
-                    string id = item.Value.ToString();
-                    cbDinamicaMaterial.Items.Add(item);
+                    //NUEVO AGREGADO
+                    String respuestaDin = wsPHP.buscarDinamicaXTallerYEscuela(txtIdEscuela.Text, txtIdTaller.Text);
+                    var respDin = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDin);
+                    cbDinamicaMaterial.Items.Clear();
+                    foreach (var nomDin in respDin)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomDin.di_nombre_dinamica;
+                        item.Value = Convert.ToString(nomDin.di_id_dinamica);
+                        string id = item.Value.ToString();
+                        cbDinamicaMaterial.Items.Add(item);
+                    }
                 }
             }
         }
 
         private void cbDinamicaMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaDinamica = wsPHP.buscarDinamica(cbDinamicaMaterial.Text);
-                var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
-
-                foreach (var nomDina in respDina)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomDina.di_id_dinamica);
-                    string id = item.Value.ToString();
-                    txtIdDinamica.Text = id;
+                    String respuestaDinamica = wsPHP.buscarDinamica(cbDinamicaMaterial.Text);
+                    var respDina = JsonConvert.DeserializeObject<List<ClassDinamica>>(respuestaDinamica);
 
+                    foreach (var nomDina in respDina)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomDina.di_id_dinamica);
+                        string id = item.Value.ToString();
+                        txtIdDinamica.Text = id;
+
+                    }
                 }
             }
         }
@@ -513,23 +522,22 @@ namespace sistema_maestros1
 
 
         //CELLCONTENT (DGV)
-        private void dgvMaterial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvMaterial_MouseClick(object sender, MouseEventArgs e)
         {
-            NombresColumnas();
+            //NombresColumnas();
 
-            cbEscuelaMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[0].Value.ToString());
-            cbTallerMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[1].Value.ToString());
-            cbDinamicaMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[2].Value.ToString());
+            cbEscuelaMaterial.Text = dgvMaterial.CurrentRow.Cells[0].Value.ToString();
+            cbTallerMaterial.Text = dgvMaterial.CurrentRow.Cells[1].Value.ToString();
+            cbDinamicaMaterial.Text = dgvMaterial.CurrentRow.Cells[2].Value.ToString();
 
-            txtIdEscuela.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtIdTaller.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtIdDinamica.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txtIdEscuela.Text = dgvMaterial.CurrentRow.Cells[3].Value.ToString();
+            txtIdTaller.Text = dgvMaterial.CurrentRow.Cells[4].Value.ToString();
+            txtIdDinamica.Text = dgvMaterial.CurrentRow.Cells[5].Value.ToString();
 
-            txtIdMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[6].Value.ToString());
-            txtNombreMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[7].Value.ToString());
-            txtCostoMaterial.Text = Convert.ToString(dgvMaterial.Rows[e.RowIndex].Cells[8].Value.ToString());
+            txtIdMaterial.Text     = dgvMaterial.CurrentRow.Cells[6].Value.ToString();
+            txtNombreMaterial.Text = dgvMaterial.CurrentRow.Cells[7].Value.ToString();
+            txtCostoMaterial.Text  = dgvMaterial.CurrentRow.Cells[8].Value.ToString();
         }
-
 
         //BUSCADOR DE MATERIAL
         private void txtBuscadorMaterial_TextChanged(object sender, EventArgs e)
@@ -636,17 +644,25 @@ namespace sistema_maestros1
 
         private void cbEscuelaMaterial_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            txtIdTaller.Text = "";
-            cbTallerMaterial.Text = "Seleccionar Taller";
+            if (opcionBotones == 0)
+            {
+                txtIdTaller.Text = "";
+                cbTallerMaterial.Text = "Seleccionar Taller";
 
-            txtIdDinamica.Text = "";
-            cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+                txtIdDinamica.Text = "";
+                cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+            }
         }
 
         private void cbTallerMaterial_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            txtIdDinamica.Text = "";
-            cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+            if (opcionBotones == 0)
+            {
+                txtIdDinamica.Text = "";
+                cbDinamicaMaterial.Text = "Seleccionar Dinamica";
+            }
         }
+
+       
     }
 }

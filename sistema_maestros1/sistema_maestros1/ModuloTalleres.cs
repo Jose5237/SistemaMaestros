@@ -31,7 +31,7 @@ namespace sistema_maestros1
         string auxgrados;
         string[] grados = new string[6];
         int j = 0, tallerexist;
-        int opcionBotones = 0,val;
+        int opcionBotones = 3,val;
         DateTime fechaIDGV = new DateTime();
         DateTime fechaFDGV = new DateTime();
         webservices3435.WSPHP validar = new webservices3435.WSPHP();
@@ -474,30 +474,33 @@ namespace sistema_maestros1
 
         private void cbEscuelaTaller_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaTaller.Text);
-                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
-                foreach (var nomEsc in respEsc)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
-                    string id = item.Value.ToString();
-                    txtIdEscuela.Text = id;
-                }
+                    String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaTaller.Text);
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
 
-                String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
-                var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
-                cbNivelTaller.Items.Clear();
-                foreach (var nomNiv in respNiv)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        string id = item.Value.ToString();
+                        txtIdEscuela.Text = id;
+                    }
 
-                    item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
-                    item.Value = Convert.ToString(nomNiv.ne_id_escuela);
-                    
-                    cbNivelTaller.Items.Add(item);
+                    String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
+                    var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+                    cbNivelTaller.Items.Clear();
+                    foreach (var nomNiv in respNiv)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+
+                        item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+                        item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+
+                        cbNivelTaller.Items.Add(item);
+                    }
                 }
             }
         }
@@ -520,56 +523,59 @@ namespace sistema_maestros1
             //        cbNivelTaller.Items.Add(item);
             //    }
             //}
-            cbGradoTaller.Text = "Seleccionar Grado";
-
-            
-
-            if (cbNivelTaller.Text == "PRESCOLAR" || cbNivelTaller.Text == "SECUNDARIA")
+            if (opcionBotones == 0)
             {
-                cbGradoTaller.Items.Clear();
-                cbGradoTaller.Items.Add("1°");
-                cbGradoTaller.Items.Add("2°");
-                cbGradoTaller.Items.Add("3°");
+                cbGradoTaller.Text = "Seleccionar Grado";
+                if (cbNivelTaller.Text == "PRESCOLAR" || cbNivelTaller.Text == "SECUNDARIA")
+                {
+                    cbGradoTaller.Items.Clear();
+                    cbGradoTaller.Items.Add("1°");
+                    cbGradoTaller.Items.Add("2°");
+                    cbGradoTaller.Items.Add("3°");
 
-                cbGradoTaller.Items.Add("1°" + "2°");
-                cbGradoTaller.Items.Add("1°" + "3°");
-                cbGradoTaller.Items.Add("2°" + "3°");
-                cbGradoTaller.Items.Add("1°" + "2°" + "3°");
-            }
-            else if (cbNivelTaller.Text == "PRIMARIA")
-            {
-                cbGradoTaller.Items.Clear();
-                cbGradoTaller.Items.Add("1°");
-                cbGradoTaller.Items.Add("2°");
-                cbGradoTaller.Items.Add("3°");
-                cbGradoTaller.Items.Add("4°");
-                cbGradoTaller.Items.Add("5°");
-                cbGradoTaller.Items.Add("6°");
+                    cbGradoTaller.Items.Add("1°" + "2°");
+                    cbGradoTaller.Items.Add("1°" + "3°");
+                    cbGradoTaller.Items.Add("2°" + "3°");
+                    cbGradoTaller.Items.Add("1°" + "2°" + "3°");
+                }
+                else if (cbNivelTaller.Text == "PRIMARIA")
+                {
+                    cbGradoTaller.Items.Clear();
+                    cbGradoTaller.Items.Add("1°");
+                    cbGradoTaller.Items.Add("2°");
+                    cbGradoTaller.Items.Add("3°");
+                    cbGradoTaller.Items.Add("4°");
+                    cbGradoTaller.Items.Add("5°");
+                    cbGradoTaller.Items.Add("6°");
 
-                cbGradoTaller.Items.Add("1°" + "2°");
-                cbGradoTaller.Items.Add("3°" + "4°");
-                cbGradoTaller.Items.Add("5°" + "6°");
+                    cbGradoTaller.Items.Add("1°" + "2°");
+                    cbGradoTaller.Items.Add("3°" + "4°");
+                    cbGradoTaller.Items.Add("5°" + "6°");
 
-                cbGradoTaller.Items.Add("1°" + "2°" + "3°");
-                cbGradoTaller.Items.Add("4°" + "5°" + "6°");
+                    cbGradoTaller.Items.Add("1°" + "2°" + "3°");
+                    cbGradoTaller.Items.Add("4°" + "5°" + "6°");
 
-                cbGradoTaller.Items.Add("1°" + "2°" + "3°" + "4°" + "5°" + "6°");
+                    cbGradoTaller.Items.Add("1°" + "2°" + "3°" + "4°" + "5°" + "6°");
+                }
             }
         }
 
         private void cbProfeTaller_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaProfes = wsPHP.buscarDatosProfesor(cbProfeTaller.Text);
-                var respProfes = JsonConvert.DeserializeObject<List<ClassProfesor>>(respuestaProfes);
-
-                foreach (var nomProfes in respProfes)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomProfes.pr_id_profesor);
-                    string id = item.Value.ToString();
-                    txtIdProfesorTaller.Text = id;
+                    String respuestaProfes = wsPHP.buscarDatosProfesor(cbProfeTaller.Text);
+                    var respProfes = JsonConvert.DeserializeObject<List<ClassProfesor>>(respuestaProfes);
+
+                    foreach (var nomProfes in respProfes)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomProfes.pr_id_profesor);
+                        string id = item.Value.ToString();
+                        txtIdProfesorTaller.Text = id;
+                    }
                 }
             }
         }
@@ -809,22 +815,24 @@ namespace sistema_maestros1
 
         private void txtIdEscuela_TextChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
-                var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
-                cbNivelTaller.Items.Clear();
-                foreach (var nomNiv in respNiv)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
+                    String respuestaNivelE = wsPHP.consultaNiveles(txtIdEscuela.Text);
+                    var respNiv = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaNivelE);
+                    cbNivelTaller.Items.Clear();
+                    foreach (var nomNiv in respNiv)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
 
-                    item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
-                    item.Value = Convert.ToString(nomNiv.ne_id_escuela);
+                        item.Text = nomNiv.ne_nivel_educativo_niveles_escuela;
+                        item.Value = Convert.ToString(nomNiv.ne_id_escuela);
 
-                    cbNivelTaller.Items.Add(item);
+                        cbNivelTaller.Items.Add(item);
+                    }
                 }
             }
-            
         }
 
         private void cbEscuelaTaller_SelectionChangeCommitted(object sender, EventArgs e)
@@ -841,8 +849,8 @@ namespace sistema_maestros1
             txtNombreTaller.Text = dgvTaller.CurrentRow.Cells[3].Value.ToString();
             txtCostoTaller.Text = dgvTaller.CurrentRow.Cells[4].Value.ToString();
             txtDescripcionTaller.Text = dgvTaller.CurrentRow.Cells[5].Value.ToString();
-            string fechaI = dgvTaller.CurrentRow.Cells[6].Value.ToString();
-            string fechaF = dgvTaller.CurrentRow.Cells[7].Value.ToString();
+            txtFechaInicio.Text = dgvTaller.CurrentRow.Cells[6].Value.ToString().Replace("-","/");
+            txtFechaFin.Text = dgvTaller.CurrentRow.Cells[7].Value.ToString().Replace("-", "/");
             cbNivelTaller.Text = dgvTaller.CurrentRow.Cells[8].Value.ToString();
             cbGradoTaller.Text = dgvTaller.CurrentRow.Cells[9].Value.ToString();
             cbProfeTaller.Text = dgvTaller.CurrentRow.Cells[10].Value.ToString();
@@ -850,12 +858,8 @@ namespace sistema_maestros1
             txtHabilidadesTaller.Text = dgvTaller.CurrentRow.Cells[11].Value.ToString();
             txtJustificacionCostoTaller.Text = dgvTaller.CurrentRow.Cells[12].Value.ToString();
             txtHerramientasTaller.Text = dgvTaller.CurrentRow.Cells[13].Value.ToString();
-            string newI = fechaI.Replace("-", "/");
-            txtFechaInicio.Text = newI;
-            dtFechaIniTaller.Value = DateTime.ParseExact(newI, "yyyy/MM/dd", CultureInfo.InvariantCulture);
-            string newF = fechaF.Replace("-", "/");
-            txtFechaFin.Text = newF;
-            dtFechaFinTaller.Value = DateTime.ParseExact(newF, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+            dtFechaIniTaller.Value = DateTime.ParseExact(txtFechaInicio.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+            dtFechaFinTaller.Value = DateTime.ParseExact(txtFechaFin.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
         }
     }
 }

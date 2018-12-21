@@ -145,7 +145,6 @@
             this.dgvTutor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTutor.Size = new System.Drawing.Size(388, 191);
             this.dgvTutor.TabIndex = 3;
-            this.dgvTutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTutor_CellContentClick);
             // 
             // btnAgregar
             // 
@@ -200,7 +199,7 @@
             this.dgvAhT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAhT.Size = new System.Drawing.Size(390, 191);
             this.dgvAhT.TabIndex = 5;
-            this.dgvAhT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAhT_CellContentClick);
+            this.dgvAhT.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvAhT_MouseClick);
             // 
             // label3
             // 
@@ -269,7 +268,6 @@
             // 
             this.dgvAhasTAll.AllowUserToAddRows = false;
             this.dgvAhasTAll.AllowUserToDeleteRows = false;
-            this.dgvAhasTAll.AllowUserToOrderColumns = true;
             this.dgvAhasTAll.AllowUserToResizeColumns = false;
             this.dgvAhasTAll.AllowUserToResizeRows = false;
             this.dgvAhasTAll.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -285,7 +283,7 @@
             this.dgvAhasTAll.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAhasTAll.Size = new System.Drawing.Size(631, 191);
             this.dgvAhasTAll.TabIndex = 8;
-            this.dgvAhasTAll.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAhasTAll_CellContentClick);
+            this.dgvAhasTAll.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvAhasTAll_MouseClick);
             // 
             // txtIDAlumno2
             // 

@@ -208,12 +208,12 @@
             this.esconder_pantalla.BackColor = System.Drawing.Color.Transparent;
             this.esconder_pantalla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.esconder_pantalla.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.esconder_pantalla.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esconder_pantalla.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.esconder_pantalla.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.esconder_pantalla.Location = new System.Drawing.Point(1077, -7);
             this.esconder_pantalla.Margin = new System.Windows.Forms.Padding(0);
             this.esconder_pantalla.Name = "esconder_pantalla";
-            this.esconder_pantalla.Size = new System.Drawing.Size(33, 40);
+            this.esconder_pantalla.Size = new System.Drawing.Size(37, 39);
             this.esconder_pantalla.TabIndex = 115;
             this.esconder_pantalla.Text = "_";
             this.esconder_pantalla.Click += new System.EventHandler(this.esconder_pantalla_Click);
@@ -224,12 +224,12 @@
             this.exit.BackColor = System.Drawing.Color.Transparent;
             this.exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exit.Font = new System.Drawing.Font("Comfortaa", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exit.Location = new System.Drawing.Point(1114, -2);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(33, 40);
+            this.exit.Size = new System.Drawing.Size(36, 39);
             this.exit.TabIndex = 114;
             this.exit.Text = "x";
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -517,7 +517,7 @@
             this.dgvIncidencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIncidencia.Size = new System.Drawing.Size(690, 513);
             this.dgvIncidencia.TabIndex = 141;
-            this.dgvIncidencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIncidencia_CellContentClick);
+            this.dgvIncidencia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvIncidencia_MouseClick);
             // 
             // txtIdEscuelaIncidencia
             // 

@@ -19,7 +19,7 @@ namespace sistema_maestros1
         }
 
         //VARIABLES
-        int opcionBotones = 0;
+        int opcionBotones = 3;
 
 
         //EVENTO_CLICK BOTONES 'X COMUNES' DE MODULO
@@ -332,17 +332,20 @@ namespace sistema_maestros1
         //SELECTEDINDEX DE COMBOBOX
         private void cbEscuelaIncidencia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+            if (opcionBotones == 0)
             {
-                String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaIncidencia.Text);
-                var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
-
-                foreach (var nomEsc in respEsc)
+                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Value = Convert.ToString(nomEsc.es_id_escuela);
-                    string id = item.Value.ToString();
-                    txtIdEscuelaIncidencia.Text = id;
+                    String respuestaEscuela = wsPHP.cargarNombresEscuela(cbEscuelaIncidencia.Text);
+                    var respEsc = JsonConvert.DeserializeObject<List<ClassEscuela>>(respuestaEscuela);
+
+                    foreach (var nomEsc in respEsc)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Value = Convert.ToString(nomEsc.es_id_escuela);
+                        string id = item.Value.ToString();
+                        txtIdEscuelaIncidencia.Text = id;
+                    }
                 }
             }
         }
@@ -380,17 +383,16 @@ namespace sistema_maestros1
 
 
         //CELLCONTENT (DGV)
-        private void dgvIncidencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvIncidencia_MouseClick(object sender, MouseEventArgs e)
         {
             NombresColumnas();
 
-            cbEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIdEscuelaIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            txtIdIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtNombreIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtDescripcionIncidencia.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[3].Value.ToString());
-            cbTipoIncidencias.Text = Convert.ToString(dgvIncidencia.Rows[e.RowIndex].Cells[4].Value.ToString());
+            cbEscuelaIncidencia.Text = dgvIncidencia.CurrentRow.Cells[0].Value.ToString();
+            txtIdEscuelaIncidencia.Text = dgvIncidencia.CurrentRow.Cells[0].Value.ToString();
+            txtIdIncidencia.Text = dgvIncidencia.CurrentRow.Cells[1].Value.ToString();
+            txtNombreIncidencia.Text = dgvIncidencia.CurrentRow.Cells[2].Value.ToString();
+            txtDescripcionIncidencia.Text = dgvIncidencia.CurrentRow.Cells[3].Value.ToString();
+            cbTipoIncidencias.Text = dgvIncidencia.CurrentRow.Cells[4].Value.ToString();
         }
 
 
@@ -487,8 +489,9 @@ namespace sistema_maestros1
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
+
         #endregion
 
-
+        
     }
 }

@@ -110,10 +110,7 @@ namespace sistema_maestros1
             }
         }
 
-        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+    
 
         private void cbEscuela_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -141,13 +138,14 @@ namespace sistema_maestros1
         public void NombresColumnas()
         {
             dgvAlumnos.Columns[0].HeaderText = "Escuela";
-            dgvAlumnos.Columns[1].HeaderText = "ID Alumno";
-            dgvAlumnos.Columns[2].HeaderText = "Nombre(s)";
-            dgvAlumnos.Columns[3].HeaderText = "Apellido Paterno";
-            dgvAlumnos.Columns[4].HeaderText = "Apellido Materno";
-            dgvAlumnos.Columns[5].HeaderText = "Grado";
-            dgvAlumnos.Columns[6].HeaderText = "Nivel Escolar";
-            dgvAlumnos.Columns[7].HeaderText = "Status";
+            dgvAlumnos.Columns[1].Visible = false;
+            dgvAlumnos.Columns[2].HeaderText = "ID Alumno";
+            dgvAlumnos.Columns[3].HeaderText = "Nombre(s)";
+            dgvAlumnos.Columns[4].HeaderText = "Apellido Paterno";
+            dgvAlumnos.Columns[5].HeaderText = "Apellido Materno";
+            dgvAlumnos.Columns[6].HeaderText = "Grado";
+            dgvAlumnos.Columns[7].HeaderText = "Nivel Escolar";
+            dgvAlumnos.Columns[8].HeaderText = "Status";
         }
 
         public void cargarDatosTabla()
@@ -318,5 +316,7 @@ namespace sistema_maestros1
             btnCargarTodo.Visible = false;
             btnActualizarGrado.Visible = true;
         }
+
+     
     }
 }

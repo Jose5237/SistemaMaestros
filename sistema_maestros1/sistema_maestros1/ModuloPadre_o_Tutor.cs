@@ -457,19 +457,18 @@ namespace sistema_maestros1
 
 
         //CELLCONTENT (DGV)
-        private void dgvPadre_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPadre_MouseClick(object sender, MouseEventArgs e)
         {
             NombresColumnas();
 
             txtIdPadre.Text = dgvPadre.CurrentRow.Cells[0].Value.ToString();
-            tctNombrePadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtApellidoPatPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtApellidoMatPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtTelefonoPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[4].Value.ToString());
-            cbParentescoPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[5].Value.ToString());
-            txtCorreoPadre.Text = Convert.ToString(dgvPadre.Rows[e.RowIndex].Cells[6].Value.ToString());
+            tctNombrePadre.Text = dgvPadre.CurrentRow.Cells[1].Value.ToString();
+            txtApellidoPatPadre.Text = dgvPadre.CurrentRow.Cells[2].Value.ToString();
+            txtApellidoMatPadre.Text = dgvPadre.CurrentRow.Cells[3].Value.ToString();
+            txtTelefonoPadre.Text = dgvPadre.CurrentRow.Cells[4].Value.ToString();
+            cbParentescoPadre.Text = dgvPadre.CurrentRow.Cells[5].Value.ToString();
+            txtCorreoPadre.Text = dgvPadre.CurrentRow.Cells[6].Value.ToString();
         }
-
 
         //BUSCADOR DE PADRES
         private void txtBuscadorPadre_TextChanged(object sender, EventArgs e)
@@ -573,6 +572,7 @@ namespace sistema_maestros1
         }
 
         #endregion
-        
+
+       
     }
 }

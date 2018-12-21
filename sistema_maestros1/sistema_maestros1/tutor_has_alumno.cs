@@ -175,14 +175,14 @@ namespace sistema_maestros1
         }
 
         //CELLCONTENTS (DGV_AHAST)
-        private void dgvAhasTAll_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAhasTAll_MouseClick(object sender, MouseEventArgs e)
         {
-            txtEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtIDEscuela2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtAlumno2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtIDAlumno2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtPadre2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtIDPadre2.Text = Convert.ToString(dgvAhasTAll.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txtEscuela2.Text = dgvAhasTAll.CurrentRow.Cells[0].Value.ToString();
+            txtIDEscuela2.Text = dgvAhasTAll.CurrentRow.Cells[1].Value.ToString();
+            txtAlumno2.Text = dgvAhasTAll.CurrentRow.Cells[2].Value.ToString();
+            txtIDAlumno2.Text = dgvAhasTAll.CurrentRow.Cells[3].Value.ToString();
+            txtPadre2.Text = dgvAhasTAll.CurrentRow.Cells[4].Value.ToString();
+            txtIDPadre2.Text = dgvAhasTAll.CurrentRow.Cells[5].Value.ToString();
         }
 
         //BOTON ELIMINAR
@@ -295,14 +295,9 @@ namespace sistema_maestros1
             txtPadre2.Text = "";
         }
 
-        private void dgvAhT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAhT_MouseClick(object sender, MouseEventArgs e)
         {
-            label7.Text = Convert.ToString(dgvAhT.Rows[e.RowIndex].Cells[2].Value.ToString());
-        }
-
-        private void dgvTutor_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            label7.Text = dgvAhT.CurrentRow.Cells[2].Value.ToString();
         }
     }
 }

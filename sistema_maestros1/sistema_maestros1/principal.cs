@@ -182,7 +182,7 @@ namespace sistema_maestros1
 
         private void btnActualizador1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Estas seguro de pasar a otra ventana?", "¡Cerrar ventana!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (verificarContrasena() == true)
             {
                 this.Hide();
 
@@ -190,7 +190,25 @@ namespace sistema_maestros1
                 actualizador.Show();
             }
         }
-
+        //VERIFICAR CONTRASEÑA PARA ENTRAR AL MODULO DE ACTUALIZACIONES 
+        public bool verificarContrasena()
+        {
+            string passAdmin = Microsoft.VisualBasic.Interaction.InputBox("Ingresa la Contraseña de Administrador: ", "Contraseña para dar permiso para realizar esta accion", "", this.Size.Width / 2 - 100, this.Size.Height / 2);
+            if (passAdmin == "")
+            {
+                return false;
+            }
+            else if (passAdmin == "IGIWBnvMK$w2Gy?")
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("La contraseña del administrador es incorrecta, para eliminar debes ingresar la contraseña del administrador", "Permisos denegados");
+                verificarContrasena();
+            }
+            return false;
+        }
         private void btnIncidencias1_Click(object sender, EventArgs e)
         {
             this.Hide();

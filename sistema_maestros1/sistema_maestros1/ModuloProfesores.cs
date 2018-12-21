@@ -205,11 +205,11 @@ namespace sistema_maestros1
         //METODO PARA ENCRIPTAR CONTRASEÑA EN EL DGV
         private void dgvProfe_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 5)
             {
                 if (e.Value != null)
                 {
-                    e.Value = new string('•', e.Value.ToString().Length);
+                    e.Value = new string('♥', e.Value.ToString().Length);
                 }
                 else
                     e.Value = "null";
@@ -382,18 +382,17 @@ namespace sistema_maestros1
 
 
         //CELLCONTENT (DGV)
-        private void dgvProfe_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dgvProfe_MouseClick(object sender, MouseEventArgs e)
         {
             NombresColumnas();
 
-            txtIdProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txtNombreUsuarioProfesor.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[1].Value.ToString());
-            txtNombreProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[2].Value.ToString());
-            txtApellidoPatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[3].Value.ToString());
-            txtApellidoMatProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[4].Value.ToString());
-            txtPasswordProfe.Text = Convert.ToString(dgvProfe.Rows[e.RowIndex].Cells[5].Value.ToString());
+            txtIdProfe.Text = dgvProfe.CurrentRow.Cells[0].Value.ToString();
+            txtNombreUsuarioProfesor.Text = dgvProfe.CurrentRow.Cells[1].Value.ToString();
+            txtNombreProfe.Text = dgvProfe.CurrentRow.Cells[2].Value.ToString();
+            txtApellidoPatProfe.Text = dgvProfe.CurrentRow.Cells[3].Value.ToString();
+            txtApellidoMatProfe.Text = dgvProfe.CurrentRow.Cells[4].Value.ToString();
+            txtPasswordProfe.Text = dgvProfe.CurrentRow.Cells[5].Value.ToString();
         }
-
 
         //BUSCADOR DE PROFESOR
         private void txtBuscadorProfe_TextChanged(object sender, EventArgs e)
@@ -492,6 +491,7 @@ namespace sistema_maestros1
         }
 
         #endregion
+
         
     }
 }

@@ -28,7 +28,6 @@ namespace sistema_maestros1
         string aux = "", aux2 = "";
         int i;
         int opcionBotones = 0;
-        object obj = new object();
         string prescolar, primaria, secundaria, sub = "", estado = "";
         webservices3435.WSPHP ws = new webservices3435.WSPHP();
 
@@ -260,6 +259,7 @@ namespace sistema_maestros1
             opcionBotones = 1;
             txtIdEscuela.Enabled = false;
             txtNombreEscuela.Enabled = true;
+            comboBox1.Enabled = false;
             txtDireccionEscuela.Enabled = true;
             txtTel1Escuela.Enabled = true;
             txtTel2Escuela.Enabled = true;
@@ -480,9 +480,62 @@ namespace sistema_maestros1
 
 
         //CELLCONTENT (DGV)
-        private void dgvEscuela_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvEscuela_MouseClick(object sender, MouseEventArgs e)
         {
-           
+            txtIdEscuela.Text = dgvEscuela.CurrentRow.Cells[0].Value.ToString();
+            txtNombreEscuela.Text = dgvEscuela.CurrentRow.Cells[1].Value.ToString();
+            txtTel1Escuela.Text = dgvEscuela.CurrentRow.Cells[3].Value.ToString();
+            txtTel2Escuela.Text = dgvEscuela.CurrentRow.Cells[4].Value.ToString();
+            txtTel3Escuela.Text = dgvEscuela.CurrentRow.Cells[5].Value.ToString();
+            txtCorreoEscuela.Text = dgvEscuela.CurrentRow.Cells[6].Value.ToString();
+            txtContactoEscuela.Text = dgvEscuela.CurrentRow.Cells[7].Value.ToString();
+            txtResponsablePagoEscuela.Text = dgvEscuela.CurrentRow.Cells[8].Value.ToString();
+            txtPrecioEscuela.Text = dgvEscuela.CurrentRow.Cells[9].Value.ToString();
+            checkPrescolar.Checked = false; checkPrescolar.Enabled = true;
+            checkPrimaria.Checked = false; checkPrimaria.Enabled = true;
+            checkSecundaria.Checked = false; checkSecundaria.Enabled = true;
+            string x = dgvEscuela.CurrentRow.Cells[2].Value.ToString();
+            for (i = 0; i < x.Length; i++)
+            {
+                if (x[i] == ',')
+                    break;
+                else
+                    aux += x[i];
+            }
+            for (int k = i + 1; k < x.Length; k++)
+            {
+                aux2 += x[k];
+            }
+            txtDireccionEscuela.Text = aux2;
+            comboBox1.Text = dgvEscuela.CurrentRow.Cells[0].Value.ToString().Substring(0, 3) + " - " + aux;
+            String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
+            var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
+            string[] niveles = new string[4];
+            int j = 0;
+            foreach (var nomEsc in respEsc)
+            {
+                niveles[j] = nomEsc.ne_nivel_educativo_niveles_escuela;
+                j++;
+            }
+            for (i = 0; i <= j; i++)
+            {
+                if (niveles[i] == "SECUNDARIA")
+                {
+                    checkSecundaria.Checked = true;
+                    checkSecundaria.Enabled = false;
+                }
+                if (niveles[i] == "PRIMARIA")
+                {
+                    checkPrimaria.Checked = true;
+                    checkPrimaria.Enabled = false;
+                }
+                if (niveles[i] == "PRESCOLAR")
+                {
+                    checkPrescolar.Checked = true;
+                    checkPrescolar.Enabled = false;
+                }
+            }
+            aux = aux2 = "";
         }
 
 
@@ -599,11 +652,6 @@ namespace sistema_maestros1
                 prescolar = "PRESCOLAR";
         }
 
-        private void txtPrecioEscuela_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtPrecioEscuela_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 46 && txtPrecioEscuela.Text.IndexOf('.') != -1)
@@ -615,65 +663,7 @@ namespace sistema_maestros1
             {
                 e.Handled = true;
             }
-        }
-
-        private void dgvEscuela_MouseClick(object sender, MouseEventArgs e)
-        {
-            txtIdEscuela.Text = dgvEscuela.CurrentRow.Cells[0].Value.ToString();
-            txtNombreEscuela.Text = dgvEscuela.CurrentRow.Cells[1].Value.ToString();
-            txtTel1Escuela.Text = dgvEscuela.CurrentRow.Cells[3].Value.ToString();
-            txtTel2Escuela.Text = dgvEscuela.CurrentRow.Cells[4].Value.ToString();
-            txtTel3Escuela.Text = dgvEscuela.CurrentRow.Cells[5].Value.ToString();
-            txtCorreoEscuela.Text = dgvEscuela.CurrentRow.Cells[6].Value.ToString();
-            txtContactoEscuela.Text = dgvEscuela.CurrentRow.Cells[7].Value.ToString();
-            txtResponsablePagoEscuela.Text = dgvEscuela.CurrentRow.Cells[8].Value.ToString();
-            txtPrecioEscuela.Text = dgvEscuela.CurrentRow.Cells[9].Value.ToString();
-            checkPrescolar.Checked = false; checkPrescolar.Enabled = true;
-            checkPrimaria.Checked = false; checkPrimaria.Enabled = true;
-            checkSecundaria.Checked = false; checkSecundaria.Enabled = true;
-            string x = dgvEscuela.CurrentRow.Cells[2].Value.ToString();
-            for ( i = 0; i < x.Length; i++)
-            {
-                if (x[i] == ',')
-                    break;
-                else
-                    aux += x[i];
-            }
-            for(int k = i+1; k<x.Length; k++)
-            {
-                aux2 += x[k];
-            }
-            txtDireccionEscuela.Text = aux2;
-            comboBox1.Text = dgvEscuela.CurrentRow.Cells[0].Value.ToString().Substring(0, 3) + " - " + aux;
-            String respuestaEscuela = ws.consultaNiveles(txtIdEscuela.Text);
-            var respEsc = JsonConvert.DeserializeObject<List<ClassNivelEducativo>>(respuestaEscuela);
-            string[] niveles = new string[4];
-            int j = 0;
-            foreach (var nomEsc in respEsc)
-            {
-                niveles[j] = nomEsc.ne_nivel_educativo_niveles_escuela;
-                j++;
-            }
-            for (i = 0; i <= j; i++)
-            {
-                if (niveles[i] == "SECUNDARIA")
-                {
-                    checkSecundaria.Checked = true;
-                    checkSecundaria.Enabled = false;
-                }
-                if (niveles[i] == "PRIMARIA")
-                {
-                    checkPrimaria.Checked = true;
-                    checkPrimaria.Enabled = false;
-                }
-                if (niveles[i] == "PRESCOLAR")
-                {
-                    checkPrescolar.Checked = true;
-                    checkPrescolar.Enabled = false;
-                }
-            }
-            aux = aux2 = "";
-        }
+        }   
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

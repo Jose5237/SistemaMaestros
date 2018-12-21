@@ -316,7 +316,7 @@
             this.dgvPadre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPadre.Size = new System.Drawing.Size(690, 513);
             this.dgvPadre.TabIndex = 35;
-            this.dgvPadre.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPadre_CellContentClick);
+            this.dgvPadre.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPadre_MouseClick);
             // 
             // esconder_pantalla
             // 
