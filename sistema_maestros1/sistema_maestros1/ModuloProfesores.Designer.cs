@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloProfesores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,6 +67,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNombreUsuarioProfesor = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtConfirmarPassword = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDesenmascararPass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfe)).BeginInit();
             this.SuspendLayout();
@@ -468,7 +472,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(170, 409);
+            this.btnAceptar.Location = new System.Drawing.Point(170, 449);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 6;
@@ -488,23 +492,23 @@
             this.dgvProfe.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvProfe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProfe.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Plum;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Plum;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProfe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProfe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProfe.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProfe.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProfe.EnableHeadersVisualStyles = false;
             this.dgvProfe.GridColor = System.Drawing.Color.Plum;
             this.dgvProfe.Location = new System.Drawing.Point(423, 105);
@@ -512,8 +516,8 @@
             this.dgvProfe.Name = "dgvProfe";
             this.dgvProfe.ReadOnly = true;
             this.dgvProfe.RowHeadersVisible = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvProfe.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvProfe.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProfe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfe.Size = new System.Drawing.Size(690, 513);
             this.dgvProfe.TabIndex = 140;
@@ -561,12 +565,66 @@
             this.label8.TabIndex = 144;
             this.label8.Text = "Nombre de Usuario:";
             // 
+            // txtConfirmarPassword
+            // 
+            this.txtConfirmarPassword.Enabled = false;
+            this.txtConfirmarPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtConfirmarPassword.Location = new System.Drawing.Point(170, 410);
+            this.txtConfirmarPassword.MaxLength = 20;
+            this.txtConfirmarPassword.Name = "txtConfirmarPassword";
+            this.txtConfirmarPassword.PasswordChar = '•';
+            this.txtConfirmarPassword.Size = new System.Drawing.Size(211, 23);
+            this.txtConfirmarPassword.TabIndex = 145;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.label9.Location = new System.Drawing.Point(167, 388);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(175, 20);
+            this.label9.TabIndex = 146;
+            this.label9.Text = "Confirmar Contraseña:";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(381, 363);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 23);
+            this.button1.TabIndex = 147;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
+            this.button1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button1_MouseUp);
+            // 
+            // btnDesenmascararPass
+            // 
+            this.btnDesenmascararPass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDesenmascararPass.BackgroundImage")));
+            this.btnDesenmascararPass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDesenmascararPass.FlatAppearance.BorderSize = 0;
+            this.btnDesenmascararPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesenmascararPass.Location = new System.Drawing.Point(381, 409);
+            this.btnDesenmascararPass.Name = "btnDesenmascararPass";
+            this.btnDesenmascararPass.Size = new System.Drawing.Size(23, 23);
+            this.btnDesenmascararPass.TabIndex = 148;
+            this.btnDesenmascararPass.UseVisualStyleBackColor = true;
+            this.btnDesenmascararPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnDesenmascararPass_MouseDown);
+            this.btnDesenmascararPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnDesenmascararPass_MouseUp);
+            // 
             // ModuloProfesores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.btnDesenmascararPass);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtConfirmarPassword);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtNombreUsuarioProfesor);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -651,5 +709,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtNombreUsuarioProfesor;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtConfirmarPassword;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDesenmascararPass;
     }
 }

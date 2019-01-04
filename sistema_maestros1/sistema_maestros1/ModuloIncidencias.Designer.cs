@@ -517,6 +517,7 @@
             this.dgvIncidencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIncidencia.Size = new System.Drawing.Size(690, 513);
             this.dgvIncidencia.TabIndex = 141;
+            this.dgvIncidencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIncidencia_CellContentClick);
             this.dgvIncidencia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvIncidencia_MouseClick);
             // 
             // txtIdEscuelaIncidencia

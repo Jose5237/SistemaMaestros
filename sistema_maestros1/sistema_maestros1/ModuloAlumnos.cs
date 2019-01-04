@@ -240,7 +240,7 @@ namespace sistema_maestros1
         private void btnAgregarAlumno_Click(object sender, EventArgs e)
         {
             dgvAlumnos.ClearSelection();
-            dgvAlumnos.Enabled = false;
+            //dgvAlumnos.Enabled = false;
 
             opcionBotones = 0;
 
@@ -260,7 +260,7 @@ namespace sistema_maestros1
         //BOTON MODIFICAR ALUMNO
         private void btnModificarAlumno_Click(object sender, EventArgs e)
         {
-            dgvAlumnos.Enabled = true;
+            //dgvAlumnos.Enabled = true;
 
             opcionBotones = 1;
 
@@ -280,7 +280,7 @@ namespace sistema_maestros1
         //BOTON ELIMINAR ALUMNO
         private void btnEliminarAlumno_Click(object sender, EventArgs e)
             {
-                dgvAlumnos.Enabled = true;
+                //dgvAlumnos.Enabled = true;
                 opcionBotones = 2;
                 cbEscuelaAlumno.Enabled = false;
                 txtIdEscuelaAlumno.Enabled = false;
@@ -336,7 +336,7 @@ namespace sistema_maestros1
                             }
                         }
 
-                        dgvAlumnos.Enabled = true;
+                        //dgvAlumnos.Enabled = true;
                     }
 
                     else if (opcionBotones == 1)
@@ -528,16 +528,19 @@ namespace sistema_maestros1
         //CELLCONTENT (DGV)
         private void dgvAlumnos_MouseClick(object sender, MouseEventArgs e)
         {
-            NombresColumnas();
-            cbEscuelaAlumno.Text = dgvAlumnos.CurrentRow.Cells[0].Value.ToString();
-            txtIdEscuelaAlumno.Text = dgvAlumnos.CurrentRow.Cells[1].Value.ToString();
-            txtIdAlumno.Text = dgvAlumnos.CurrentRow.Cells[2].Value.ToString();
-            txtNombreAlumno.Text = dgvAlumnos.CurrentRow.Cells[3].Value.ToString();
-            txtApellidoPatAlumno.Text = dgvAlumnos.CurrentRow.Cells[4].Value.ToString();
-            txtApellidoMatAlumno.Text = dgvAlumnos.CurrentRow.Cells[5].Value.ToString();
-            cbGradoAlumno.Text = dgvAlumnos.CurrentRow.Cells[6].Value.ToString();
-            cbNivelAlumno.Text = dgvAlumnos.CurrentRow.Cells[7].Value.ToString();
-            cbStatusAlumno.Text = dgvAlumnos.CurrentRow.Cells[8].Value.ToString();
+            if (opcionBotones != 0)
+            {
+                NombresColumnas();
+                cbEscuelaAlumno.Text = dgvAlumnos.CurrentRow.Cells[0].Value.ToString();
+                txtIdEscuelaAlumno.Text = dgvAlumnos.CurrentRow.Cells[1].Value.ToString();
+                txtIdAlumno.Text = dgvAlumnos.CurrentRow.Cells[2].Value.ToString();
+                txtNombreAlumno.Text = dgvAlumnos.CurrentRow.Cells[3].Value.ToString();
+                txtApellidoPatAlumno.Text = dgvAlumnos.CurrentRow.Cells[4].Value.ToString();
+                txtApellidoMatAlumno.Text = dgvAlumnos.CurrentRow.Cells[5].Value.ToString();
+                cbGradoAlumno.Text = dgvAlumnos.CurrentRow.Cells[6].Value.ToString();
+                cbNivelAlumno.Text = dgvAlumnos.CurrentRow.Cells[7].Value.ToString();
+                cbStatusAlumno.Text = dgvAlumnos.CurrentRow.Cells[8].Value.ToString();
+            }
         }
       
 

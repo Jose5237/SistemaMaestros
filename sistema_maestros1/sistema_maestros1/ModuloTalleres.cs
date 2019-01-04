@@ -835,6 +835,41 @@ namespace sistema_maestros1
             }
         }
 
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbGradoTaller_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFechaInicio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFechaFin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void cbEscuelaTaller_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
@@ -842,24 +877,27 @@ namespace sistema_maestros1
 
         private void dgvTaller_MouseClick(object sender, MouseEventArgs e)
         {
-            //NombresColumnas();
-            cbEscuelaTaller.Text = dgvTaller.CurrentRow.Cells[0].Value.ToString();
-            txtIdEscuela.Text = dgvTaller.CurrentRow.Cells[1].Value.ToString();
-            txtIdTaller.Text = dgvTaller.CurrentRow.Cells[2].Value.ToString();
-            txtNombreTaller.Text = dgvTaller.CurrentRow.Cells[3].Value.ToString();
-            txtCostoTaller.Text = dgvTaller.CurrentRow.Cells[4].Value.ToString();
-            txtDescripcionTaller.Text = dgvTaller.CurrentRow.Cells[5].Value.ToString();
-            txtFechaInicio.Text = dgvTaller.CurrentRow.Cells[6].Value.ToString().Replace("-","/");
-            txtFechaFin.Text = dgvTaller.CurrentRow.Cells[7].Value.ToString().Replace("-", "/");
-            cbNivelTaller.Text = dgvTaller.CurrentRow.Cells[8].Value.ToString();
-            cbGradoTaller.Text = dgvTaller.CurrentRow.Cells[9].Value.ToString();
-            cbProfeTaller.Text = dgvTaller.CurrentRow.Cells[10].Value.ToString();
-            txtIdProfesorTaller.Text = dgvTaller.CurrentRow.Cells[10].Value.ToString();
-            txtHabilidadesTaller.Text = dgvTaller.CurrentRow.Cells[11].Value.ToString();
-            txtJustificacionCostoTaller.Text = dgvTaller.CurrentRow.Cells[12].Value.ToString();
-            txtHerramientasTaller.Text = dgvTaller.CurrentRow.Cells[13].Value.ToString();
-            dtFechaIniTaller.Value = DateTime.ParseExact(txtFechaInicio.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
-            dtFechaFinTaller.Value = DateTime.ParseExact(txtFechaFin.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+            if (opcionBotones != 0)
+            {
+                //NombresColumnas();
+                cbEscuelaTaller.Text = dgvTaller.CurrentRow.Cells[0].Value.ToString();
+                txtIdEscuela.Text = dgvTaller.CurrentRow.Cells[1].Value.ToString();
+                txtIdTaller.Text = dgvTaller.CurrentRow.Cells[2].Value.ToString();
+                txtNombreTaller.Text = dgvTaller.CurrentRow.Cells[3].Value.ToString();
+                txtCostoTaller.Text = dgvTaller.CurrentRow.Cells[4].Value.ToString();
+                txtDescripcionTaller.Text = dgvTaller.CurrentRow.Cells[5].Value.ToString();
+                txtFechaInicio.Text = dgvTaller.CurrentRow.Cells[6].Value.ToString().Replace("-", "/");
+                txtFechaFin.Text = dgvTaller.CurrentRow.Cells[7].Value.ToString().Replace("-", "/");
+                cbNivelTaller.Text = dgvTaller.CurrentRow.Cells[8].Value.ToString();
+                cbGradoTaller.Text = dgvTaller.CurrentRow.Cells[9].Value.ToString();
+                cbProfeTaller.Text = dgvTaller.CurrentRow.Cells[10].Value.ToString();
+                txtIdProfesorTaller.Text = dgvTaller.CurrentRow.Cells[10].Value.ToString();
+                txtHabilidadesTaller.Text = dgvTaller.CurrentRow.Cells[11].Value.ToString();
+                txtJustificacionCostoTaller.Text = dgvTaller.CurrentRow.Cells[12].Value.ToString();
+                txtHerramientasTaller.Text = dgvTaller.CurrentRow.Cells[13].Value.ToString();
+                dtFechaIniTaller.Value = DateTime.ParseExact(txtFechaInicio.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+                dtFechaFinTaller.Value = DateTime.ParseExact(txtFechaFin.Text, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+            }
         }
     }
 }

@@ -508,7 +508,7 @@
   </wsdl:message>
   <wsdl:message name="AgregarRecomendacionesRequest">
     <wsdl:part name="id_esc" type="xsd:string" />
-    <wsdl:part name="id_tal" type="xsd:string" />
+    <wsdl:part name="id_tall" type="xsd:string" />
     <wsdl:part name="id_din" type="xsd:string" />
     <wsdl:part name="id_mat" type="xsd:string" />
     <wsdl:part name="id_rec" type="xsd:string" />

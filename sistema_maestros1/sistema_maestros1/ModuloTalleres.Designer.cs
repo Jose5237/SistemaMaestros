@@ -85,8 +85,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.dgvTaller = new System.Windows.Forms.DataGridView();
             this.cbProfeTaller = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaller)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBuscadorTaller
@@ -127,7 +129,7 @@
             // 
             this.txtCostoTaller.Enabled = false;
             this.txtCostoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCostoTaller.Location = new System.Drawing.Point(170, 240);
+            this.txtCostoTaller.Location = new System.Drawing.Point(6, 178);
             this.txtCostoTaller.MaxLength = 10;
             this.txtCostoTaller.Name = "txtCostoTaller";
             this.txtCostoTaller.Size = new System.Drawing.Size(211, 23);
@@ -137,7 +139,7 @@
             // txtDescripcionTaller
             // 
             this.txtDescripcionTaller.Enabled = false;
-            this.txtDescripcionTaller.Location = new System.Drawing.Point(170, 283);
+            this.txtDescripcionTaller.Location = new System.Drawing.Point(6, 225);
             this.txtDescripcionTaller.MaxLength = 500;
             this.txtDescripcionTaller.Multiline = true;
             this.txtDescripcionTaller.Name = "txtDescripcionTaller";
@@ -149,7 +151,7 @@
             // 
             this.txtNombreTaller.Enabled = false;
             this.txtNombreTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreTaller.Location = new System.Drawing.Point(170, 197);
+            this.txtNombreTaller.Location = new System.Drawing.Point(6, 131);
             this.txtNombreTaller.MaxLength = 50;
             this.txtNombreTaller.Name = "txtNombreTaller";
             this.txtNombreTaller.Size = new System.Drawing.Size(211, 23);
@@ -159,7 +161,7 @@
             // 
             this.txtIdTaller.Enabled = false;
             this.txtIdTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdTaller.Location = new System.Drawing.Point(170, 154);
+            this.txtIdTaller.Location = new System.Drawing.Point(6, 84);
             this.txtIdTaller.Name = "txtIdTaller";
             this.txtIdTaller.Size = new System.Drawing.Size(211, 23);
             this.txtIdTaller.TabIndex = 2;
@@ -169,7 +171,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(167, 134);
+            this.label4.Location = new System.Drawing.Point(3, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
             this.label4.TabIndex = 42;
@@ -180,7 +182,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(167, 220);
+            this.label3.Location = new System.Drawing.Point(3, 156);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 20);
             this.label3.TabIndex = 41;
@@ -191,7 +193,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(167, 263);
+            this.label2.Location = new System.Drawing.Point(3, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 40;
@@ -202,7 +204,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(167, 177);
+            this.label1.Location = new System.Drawing.Point(3, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 39;
@@ -264,11 +266,12 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(167, 423);
+            this.label5.Location = new System.Drawing.Point(6, 376);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(127, 20);
             this.label5.TabIndex = 51;
             this.label5.Text = "Fecha de Inicio:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // dtFechaIniTaller
             // 
@@ -276,7 +279,7 @@
             this.dtFechaIniTaller.Enabled = false;
             this.dtFechaIniTaller.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaIniTaller.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaIniTaller.Location = new System.Drawing.Point(170, 443);
+            this.dtFechaIniTaller.Location = new System.Drawing.Point(9, 398);
             this.dtFechaIniTaller.Name = "dtFechaIniTaller";
             this.dtFechaIniTaller.Size = new System.Drawing.Size(211, 22);
             this.dtFechaIniTaller.TabIndex = 8;
@@ -289,7 +292,7 @@
             this.dtFechaFinTaller.Enabled = false;
             this.dtFechaFinTaller.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFechaFinTaller.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFechaFinTaller.Location = new System.Drawing.Point(170, 485);
+            this.dtFechaFinTaller.Location = new System.Drawing.Point(9, 444);
             this.dtFechaFinTaller.Name = "dtFechaFinTaller";
             this.dtFechaFinTaller.Size = new System.Drawing.Size(211, 22);
             this.dtFechaFinTaller.TabIndex = 9;
@@ -301,29 +304,31 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(167, 465);
+            this.label7.Location = new System.Drawing.Point(6, 422);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(142, 20);
             this.label7.TabIndex = 53;
             this.label7.Text = "Fecha de termino:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(167, 334);
+            this.label8.Location = new System.Drawing.Point(6, 278);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 20);
             this.label8.TabIndex = 55;
             this.label8.Text = "Nivel Educativo:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // cbNivelTaller
             // 
             this.cbNivelTaller.Enabled = false;
             this.cbNivelTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNivelTaller.FormattingEnabled = true;
-            this.cbNivelTaller.Location = new System.Drawing.Point(170, 354);
+            this.cbNivelTaller.Location = new System.Drawing.Point(9, 300);
             this.cbNivelTaller.Name = "cbNivelTaller";
             this.cbNivelTaller.Size = new System.Drawing.Size(211, 25);
             this.cbNivelTaller.TabIndex = 6;
@@ -342,10 +347,11 @@
             "4",
             "5",
             "6"});
-            this.cbGradoTaller.Location = new System.Drawing.Point(170, 398);
+            this.cbGradoTaller.Location = new System.Drawing.Point(9, 349);
             this.cbGradoTaller.Name = "cbGradoTaller";
             this.cbGradoTaller.Size = new System.Drawing.Size(211, 25);
             this.cbGradoTaller.TabIndex = 7;
+            this.cbGradoTaller.SelectedIndexChanged += new System.EventHandler(this.cbGradoTaller_SelectedIndexChanged);
             this.cbGradoTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGradoTaller_KeyPress);
             // 
             // label9
@@ -353,7 +359,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(167, 507);
+            this.label9.Location = new System.Drawing.Point(6, 468);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 59;
@@ -364,11 +370,12 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(167, 379);
+            this.label11.Location = new System.Drawing.Point(6, 327);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 20);
             this.label11.TabIndex = 57;
             this.label11.Text = "Grado:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -541,7 +548,7 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAceptar.Location = new System.Drawing.Point(170, 686);
+            this.btnAceptar.Location = new System.Drawing.Point(8, 669);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(211, 30);
             this.btnAceptar.TabIndex = 14;
@@ -555,7 +562,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(167, 89);
+            this.label13.Location = new System.Drawing.Point(3, 13);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(69, 20);
             this.label13.TabIndex = 114;
@@ -566,7 +573,7 @@
             this.cbEscuelaTaller.Enabled = false;
             this.cbEscuelaTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEscuelaTaller.FormattingEnabled = true;
-            this.cbEscuelaTaller.Location = new System.Drawing.Point(170, 109);
+            this.cbEscuelaTaller.Location = new System.Drawing.Point(6, 35);
             this.cbEscuelaTaller.Name = "cbEscuelaTaller";
             this.cbEscuelaTaller.Size = new System.Drawing.Size(211, 25);
             this.cbEscuelaTaller.TabIndex = 1;
@@ -592,7 +599,7 @@
             // txtIdEscuela
             // 
             this.txtIdEscuela.Enabled = false;
-            this.txtIdEscuela.Location = new System.Drawing.Point(234, 88);
+            this.txtIdEscuela.Location = new System.Drawing.Point(76, 14);
             this.txtIdEscuela.Name = "txtIdEscuela";
             this.txtIdEscuela.Size = new System.Drawing.Size(83, 20);
             this.txtIdEscuela.TabIndex = 117;
@@ -601,23 +608,25 @@
             // txtFechaInicio
             // 
             this.txtFechaInicio.Enabled = false;
-            this.txtFechaInicio.Location = new System.Drawing.Point(291, 423);
+            this.txtFechaInicio.Location = new System.Drawing.Point(139, 375);
             this.txtFechaInicio.Name = "txtFechaInicio";
-            this.txtFechaInicio.Size = new System.Drawing.Size(90, 20);
+            this.txtFechaInicio.Size = new System.Drawing.Size(82, 20);
             this.txtFechaInicio.TabIndex = 118;
+            this.txtFechaInicio.TextChanged += new System.EventHandler(this.txtFechaInicio_TextChanged);
             // 
             // txtFechaFin
             // 
             this.txtFechaFin.Enabled = false;
-            this.txtFechaFin.Location = new System.Drawing.Point(305, 465);
+            this.txtFechaFin.Location = new System.Drawing.Point(144, 421);
             this.txtFechaFin.Name = "txtFechaFin";
             this.txtFechaFin.Size = new System.Drawing.Size(76, 20);
             this.txtFechaFin.TabIndex = 119;
+            this.txtFechaFin.TextChanged += new System.EventHandler(this.txtFechaFin_TextChanged);
             // 
             // txtIdProfesorTaller
             // 
             this.txtIdProfesorTaller.Enabled = false;
-            this.txtIdProfesorTaller.Location = new System.Drawing.Point(239, 507);
+            this.txtIdProfesorTaller.Location = new System.Drawing.Point(78, 468);
             this.txtIdProfesorTaller.Name = "txtIdProfesorTaller";
             this.txtIdProfesorTaller.Size = new System.Drawing.Size(78, 20);
             this.txtIdProfesorTaller.TabIndex = 121;
@@ -626,7 +635,7 @@
             // 
             this.txtHabilidadesTaller.Enabled = false;
             this.txtHabilidadesTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHabilidadesTaller.Location = new System.Drawing.Point(170, 572);
+            this.txtHabilidadesTaller.Location = new System.Drawing.Point(8, 539);
             this.txtHabilidadesTaller.MaxLength = 200;
             this.txtHabilidadesTaller.Name = "txtHabilidadesTaller";
             this.txtHabilidadesTaller.Size = new System.Drawing.Size(211, 23);
@@ -637,7 +646,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(167, 552);
+            this.label10.Location = new System.Drawing.Point(5, 517);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 20);
             this.label10.TabIndex = 122;
@@ -647,7 +656,7 @@
             // 
             this.txtJustificacionCostoTaller.Enabled = false;
             this.txtJustificacionCostoTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(170, 615);
+            this.txtJustificacionCostoTaller.Location = new System.Drawing.Point(8, 586);
             this.txtJustificacionCostoTaller.MaxLength = 200;
             this.txtJustificacionCostoTaller.Name = "txtJustificacionCostoTaller";
             this.txtJustificacionCostoTaller.Size = new System.Drawing.Size(211, 23);
@@ -658,7 +667,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(167, 595);
+            this.label14.Location = new System.Drawing.Point(5, 564);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(174, 20);
             this.label14.TabIndex = 124;
@@ -668,7 +677,7 @@
             // 
             this.txtHerramientasTaller.Enabled = false;
             this.txtHerramientasTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHerramientasTaller.Location = new System.Drawing.Point(170, 658);
+            this.txtHerramientasTaller.Location = new System.Drawing.Point(8, 633);
             this.txtHerramientasTaller.MaxLength = 200;
             this.txtHerramientasTaller.Name = "txtHerramientasTaller";
             this.txtHerramientasTaller.Size = new System.Drawing.Size(211, 23);
@@ -679,7 +688,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(167, 638);
+            this.label15.Location = new System.Drawing.Point(5, 611);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(109, 20);
             this.label15.TabIndex = 126;
@@ -737,7 +746,7 @@
             this.dgvTaller.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTaller.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCoral;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -755,7 +764,7 @@
             this.dgvTaller.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTaller.EnableHeadersVisualStyles = false;
             this.dgvTaller.GridColor = System.Drawing.Color.IndianRed;
-            this.dgvTaller.Location = new System.Drawing.Point(423, 105);
+            this.dgvTaller.Location = new System.Drawing.Point(421, 105);
             this.dgvTaller.MultiSelect = false;
             this.dgvTaller.Name = "dgvTaller";
             this.dgvTaller.ReadOnly = true;
@@ -763,7 +772,7 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dgvTaller.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTaller.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTaller.Size = new System.Drawing.Size(704, 513);
+            this.dgvTaller.Size = new System.Drawing.Size(706, 513);
             this.dgvTaller.TabIndex = 138;
             this.dgvTaller.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvTaller_MouseClick);
             // 
@@ -772,38 +781,65 @@
             this.cbProfeTaller.Enabled = false;
             this.cbProfeTaller.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProfeTaller.FormattingEnabled = true;
-            this.cbProfeTaller.Location = new System.Drawing.Point(170, 527);
+            this.cbProfeTaller.Location = new System.Drawing.Point(8, 490);
             this.cbProfeTaller.Name = "cbProfeTaller";
             this.cbProfeTaller.Size = new System.Drawing.Size(211, 25);
             this.cbProfeTaller.TabIndex = 10;
             this.cbProfeTaller.Text = "Seleccionar Profesor";
             this.cbProfeTaller.SelectedIndexChanged += new System.EventHandler(this.cbProfeTaller_SelectedIndexChanged);
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.txtNombreTaller);
+            this.panel1.Controls.Add(this.cbProfeTaller);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtIdTaller);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.cbEscuelaTaller);
+            this.panel1.Controls.Add(this.txtHerramientasTaller);
+            this.panel1.Controls.Add(this.txtIdEscuela);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtJustificacionCostoTaller);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.txtDescripcionTaller);
+            this.panel1.Controls.Add(this.txtHabilidadesTaller);
+            this.panel1.Controls.Add(this.txtCostoTaller);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.txtIdProfesorTaller);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.txtFechaFin);
+            this.panel1.Controls.Add(this.btnAceptar);
+            this.panel1.Controls.Add(this.dtFechaIniTaller);
+            this.panel1.Controls.Add(this.txtFechaInicio);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.dtFechaFinTaller);
+            this.panel1.Controls.Add(this.cbNivelTaller);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.cbGradoTaller);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Location = new System.Drawing.Point(158, 93);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(247, 534);
+            this.panel1.TabIndex = 139;
+            // 
             // ModuloTalleres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1150, 725);
-            this.Controls.Add(this.cbProfeTaller);
+            this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvTaller);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.btnRecomendaciones2);
             this.Controls.Add(this.btnIncidencias2);
-            this.Controls.Add(this.txtHerramientasTaller);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.txtJustificacionCostoTaller);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.txtHabilidadesTaller);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtIdProfesorTaller);
-            this.Controls.Add(this.txtFechaFin);
-            this.Controls.Add(this.txtFechaInicio);
-            this.Controls.Add(this.txtIdEscuela);
             this.Controls.Add(this.btnPagos2);
-            this.Controls.Add(this.cbEscuelaTaller);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnMenuPrincipal2);
             this.Controls.Add(this.btnMaterial2);
             this.Controls.Add(this.btnDinamicas2);
@@ -815,26 +851,9 @@
             this.Controls.Add(this.esconder_pantalla);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.cbGradoTaller);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.cbNivelTaller);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.dtFechaFinTaller);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.dtFechaIniTaller);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBuscadorTaller);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.txtCostoTaller);
-            this.Controls.Add(this.txtDescripcionTaller);
-            this.Controls.Add(this.txtNombreTaller);
-            this.Controls.Add(this.txtIdTaller);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEliminarTaller);
             this.Controls.Add(this.btnModificarTaller);
             this.Controls.Add(this.btnAgregarTaller);
@@ -845,6 +864,8 @@
             this.Load += new System.EventHandler(this.ModuloTalleres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaller)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -904,5 +925,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataGridView dgvTaller;
         private System.Windows.Forms.ComboBox cbProfeTaller;
+        private System.Windows.Forms.Panel panel1;
     }
 }

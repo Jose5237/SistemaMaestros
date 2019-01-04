@@ -2652,10 +2652,10 @@ namespace sistema_maestros1.webservices3435 {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("https://webservicechatbot.s3435.com/service.php/AgregarRecomendaciones", RequestNamespace="https://webservicestadia.000webhostapp.com/service.php", ResponseNamespace="https://webservicestadia.000webhostapp.com/service.php")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string AgregarRecomendaciones(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string recom) {
+        public string AgregarRecomendaciones(string id_esc, string id_tall, string id_din, string id_mat, string id_rec, string recom) {
             object[] results = this.Invoke("AgregarRecomendaciones", new object[] {
                         id_esc,
-                        id_tal,
+                        id_tall,
                         id_din,
                         id_mat,
                         id_rec,
@@ -2664,18 +2664,18 @@ namespace sistema_maestros1.webservices3435 {
         }
         
         /// <remarks/>
-        public void AgregarRecomendacionesAsync(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string recom) {
-            this.AgregarRecomendacionesAsync(id_esc, id_tal, id_din, id_mat, id_rec, recom, null);
+        public void AgregarRecomendacionesAsync(string id_esc, string id_tall, string id_din, string id_mat, string id_rec, string recom) {
+            this.AgregarRecomendacionesAsync(id_esc, id_tall, id_din, id_mat, id_rec, recom, null);
         }
         
         /// <remarks/>
-        public void AgregarRecomendacionesAsync(string id_esc, string id_tal, string id_din, string id_mat, string id_rec, string recom, object userState) {
+        public void AgregarRecomendacionesAsync(string id_esc, string id_tall, string id_din, string id_mat, string id_rec, string recom, object userState) {
             if ((this.AgregarRecomendacionesOperationCompleted == null)) {
                 this.AgregarRecomendacionesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAgregarRecomendacionesOperationCompleted);
             }
             this.InvokeAsync("AgregarRecomendaciones", new object[] {
                         id_esc,
-                        id_tal,
+                        id_tall,
                         id_din,
                         id_mat,
                         id_rec,

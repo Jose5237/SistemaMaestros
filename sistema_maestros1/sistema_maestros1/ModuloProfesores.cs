@@ -230,6 +230,7 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = true; txtApellidoMatProfe.Text = "";
             txtNombreUsuarioProfesor.Enabled = true; txtNombreUsuarioProfesor.Text = "";
             txtPasswordProfe.Enabled = true; txtPasswordProfe.Text = "";
+            txtConfirmarPassword.Enabled = true; txtConfirmarPassword.Text = "";
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.MediumSeaGreen; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
@@ -245,6 +246,7 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = true;
             txtNombreUsuarioProfesor.Enabled = false;
             txtPasswordProfe.Enabled = true;
+            txtConfirmarPassword.Enabled = true;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.SteelBlue; btnAceptar.Visible = true; btnAceptar.Text = "GUARDAR ✔";
         }
 
@@ -260,6 +262,7 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = false;
             txtNombreUsuarioProfesor.Enabled = false;
             txtPasswordProfe.Enabled = false;
+            txtConfirmarPassword.Enabled = false;
             btnAceptar.Enabled = true; btnAceptar.BackColor = Color.IndianRed; btnAceptar.Visible = true; btnAceptar.Text = "Eliminar";
         }
         
@@ -268,10 +271,14 @@ namespace sistema_maestros1
         {
             if (txtNombreProfe.Text != "" && txtApellidoPatProfe.Text != "" && txtApellidoMatProfe.Text != "" && txtPasswordProfe.Text != "")
             {
-                if (txtPasswordProfe.Text.Length > 5)
+                if (txtPasswordProfe.Text == txtConfirmarPassword.Text)
                 {
 
-                    
+
+                    if (txtPasswordProfe.Text.Length > 5)
+                    {
+
+
 
                         if (MessageBox.Show("¿Estas seguro de realizar esta accion?", "¿Seguro de hacer estos cambios?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
@@ -286,29 +293,29 @@ namespace sistema_maestros1
                                 pr.pr_apellidoMat_profesor = txtApellidoMatProfe.Text;
                                 pr.pr_contrasena_profesor = txtPasswordProfe.Text;
 
-                            using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
+                                using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
 
-                                int validar = wsPHP.validarUsuario(txtNombreUsuarioProfesor.Text);
-                                if (validar == 0)
-                                {
+                                    int validar = wsPHP.validarUsuario(txtNombreUsuarioProfesor.Text);
+                                    if (validar == 0)
+                                    {
 
-                                    try
-                                    {
-                                        string mensaje = wsPHP.agregardatosprofesor(pr.pr_id_profesor, pr.pr_usuario_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
-                                        MessageBox.Show(mensaje, "¡Profesor Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        dgvProfe.Enabled = true;
-                                        cargarDatosTabla();
-                                        inicializacionCampos();
-                                        dgvProfe.Enabled = true;
+                                        try
+                                        {
+                                            string mensaje = wsPHP.agregardatosprofesor(pr.pr_id_profesor, pr.pr_usuario_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
+                                            MessageBox.Show(mensaje, "¡Profesor Agregado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            dgvProfe.Enabled = true;
+                                            cargarDatosTabla();
+                                            inicializacionCampos();
+                                            dgvProfe.Enabled = true;
+                                        }
+                                        catch
+                                        {
+                                            MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
-                                    catch
-                                    {
-                                        MessageBox.Show("Ha ocurrido un error, no se ha podido agregar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                                else
-                                    MessageBox.Show("Ya se encuentra un Profesor con este nombre de usuario, debes cambiarlo","¡ERROR!");
+                                    else
+                                        MessageBox.Show("Ya se encuentra un Profesor con este nombre de usuario, debes cambiarlo", "¡ERROR!");
                                 }
 
                             }
@@ -323,7 +330,7 @@ namespace sistema_maestros1
                                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
 
-                                
+
                                     try
                                     {
                                         string mensaje = wsPHP.modificardatosprofesor(pr.pr_id_profesor, pr.pr_nombre_profesor, pr.pr_apellidoPat_profesor, pr.pr_apellidoMat_profesor, pr.pr_contrasena_profesor);
@@ -332,7 +339,7 @@ namespace sistema_maestros1
                                         cargarDatosTabla();
                                         inicializacionCampos();
                                         dgvProfe.Enabled = true;
-                                }
+                                    }
                                     catch
                                     {
                                         MessageBox.Show("Ha ocurrido un error, no se ha podido modificar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -346,7 +353,7 @@ namespace sistema_maestros1
                                 using (webservices3435.WSPHP wsPHP = new webservices3435.WSPHP())
                                 {
 
-                                
+
                                     try
                                     {
                                         string mensaje = wsPHP.eliminardatosprofesor(pr.pr_id_profesor);
@@ -356,18 +363,21 @@ namespace sistema_maestros1
                                         inicializacionCampos();
                                         dgvProfe.Enabled = true;
 
-                                }
+                                    }
                                     catch
                                     {
                                         MessageBox.Show("Ha ocurrido un error, no se ha podido Eliminar el profesor", "¡Error al agregar!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                             }
-                            
+
                         }
-            }
+                    }
+                    else
+                        MessageBox.Show("La contraseña debe tener almenos 6 caracteres", "¡Contraseña Insegura!");
+                }
                 else
-                    MessageBox.Show("La contraseña debe tener almenos 6 caracteres", "¡Contraseña Insegura!");
+                    MessageBox.Show("Las contraseñas no coinciden, favor de escribir la contraseña correcta.", "¡Contraseña Incorrecta!");
             }
             else
                 MessageBox.Show("Es necesario que llenes todos los campos", "¡ALERTA!");
@@ -392,6 +402,7 @@ namespace sistema_maestros1
             txtApellidoPatProfe.Text = dgvProfe.CurrentRow.Cells[3].Value.ToString();
             txtApellidoMatProfe.Text = dgvProfe.CurrentRow.Cells[4].Value.ToString();
             txtPasswordProfe.Text = dgvProfe.CurrentRow.Cells[5].Value.ToString();
+            txtConfirmarPassword.Text = dgvProfe.CurrentRow.Cells[5].Value.ToString();
         }
 
         //BUSCADOR DE PROFESOR
@@ -486,12 +497,32 @@ namespace sistema_maestros1
             txtApellidoMatProfe.Enabled = false; txtApellidoMatProfe.Text = "";
             txtNombreUsuarioProfesor.Enabled = false; txtNombreUsuarioProfesor.Text = "";
             txtPasswordProfe.Enabled = false; txtPasswordProfe.Text = "";
+            txtConfirmarPassword.Enabled = false; txtConfirmarPassword.Text = "";
 
             btnAceptar.Enabled = false; btnAceptar.Visible = false;
         }
 
+
         #endregion
 
-        
+        private void button1_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPasswordProfe.PasswordChar = '•';
+        }
+
+        private void button1_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPasswordProfe.PasswordChar = '\0';
+        }
+
+        private void btnDesenmascararPass_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtConfirmarPassword.PasswordChar = '\0';
+        }
+
+        private void btnDesenmascararPass_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtConfirmarPassword.PasswordChar = '•';
+        }
     }
 }

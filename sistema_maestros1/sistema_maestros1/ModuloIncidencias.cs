@@ -388,11 +388,11 @@ namespace sistema_maestros1
             NombresColumnas();
 
             cbEscuelaIncidencia.Text = dgvIncidencia.CurrentRow.Cells[0].Value.ToString();
-            txtIdEscuelaIncidencia.Text = dgvIncidencia.CurrentRow.Cells[0].Value.ToString();
-            txtIdIncidencia.Text = dgvIncidencia.CurrentRow.Cells[1].Value.ToString();
-            txtNombreIncidencia.Text = dgvIncidencia.CurrentRow.Cells[2].Value.ToString();
-            txtDescripcionIncidencia.Text = dgvIncidencia.CurrentRow.Cells[3].Value.ToString();
-            cbTipoIncidencias.Text = dgvIncidencia.CurrentRow.Cells[4].Value.ToString();
+            txtIdEscuelaIncidencia.Text = dgvIncidencia.CurrentRow.Cells[1].Value.ToString();
+            txtIdIncidencia.Text = dgvIncidencia.CurrentRow.Cells[2].Value.ToString();
+            txtNombreIncidencia.Text = dgvIncidencia.CurrentRow.Cells[3].Value.ToString();
+            txtDescripcionIncidencia.Text = dgvIncidencia.CurrentRow.Cells[4].Value.ToString();
+            cbTipoIncidencias.Text = dgvIncidencia.CurrentRow.Cells[5].Value.ToString();
         }
 
 
@@ -471,10 +471,11 @@ namespace sistema_maestros1
         public void NombresColumnas()
         {
             dgvIncidencia.Columns[0].HeaderText = "Escuela";
-            dgvIncidencia.Columns[1].HeaderText = "ID Incidencia";
-            dgvIncidencia.Columns[2].HeaderText = "Nombre Incidencia";
-            dgvIncidencia.Columns[3].HeaderText = "Descripcion";
-            dgvIncidencia.Columns[4].HeaderText = "Tipo Incidencia";
+            dgvIncidencia.Columns[1].Visible = false;
+            dgvIncidencia.Columns[2].HeaderText = "ID Incidencia";
+            dgvIncidencia.Columns[3].HeaderText = "Nombre Incidencia";
+            dgvIncidencia.Columns[4].HeaderText = "Descripcion";
+            dgvIncidencia.Columns[5].HeaderText = "Tipo Incidencia";
         }
 
         public void inicializacionCampos()
@@ -490,8 +491,12 @@ namespace sistema_maestros1
         }
 
 
+
         #endregion
 
-        
+        private void dgvIncidencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

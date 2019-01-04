@@ -297,6 +297,8 @@
             this.cbEscuelaPagos.TabIndex = 1;
             this.cbEscuelaPagos.Text = "Seleccionar Escuela";
             this.cbEscuelaPagos.SelectedIndexChanged += new System.EventHandler(this.cbEscuelaPagos_SelectedIndexChanged);
+            this.cbEscuelaPagos.SelectionChangeCommitted += new System.EventHandler(this.cbEscuelaPagos_SelectionChangeCommitted);
+            this.cbEscuelaPagos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbEscuelaPagos_KeyPress);
             // 
             // txtAlumnoPagos
             // 
@@ -389,15 +391,15 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPagos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -409,7 +411,10 @@
             this.dgvPagos.Name = "dgvPagos";
             this.dgvPagos.ReadOnly = true;
             this.dgvPagos.RowHeadersVisible = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvPagos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPagos.Size = new System.Drawing.Size(960, 64);
@@ -523,21 +528,19 @@
             // 
             this.txtIdEscuela1.Enabled = false;
             this.txtIdEscuela1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEscuela1.Location = new System.Drawing.Point(105, 84);
+            this.txtIdEscuela1.Location = new System.Drawing.Point(105, 34);
             this.txtIdEscuela1.Name = "txtIdEscuela1";
             this.txtIdEscuela1.Size = new System.Drawing.Size(74, 22);
             this.txtIdEscuela1.TabIndex = 162;
-            this.txtIdEscuela1.Visible = false;
             // 
             // txtIdAlumnoPagos
             // 
             this.txtIdAlumnoPagos.Enabled = false;
             this.txtIdAlumnoPagos.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdAlumnoPagos.Location = new System.Drawing.Point(105, 35);
+            this.txtIdAlumnoPagos.Location = new System.Drawing.Point(105, 84);
             this.txtIdAlumnoPagos.Name = "txtIdAlumnoPagos";
             this.txtIdAlumnoPagos.Size = new System.Drawing.Size(74, 22);
             this.txtIdAlumnoPagos.TabIndex = 163;
-            this.txtIdAlumnoPagos.Visible = false;
             // 
             // groupBox1
             // 
